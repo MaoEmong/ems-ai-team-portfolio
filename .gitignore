@@ -1,0 +1,29 @@
+# Java / Gradle
+.gradle/
+build/
+target/
+*.class
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+# Node / frontend
+node_modules/
+dist/
+coverage/
+.vite/
+*.tsbuildinfo
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+# Secrets / local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# Runtime / logs
+*.log
+logs/
+mysql-data/
