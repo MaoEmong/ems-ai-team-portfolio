@@ -1,6 +1,6 @@
 # 아키텍처와 MVP 계약
 
-상태: 킥오프 기준 설계 초안. 구현 완료를 의미하지 않습니다. 백엔드 최종 스키마와 대조 후 갱신합니다.
+상태: 1단계 구현 및 실제 통합 검수 기준. Flyway V1 마이그레이션과 대조했습니다. [통합 검수 결과](qa/2026-10-16-mvp-integration.md)를 참조합니다.
 
 ## 시스템 구성
 
@@ -16,19 +16,19 @@ flowchart LR
 
 Docker Compose가 MySQL·백엔드·프론트엔드를 로컬에서 구성합니다. Ollama는 향후 선택 서비스입니다. 백엔드는 `http://localhost:5173` CORS를 허용합니다. Flyway가 스키마 변경을 관리합니다. 제품 LLM 자격증명과 호출은 백엔드에서 관리합니다.
 
-## MVP ERD 초안
+## MVP 실제 ERD
 
 ```mermaid
 erDiagram
   department ||--o{ employee : contains
-  position ||--o{ employee : grades
+  job_position ||--o{ employee : grades
   employee ||--|| user_account : authenticates
   department {
     bigint id PK
     varchar name UK
     varchar description
   }
-  position {
+  job_position {
     bigint id PK
     varchar name UK
     int level
@@ -48,18 +48,17 @@ erDiagram
   user_account {
     bigint id PK
     bigint employee_id FK
-    varchar login_id UK
     varchar password_hash
     varchar role
-    boolean active
+    boolean enabled
   }
 ```
 
-계정 분리 방식은 초안이며 백엔드가 계정 필드를 employee에 통합할 수 있습니다. employee_id는 계정당 유일하도록 설계합니다. login_id=employee_no, role=ADMIN/EMPLOYEE, status=ACTIVE/ON_LEAVE/RETIRED입니다. retire_date는 퇴사 시 기록합니다. 퇴사 시 계정을 비활성화하고 매 요청에서 활성 여부를 확인합니다. 사번 재사용 및 물리 삭제 API는 없습니다. 부서·직급 삭제 시 퇴사자까지 참조 여부를 검사합니다. 관리자 1개와 합성 데모 사원 약 30명을 시드로 제공합니다.
+실제 테이블은 department, job_position, employee, user_account입니다. user_account.employee_id는 NOT NULL UNIQUE FK이며 별도 login_id 컬럼은 없습니다. 로그인 ID는 employee.employee_no입니다. role=ADMIN/EMPLOYEE, enabled는 계정 활성 여부, status=ACTIVE/ON_LEAVE/RETIRED입니다. retire_date CHECK는 RETIRED일 때 퇴사일이 입사일 이상이고, 그 외에는 NULL이도록 강제합니다. 사번·이메일·부서명·직급명에 UNIQUE, 상태·역할에 CHECK, hire_date/name/status에 인덱스가 있습니다. description/phone/retire_date 외 주요 필드는 NOT NULL입니다. 계정은 BCrypt 해시를 저장합니다. 퇴사 시 enabled=false로 바꾸고 매 요청에서 검사합니다. 사번 재사용 및 물리 삭제 API는 없습니다. 부서·직급 삭제는 퇴사자까지 검사합니다. Flyway V1이 부서·직급 각 3개를 만들고 런타임 시드가 빈 사원 테이블에 관리자 1개와 합성 사원 30명을 만듭니다.
 
 ## API 계약 요약
 
-상세 문서: [docs/api/mvp-api.md](api/mvp-api.md) — 백엔드팀 작성 예정. 링크 대상이 생성되기 전까지 아래와 킥오프 결정이 기준입니다. 계약 변경은 검토 기록에 질문하고 양 팀에 공유된 결정만 반영합니다.
+상세 문서: [docs/api/mvp-api.md](api/mvp-api.md). 킥오프 및 설계 검토 답변 을 반영한 계약입니다. 생성 201+객체/Location, 수정·퇴사 200+객체, 삭제 204입니다. User.id는 사원 ID입니다. 계약 변경은 검토 기록에 질문하고 양 팀에 공유된 결정만 반영합니다.
 
 - Base `/api/v1`, JSON, `Authorization: Bearer <token>`.
 - 날짜 `YYYY-MM-DD`, 시각은 오프셋을 포함한 ISO-8601, Asia/Seoul 기준.
@@ -84,7 +83,7 @@ erDiagram
 | PUT /positions/{id} | ADMIN; 직급 수정 |
 | DELETE /positions/{id} | ADMIN; 소속 사원 존재 시 409 |
 
-회의 전달문의 부서·직급 POST/PUT/DELETE 합쳐진 표기를 위와 같이 등록은 컬렉션, 수정·삭제는 ID 경로로 풀어 적었습니다. 백엔드 상세 계약에서 의도와 다르면 설계 검토 확인 후 갱신합니다.
+부서·직급 등록은 컬렉션 POST, 수정·삭제는 ID 경로이며 상세 API 및 실제 검수와 일치합니다. 퇴사자 수정·중복 퇴사는 409 EMPLOYEE_RETIRED, 잘못된 날짜는 400 VALIDATION_ERROR입니다.
 
 Employee 응답 필드: id,employeeNo,name,email,phone,hireDate,status,retireDate,department={id,name},position={id,name,level},role. 기본 목록은 RETIRED 제외이며 status 필터로 퇴사자를 조회할 수 있습니다.
 

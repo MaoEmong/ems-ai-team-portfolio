@@ -5,6 +5,10 @@
 | 날짜 | 팀 | 기록 |
 | --- | --- | --- |
 | 2026-10-16 | 문서QA | [초기 세팅](20261016-docqa-initial-setup.md) |
+| 2026-10-16 | 백엔드 | [MVP 구현](20261016-backend-mvp.md) |
+| 2026-10-16 | 프론트 | [MVP 구현 및 목업 검증](20261016-frontend-mvp.md) |
+| 2026-10-16 | 백엔드 | [Compose 프론트 통합](20261016-backend-compose-frontend.md) |
+| 2026-10-16 | 문서QA | [실제 MVP 통합 검수](20261016-docqa-mvp-integration.md) |
 
 ## 작성 템플릿
 

@@ -5,6 +5,11 @@
 | 번호 | 상태 | 결정 |
 | --- | --- | --- |
 | 0001 | 채택 | [문서화 전략](0001-documentation-strategy.md) |
+| 0100 | 채택 | [Access token 인증](0100-jwt-access-token-only.md) |
+| 0101 | 채택 | [Flyway](0101-flyway.md) |
+| 0102 | 채택 | [퇴사와 논리 삭제](0102-employee-retire-as-soft-delete.md) |
+| 0200 | 채택 | [프론트 스택·상태](0200-frontend-stack-and-state.md) |
+| 0201 | 채택 | [토큰 보관](0201-token-storage-session.md) |
 
 ## 작성 템플릿
 
@@ -20,4 +25,4 @@
 ## 검증 및 관련 문서
 ```
 
-기존 결정을 바꿀 때 원문을 지우지 않고 후속 ADR과 대체 관계를 남깁니다. 백엔드의 JWT/Flyway ADR과 프론트 ADR은 각 팀 작성 후 등록합니다.
+기존 결정을 바꿀 때 원문을 지우지 않고 후속 ADR과 대체 관계를 남깁니다. 신규 ADR은 각 팀 작성 후 색인에 등록합니다.
