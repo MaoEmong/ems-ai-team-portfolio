@@ -4,7 +4,7 @@ build/
 target/
 *.class
 *.jar
-!gradle/wrapper/gradle-wrapper.jar
+!**/gradle/wrapper/gradle-wrapper.jar
 # Node / frontend
 node_modules/
 dist/
