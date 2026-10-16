@@ -1,4 +1,8 @@
 spring:
+  servlet:
+    multipart:
+      max-file-size: 5242880B
+      max-request-size: 6291456B
   datasource:
     url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:ems}?connectionTimeZone=Asia/Seoul
     username: ${DB_USERNAME}

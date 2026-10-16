@@ -19,7 +19,7 @@ final class Dto {
  record UpdateEmployee(@NotBlank @Size(max=100) String name,
   @NotBlank @Email @Size(max=254) String email,@Size(max=30) String phone,
   @NotNull LocalDate hireDate,@NotNull EmployeeStatus status,
-  @NotNull @Positive Long departmentId,@NotNull @Positive Long positionId,@NotNull Role role) {}
+  @Positive Long departmentId,@Positive Long positionId,@NotNull Role role) {}
  record Retire(@NotNull LocalDate retireDate) {}
  record EmployeeView(Long id,String employeeNo,String name,String email,String phone,
   LocalDate hireDate,EmployeeStatus status,LocalDate retireDate,DepartmentRef department,

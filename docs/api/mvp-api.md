@@ -78,7 +78,8 @@ keyword는 이름·사번·이메일 부분 일치. 필터를 동시에 주면 A
 {"name":"가상사원001","email":"demo001@example.invalid","phone":"000-0000-0001","hireDate":"2026-01-01","status":"ON_LEAVE","departmentId":1,"positionId":1,"role":"EMPLOYEE"}
 ```
 200 응답은 전체 Employee 예시에서 status가 ON_LEAVE인 객체. employeeNo는 변경 불가, 상태 입력은 ACTIVE/ON_LEAVE만 허용.
-오류 400 VALIDATION_ERROR, 401 UNAUTHORIZED, 403 FORBIDDEN, 404 NOT_FOUND, 409 DUPLICATE_EMAIL 또는 EMPLOYEE_RETIRED.
+2단계 변경: departmentId/positionId는 선택 입력이다. 생략/null은 현재 값 유지, 동일 값은 허용, 다른 값이면 409 APPOINTMENT_REQUIRED. 프론트는 두 필드를 생략한다. hireDate는 최초 발령일 이후로 변경할 수 없다(400). 상세 규칙과 발령 API는 [2단계 계약](phase2-api.md)을 따른다.
+오류 400 VALIDATION_ERROR, 401 UNAUTHORIZED, 403 FORBIDDEN, 404 NOT_FOUND, 409 DUPLICATE_EMAIL / EMPLOYEE_RETIRED / APPOINTMENT_REQUIRED.
 
 ### POST /employees/{id}/retire — ADMIN
 

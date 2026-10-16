@@ -12,6 +12,7 @@ import static org.mockito.Mockito.*;
 class EmployeeServiceTest {
  @Mock EmployeeRepository employees; @Mock DepartmentRepository departments;
  @Mock PositionRepository positions; @Mock PasswordEncoder passwords;
+ @Mock AppointmentStore appointments; @Mock AuditService audit;
  @InjectMocks EmployeeService service;
  Employee employee;
  @BeforeEach void setup() {

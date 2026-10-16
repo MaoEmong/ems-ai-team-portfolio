@@ -18,6 +18,7 @@ class ApiControllerTest {
  @Autowired MockMvc mvc;
  @MockitoBean AuthService auth; @MockitoBean EmployeeService employees;
  @MockitoBean CatalogService catalogs; @MockitoBean AccountRepository accounts;
+ @MockitoBean AuditService audit;
  @Autowired org.springframework.security.oauth2.jwt.JwtEncoder encoder;
  private String token(java.time.Instant expiry) {
   var claims=org.springframework.security.oauth2.jwt.JwtClaimsSet.builder().issuer("ems").subject("1")

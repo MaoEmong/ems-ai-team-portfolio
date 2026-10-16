@@ -43,6 +43,8 @@ class SecurityConfig {
   http.authorizeHttpRequests(a->a
    .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
    .requestMatchers(HttpMethod.POST,"/api/v1/auth/login").permitAll()
+   .requestMatchers(HttpMethod.GET,"/api/v1/dashboard","/api/v1/audit-logs","/api/v1/employees/export","/api/v1/employees/import-template").hasRole("ADMIN")
+   .requestMatchers(HttpMethod.POST,"/api/v1/employees/import","/api/v1/employees/*/appointments").hasRole("ADMIN")
    .requestMatchers("/api/v1/**").authenticated().anyRequest().denyAll());
   http.exceptionHandling(e->e
    .authenticationEntryPoint((q,r,x)->error(r,mapper,401,"UNAUTHORIZED"))
@@ -69,7 +71,7 @@ class SecurityConfig {
   CorsConfiguration c=new CorsConfiguration();
   c.setAllowedOrigins(List.of("http://localhost:5173"));
   c.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
-  c.setAllowedHeaders(List.of("Authorization","Content-Type")); c.setExposedHeaders(List.of("Location"));
+  c.setAllowedHeaders(List.of("Authorization","Content-Type")); c.setExposedHeaders(List.of("Location","Content-Disposition"));
   UrlBasedCorsConfigurationSource source=new UrlBasedCorsConfigurationSource(); source.registerCorsConfiguration("/api/**",c);
   return source;
  }

@@ -13,8 +13,9 @@ import java.util.*;
 class EmployeeService {
  private final EmployeeRepository employees; private final DepartmentRepository departments;
  private final PositionRepository positions; private final PasswordEncoder passwords;
- EmployeeService(EmployeeRepository e,DepartmentRepository d,PositionRepository p,PasswordEncoder passwords) {
-  employees=e; departments=d; positions=p; this.passwords=passwords;
+ private final AppointmentStore appointments; private final AuditService audit;
+ EmployeeService(EmployeeRepository e,DepartmentRepository d,PositionRepository p,PasswordEncoder passwords,AppointmentStore appointments,AuditService audit) {
+  employees=e; departments=d; positions=p; this.passwords=passwords; this.appointments=appointments;this.audit=audit;
  }
  @Transactional(readOnly=true)
  public Dto.PageView<Dto.EmployeeView> list(String keyword,Long departmentId,Long positionId,EmployeeStatus status,int page,int size,String sort) {
@@ -43,6 +44,12 @@ class EmployeeService {
   return Dto.employee(employees.findById(id).orElseThrow(ApiException::missing));
  }
  public Dto.EmployeeView create(Dto.CreateEmployee r) {
+  return createInternal(r,Map.of());
+ }
+ public Dto.EmployeeView createImported(Dto.CreateEmployee r) {
+  return createInternal(r,Map.of("source","IMPORT"));
+ }
+ private Dto.EmployeeView createInternal(Dto.CreateEmployee r,Map<String,String> metadata) {
   if(employees.existsByEmployeeNo(r.employeeNo())) throw ApiException.conflict("DUPLICATE_EMPLOYEE_NO");
   duplicateEmail(r.email(),-1L);
   if(r.initialPassword().getBytes(StandardCharsets.UTF_8).length>72) throw ApiException.invalid("initialPassword","UTF-8 72바이트 이하여야 합니다.");
@@ -51,22 +58,33 @@ class EmployeeService {
   e.department=departments.lockById(r.departmentId()).orElseThrow(ApiException::missing);
   e.position=positions.lockById(r.positionId()).orElseThrow(ApiException::missing);
   Account a=new Account(); a.employee=e; a.role=r.role(); a.enabled=true; a.passwordHash=passwords.encode(r.initialPassword()); e.account=a;
-  return Dto.employee(employees.saveAndFlush(e));
+  Dto.EmployeeView result=Dto.employee(employees.saveAndFlush(e));
+  audit.record("EMPLOYEE_CREATE","EMPLOYEE",e.id,e.name,null,result,metadata);
+  return result;
  }
  public Dto.EmployeeView update(Long id,Dto.UpdateEmployee r) {
   Employee e=employees.lockById(id).orElseThrow(ApiException::missing); requireActive(e);
   if(r.status()==EmployeeStatus.RETIRED) throw ApiException.invalid("status","퇴사 처리 API를 사용하세요.");
+  if((r.departmentId()!=null&&!r.departmentId().equals(e.department.id))||(r.positionId()!=null&&!r.positionId().equals(e.position.id)))
+   throw ApiException.conflict("APPOINTMENT_REQUIRED");
+  var first=appointments.firstDate(id);
+  if(first!=null&&r.hireDate().isAfter(first))throw ApiException.invalid("hireDate","최초 발령일 이후일 수 없습니다.");
+  var before=Dto.employee(e);
   duplicateEmail(r.email(),id);
   e.name=r.name(); e.email=r.email(); e.phone=r.phone(); e.hireDate=r.hireDate(); e.status=r.status();
-  e.department=departments.lockById(r.departmentId()).orElseThrow(ApiException::missing);
-  e.position=positions.lockById(r.positionId()).orElseThrow(ApiException::missing); e.account.role=r.role();
-  employees.flush(); return Dto.employee(e);
+  e.account.role=r.role();
+  employees.flush();
+  var result=Dto.employee(e);audit.record("EMPLOYEE_UPDATE","EMPLOYEE",e.id,e.name,before,result,Map.of());return result;
  }
  public Dto.EmployeeView retire(Long id,Dto.Retire r) {
   Employee e=employees.lockById(id).orElseThrow(ApiException::missing); requireActive(e);
   if(r.retireDate().isBefore(e.hireDate)) throw ApiException.invalid("retireDate","입사일 이전일 수 없습니다.");
+  var last=appointments.lastDate(id);
+  if(last!=null&&r.retireDate().isBefore(last))throw ApiException.invalid("retireDate","마지막 발령일 이전일 수 없습니다.");
+  var before=Dto.employee(e);
   e.status=EmployeeStatus.RETIRED; e.retireDate=r.retireDate(); e.account.enabled=false;
-  employees.flush(); return Dto.employee(e);
+  employees.flush();var result=Dto.employee(e);
+  audit.record("EMPLOYEE_RETIRE","EMPLOYEE",e.id,e.name,before,result,Map.of());return result;
  }
  private void duplicateEmail(String email,Long id) {
   if(employees.existsByEmailAndIdNot(email,id)) throw ApiException.conflict("DUPLICATE_EMAIL");

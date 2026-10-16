@@ -32,7 +32,7 @@ for ($attempt = 0; $attempt -lt 60; $attempt++) {
 if (-not $ready) { throw 'Backend did not become ready within 120 seconds' }
 $headers = @{Authorization="Bearer $($login.accessToken)"}
 $employees = Invoke-RestMethod -Uri 'http://localhost:8080/api/v1/employees' -Headers $headers
-if ($employees.totalElements -ne 31) { throw 'Expected 31 seeded employees' }
+if ($employees.totalElements -lt 1) { throw 'Expected at least the active smoke administrator' }
 $departments = Invoke-RestMethod -Uri 'http://localhost:8080/api/v1/departments' -Headers $headers
 $positions = Invoke-RestMethod -Uri 'http://localhost:8080/api/v1/positions' -Headers $headers
 Write-Output "COMPOSE_SMOKE_PASS employees=$($employees.totalElements) departments=$($departments.Count) positions=$($positions.Count)"

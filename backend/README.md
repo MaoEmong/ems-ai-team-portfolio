@@ -37,7 +37,7 @@ docker compose up --build -d
 docker compose logs backend
 ```
 
-백엔드 http://localhost:8080/api/v1, MySQL localhost:3306. frontend 서비스는 프론트 Dockerfile 확정 후 통합한다. CORS는 http://localhost:5173만 허용한다. Compose 서비스는 호스트 loopback에 바인딩한다.
+Compose는 mysql/backend/frontend 세 서비스를 시작한다. 프론트 http://localhost:5173, 백엔드 http://localhost:8080/api/v1, MySQL localhost:3306. frontend는 0.0.0.0:5173(IPv6에서는 [::]:5173에도 노출), mysql과 backend는 127.0.0.1:3306/8080 loopback 바인딩이다. CORS는 http://localhost:5173만 허용하며 Content-Disposition을 노출한다. 프론트 VITE_API_URL=http://localhost:8080 및 VITE_MOCK_API=false는 빌드 인자이며 변경 후 다시 빌드해야 한다.
 
 Flyway가 부서·직급과 스키마를 만들고 빈 employee 테이블에는 관리자 1명과 합성 사원 30명을 생성한다. 기존 DB 재시작 시 비밀번호를 재설정하지 않는다. 데모 사원은 알 수 없는 무작위 비밀번호로 생성되므로 로그인 시연용 사원은 관리자 API로 initialPassword를 지정해 생성한다. 환경변수나 토큰을 로그/커밋에 넣지 않는다.
 
@@ -59,9 +59,17 @@ test: Docker 없이 서비스 단위·보안 MVC 슬라이스 테스트. integra
 
 보고서: build/reports/tests/test/index.html 및 build/reports/tests/integrationTest/index.html. MySQL 통합 테스트는 실제 로그인→사원 생성→권한→수정→퇴사→기존 JWT 거부, 중복 제약, 부서/직급 CRUD와 참조 삭제 거부를 검증한다.
 
-PowerShell에서 .\compose-smoke.ps1은 ems-backend-smoke 프로젝트로 실제 Compose 이미지를 빌드하고 로그인·31명 시드를 검사한다. 포트 3306/8080이 비어 있어야 한다. 임시 자격증명은 Git 제외 build/compose-smoke.env에 생성하고 재실행 시 재사용한다. 검증 후 프로젝트 루트에서 docker compose --project-name ems-backend-smoke --env-file backend/build/compose-smoke.env down으로 컨테이너를 종료한다(볼륨 유지).
+PowerShell에서 .\compose-smoke.ps1은 ems-backend-smoke 프로젝트로 실제 Compose 이미지를 빌드하고 로그인·현재 인원을 확인한다. 유지 볼륨에는 검수 데이터가 누적되므로 31명을 고정 기대하지 않는다. 포트 3306/8080/5173이 비어 있어야 한다. 임시 자격증명은 Git 제외 build/compose-smoke.env에 생성하고 재실행 시 재사용한다. 검증 후 프로젝트 루트에서 docker compose --project-name ems-backend-smoke --env-file backend/build/compose-smoke.env down으로 컨테이너를 종료한다(볼륨 유지).
 
 API 계약: ../docs/api/mvp-api.md. 실행 결과 및 미실행 항목: ../docs/devlog/20261016-backend-mvp.md.
 
 ## 설계
-외부 응답에는 DTO만 사용한다. 계정 비밀번호는 BCrypt로 저장하고 매 인증 요청에서 enabled와 role을 DB에서 확인한다. 사원 변경과 퇴사, 참조 부서/직급 삭제는 트랜잭션·행 잠금으로 보호한다. 스키마는 Flyway로만 변경하고 JPA는 validate로 검증한다. 현 MVP의 최대 페이지는 100이며 단순한 eager 관계 로딩을 사용한다. 대규모 목록 최적화와 감사 로그는 후속 단계에서 별도 측정·구현한다.
+외부 응답에는 DTO만 사용한다. 계정 비밀번호는 BCrypt로 저장하고 매 인증 요청에서 enabled와 role을 DB에서 확인한다. 사원 변경과 퇴사, 참조 부서/직급 삭제는 트랜잭션·행 잠금으로 보호한다. 스키마는 Flyway로만 변경하고 JPA는 validate로 검증한다. 현 MVP의 최대 페이지는 100이며 단순한 eager 관계 로딩을 사용한다. 감사·발령은 V2 마이그레이션과 같은 데이터소스의 JDBC로 저장하여 JPA 변경과 하나의 트랜잭션에 참여한다.
+
+## 2단계 실행·검증
+
+기존 DB는 V1을 유지한 채 시작 시 V2가 적용된다. 새 DB에는 V1→V2가 순서대로 적용된다. 볼륨을 지우거나 V1을 수정하지 않는다. 관리자는 대시보드·발령·파일 입출력·감사 조회를 사용하고 일반 사원은 본인 발령 이력을 조회한다. 조직 변경은 사원 PUT 대신 발령 API로 한다.
+
+상세 계약: [phase2-api.md](../docs/api/phase2-api.md). 파일 한도5MiB/1000행, 압축 해제 총20MiB/엔트리10MiB, 내보내기10000행. 사번·날짜·비밀번호는 문자열 셀로 입력한다. 오류 시 전체 롤백하고 실제 행 번호를 반환한다.
+
+`./gradlew test`는 기존 MVP·2단계 MVC·파일 코덱을 검증한다. `./gradlew integrationTest`는 MySQL에서 MVP 회귀, 발령·감사 원자성, 파일 롤백, 집계·권한, V1 데이터 보존 업그레이드와 새 DB를 검증한다. 결과는 [2단계 개발일지](../docs/devlog/20261016-backend-phase2.md)를 참조한다.
