@@ -1,5 +1,104 @@
 # 아키텍처와 MVP 계약
 
+## 3B 실제 V4 스키마와 계약
+
+[3B API v1.1](api/phase3b-api.md), [정책표](phase3b-policy.md), [실제 검수](qa/2026-10-16-phase3b-integration.md). V1~V3은 변경하지 않는다. 다음은 V4__organization_payroll_evaluation.sql과 대조한 추가 구조다.
+
+```mermaid
+erDiagram
+  department o|--o{ department : parent
+  job_title o|--o{ employee : current_title
+  job_title o|--o{ appointment : from_and_to_title
+  employee ||--o| salary_setting : settings
+  payroll_month ||--o{ payslip : contains
+  employee ||--o{ payslip : recipient
+  evaluation_cycle ||--o{ evaluation_item : defines
+  evaluation_cycle ||--o{ evaluation_assignment : assigns
+  evaluation_cycle ||--o{ evaluation_form : snapshots
+  employee ||--o{ evaluation_assignment : target_and_reviewer
+  employee ||--o{ evaluation_form : target_and_reviewer
+  department {
+    bigint parent_id FK
+  }
+  job_title {
+    bigint id PK
+    varchar name UK
+    varchar description
+  }
+  organization_lock {
+    int id PK
+  }
+  employee {
+    bigint job_title_id FK
+  }
+  appointment {
+    bigint from_job_title_id FK
+    varchar from_job_title_name
+    bigint to_job_title_id FK
+    varchar to_job_title_name
+  }
+  salary_setting {
+    bigint employee_id PK,FK
+    bigint base_salary
+    bigint allowance
+    varchar formula_version
+    int rate1
+    int rate2
+    int rate3
+  }
+  payroll_month {
+    bigint id PK
+    char pay_month UK
+    varchar status
+    datetime generated_at
+    json generated_by
+    datetime confirmed_at
+    json confirmed_by
+  }
+  payslip {
+    bigint id PK
+    bigint payroll_id FK
+    bigint employee_id FK
+    varchar employee_no
+    json snapshot_json
+  }
+  evaluation_cycle {
+    bigint id PK
+    varchar name
+    date start_date
+    date end_date
+    varchar status
+  }
+  evaluation_item {
+    bigint id PK
+    bigint cycle_id FK
+    varchar name
+    int sort_order
+  }
+  evaluation_assignment {
+    bigint id PK
+    bigint cycle_id FK
+    bigint employee_id FK
+    bigint reviewer_id FK
+  }
+  evaluation_form {
+    bigint id PK
+    bigint cycle_id FK
+    bigint employee_id FK
+    bigint reviewer_id FK
+    varchar state
+    json items_json
+    json self_answers_json
+    json manager_answers_json
+    decimal final_score
+    varchar grade
+  }
+```
+
+급여 설정은 각 금액 0~10억원 CHECK, 명세는 (payroll_id,employee_id) UNIQUE다. 평가 배정·평가서는 각각 (cycle_id,employee_id) UNIQUE이며 final_score는 DECIMAL(3,2)다. 조직 변경은 organization_lock의 단일 행→부서 순서, 급여는 월별 GET_LOCK과 트랜잭션 잠금으로 보호한다. 당시 이름·직책과 산식·금액은 JSON 스냅샷으로 보존한다. 기존 발령의 직책 null은 과거 직책 복원을 의미하지 않는다. 자세한 결정은 ADR [0109](adr/0109-organization-lock-and-title-appointments.md)·[0110](adr/0110-demo-payroll-month-snapshots.md)·[0111](adr/0111-evaluation-state-and-private-drafts.md)에 있다.
+
+조직도는 인증 조회, 급여 관리는 ADMIN/확정 명세는 본인, 평가 상세는 본인·배정 평가자만 허용한다. 주기 상세 assignments 요약은 평가서 상세 조회 권한을 확장하지 않는다. 급여는 **포트폴리오용 데모 급여 — 실제 세법·4대보험 산정 아님**이며 팀장 휴가 승인·급여 파일·평가 알림·AI는 이번 확장에서 제외했다.
+
 ## 3A 실제 스키마
 
 [3A API](api/phase3a-api.md), V3__attendance_leave_notifications.sql 기준. V1/V2 보존.

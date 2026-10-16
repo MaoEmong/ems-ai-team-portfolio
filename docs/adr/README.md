@@ -42,3 +42,10 @@
 - [0105 전체 취소 가져오기](0105-all-or-nothing-file-import.md)
 - [0202 디자인 시스템·차트](0202-design-system-and-charts.md)
 - [0203 인증 파일 전송](0203-authenticated-file-transfer.md)
+
+## 3B 추가 결정
+
+- [0109-organization-lock-and-title-appointments](0109-organization-lock-and-title-appointments.md)
+- [0110-demo-payroll-month-snapshots](0110-demo-payroll-month-snapshots.md)
+- [0111-evaluation-state-and-private-drafts](0111-evaluation-state-and-private-drafts.md)
+- [0205-phase3b-server-values-and-snapshots](0205-phase3b-server-values-and-snapshots.md)

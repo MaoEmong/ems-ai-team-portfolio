@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-16T10:22:22.920Z",
+  "diffCheckExit": 0,
+  "missingOwnedMarkdownLinks": [],
+  "contractHash": "9A56EAD34B8E4B8134FBD3A8E92B4D0F3FCFAFAF22495EC0D5ACB20AA6F0B3B2",
+  "oldMigrationChanges": [],
+  "initialDiffScope": "Tracked working tree only; newly added design file not included",
+  "frontendStagedCheck": {
+    "result": "trailing whitespace",
+    "path": "docs/design/phase3b-screens.md",
+    "line": 523,
+    "severity": "LOW",
+    "owner": "프론트디자인",
+    "fixedByQa": false
+  }
+}

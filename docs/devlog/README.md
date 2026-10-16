@@ -45,3 +45,10 @@
 - [파일 코덱 담당](20261016-backend-sheet-codec.md)
 - [프론트·Claude 디자인 반영](20261016-frontend-phase2.md)
 - [문서QA](20261016-docqa-phase2.md)
+
+## 3B 개발 일지
+
+- [20261016-backend-phase3b](20261016-backend-phase3b.md)
+- [20261016-backend-evaluation](20261016-backend-evaluation.md)
+- [20261016-frontend-phase3b](20261016-frontend-phase3b.md)
+- [20261016-docqa-phase3b](20261016-docqa-phase3b.md)

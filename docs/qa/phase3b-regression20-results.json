@@ -1,0 +1,85 @@
+{
+  "timestamp": "2026-10-16T10:13:01.579Z",
+  "results": [
+    {
+      "name": "UI admin login and actual employee list",
+      "result": "PASS"
+    },
+    {
+      "name": "UI pagination and sorting",
+      "result": "PASS"
+    },
+    {
+      "name": "API all supported sorts and page metadata",
+      "result": "PASS"
+    },
+    {
+      "name": "UI department position status filters and empty search",
+      "result": "PASS"
+    },
+    {
+      "name": "UI employee create 201",
+      "result": "PASS"
+    },
+    {
+      "name": "API duplicate employee number 409",
+      "result": "PASS"
+    },
+    {
+      "name": "UI employee edit 200",
+      "result": "PASS"
+    },
+    {
+      "name": "API keyword name number email and combined filters",
+      "result": "PASS"
+    },
+    {
+      "name": "UI EMPLOYEE login own profile",
+      "result": "PASS"
+    },
+    {
+      "name": "UI EMPLOYEE management guard and other profile 403",
+      "result": "PASS"
+    },
+    {
+      "name": "API EMPLOYEE own only and catalog read exceptions",
+      "result": "PASS"
+    },
+    {
+      "name": "UI departments CRUD and in-use 409",
+      "result": "PASS"
+    },
+    {
+      "name": "UI positions CRUD and in-use 409",
+      "result": "PASS"
+    },
+    {
+      "name": "UI retire employee 200 and hide edit",
+      "result": "PASS"
+    },
+    {
+      "name": "UI retired excluded by default and status query includes",
+      "result": "PASS"
+    },
+    {
+      "name": "API retired edit and repeated retirement 409, old JWT 401",
+      "result": "PASS"
+    },
+    {
+      "name": "UI retired existing session redirects login and clears token",
+      "result": "PASS"
+    },
+    {
+      "name": "API retired-only department and position references block deletion",
+      "result": "PASS"
+    },
+    {
+      "name": "API validation 400, missing 404, duplicate email and names 409",
+      "result": "PASS"
+    },
+    {
+      "name": "UI admin logout clears session",
+      "result": "PASS"
+    }
+  ]
+}

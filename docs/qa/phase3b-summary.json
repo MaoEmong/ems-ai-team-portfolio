@@ -1,0 +1,88 @@
+{
+  "subject": "Codex 문서QA",
+  "qaStartAuthorization": "설계 검토  통합 검수 시작",
+  "preservation": {
+    "before": "2026-10-16T10:11:30.647Z",
+    "after": "2026-10-16T10:12:42.916Z",
+    "alreadyV4": true,
+    "equal": true,
+    "tables": 20,
+    "baseline": {
+      "appointment": 6,
+      "attendance": 5,
+      "audit_log": 196,
+      "demo_seed_marker": 1,
+      "department": 9,
+      "employee": 55,
+      "evaluation_assignment": 1,
+      "evaluation_cycle": 1,
+      "evaluation_form": 1,
+      "evaluation_item": 2,
+      "job_position": 6,
+      "job_title": 1,
+      "leave_balance": 9,
+      "leave_request": 8,
+      "notification": 33,
+      "organization_lock": 1,
+      "payroll_month": 1,
+      "payslip": 55,
+      "salary_setting": 55,
+      "user_account": 55
+    }
+  },
+  "suites": [
+    {
+      "name": "기존 MVP20",
+      "file": "phase3b-regression20-results.json",
+      "pass": 20,
+      "fail": 0,
+      "notRun": 0
+    },
+    {
+      "name": "2단계14",
+      "file": "phase3b-regression14-results.json",
+      "pass": 14,
+      "fail": 0,
+      "notRun": 0
+    },
+    {
+      "name": "3A13",
+      "file": "phase3b-regression13-results.json",
+      "pass": 13,
+      "fail": 0,
+      "notRun": 1
+    },
+    {
+      "name": "3B15",
+      "file": "phase3b-results.json",
+      "pass": 15,
+      "fail": 0,
+      "notRun": 0
+    }
+  ],
+  "fresh": {
+    "employees": 31,
+    "accounts": 31,
+    "retired": 5,
+    "defaultList": 26,
+    "salarySettings": 31
+  },
+  "freshPayrollExpected": 26,
+  "freshPayrollActual": 26,
+  "finalState": {
+    "at": "2026-10-16T10:18:30.626Z",
+    "sourceManifestChecked": 59,
+    "sourceMismatches": [],
+    "runningContainers": [],
+    "volumes": [
+      "ems-backend-3a-fresh-20261016133836_mysql_data",
+      "ems-backend-3b-final-20261016170043_mysql_data",
+      "ems-backend-3b-final-20261016190251_mysql_data",
+      "ems-backend-3b-fresh-20261016164924_mysql_data",
+      "ems-backend-smoke_mysql_data",
+      "ems-docqa3a-fresh-20261016_mysql_data",
+      "ems-docqa3b-fresh-20261016_mysql_data",
+      "ems-docqa-fresh-20261016_mysql_data"
+    ]
+  }
+}

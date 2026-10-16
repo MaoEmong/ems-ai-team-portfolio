@@ -1,0 +1,25 @@
+const fs=require('node:fs'),path=require('node:path');
+const {chromium,expect}=require('../../frontend/node_modules/@playwright/test');
+const {sql}=require('./phase3b-db.cjs');
+const env=Object.fromEntries(fs.readFileSync('.env.qa3b-local','utf8').replace(/^\uFEFF/,'').split(/\r?\n/).filter(x=>x.includes('=')&&!x.startsWith('#')).map(x=>[x.slice(0,x.indexOf('=')),x.slice(x.indexOf('=')+1)]));
+let browser;const facts={executedBy:'Codex 문서QA',startedAt:new Date().toISOString(),project:process.env.QA_PROJECT};
+const ok=(x,m)=>{if(!x)throw Error(m);};
+(async()=>{
+ browser=await chromium.launch({headless:true});const p=await browser.newPage({viewport:{width:1440,height:1000}});
+ let auth;for(let n=0;n<45;n++){try{const r=await p.request.post('http://localhost:8080/api/v1/auth/login',{data:{loginId:env.ADMIN_LOGIN_ID,password:env.ADMIN_INITIAL_PASSWORD}});if(r.status()===200){auth=(await r.json()).accessToken;break;}}catch{}await new Promise(r=>setTimeout(r,1000));}ok(auth,'readiness');
+ const get=async route=>{const r=await p.request.get('http://localhost:8080/api/v1'+route,{headers:{Authorization:'Bearer '+auth}});ok(r.status()===200,route);return r.json();};
+ const d=await get('/dashboard'),employees=[];for(const status of ['ACTIVE','ON_LEAVE','RETIRED'])employees.push(...(await get('/employees?status='+status+'&size=100')).content);
+ const month=new Date(d.asOfDate+'T00:00:00Z');month.setUTCDate(1);month.setUTCMonth(month.getUTCMonth()-1);const previous=month.toISOString().slice(0,7),start=previous+'-01';const end=new Date(Date.UTC(month.getUTCFullYear(),month.getUTCMonth()+1,0)).toISOString().slice(0,10);
+ const expected=employees.filter(e=>e.hireDate<=end&&(!e.retireDate||e.retireDate>=start)).map(e=>e.id).sort((a,b)=>a-b);
+ const pay=await get('/payrolls/'+previous),actual=pay.payslips.map(s=>s.employee.id).sort((a,b)=>a-b);
+ facts.counts={employees:employees.length,accounts:Number(sql('SELECT COUNT(*) FROM user_account;')),retired:employees.filter(e=>e.status==='RETIRED').length,defaultList:(await get('/employees')).totalElements,salarySettings:Number(sql('SELECT COUNT(*) FROM salary_setting;'))};
+ ok(JSON.stringify(facts.counts)===JSON.stringify({employees:31,accounts:31,retired:5,defaultList:26,salarySettings:31}),'seed counts');
+ ok(JSON.stringify(expected)===JSON.stringify(actual)&&pay.payroll.status==='CONFIRMED','independent eligible IDs');facts.payroll={month:previous,monthStart:start,monthEnd:end,expectedIds:expected,actualIds:actual,expectedCount:expected.length,actualCount:actual.length};
+ facts.dashboard=d;ok(d.monthly.length===12&&d.monthly.filter(x=>x.hires>0).length>=10,'distributed dates');
+ const org=await get('/organization');ok(org.departments.some(x=>x.parentId!==null)&&org.employees.some(e=>e.jobTitle),'hierarchy and titles');
+ facts.evaluationStates=sql('SELECT state,COUNT(*) FROM evaluation_form GROUP BY state ORDER BY state;');ok(facts.evaluationStates.split('\n').length===4,'mixed states');facts.cycles=Number(sql('SELECT COUNT(*) FROM evaluation_cycle;'));ok(facts.cycles===1,'one cycle');
+ const demo=await p.request.post('http://localhost:8080/api/v1/auth/login',{data:{loginId:'DEMO001',password:env.DEMO_ADMIN_INITIAL_PASSWORD}});ok(demo.status()===200&&(await demo.json()).user.role==='ADMIN','demo admin');facts.demo001Login='PASS';
+ await p.goto('http://localhost:5173/login');await p.getByLabel('아이디 (사번)').fill(env.ADMIN_LOGIN_ID);await p.getByLabel('비밀번호',{exact:true}).fill(env.ADMIN_INITIAL_PASSWORD);await p.getByRole('button',{name:'로그인',exact:true}).click();await expect(p.getByRole('heading',{name:'대시보드',exact:true})).toBeVisible();await p.waitForLoadState('networkidle');
+ const dir=path.join(__dirname,'phase3b-screenshots');await p.screenshot({path:path.join(dir,'dashboard-fresh.png'),fullPage:true});await p.goto('http://localhost:5173/admin/payroll/'+previous);await expect(p.getByText('포트폴리오용 데모 급여 — 실제 세법·4대보험 산정 아님').first()).toBeVisible();await p.waitForLoadState('networkidle');await p.screenshot({path:path.join(dir,'payroll-fresh.png'),fullPage:true});
+ facts.result='PASS';console.log('Fresh PASS '+JSON.stringify(facts.counts)+' payslips expected/actual '+expected.length+'/'+actual.length);
+})().catch(e=>{facts.result='FAIL';facts.error=e.message;console.error(e.message);process.exitCode=1;}).finally(async()=>{if(browser)await browser.close();facts.finishedAt=new Date().toISOString();fs.writeFileSync(path.join(__dirname,'phase3b-fresh-results.json'),JSON.stringify(facts,null,2));});

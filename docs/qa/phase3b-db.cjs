@@ -1,0 +1,7 @@
+// Read-only DB evidence. Credentials stay inside the container environment.
+const {spawnSync}=require('node:child_process'),crypto=require('node:crypto'),fs=require('node:fs');
+const project=process.env.QA_PROJECT||'ems-backend-smoke',env=process.env.QA_ENV||'backend/build/compose-smoke.env';
+function sql(query){const r=spawnSync('docker',['compose','--project-name',project,'--env-file',env,'exec','-T','mysql','sh','-c','MYSQL_PWD="$MYSQL_PASSWORD" mysql -u "$MYSQL_USER" "$MYSQL_DATABASE" -BN'],{input:query,encoding:'utf8',maxBuffer:30*1024*1024});if(r.status!==0)throw Error(r.stderr);return r.stdout.trim();}
+function snapshot(){const tables=sql('SHOW TABLES;').split(/\r?\n/),out={};for(const t of tables){if(t==='flyway_schema_history')continue;const cols=sql('SHOW COLUMNS FROM `'+t+'`;').split(/\r?\n/).map(l=>l.split('\t')[0]);const rows=sql('SELECT '+cols.map(c=>'`'+c+'`').join(',')+' FROM `'+t+'` ORDER BY '+cols.map(c=>'`'+c+'`').join(',')+';');out[t]={columns:cols,count:Number(sql('SELECT COUNT(*) FROM `'+t+'`;')),sha256:crypto.createHash('sha256').update(rows).digest('hex')};}return {at:new Date().toISOString(),project,flyway:sql('SELECT version,success FROM flyway_schema_history ORDER BY installed_rank;'),tables:out};}
+if(require.main===module){const out=process.argv[2];fs.writeFileSync(out,JSON.stringify(snapshot(),null,2));console.log('Saved read-only DB snapshot: '+out);}
+module.exports={sql,snapshot};

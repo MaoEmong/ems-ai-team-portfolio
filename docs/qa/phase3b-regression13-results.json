@@ -1,0 +1,348 @@
+{
+  "timestamp": "2026-10-16T10:13:17.714Z",
+  "facts": {
+    "baseline": {
+      "asOfDate": "2026-10-16",
+      "monthly": [
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2025-11"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2025-12"
+        },
+        {
+          "retirements": 0,
+          "hires": 43,
+          "month": "2026-01"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-02"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-03"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-04"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-05"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-06"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-07"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-08"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-09"
+        },
+        {
+          "retirements": 14,
+          "hires": 10,
+          "month": "2026-10"
+        }
+      ],
+      "headcount": {
+        "retired": 14,
+        "onLeave": 4,
+        "active": 42,
+        "employed": 46
+      },
+      "thisMonth": {
+        "hires": 10,
+        "retirements": 14
+      },
+      "byDepartment": [
+        {
+          "count": 12,
+          "name": "RetiredOnly1792085309991",
+          "departmentId": 6
+        },
+        {
+          "count": 1,
+          "name": "RetiredOnly1792111917846",
+          "departmentId": 9
+        },
+        {
+          "count": 12,
+          "name": "가상개발부",
+          "departmentId": 1
+        },
+        {
+          "count": 10,
+          "name": "가상운영부",
+          "departmentId": 2
+        },
+        {
+          "count": 10,
+          "name": "가상인사부",
+          "departmentId": 3
+        },
+        {
+          "count": 1,
+          "name": "합성발령-P2b1a42b9a54e0",
+          "departmentId": 7
+        }
+      ],
+      "byPosition": [
+        {
+          "name": "가상사원",
+          "count": 25,
+          "level": 1,
+          "positionId": 1
+        },
+        {
+          "name": "가상대리",
+          "count": 11,
+          "level": 2,
+          "positionId": 2
+        },
+        {
+          "name": "가상과장",
+          "count": 10,
+          "level": 3,
+          "positionId": 3
+        }
+      ]
+    },
+    "attendance": {
+      "date": "2026-10-16",
+      "checkIn": "2026-10-16T19:13:12+09:00",
+      "checkOut": "2026-10-16T19:13:13+09:00",
+      "late": true,
+      "earlyLeave": false,
+      "status": "COMPLETE",
+      "expectedStart": "09:00:00",
+      "expectedEnd": "18:00:00",
+      "leaves": [],
+      "corrected": false
+    },
+    "futureRejection": {
+      "code": "VALIDATION_ERROR",
+      "fieldErrors": [
+        {
+          "field": "date",
+          "reason": "입사일부터 오늘까지여야 합니다."
+        }
+      ]
+    },
+    "balanceBaseline": {
+      "periodStart": "2026-01-01",
+      "periodEnd": "2026-12-31",
+      "granted": 16,
+      "used": 0,
+      "reserved": 0,
+      "available": 16,
+      "approverAvailable": true
+    },
+    "final": {
+      "asOfDate": "2026-10-16",
+      "monthly": [
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2025-11"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2025-12"
+        },
+        {
+          "retirements": 0,
+          "hires": 43,
+          "month": "2026-01"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-02"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-03"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-04"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-05"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-06"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-07"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-08"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-09"
+        },
+        {
+          "retirements": 14,
+          "hires": 10,
+          "month": "2026-10"
+        }
+      ],
+      "headcount": {
+        "retired": 14,
+        "onLeave": 4,
+        "active": 44,
+        "employed": 48
+      },
+      "thisMonth": {
+        "hires": 10,
+        "retirements": 14
+      },
+      "byDepartment": [
+        {
+          "count": 14,
+          "name": "RetiredOnly1792085309991",
+          "departmentId": 6
+        },
+        {
+          "count": 1,
+          "name": "RetiredOnly1792111917846",
+          "departmentId": 9
+        },
+        {
+          "count": 12,
+          "name": "가상개발부",
+          "departmentId": 1
+        },
+        {
+          "count": 10,
+          "name": "가상운영부",
+          "departmentId": 2
+        },
+        {
+          "count": 10,
+          "name": "가상인사부",
+          "departmentId": 3
+        },
+        {
+          "count": 1,
+          "name": "합성발령-P2b1a42b9a54e0",
+          "departmentId": 7
+        }
+      ],
+      "byPosition": [
+        {
+          "name": "가상사원",
+          "count": 27,
+          "level": 1,
+          "positionId": 1
+        },
+        {
+          "name": "가상대리",
+          "count": 11,
+          "level": 2,
+          "positionId": 2
+        },
+        {
+          "name": "가상과장",
+          "count": 10,
+          "level": 3,
+          "positionId": 3
+        }
+      ]
+    }
+  },
+  "results": [
+    {
+      "name": "UI own check-in checkout and duplicate API conflicts",
+      "result": "PASS"
+    },
+    {
+      "name": "UI blank past workday means unrecorded not absent",
+      "result": "PASS"
+    },
+    {
+      "name": "ADMIN correction requires reason and writes audit and recipient notification",
+      "result": "PASS"
+    },
+    {
+      "name": "UI existing employee GET identity and corrected values",
+      "result": "PASS"
+    },
+    {
+      "name": "Future ADMIN PUT rejected with fieldErrors and no side effects",
+      "result": "PASS"
+    },
+    {
+      "name": "UI leave request reserves balance and targets all other active admins",
+      "result": "PASS"
+    },
+    {
+      "name": "Overlap and insufficient balance conflicts do not change reservation",
+      "result": "PASS"
+    },
+    {
+      "name": "UI different ADMIN approval moves reservation once and notifies applicant",
+      "result": "PASS"
+    },
+    {
+      "name": "UI pre-start cancellation restores used balance",
+      "result": "PASS"
+    },
+    {
+      "name": "ADMIN self approval and rejection forbidden",
+      "result": "PASS"
+    },
+    {
+      "name": "Different ADMIN rejection restores reservation and sends private notification",
+      "result": "PASS"
+    },
+    {
+      "name": "Notification read idempotence owner isolation and read-all upper bound",
+      "result": "PASS"
+    },
+    {
+      "name": "UI notifications privacy and account switch clears prior inbox",
+      "result": "PASS"
+    },
+    {
+      "name": "Past PENDING Clock-controlled transition, exact time and leap-year boundaries",
+      "result": "NOT_RUN",
+      "reason": "Browser server clock unchanged; connect backend Clock/MySQL tests"
+    }
+  ]
+}

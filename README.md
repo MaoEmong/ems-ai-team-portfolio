@@ -17,9 +17,9 @@ docker compose --project-name ems-demo3a --env-file .env down
 
 같은 프로젝트를 다시 쓰면 새 빈DB가 아니라 유지DB입니다. 기존볼륨을 삭제하지 말고 다른 고유프로젝트를 사용합니다. 관리자는 자기결재가 금지되므로 다른 합성ADMIN으로 계정을 바꿔 결재합니다. 유지환경에서는 API/관리화면에서 합성ADMIN을 생성할 수 있습니다. 목업Chromium은5174,실제Compose웹은5173입니다.
 
-디자인원본·재확인은 [Claude 검수](docs/design/design-review-phase3a.md)7.2/7.5/8을 참조합니다. 낮음N-01~07·ExcelJS청크경고·프론트EOF빈줄3건은 알려진 잔여이며 기능검증과 구분합니다.
+디자인원본·재확인은 [Claude 검수](docs/design/design-review-phase3a.md)7.2/7.5/8을 참조합니다. 낮음N-01~07·ExcelJS청크경고·프론트EOF빈줄3건은 3A 당시 잔여 기록입니다. 3B에서는 담당 변경 범위의 EOF를 프론트가 정리했고 현재 잔여는 3B 검수 보고서8~9절을 따릅니다.
 
-백엔드 중심 풀스택 사원관리 웹 애플리케이션이자 **AI 활용 포트폴리오**입니다. 현재3A(근태·휴가·알림)까지 구현했습니다. 실제Compose/MySQL/Chromium에서 기존34개 회귀와3A13개 시나리오를 검수했습니다. 3B(조직도·직책·급여·평가)와4단계AI는 후속범위입니다.
+백엔드 중심 풀스택 사원관리 웹 애플리케이션이자 **AI 활용 포트폴리오**입니다. 현재3B(조직도·직책·데모 급여·평가)까지 구현했습니다. 실제 Compose/MySQL/Chromium에서 기존34+3A13개 회귀와3B15개 시나리오를 검수했습니다. 4단계 AI는 후속 범위입니다.
 
 ## 기술 스택
 
@@ -36,7 +36,7 @@ docker compose --project-name ems-demo3a --env-file .env down
 | 1 MVP | 사원·부서·직급 CRUD, 검색·필터·정렬·페이징, 로그인·권한 |
 | 2 확장 1 | 대시보드, 발령 이력, xlsx 입출력·CSV 내보내기, 감사 로그 |
 | 3A | 근태·정정, 휴가결재·예약/사용/복원, 알림 |
-| 3B (후속) | 조직도·직책, 급여 데모, 평가 |
+| 3B | 조직도·직책, 급여 데모, 평가 |
 | 4 AI | Claude API/Ollama, 자연어 사원 검색, 평가 요약, HR 규정 챗봇 |
 
 ## 실행 방법
@@ -93,3 +93,24 @@ docker compose down
 - [디자인 시스템](docs/design/design-system.md) · [시안](docs/design/mockups.html) · [Claude 검수 기록](docs/design/design-review-phase2.md)
 
 디자인은 Claude, 구현·실제 검수는 Codex가 담당했습니다. 목업 디자인 검수와 실제 API 검증의 범위는 각각의 문서에서 구분합니다.
+
+## 3B 기능과 새 DB 시드
+
+조직 계층·직책 발령, 월 급여 생성/재계산/확정·본인 명세, 자기평가·관리자 평가/서버 등급을 제공합니다. **포트폴리오용 데모 급여 — 실제 세법·4대보험 산정 아님**. 공제는 총지급의450/350/300bps를 항목별 원 단위 HALF_UP으로 반올림하며 일할 계산은 없습니다. 직책은 ADMIN 권한을 주지 않고 팀장 휴가 승인은 제외합니다.
+
+새 DB에는 기존31명·급여 설정31개, 직전 월 대상자만의 확정 명세와 혼합 상태 평가 주기1개가 생성됩니다. 이번 QA에서는 서울 기준2026-09 대상 조건으로 계산한26명과 명세26개가 일치했습니다. 과거월 명세는 생성 시점 설정·소속 스냅샷이며 과거 이력 복원이 아닙니다. 유지 볼륨에는 자동 재시드/명세 생성이 없습니다.
+
+아래는 포트가 비어 있고 해당 프로젝트/볼륨이 없을 때만 새 DB를 만드는 예입니다. 위 실행 방법대로 .env를 먼저 설정하고 DEMO_ADMIN_INITIAL_PASSWORD를 지정하면 새 DB의 DEMO001(ADMIN)으로 자기 결재 금지를 시연할 수 있습니다. 같은 프로젝트 재사용은 유지 DB입니다. 기존 볼륨을 삭제하지 마세요.
+
+```powershell
+docker compose --project-name ems-demo3b --env-file .env up --build -d
+docker compose --project-name ems-demo3b --env-file .env ps
+# 사용 후 볼륨 유지
+docker compose --project-name ems-demo3b --env-file .env down
+```
+
+[3B 정책](docs/phase3b-policy.md) · [API v1.1](docs/api/phase3b-api.md) · [실제 통합 검수](docs/qa/2026-10-16-phase3b-integration.md) · [Claude 검수](docs/design/design-review-phase3b.md) · [마무리 회의](docs/meetings/2026-10-16-phase3b-finalization.md). 급여 파일 다운로드·평가 알림은 이번 범위가 아닙니다.
+
+![새 DB의 데모 급여 — 실제 API](docs/qa/phase3b-screenshots/payroll-fresh.png)
+
+![모바일 본인 평가 결과 — 실제 API](docs/qa/phase3b-screenshots/evaluation-result-mobile.png)
