@@ -1,6 +1,6 @@
 # EMS — Employee Management System
 
-백엔드 중심 풀스택 사원관리 웹 애플리케이션이자 **AI 활용 포트폴리오**입니다. AI 팀의 설계·구현·검수 과정을 기록하며, 제품 내부 AI 기능은 4단계에 추가합니다. 현재 1단계 MVP를 구현하고 실제 Chromium·MySQL 통합 시나리오 20개를 통과했습니다. 2~4단계는 미구현입니다.
+백엔드 중심 풀스택 사원관리 웹 애플리케이션이자 **AI 활용 포트폴리오**입니다. AI 팀의 설계·구현·검수 과정을 기록하며, 제품 내부 AI 기능은 4단계에 추가합니다. 현재 2단계까지 구현했으며 실제 Chromium·MySQL 검수에서 기존 회귀20개와 신규14개 시나리오를 통과했습니다. 3~4단계는 미구현입니다.
 
 ## 기술 스택
 
@@ -49,9 +49,9 @@ docker compose down
 
 ## 실제 API 화면
 
-![관리자 사원 목록 — 합성 데이터](docs/qa/screenshots/admin-list.png)
+![관리자 대시보드 — 합성 데이터](docs/qa/phase2-screenshots/dashboard-fresh.png)
 
-![일반 사원 내 정보 — 합성 데이터](docs/qa/screenshots/employee-profile.png)
+![발령 이력 — 합성 데이터](docs/qa/phase2-screenshots/appointment-history.png)
 
 ## 문서
 
@@ -62,3 +62,14 @@ docker compose down
 - [개발 일지](docs/devlog/README.md) · [ADR](docs/adr/README.md) · [회고](docs/retrospective.md)
 
 [상세 API 계약](docs/api/mvp-api.md) · [MVP 통합 검수·결함 목록](docs/qa/2026-10-16-mvp-integration.md). 각 팀의 자동 테스트 결과와 이번 실제 API 검수를 구분해 기록합니다.
+
+
+## 2단계 기능과 증거
+
+대시보드(현재 상태·12개월 입퇴사), 발령 전용 조직 변경·본인 이력, 실제 xlsx/CSV 다운로드·오류 시 전체 취소 가져오기, 관리자 감사 로그를 제공합니다. 관리자 첫 화면은 대시보드, 일반 사원은 내 정보입니다.
+
+- [2단계 API](docs/api/phase2-api.md) · [실제 통합 검수](docs/qa/2026-10-16-phase2-integration.md)
+- [종료·착수 회의](docs/meetings/2026-10-16-phase1-closing.md) · [역할별 엔진 배분 ADR](docs/adr/0002-task-based-engine-allocation.md)
+- [디자인 시스템](docs/design/design-system.md) · [시안](docs/design/mockups.html) · [Claude 검수 기록](docs/design/design-review-phase2.md)
+
+디자인은 Claude, 구현·실제 검수는 Codex가 담당했습니다. 목업 디자인 검수와 실제 API 검증의 범위는 각각의 문서에서 구분합니다.

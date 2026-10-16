@@ -1,0 +1,5 @@
+services:
+  backend:
+    image: ems-backend-smoke-backend:latest
+  frontend:
+    image: ems-backend-smoke-frontend:latest

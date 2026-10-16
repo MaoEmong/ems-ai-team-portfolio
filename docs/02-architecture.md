@@ -92,3 +92,51 @@ Access token만 사용하고 refresh는 없습니다. 프론트 sessionStorage �
 ## 검증 및 소유권
 
 문서QA는 공통 문서와 초기 Git, 백엔드는 backend·Compose·상세 API·백엔드 ADR, 프론트는 frontend(Dockerfile 포함)·프론트 ADR을 담당합니다. Compose는 백엔드 단일 편집입니다. MySQL 통합 검증은 Testcontainers 또는 Compose로 수행하며 미실행과 통과를 구분합니다.
+
+## 2단계 실제 ERD와 API
+
+[2단계 API 계약](api/phase2-api.md), Flyway V2__appointments_and_audit.sql 기준. V1 보존, appointment/audit_log 추가.
+
+```mermaid
+erDiagram
+  employee ||--o{ appointment : subject_and_creator
+  department ||--o{ appointment : from_and_to
+  job_position ||--o{ appointment : from_and_to
+  appointment {
+    bigint id PK
+    bigint employee_id FK
+    date effective_date
+    bigint from_department_id FK
+    varchar from_department_name
+    bigint to_department_id FK
+    varchar to_department_name
+    bigint from_position_id FK
+    varchar from_position_name
+    int from_position_level
+    bigint to_position_id FK
+    varchar to_position_name
+    int to_position_level
+    varchar reason
+    bigint created_by_id FK
+    varchar created_by_name
+    datetime created_at
+  }
+  audit_log {
+    bigint id PK
+    datetime occurred_at
+    bigint actor_id
+    json actor_snapshot
+    varchar action
+    varchar target_type
+    bigint target_id
+    varchar target_label
+    boolean success
+    json before_json
+    json after_json
+    json metadata_json
+  }
+```
+
+appointment는 대상/작성자 및 전후 조직 FK, 당시 이름·level 스냅샷, (employee_id,effective_date DESC,id DESC) 인덱스를 가집니다. audit_log의 actor/target은 nullable 논리 참조이며 FK가 아닙니다. DATETIME(6), JSON 스냅샷, 시간·actor·target·action·success별 시간/ID 인덱스를 사용합니다. 성공 업무/감사는 같은 트랜잭션, 실패 로그인/가져오기는 별도 기록입니다.
+
+사원 PUT 조직 필드 생략/null/동일 값은 유지, 변경은409입니다. 발령은 행 잠금 후 DB 전 값을 읽어 현재 소속·이력·감사를 갱신합니다. 대시보드는 현재 상태/분포와 오늘까지의 날짜 집계를 구분합니다. 파일 한도·셀 형식·감사 허용 필드는 상세 API를 따릅니다.

@@ -26,3 +26,12 @@
 ```
 
 기존 결정을 바꿀 때 원문을 지우지 않고 후속 ADR과 대체 관계를 남깁니다. 신규 ADR은 각 팀 작성 후 색인에 등록합니다.
+
+## 2단계 추가 결정 (채택)
+
+- [0002 작업 성격별 엔진 배분](0002-task-based-engine-allocation.md)
+- [0103 발령 전용 조직 변경](0103-appointment-only-organization-changes.md)
+- [0104 감사 트랜잭션](0104-audit-transaction-boundaries.md)
+- [0105 전체 취소 가져오기](0105-all-or-nothing-file-import.md)
+- [0202 디자인 시스템·차트](0202-design-system-and-charts.md)
+- [0203 인증 파일 전송](0203-authenticated-file-transfer.md)
