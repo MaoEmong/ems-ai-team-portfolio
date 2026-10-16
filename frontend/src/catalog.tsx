@@ -71,7 +71,8 @@ export function Catalog({ kind }: { kind: "departments" | "positions" }) {
           <p className="eyebrow">ORGANIZATION</p>
           <h1>{title} 관리</h1>
           <p className="muted">
-            소속 사원이 있는 {title}는 퇴사자를 포함해 삭제할 수 없습니다.
+            현재 소속 사원(퇴사자 포함) 또는 과거 발령 이력에서 참조하는 {title}
+            는 삭제할 수 없습니다.
           </p>
         </div>
       </div>
@@ -116,6 +117,7 @@ export function Catalog({ kind }: { kind: "departments" | "positions" }) {
                               수정<span className="sr-only"> {item.name}</span>
                             </button>
                             <button
+                              className="danger"
                               disabled={busy}
                               onClick={() => {
                                 setError(undefined);

@@ -1,9 +1,12 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "./auth";
-import { send } from "./api";
+import { ApiError, send } from "./api";
+import { FileActions } from "./files";
+import { Appointments } from "./appointments";
 import {
   ErrorNotice,
+  FormErrors,
   Field,
   Modal,
   fieldErrors,
@@ -28,7 +31,11 @@ export function EmployeeList() {
   const [page, setPage] = useState(0);
   const departments = useResource<Department[]>("/departments");
   const positions = useResource<Position[]>("/positions");
-  const query = new URLSearchParams({ ...filters, page: String(page) });
+  const query = new URLSearchParams(
+    Object.entries({ ...filters, page: String(page) }).filter(
+      ([, value]) => value !== "",
+    ),
+  );
   const result = useResource<Page<Employee>>(`/employees?${query}`);
   const update = (key: string, value: string) => {
     setFilters((f) => ({ ...f, [key]: value }));
@@ -46,6 +53,7 @@ export function EmployeeList() {
           + 사원 등록
         </Link>
       </div>
+      <FileActions filters={filters} total={result.data?.totalElements} />
       <section className="panel">
         <div className="filters">
           <Field name="keyword" label="사원 검색">
@@ -128,7 +136,8 @@ export function EmployeeList() {
           !result.error && (
             <>
               <div className="table-wrap">
-                <table>
+                <table className="responsive-table employee-table">
+                  <caption className="sr-only">사원 목록</caption>
                   <thead>
                     <tr>
                       <th>사번</th>
@@ -142,15 +151,17 @@ export function EmployeeList() {
                   <tbody>
                     {result.data?.content.map((e) => (
                       <tr key={e.id}>
-                        <td>{e.employeeNo}</td>
-                        <td>
+                        <td data-label="사번">{e.employeeNo}</td>
+                        <td data-label="이름">
                           <Link to={`/employees/${e.id}`}>{e.name}</Link>
                         </td>
-                        <td>{e.department.name}</td>
-                        <td>{e.position.name}</td>
-                        <td>{e.hireDate}</td>
-                        <td>
-                          <span className={`badge ${e.status}`}>
+                        <td data-label="부서">{e.department.name}</td>
+                        <td data-label="직급">{e.position.name}</td>
+                        <td data-label="입사일">{e.hireDate}</td>
+                        <td data-label="상태">
+                          <span
+                            className={`badge badge--${e.status === "ACTIVE" ? "success" : e.status === "ON_LEAVE" ? "warning" : "neutral"}`}
+                          >
                             {statusLabels[e.status]}
                           </span>
                         </td>
@@ -207,7 +218,8 @@ export function EmployeeDetail({ self = false }: { self?: boolean }) {
   const [date, setDate] = useState("");
   const [error, setError] = useState<unknown>();
   const [busy, setBusy] = useState(false);
-  if (result.loading) return <p role="status">사원 정보를 불러오는 중…</p>;
+  if (result.loading && !result.data)
+    return <p role="status">사원 정보를 불러오는 중…</p>;
   if (result.error)
     return (
       <>
@@ -236,11 +248,12 @@ export function EmployeeDetail({ self = false }: { self?: boolean }) {
         <div>
           <p className="eyebrow">{self ? "MY PROFILE" : "EMPLOYEE PROFILE"}</p>
           <h1>{self ? "내 정보" : e.name}</h1>
+          <span className={`badge ${e.status === "ACTIVE" ? "badge--success" : e.status === "ON_LEAVE" ? "badge--warning" : "badge--danger"}`}>{e.status === "ACTIVE" ? "재직" : e.status === "ON_LEAVE" ? "휴직" : "퇴사"}</span>
           <p className="muted">
-            {e.employeeNo} · {e.department.name}
+            {e.employeeNo} · {e.department.name} · {e.position.name}
           </p>
         </div>
-        {user?.role === "ADMIN" && e.status !== "RETIRED" && (
+        {user?.role === "ADMIN" && !self && e.status !== "RETIRED" && (
           <div className="actions">
             <Link className="button" to={`/employees/${e.id}/edit`}>
               정보 수정
@@ -258,6 +271,7 @@ export function EmployeeDetail({ self = false }: { self?: boolean }) {
         )}
       </div>
       <section className="panel">
+        <h2>기본 정보</h2>
         <dl className="details">
           {[
             ["이름", e.name],
@@ -278,6 +292,11 @@ export function EmployeeDetail({ self = false }: { self?: boolean }) {
           ))}
         </dl>
       </section>
+      <Appointments
+        employee={e}
+        canEdit={user?.role === "ADMIN" && !self}
+        onSaved={result.reload}
+      />
       {retiring && (
         <Modal
           titleId="retire-title"
@@ -358,12 +377,24 @@ export function EmployeeEditor() {
     if (Object.keys(validation).length) return;
     setBusy(true);
     try {
-      const { employeeNo, initialPassword, status, ...rest } = form;
+      const {
+        employeeNo,
+        initialPassword,
+        status,
+        departmentId,
+        positionId,
+        ...rest
+      } = form;
       const payload = {
         ...rest,
-        departmentId: Number(form.departmentId),
-        positionId: Number(form.positionId),
-        ...(creating ? { employeeNo, initialPassword } : { status }),
+        ...(creating
+          ? {
+              employeeNo,
+              initialPassword,
+              departmentId: Number(departmentId),
+              positionId: Number(positionId),
+            }
+          : { status }),
       };
       const employee = await send<Employee>(
         creating ? "/employees" : `/employees/${id}`,
@@ -426,40 +457,79 @@ export function EmployeeEditor() {
       </div>
       <form className="panel" onSubmit={submit} noValidate>
         <ErrorNotice error={error} />
+        <FormErrors errors={errors} />
+        {error instanceof ApiError &&
+          error.body.code === "APPOINTMENT_REQUIRED" && (
+            <p className="notice info">
+              부서·직급은 발령으로만 변경할 수 있습니다.{" "}
+              <Link to={`/employees/${id}#appointments`}>
+                발령 등록하러 가기
+              </Link>
+            </p>
+          )}
+        <p className="muted">* 표시는 필수 항목입니다.</p>
         <div className="form-grid">
+          <h2 className="form-wide">기본 정보</h2>
           {creating && input("employeeNo", "사번 *", "text", 50)}
           {input("name", "이름 *", "text", 100)}
           {input("email", "이메일 *", "email", 254)}
           {input("phone", "전화번호", "tel", 30)}
           {input("hireDate", "입사일 *", "date")}
-          <Field name="departmentId" label="부서 *" error={errors.departmentId}>
-            <select
-              id="departmentId"
-              value={form.departmentId}
-              onChange={(e) => update("departmentId", e.target.value)}
-            >
-              <option value="">선택하세요</option>
-              {departments.data?.map((d) => (
-                <option key={d.id} value={d.id}>
-                  {d.name}
-                </option>
-              ))}
-            </select>
-          </Field>
-          <Field name="positionId" label="직급 *" error={errors.positionId}>
-            <select
-              id="positionId"
-              value={form.positionId}
-              onChange={(e) => update("positionId", e.target.value)}
-            >
-              <option value="">선택하세요</option>
-              {positions.data?.map((p) => (
-                <option key={p.id} value={p.id}>
-                  {p.name}
-                </option>
-              ))}
-            </select>
-          </Field>
+          <h2 className="form-wide">소속</h2>
+          {creating ? (
+            <>
+              <Field
+                name="departmentId"
+                label="부서 *"
+                error={errors.departmentId}
+              >
+                <select
+                  id="departmentId"
+                  value={form.departmentId}
+                  onChange={(e) => update("departmentId", e.target.value)}
+                >
+                  <option value="">선택하세요</option>
+                  {departments.data?.map((d) => (
+                    <option key={d.id} value={d.id}>
+                      {d.name}
+                    </option>
+                  ))}
+                </select>
+              </Field>
+              <Field name="positionId" label="직급 *" error={errors.positionId}>
+                <select
+                  id="positionId"
+                  value={form.positionId}
+                  onChange={(e) => update("positionId", e.target.value)}
+                >
+                  <option value="">선택하세요</option>
+                  {positions.data?.map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {p.name}
+                    </option>
+                  ))}
+                </select>
+              </Field>
+            </>
+          ) : (
+            <div className="readonly-block form-wide">
+              <strong>소속 (읽기 전용)</strong>
+              <p>
+                부서:{" "}
+                {!Array.isArray(existing.data) &&
+                  existing.data?.department.name}{" "}
+                · 직급:{" "}
+                {!Array.isArray(existing.data) && existing.data?.position.name}
+              </p>
+              <p>
+                부서·직급은 발령 등록으로만 바꿀 수 있습니다.{" "}
+                <Link to={`/employees/${id}#appointments`}>
+                  발령 등록하러 가기
+                </Link>
+              </p>
+            </div>
+          )}
+          <h2 className="form-wide">계정</h2>
           <Field name="role" label="역할 *" error={errors.role}>
             <select
               id="role"

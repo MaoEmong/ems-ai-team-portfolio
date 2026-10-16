@@ -36,4 +36,49 @@ export interface ErrorBody {
   code: string;
   message: string;
   fieldErrors: { field: string; reason: string }[];
+  rowErrors?: { row: number; field: string; reason: string }[];
 }
+export interface DashboardData {
+  asOfDate: string;
+  headcount: {
+    active: number;
+    onLeave: number;
+    employed: number;
+    retired: number;
+  };
+  byDepartment: { departmentId: number; name: string; count: number }[];
+  byPosition: {
+    positionId: number;
+    name: string;
+    level: number;
+    count: number;
+  }[];
+  thisMonth: { hires: number; retirements: number };
+  monthly: { month: string; hires: number; retirements: number }[];
+}
+export interface Appointment {
+  id: number;
+  employeeId: number;
+  effectiveDate: string;
+  fromDepartment: Department;
+  toDepartment: Department;
+  fromPosition: Position;
+  toPosition: Position;
+  reason: string;
+  createdBy: { id: number; name: string };
+  createdAt: string;
+}
+export interface AuditLog {
+  id: number;
+  occurredAt: string;
+  actor: Pick<User, "id" | "employeeNo" | "name"> | null;
+  action: string;
+  targetType: "EMPLOYEE" | "DEPARTMENT" | "POSITION" | null;
+  targetId: number | null;
+  targetLabel: string | null;
+  success: boolean;
+  before: Record<string, unknown> | null;
+  after: Record<string, unknown> | null;
+  metadata: Record<string, unknown>;
+}
+

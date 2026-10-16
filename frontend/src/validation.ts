@@ -31,9 +31,9 @@ export function validateEmployee(
     "name",
     "email",
     "hireDate",
-    "departmentId",
-    "positionId",
-    ...(creating ? ["employeeNo", "initialPassword"] : []),
+    ...(creating
+      ? ["departmentId", "positionId", "employeeNo", "initialPassword"]
+      : []),
   ])
     if (!form[key as keyof EmployeeForm].trim())
       errors[key] = "필수 입력입니다.";

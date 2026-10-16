@@ -4,6 +4,7 @@ test("관리자 목업: 필터·정렬·페이지·직급 CRUD·모바일", asyn
   await page.getByLabel("아이디 (사번)").fill("admin");
   await page.getByLabel("비밀번호", { exact: true }).fill("demo1234!");
   await page.getByRole("button", { name: "로그인", exact: true }).click();
+  await page.getByRole('link', { name: '사원 관리', exact: true }).click();
   await expect(
     page.getByRole("heading", { name: "사원 관리", exact: true }),
   ).toBeVisible();
@@ -74,3 +75,5 @@ test("일반 사원 목업: 본인 정보·관리 URL 차단", async ({ page }) 
     page.getByRole("heading", { name: "권한이 없습니다", exact: true }),
   ).toBeVisible();
 });
+
+

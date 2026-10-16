@@ -5,7 +5,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet } from "react-router-dom";
 import { request, send, TOKEN_KEY } from "./api";
 import type { User } from "./types";
 interface Auth {
@@ -102,6 +102,9 @@ export function Guard({ admin = false }: { admin?: boolean }) {
       <section role="alert">
         <h1>권한이 없습니다</h1>
         <p>이 화면은 관리자만 사용할 수 있습니다.</p>
+        <Link className="button" to="/me">
+          내 정보로 이동
+        </Link>
       </section>
     );
   return <Outlet />;

@@ -1,4 +1,12 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  cloneElement,
+  isValidElement,
+  useEffect,
+  useRef,
+  useState,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import { ApiError, request } from "./api";
 export function useResource<T>(path: string) {
   const [data, setData] = useState<T>();
@@ -41,6 +49,13 @@ export function ErrorNotice({ error }: { error: unknown }) {
   return (
     <div className="error" role="alert">
       {message}
+      {error instanceof ApiError &&
+        ["DEPARTMENT_IN_USE", "POSITION_IN_USE"].includes(error.body.code) && (
+          <p>
+            현재 소속 사원(퇴사자 포함) 또는 과거 발령 이력에서 참조하고 있어
+            삭제할 수 없습니다.
+          </p>
+        )}
     </div>
   );
 }
@@ -58,7 +73,12 @@ export function Field({
   return (
     <div className="field">
       <label htmlFor={name}>{label}</label>
-      {children}
+      {isValidElement(children)
+        ? cloneElement(children as ReactElement<Record<string, unknown>>, {
+            "aria-invalid": !!error,
+            "aria-describedby": error ? `${name}-error` : undefined,
+          })
+        : children}
       {error && (
         <small id={`${name}-error`} role="alert">
           {error}
@@ -79,6 +99,35 @@ export const statusLabels = {
   ON_LEAVE: "휴직",
   RETIRED: "퇴사",
 };
+export function FormErrors({ errors }: { errors: Record<string, string> }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const keys = Object.keys(errors);
+  const signature = JSON.stringify(errors);
+  useEffect(() => {
+    if (signature !== "{}") ref.current?.focus();
+  }, [signature]);
+  if (!keys.length) return null;
+  return (
+    <div className="error" ref={ref} tabIndex={-1}>
+      <strong>입력값 {keys.length}곳을 확인하세요.</strong>
+      <ul>
+        {keys.map((key) => (
+          <li key={key}>
+            <a
+              href={`#${key}`}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById(key)?.focus();
+              }}
+            >
+              {errors[key]}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 export function Modal({
   titleId,
   onClose,

@@ -35,6 +35,7 @@ async function login(id = "admin") {
   await user.type(await screen.findByLabelText("아이디 (사번)"), id);
   await user.type(screen.getByLabelText("비밀번호"), "demo1234!");
   await user.click(screen.getByRole("button", { name: "로그인" }));
+  if(id === "admin") await user.click(await screen.findByRole("link", {name:"사원 관리"}));
   return user;
 }
 describe("인증과 역할", () => {
@@ -175,7 +176,7 @@ describe("사원 폼과 관리 흐름", () => {
     await user.type(within(dialog).getByLabelText("퇴사일"), "2026-10-16");
     await user.click(within(dialog).getByRole("button", { name: "퇴사 처리" }));
     await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
-    await screen.findByText("퇴사");
+    await screen.findByText("퇴사", { selector: "dd" });
     expect(screen.queryByRole("link", { name: "정보 수정" })).toBeNull();
     await user.click(screen.getByRole("link", { name: "사원 관리" }));
     await user.selectOptions(
@@ -233,3 +234,5 @@ describe("사원 폼과 관리 흐름", () => {
     );
   });
 });
+
+
