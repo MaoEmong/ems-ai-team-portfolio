@@ -1,5 +1,12 @@
 # Architecture Decision Records
 
+## 3A 채택 결정
+
+- [0106 조회시 근태판정](0106-attendance-query-time-evaluation.md)
+- [0107 휴가예약·잠금](0107-leave-reservation-and-locking.md)
+- [0108 빈DB 데모시드](0108-fresh-database-demo-seed.md)
+- [0204 알림폴링·계정격리](0204-notification-polling-and-account-isolation.md)
+
 파일명: `NNNN-<주제>.md`. 문서QA 0001~0099, 백엔드 0100~0199, 프론트 0200~0299. 각 팀은 대역 안에서 중복 없는 번호를 사용하고 추가 대역은 검토 기록에 조율합니다. 색인은 문서QA가 통합합니다.
 
 | 번호 | 상태 | 결정 |

@@ -1,0 +1,121 @@
+{
+  "timestamp": "2026-10-16T07:05:41.814Z",
+  "result": "PASS",
+  "defaultList": 26,
+  "retired": 5,
+  "total": 31,
+  "demo001Role": "ADMIN",
+  "demo001Login": "PASS",
+  "dashboard": {
+    "asOfDate": "2026-10-16",
+    "monthly": [
+      {
+        "retirements": 0,
+        "hires": 1,
+        "month": "2025-11"
+      },
+      {
+        "retirements": 0,
+        "hires": 1,
+        "month": "2025-12"
+      },
+      {
+        "retirements": 0,
+        "hires": 2,
+        "month": "2026-01"
+      },
+      {
+        "retirements": 0,
+        "hires": 2,
+        "month": "2026-02"
+      },
+      {
+        "retirements": 0,
+        "hires": 2,
+        "month": "2026-03"
+      },
+      {
+        "retirements": 0,
+        "hires": 2,
+        "month": "2026-04"
+      },
+      {
+        "retirements": 0,
+        "hires": 2,
+        "month": "2026-05"
+      },
+      {
+        "retirements": 1,
+        "hires": 2,
+        "month": "2026-06"
+      },
+      {
+        "retirements": 1,
+        "hires": 2,
+        "month": "2026-07"
+      },
+      {
+        "retirements": 1,
+        "hires": 2,
+        "month": "2026-08"
+      },
+      {
+        "retirements": 1,
+        "hires": 2,
+        "month": "2026-09"
+      },
+      {
+        "retirements": 1,
+        "hires": 2,
+        "month": "2026-10"
+      }
+    ],
+    "headcount": {
+      "retired": 5,
+      "onLeave": 3,
+      "active": 23,
+      "employed": 26
+    },
+    "thisMonth": {
+      "hires": 2,
+      "retirements": 1
+    },
+    "byDepartment": [
+      {
+        "count": 10,
+        "name": "가상개발부",
+        "departmentId": 1
+      },
+      {
+        "count": 8,
+        "name": "가상운영부",
+        "departmentId": 2
+      },
+      {
+        "count": 8,
+        "name": "가상인사부",
+        "departmentId": 3
+      }
+    ],
+    "byPosition": [
+      {
+        "name": "가상사원",
+        "count": 10,
+        "level": 1,
+        "positionId": 1
+      },
+      {
+        "name": "가상대리",
+        "count": 8,
+        "level": 2,
+        "positionId": 2
+      },
+      {
+        "name": "가상과장",
+        "count": 8,
+        "level": 3,
+        "positionId": 3
+      }
+    ]
+  }
+}

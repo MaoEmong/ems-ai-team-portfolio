@@ -1,5 +1,67 @@
 # 아키텍처와 MVP 계약
 
+## 3A 실제 스키마
+
+[3A API](api/phase3a-api.md), V3__attendance_leave_notifications.sql 기준. V1/V2 보존.
+
+```mermaid
+erDiagram
+  employee ||--o{ attendance : records
+  employee ||--o| leave_balance : balance
+  employee ||--o{ leave_request : applicant_and_decider
+  employee ||--o{ notification : recipient
+  attendance {
+    bigint employee_id PK,FK
+    date work_date PK
+    datetime check_in
+    datetime check_out
+    boolean corrected
+  }
+  leave_balance {
+    bigint employee_id PK,FK
+    date period_start
+    date period_end
+    decimal granted
+    decimal used
+    decimal reserved
+  }
+  leave_request {
+    bigint id PK
+    bigint employee_id FK
+    varchar type
+    date start_date
+    date end_date
+    decimal days
+    decimal charged
+    date period_start
+    varchar reason
+    varchar status
+    varchar reject_reason
+    bigint decided_by FK
+    varchar decided_name
+    datetime decided_at
+    varchar cancelled_by
+    datetime created_at
+  }
+  notification {
+    bigint id PK
+    bigint recipient_id FK
+    varchar type
+    varchar target_type
+    bigint target_id
+    date target_date
+    varchar message
+    boolean is_read
+    datetime created_at
+  }
+  demo_seed_marker {
+    int id PK
+    datetime seeded_at
+  }
+```
+
+잔액은 DECIMAL(5,1), granted/used/reserved>=0 및 used+reserved<=granted CHECK를 가진다. 근태는 사원/업무일 복합PK, 휴가는 사원·상태·날짜 및 생성일 인덱스, 알림은 수신자·읽음·생성일 인덱스다. 감사 action은 ATTENDANCE_CORRECT/LEAVE_REQUEST/APPROVE/REJECT/CANCEL, targetType은 LEAVE를 추가한다. 업무·감사·알림은 한 트랜잭션이며 근태 판정은 조회 시 계산한다. 시드 마커와 사원 유무로 빈 DB만 판별하고 유지 데이터를 재시드하지 않는다. [실제 검수](qa/2026-10-16-phase3a-integration.md)는 최종 인계 후 수행한 결과다.
+
 상태: 1단계 구현 및 실제 통합 검수 기준. Flyway V1 마이그레이션과 대조했습니다. [통합 검수 결과](qa/2026-10-16-mvp-integration.md)를 참조합니다.
 
 ## 시스템 구성

@@ -1,0 +1,19 @@
+{
+  "project": "ems-backend-smoke",
+  "source": "QA direct SQL and backend restart",
+  "after": [
+    "44\t44\t3\t1",
+    "ems.employee\t79088157",
+    "ems.user_account\t1195304410",
+    "ems.appointment\t3141686602"
+  ],
+  "preserved": true,
+  "before": [
+    "44\t44\t3\t1",
+    "ems.employee\t79088157",
+    "ems.user_account\t1195304410",
+    "ems.appointment\t3141686602"
+  ],
+  "versionAlready3": true,
+  "executedAt": "2026-10-16T16:02:35.5324640+09:00"
+}
