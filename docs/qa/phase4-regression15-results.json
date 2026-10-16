@@ -1,0 +1,461 @@
+{
+  "facts": {
+    "executionSubject": "Codex 문서QA",
+    "startedAt": "2026-10-16T12:13:47.492Z",
+    "today": "2026-10-16",
+    "baseline": {
+      "asOfDate": "2026-10-16",
+      "monthly": [
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2025-11"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2025-12"
+        },
+        {
+          "retirements": 0,
+          "hires": 45,
+          "month": "2026-01"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-02"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-03"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-04"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-05"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-06"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-07"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-08"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-09"
+        },
+        {
+          "retirements": 19,
+          "hires": 13,
+          "month": "2026-10"
+        }
+      ],
+      "headcount": {
+        "retired": 19,
+        "onLeave": 4,
+        "active": 57,
+        "employed": 61
+      },
+      "thisMonth": {
+        "hires": 13,
+        "retirements": 19
+      },
+      "byDepartment": [
+        {
+          "count": 6,
+          "name": "Q3B1792145719179Child",
+          "departmentId": 17
+        },
+        {
+          "count": 3,
+          "name": "Q3B1792145767335Child",
+          "departmentId": 21
+        },
+        {
+          "count": 14,
+          "name": "RetiredOnly1792085309991",
+          "departmentId": 6
+        },
+        {
+          "count": 1,
+          "name": "RetiredOnly1792111917846",
+          "departmentId": 9
+        },
+        {
+          "count": 16,
+          "name": "가상개발부",
+          "departmentId": 1
+        },
+        {
+          "count": 10,
+          "name": "가상운영부",
+          "departmentId": 2
+        },
+        {
+          "count": 10,
+          "name": "가상인사부",
+          "departmentId": 3
+        },
+        {
+          "count": 1,
+          "name": "합성발령-P2b1a42b9a54e0",
+          "departmentId": 7
+        }
+      ],
+      "byPosition": [
+        {
+          "count": 40,
+          "level": 1,
+          "positionId": 1,
+          "name": "가상사원"
+        },
+        {
+          "count": 11,
+          "level": 2,
+          "positionId": 2,
+          "name": "가상대리"
+        },
+        {
+          "count": 10,
+          "level": 3,
+          "positionId": 3,
+          "name": "가상과장"
+        }
+      ]
+    },
+    "expectedPayrollCount": 6,
+    "invalidMoney": [
+      {
+        "kind": "1.5",
+        "status": 400,
+        "code": "VALIDATION_ERROR",
+        "fieldErrors": [
+          {
+            "field": "baseSalary",
+            "reason": "JSON 형식 또는 값이 올바르지 않습니다."
+          }
+        ]
+      },
+      {
+        "kind": "string",
+        "status": 400,
+        "code": "VALIDATION_ERROR",
+        "fieldErrors": [
+          {
+            "field": "baseSalary",
+            "reason": "JSON 형식 또는 값이 올바르지 않습니다."
+          }
+        ]
+      },
+      {
+        "kind": "-1",
+        "status": 400,
+        "code": "VALIDATION_ERROR",
+        "fieldErrors": [
+          {
+            "field": "baseSalary",
+            "reason": "must be greater than or equal to 0"
+          }
+        ]
+      },
+      {
+        "kind": "1000000001",
+        "status": 400,
+        "code": "VALIDATION_ERROR",
+        "fieldErrors": [
+          {
+            "field": "baseSalary",
+            "reason": "must be less than or equal to 1000000000"
+          }
+        ]
+      }
+    ],
+    "parallel": [
+      {
+        "status": 201,
+        "code": null
+      },
+      {
+        "status": 409,
+        "code": "PAYROLL_BUSY"
+      }
+    ],
+    "parallelStored": 6,
+    "formula": [
+      {
+        "gross": 101,
+        "deductions": [
+          5,
+          4,
+          3
+        ],
+        "net": 89
+      },
+      {
+        "gross": 2000000000,
+        "deductions": [
+          90000000,
+          70000000,
+          60000000
+        ],
+        "net": 1780000000
+      }
+    ],
+    "grade": {
+      "manager": [
+        5,
+        4
+      ],
+      "self": [
+        1,
+        1
+      ],
+      "final": 4.5,
+      "grade": "S"
+    },
+    "auditEventsChecked": 121,
+    "final": {
+      "asOfDate": "2026-10-16",
+      "monthly": [
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2025-11"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2025-12"
+        },
+        {
+          "retirements": 0,
+          "hires": 45,
+          "month": "2026-01"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-02"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-03"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-04"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-05"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-06"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-07"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-08"
+        },
+        {
+          "retirements": 0,
+          "hires": 0,
+          "month": "2026-09"
+        },
+        {
+          "retirements": 20,
+          "hires": 13,
+          "month": "2026-10"
+        }
+      ],
+      "headcount": {
+        "retired": 20,
+        "onLeave": 4,
+        "active": 60,
+        "employed": 64
+      },
+      "thisMonth": {
+        "hires": 13,
+        "retirements": 20
+      },
+      "byDepartment": [
+        {
+          "count": 6,
+          "name": "Q3B1792145719179Child",
+          "departmentId": 17
+        },
+        {
+          "count": 3,
+          "name": "Q3B1792145767335Child",
+          "departmentId": 21
+        },
+        {
+          "count": 3,
+          "name": "Q4REG1792152827492Child",
+          "departmentId": 27
+        },
+        {
+          "count": 14,
+          "name": "RetiredOnly1792085309991",
+          "departmentId": 6
+        },
+        {
+          "count": 1,
+          "name": "RetiredOnly1792111917846",
+          "departmentId": 9
+        },
+        {
+          "count": 16,
+          "name": "가상개발부",
+          "departmentId": 1
+        },
+        {
+          "count": 10,
+          "name": "가상운영부",
+          "departmentId": 2
+        },
+        {
+          "count": 10,
+          "name": "가상인사부",
+          "departmentId": 3
+        },
+        {
+          "count": 1,
+          "name": "합성발령-P2b1a42b9a54e0",
+          "departmentId": 7
+        }
+      ],
+      "byPosition": [
+        {
+          "count": 43,
+          "level": 1,
+          "positionId": 1,
+          "name": "가상사원"
+        },
+        {
+          "count": 11,
+          "level": 2,
+          "positionId": 2,
+          "name": "가상대리"
+        },
+        {
+          "count": 10,
+          "level": 3,
+          "positionId": 3,
+          "name": "가상과장"
+        }
+      ]
+    },
+    "fixture": {
+      "subjectId": 81,
+      "reviewerId": 82,
+      "cycleId": 6,
+      "payrollMonth": "1900-03"
+    }
+  },
+  "finishedAt": "2026-10-16T12:13:58.029Z",
+  "results": [
+    {
+      "id": "ORG-01",
+      "name": "Hierarchy cycle and child/in-use deletion 409",
+      "result": "PASS"
+    },
+    {
+      "id": "ORG-02",
+      "name": "Organization minimal fields empty departments and authenticated UI",
+      "result": "PASS"
+    },
+    {
+      "id": "ORG-03",
+      "name": "Appointment assigns retains clears title with snapshots and PUT refusal",
+      "result": "PASS"
+    },
+    {
+      "id": "PAY-01",
+      "name": "Missing salary rejects whole month without month slips or audit writes",
+      "result": "PASS"
+    },
+    {
+      "id": "PAY-02",
+      "name": "Invalid fractional string negative overlimit money 400 and setting unchanged",
+      "result": "PASS"
+    },
+    {
+      "id": "PAY-03",
+      "name": "Actual parallel generation one 201 one 409 and exactly two slips",
+      "result": "PASS"
+    },
+    {
+      "id": "PAY-04",
+      "name": "Exact HALF_UP integer formula upper bound and draft secrecy",
+      "result": "PASS"
+    },
+    {
+      "id": "PAY-05",
+      "name": "Recalculate refreshes whole draft then confirmed snapshot immutable",
+      "result": "PASS"
+    },
+    {
+      "id": "EVAL-01",
+      "name": "Self reviewer forbidden and DRAFT assignments safe sorted null false empty",
+      "result": "PASS"
+    },
+    {
+      "id": "EVAL-02",
+      "name": "Pre-final keys absent own submission and other ADMIN 404",
+      "result": "PASS"
+    },
+    {
+      "id": "EVAL-03",
+      "name": "Reassignment clears manager draft revokes old access keeps SELF_DRAFT",
+      "result": "PASS"
+    },
+    {
+      "id": "EVAL-04",
+      "name": "UI manager finalizes server average grade excluding self and publishes",
+      "result": "PASS"
+    },
+    {
+      "id": "EVAL-05",
+      "name": "CLOSED preserves incomplete state rejects reassignment and writing",
+      "result": "PASS"
+    },
+    {
+      "id": "AUDIT-01",
+      "name": "Salary and evaluation audit allowlist excludes money answers comments grades",
+      "result": "PASS"
+    },
+    {
+      "id": "ORG-04",
+      "name": "Retirement clears title audit before after no extra appointment",
+      "result": "PASS"
+    }
+  ]
+}

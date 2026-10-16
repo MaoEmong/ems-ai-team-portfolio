@@ -19,14 +19,14 @@ docker compose --project-name ems-demo3a --env-file .env down
 
 디자인원본·재확인은 [Claude 검수](docs/design/design-review-phase3a.md)7.2/7.5/8을 참조합니다. 낮음N-01~07·ExcelJS청크경고·프론트EOF빈줄3건은 3A 당시 잔여 기록입니다. 3B에서는 담당 변경 범위의 EOF를 프론트가 정리했고 현재 잔여는 3B 검수 보고서8~9절을 따릅니다.
 
-백엔드 중심 풀스택 사원관리 웹 애플리케이션이자 **AI 활용 포트폴리오**입니다. 현재3B(조직도·직책·데모 급여·평가)까지 구현했습니다. 실제 Compose/MySQL/Chromium에서 기존34+3A13개 회귀와3B15개 시나리오를 검수했습니다. 4단계 AI는 후속 범위입니다.
+백엔드 중심 풀스택 사원관리 웹 애플리케이션이자 **AI 활용 포트폴리오**입니다. 승인된 AI3기능까지 구현했습니다. 실제 Compose/MySQL/Chromium에서 기존62개 회귀와 AI12개 시나리오를 검수했습니다. 기본 Mock은 실제 추론이 아니며 실제 Claude/Ollama 추론은 키/기존서비스 부재로 미실행입니다.
 
 ## 기술 스택
 
 - 백엔드: Spring Boot 3, JPA, Spring Security, JWT, Flyway
 - 프론트엔드: React, TypeScript, Vite
 - 데이터 및 실행: MySQL, Docker Compose
-- 제품 AI: Claude API / Ollama 공통 LLM 인터페이스(4단계)
+- 제품 AI: Mock / Claude API / Ollama 공통 LlmClient(실제 제공자 추론 미실행)
 - 개발 AI: Codex 중심 구현·문서화, Claude Code 조율·검수
 
 ## 단계 로드맵
@@ -114,3 +114,29 @@ docker compose --project-name ems-demo3b --env-file .env down
 ![새 DB의 데모 급여 — 실제 API](docs/qa/phase3b-screenshots/payroll-fresh.png)
 
 ![모바일 본인 평가 결과 — 실제 API](docs/qa/phase3b-screenshots/evaluation-result-mobile.png)
+
+## AI 기능과 제공자 전환
+
+- 사원 관리(ADMIN): 자연어로 기존5필드의 조건을 제안받고 비교표를 확인한 뒤 적용합니다. 제안에 없는 조건은 제거되는 전체 교체이며 수동 변경·되돌리기를 지원합니다. 직책·입사일 범위는 지원하지 않습니다.
+- 확정 평가 상세: 본인 또는 배정 평가자가 코멘트를 읽기 전용으로 요약합니다. 점수·등급·원문을 바꾸거나 저장하지 않습니다.
+- 규정 Q&A: 합성 데모 규정의 문서/버전/절·발췌를 보여 주며 근거가 없으면 답변하지 않습니다. 실제 회사 규정·법률 안내가 아니고 인용 일치가 의미 정확성을 보장하지 않습니다.
+
+기본 EMS_AI_PROVIDER=mock은 결정적 시연이며 **실제 추론 아님**을 화면에 표시합니다. 키 없이 Compose 데모가 동작합니다. 제품 제공자와 개발 Codex/Claude 역할은 별개입니다.
+
+| 로컬 .env 설정 | 값·의미 |
+| --- | --- |
+| EMS_AI_PROVIDER | mock / anthropic / ollama |
+| EMS_AI_MODEL | mock 기본 deterministic-v1; Anthropic 기본 claude-sonnet-5-5는 설계 검토 설정 결정이며 실제 접근 성공과 별개; Ollama는 기존 설치 모델을 직접 지정 |
+| ANTHROPIC_API_KEY | Anthropic 실호출을 원할 때 로컬 환경에만 지정, 저장소/로그에 넣지 않음 |
+| OLLAMA_BASE_URL | Compose에서 호스트 Ollama는 http://host.docker.internal:11434, 호스트 직접 실행은 localhost:11434. 자동 모델 다운로드 없음 |
+| EMS_AI_TIMEOUT_MS / EMS_AI_MAX_TOKENS | 기본30000 / 1024, 비스트리밍·자동재시도0 |
+
+.env를 편집한 뒤 같은 프로젝트로 docker compose up -d --force-recreate backend를 실행하면 서버 설정을 다시 읽습니다. 현재 실행 프로젝트가 고유 이름이면 같은 --project-name/--env-file을 사용하세요. 제공자 실패·키 누락은 명시 오류이며 Mock으로 몰래 바꾸지 않습니다. /api/v1/ai/config는 키·URL을 제외한 설정만 공개하고 실제 호출 성공을 뜻하지 않습니다.
+
+Anthropic/Ollama는 EMS 서버 프로세스 밖 전송이라 externalTransfer=true입니다(Ollama가 클라우드라는 뜻은 아님). 실행 전 전송 필드를 안내하며 질문/코멘트에 개인정보를 넣지 마세요. 자유 텍스트를 자동 익명화하지 않습니다. 입력/응답은 저장하지 않고 허용 메타데이터만 감사하며 브라우저 취소는 제공자 비용 취소를 보장하지 않습니다.
+
+[AI 정책](docs/phase4-ai-policy.md) · [AI API](docs/api/phase4-ai-api.md) · [실제 QA·제공자별 증거](docs/qa/2026-10-16-phase4-ai-integration.md) · [전체 목표/제외/미실행/잔여](docs/completion-matrix.md). 실제 Claude/Ollama 추론은 미실행이며 Mock/로컬HTTP 계약 성공과 구분합니다.
+
+![실제 API의 AI 조건 비교·명시 적용](docs/qa/phase4-ai-screenshots/search-comparison.png)
+
+![모바일 규정 근거 없음 — 실제 Mock API](docs/qa/phase4-ai-screenshots/policy-no-evidence-mobile.png)

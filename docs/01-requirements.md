@@ -16,7 +16,7 @@
 
 설계 검토의 통합 검수 시작 뒤 실제 Compose/MySQL/Chromium에서 검수했다. [실제 V4 ERD](02-architecture.md)와 [정책 결정표](phase3b-policy.md)를 함께 따른다. **포트폴리오용 데모 급여 — 실제 세법·4대보험 산정 아님**. 팀장 휴가 승인 확장은 제외한다.
 
-기준: [킥오프 결정](meetings/2026-10-16-kickoff.md)과 후속 단계 회의록. 아래는 요구사항이며 기능별 실제 결과는 QA 보고서에 기록합니다. 현재 3B까지 구현·검수했고 AI는 후속 범위입니다.
+기준: [킥오프 결정](meetings/2026-10-16-kickoff.md)과 후속 단계 회의록. 아래는 요구사항이며 기능별 실제 결과는 QA 보고서에 기록합니다. 현재 승인 AI3기능까지 실제 Mock 환경에서 구현·검수했으며 실추론 미실행과 제외범위는 별도로 기록합니다.
 
 ## 1단계 MVP
 
@@ -66,14 +66,21 @@
 
 ## 4단계 AI
 
-상세는 단계 시작 시 확정.
+**계약 확정·실제 Mock 통합 검수 완료.** Claude Code(설계 검토)이 승인한 [AI API v1.0](api/phase4-ai-api.md), SHA-256 `E117946FE967747697A8AD6A3D0AF9A729991DB1A547BB6A468D7B09601A5617`을 따른다. [정책표](phase4-ai-policy.md)·[착수 회의록](meetings/2026-10-16-phase4-ai-kickoff.md). 검증 작업 배정이 **통합 검수 시작**이며 그 뒤 실제 검수했다. [현재 결과·미실행](qa/2026-10-16-phase4-ai-integration.md), [전체 목표 대조표](completion-matrix.md)를 따른다. Mock/어댑터 구현과 실제 Claude/Ollama 추론 성공은 별개이며 실추론은 미실행이다.
 
-| ID | 기능 |
-| --- | --- |
-| AI-01 | 공통 LLM 인터페이스 및 설정으로 Claude API/Ollama 선택 |
-| AI-02 | 자연어 사원 검색 |
-| AI-03 | 평가 코멘트 요약 |
-| AI-04 | HR 규정 챗봇 |
+초기 로드맵의 ID를 승인 API와 맞춘다. 기존 AI-01(공통 제공자)은 AI-CFG-01로, 기존 AI-02(검색)는 AI-01로, 기존 AI-03(요약)는 AI-02로, 기존 AI-04(규정)는 AI-03으로 대응한다. 기능을 추가·누락한 것이 아니라 승인 계약의 식별자로 정리한 것이다.
+
+| ID | 기능 | 인수 조건·검증 기대값 |
+| --- | --- | --- |
+| AI-CFG-01 | 제공자 추상화·설정 | LlmClient의 Mock/Anthropic/Ollama를 서버 설정으로 선택한다. 기본 Mock은 실제 추론 아님을 표시한다. GET /ai/config는 provider/model/mock/externalTransfer/enabled/promptVersion만 공개하고 키·base URL은 제외한다. 실패 시 다른 제공자로 자동 대체하지 않는다. |
+| AI-01 | 자연어 사원 검색 필터 제안 | ADMIN만 POST /ai/employee-search, EMPLOYEE403·제공자 호출0회. 기존 목록의 keyword/departmentId/positionId/status/sort **5필드만** 제안한다. 서버는 검색하지 않으며 사용자가 확인·적용하면 기존 GET /employees에서 다시 권한 검사를 한다. |
+| AI-01-A | 허용 필터·지원 불가 | 직책·입사일 범위는 UNSUPPORTED이며 filters={}로 반환한다. page/size·SQL·OR·임의 연산자·jobTitleId·hireDateFrom/To는 허용하지 않는다. hireDate 정렬은 허용되지만 날짜 범위는 지원하지 않는다. 잘못된 키/ID/타입/null은 AI_INVALID_OUTPUT502로 거절하며 부분 보정하지 않는다. OK는 최소1필터, AMBIGUOUS/UNSUPPORTED는 빈 필터다. |
+| AI-02 | 확정 평가 코멘트 요약 | POST /ai/evaluation-summary는 evaluationId만 받는다. 본인/배정 평가자의 FINALIZED만 허용한다. 다른 ADMIN/타인/없는 ID404, 권한 있는 미확정409 AI_EVALUATION_NOT_FINALIZED이며 모두 제공자 호출0회다. 항목 이름·자기/관리자 코멘트만 전송하고 ID·이름·사번·점수·등급은 제외한다. 결과는 읽기 전용이며 원문·등급을 저장/변경하지 않는다. |
+| AI-03 | 합성 규정 Q&A | 모든 인증 사용자가 POST /ai/policy-qa를 사용한다. 버전 있는 고정 합성 문서만 근거로 한다. 인용 ID/버전/절·발췌 원문 일치를 서버가 검증하고, 근거 불일치는 답변을 노출하지 않는 INSUFFICIENT_EVIDENCE로 바꾼다. 실제 회사 규정/법률 안내가 아니라는 고지와 원문 확인 안내를 표시한다. |
+| AI-SEC-01 | 전송·출력·감사 경계 | 권한/입력 검사 후에만 호출한다. 제공자 JSON의 중복/미정의 키·잘못된 타입·후행 토큰·코드펜스는502다. 질문·평가·규정은 비신뢰 데이터이며 도구/SQL/외부URL 실행은 없다. 감사는 AI_INVOKE의 허용 메타데이터만 저장하고 원문·키·응답은 남기지 않는다. 결과 저장·공유 캐시·자동 재시도는 없다. |
+| AI-OPS-01 | 한도·실행 증거 | 질문1~500 UTF-16단위, 평가20항목/코멘트합계12000, 본문16KiB, 모델JSON64KiB·제공자봉투128KiB, 기본30초·1024토큰. 사원별 동시1/60초10회, AI_BUSY/AI_RATE_LIMITED429를 구분한다. Mock·HTTP스텁·실제Claude/Ollama·Chromium·디자인 검수는 각각 별도 실행/미실행으로 기록한다. |
+
+외부 전송은 Anthropic/Ollama 모두 true이며 클라우드 여부를 뜻하지 않는다. 기능별 전송 필드를 안내하고 명시 실행 버튼으로 요청한다. 자유 텍스트 속 개인정보를 자동 제거한다고 주장하지 않는다. Claude 모델 기본 설정 `claude-sonnet-5-5`는 설계 검토 결정이며 존재·계정 접근·실호출 성공과 구분한다. 키를 자동 탐색하거나 Ollama 모델을 자동 다운로드하지 않는다. 키/서비스가 없으면 실호출은 미실행으로 남긴다. 범용 HR 질의·평가 초안 작성/자동 적용·기존 검색 API 확장은 제외한다.
 
 ## 공통 완료 기준
 

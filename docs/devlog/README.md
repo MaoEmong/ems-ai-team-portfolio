@@ -52,3 +52,9 @@
 - [20261016-backend-evaluation](20261016-backend-evaluation.md)
 - [20261016-frontend-phase3b](20261016-frontend-phase3b.md)
 - [20261016-docqa-phase3b](20261016-docqa-phase3b.md)
+
+## 4단계 AI 일지
+
+- [20261016-backend-phase4-ai](20261016-backend-phase4-ai.md)
+- [20261016-frontend-phase4](20261016-frontend-phase4.md)
+- [20261016-docqa-phase4-ai](20261016-docqa-phase4-ai.md)

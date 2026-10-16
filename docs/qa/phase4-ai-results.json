@@ -1,0 +1,153 @@
+{
+  "facts": {
+    "subject": "Codex 문서QA",
+    "startedAt": "2026-10-16T12:15:57.934Z",
+    "config": {
+      "model": "deterministic-v1",
+      "provider": "mock",
+      "enabled": {
+        "policyQa": true,
+        "evaluationSummary": true,
+        "employeeSearch": true
+      },
+      "externalTransfer": false,
+      "mock": true,
+      "promptVersion": "ems-ai-v1"
+    },
+    "proposalKeys": [
+      "status",
+      "sort",
+      "departmentId"
+    ],
+    "statusCases": [
+      "AMBIGUOUS",
+      "UNSUPPORTED_JOB_TITLE",
+      "UNSUPPORTED_HIRE_RANGE",
+      "UNSUPPORTED_SQL"
+    ],
+    "appliedQuery": {
+      "status": "ACTIVE",
+      "sort": "name,asc",
+      "size": "20",
+      "page": "0"
+    },
+    "summarySource": {
+      "beforeSha256": "87e7f0d4e32b9699122614227cb949f1bfabdfb85d47d1f929359f3f77b534ca",
+      "afterSha256": "87e7f0d4e32b9699122614227cb949f1bfabdfb85d47d1f929359f3f77b534ca"
+    },
+    "citations": [
+      {
+        "documentId": "DEMO-ATTENDANCE",
+        "version": "1.0",
+        "sectionId": "HALF_DAY"
+      }
+    ],
+    "inputErrors": [
+      {
+        "route": "/ai/employee-search",
+        "code": "VALIDATION_ERROR",
+        "status": 400
+      },
+      {
+        "route": "/ai/employee-search",
+        "code": "VALIDATION_ERROR",
+        "status": 400
+      },
+      {
+        "route": "/ai/evaluation-summary",
+        "code": "VALIDATION_ERROR",
+        "status": 400
+      },
+      {
+        "route": "/ai/policy-qa",
+        "code": "VALIDATION_ERROR",
+        "status": 400
+      },
+      {
+        "route": "/ai/policy-qa",
+        "code": "AI_INPUT_TOO_LARGE",
+        "status": 400
+      }
+    ],
+    "rate": {
+      "successfulAttempts": 10,
+      "rejectedStatus": 429,
+      "code": "AI_RATE_LIMITED",
+      "auditDelta": 10
+    },
+    "leakScan": {
+      "auditRecords": 34,
+      "auditSyntheticMatches": 0,
+      "backendLogSyntheticMatches": 0
+    },
+    "fixture": {
+      "employeeId": 85,
+      "otherAdminId": 87,
+      "finalizedEvaluationId": 10,
+      "pendingEvaluationId": 11
+    }
+  },
+  "finishedAt": "2026-10-16T12:16:04.222Z",
+  "results": [
+    {
+      "id": "AI-CFG",
+      "name": "Safe config Mock badge no credentials and no external transfer",
+      "result": "PASS"
+    },
+    {
+      "id": "AI01-AUTH",
+      "name": "EMPLOYEE search 403 and no AI audit for rejected request",
+      "result": "PASS"
+    },
+    {
+      "id": "AI01-FILTER",
+      "name": "Admin safe filter proposal and source database unchanged",
+      "result": "PASS"
+    },
+    {
+      "id": "AI01-STATUS",
+      "name": "Ambiguous unsupported job title/date range and SQL injection examples",
+      "result": "PASS"
+    },
+    {
+      "id": "AI01-C01",
+      "name": "UI comparison explicit full replacement GET params edit and undo",
+      "result": "PASS"
+    },
+    {
+      "id": "AI02-AUTH",
+      "name": "Finalized owner reviewer allowed other ADMIN404 unfinalized409",
+      "result": "PASS"
+    },
+    {
+      "id": "AI02-UI",
+      "name": "Owner readonly summary UI and unfinalized summary control absent",
+      "result": "PASS"
+    },
+    {
+      "id": "AI03-CITATION",
+      "name": "Policy citation ID version section excerpt exact source and UI",
+      "result": "PASS"
+    },
+    {
+      "id": "AI03-NO-EVIDENCE",
+      "name": "Out of corpus and injection fixed examples reveal no unsupported answer",
+      "result": "PASS"
+    },
+    {
+      "id": "AI-INPUT",
+      "name": "Unknown fields types question limit and 16KiB request body rejected",
+      "result": "PASS"
+    },
+    {
+      "id": "AI-RATE",
+      "name": "Ten attempts then 429 rate limited without extra invoke audit",
+      "result": "PASS"
+    },
+    {
+      "id": "AI-AUDIT-LOG",
+      "name": "AI audit allowlist and backend logs contain zero synthetic source markers",
+      "result": "PASS"
+    }
+  ]
+}

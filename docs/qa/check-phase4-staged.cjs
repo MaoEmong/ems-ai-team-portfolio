@@ -1,0 +1,8 @@
+// Inspect the Git index without emitting secret contents.
+const fs=require('node:fs'),{spawnSync}=require('node:child_process');
+function git(args,encoding='utf8'){const r=spawnSync('git',['-c','safe.directory=E:/portfolio/ems',...args],{encoding,maxBuffer:40*1024*1024});if(r.status!==0)throw Error(String(r.stderr));return r.stdout;}
+const files=git(['diff','--cached','--name-only','-z']).split('\0').filter(Boolean),secrets=[];
+for(const p of ['backend/build/compose-smoke.env','.env.qa4-local']){if(!fs.existsSync(p))continue;for(const line of fs.readFileSync(p,'utf8').replace(/^\uFEFF/,'').split(/\r?\n/)){const i=line.indexOf('=');if(i<0)continue;const k=line.slice(0,i),v=line.slice(i+1);if(/PASSWORD|SECRET|API_KEY/.test(k)&&v.length>=8)secrets.push(v);}}
+const findings=[];for(const p of files){if(/(^|\/)(node_modules|build|dist|\.gradle|coverage)\//.test(p)||/(^|\/)\.env(\.|$)/.test(p)&&!p.endsWith('.env.example')||/\.(log|class)$/.test(p))findings.push({path:p,reason:'Excluded artifact/config'});const data=git(['show',':'+p],null);if(secrets.some(s=>data.includes(Buffer.from(s))))findings.push({path:p,reason:'Actual local secret found'});if(data.includes(Buffer.from('-----BEGIN '+'PRIVATE KEY-----')))findings.push({path:p,reason:'Private key marker'});}
+const result={at:new Date().toISOString(),part:process.argv[2],stagedFiles:files.length,localSecretValuesChecked:new Set(secrets).size,findings};
+const file='docs/qa/phase4-secret-checks.json';let history=fs.existsSync(file)?JSON.parse(fs.readFileSync(file,'utf8')):[];history.push(result);fs.writeFileSync(file,JSON.stringify(history,null,2));console.log(JSON.stringify(result));if(findings.length)process.exitCode=1;

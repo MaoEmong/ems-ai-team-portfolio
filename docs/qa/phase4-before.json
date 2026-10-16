@@ -1,0 +1,267 @@
+{
+  "at": "2026-10-16T12:11:27.694Z",
+  "project": "ems-backend-smoke",
+  "flyway": "1\t1\n2\t1\n3\t1\n4\t1",
+  "tables": {
+    "appointment": {
+      "columns": [
+        "id",
+        "employee_id",
+        "effective_date",
+        "from_department_id",
+        "from_department_name",
+        "to_department_id",
+        "to_department_name",
+        "from_position_id",
+        "from_position_name",
+        "from_position_level",
+        "to_position_id",
+        "to_position_name",
+        "to_position_level",
+        "reason",
+        "created_by_id",
+        "created_by_name",
+        "created_at",
+        "from_job_title_id",
+        "from_job_title_name",
+        "to_job_title_id",
+        "to_job_title_name"
+      ],
+      "count": 19,
+      "sha256": "905c9dd68c6f026cac3197169d61cb26faa118c42ef71969e03cb2fcd7f49d7b"
+    },
+    "attendance": {
+      "columns": [
+        "employee_id",
+        "work_date",
+        "check_in",
+        "check_out",
+        "corrected"
+      ],
+      "count": 7,
+      "sha256": "d382f2114a875be5ca9374d7342908a70036c63138095463e9e68931537df9f6"
+    },
+    "audit_log": {
+      "columns": [
+        "id",
+        "occurred_at",
+        "actor_id",
+        "actor_snapshot",
+        "action",
+        "target_type",
+        "target_id",
+        "target_label",
+        "success",
+        "before_json",
+        "after_json",
+        "metadata_json"
+      ],
+      "count": 348,
+      "sha256": "bd6678415b694b2f239b24a6353b1ec8242d30d654199bc7fc11e77b44bcf968"
+    },
+    "demo_seed_marker": {
+      "columns": [
+        "id",
+        "seeded_at"
+      ],
+      "count": 1,
+      "sha256": "c870e1cdec0c31696188a0d2492281f4f8323e4e7fedc1f65411c81f3c0e6fca"
+    },
+    "department": {
+      "columns": [
+        "id",
+        "name",
+        "description",
+        "parent_id"
+      ],
+      "count": 16,
+      "sha256": "05f44670a9f95053d99e71bab51992644345dda90ccdeafc92cb73727299cfd1"
+    },
+    "employee": {
+      "columns": [
+        "id",
+        "employee_no",
+        "name",
+        "email",
+        "phone",
+        "hire_date",
+        "status",
+        "retire_date",
+        "department_id",
+        "position_id",
+        "job_title_id"
+      ],
+      "count": 73,
+      "sha256": "ef67a895343c83a4605c377b6620011d6f36aab545c381e617131d0d82ba3a7f"
+    },
+    "evaluation_assignment": {
+      "columns": [
+        "id",
+        "cycle_id",
+        "employee_id",
+        "reviewer_id"
+      ],
+      "count": 7,
+      "sha256": "291f564167dd148f2fc4f94c26eeef836c5a5f61a710b74491ec7428535b96f5"
+    },
+    "evaluation_cycle": {
+      "columns": [
+        "id",
+        "name",
+        "start_date",
+        "end_date",
+        "status"
+      ],
+      "count": 5,
+      "sha256": "2f3562f6b4345f7c9a47071c4ad48decf46d4806cc350b70e04ae42dbd09e0e8"
+    },
+    "evaluation_form": {
+      "columns": [
+        "id",
+        "cycle_id",
+        "employee_id",
+        "reviewer_id",
+        "state",
+        "items_json",
+        "self_answers_json",
+        "manager_answers_json",
+        "final_score",
+        "grade"
+      ],
+      "count": 7,
+      "sha256": "8dfa53a2bafca5273f7efb2b104a60588325ca9e4ed3b2853e7023820f2be699"
+    },
+    "evaluation_item": {
+      "columns": [
+        "id",
+        "cycle_id",
+        "name",
+        "sort_order"
+      ],
+      "count": 8,
+      "sha256": "9128adb185b7c5fb5af4ed0f9ad0e667d0e8b466b68193218944a7b9f95cdd0a"
+    },
+    "job_position": {
+      "columns": [
+        "id",
+        "name",
+        "level"
+      ],
+      "count": 7,
+      "sha256": "ed80f67b4f4a706eb9d88a1125aa6416251cdb8e3935b2ba5578955d96c2c715"
+    },
+    "job_title": {
+      "columns": [
+        "id",
+        "name",
+        "description"
+      ],
+      "count": 3,
+      "sha256": "5cfcdd13320a078cee3418d47706a92d9549ce53c23aa4c79df729f905128605"
+    },
+    "leave_balance": {
+      "columns": [
+        "employee_id",
+        "period_start",
+        "period_end",
+        "granted",
+        "used",
+        "reserved"
+      ],
+      "count": 16,
+      "sha256": "e3a0d64b211427d659e6df201b300e4660daebd5195d1b7b56028d7da16616f7"
+    },
+    "leave_request": {
+      "columns": [
+        "id",
+        "employee_id",
+        "type",
+        "start_date",
+        "end_date",
+        "days",
+        "charged",
+        "period_start",
+        "reason",
+        "status",
+        "reject_reason",
+        "decided_by",
+        "decided_name",
+        "decided_at",
+        "cancelled_by",
+        "created_at"
+      ],
+      "count": 11,
+      "sha256": "28e7ca5508124cb744e1d142188f5b92b66e2545163df4f0bf768f0ccc17c466"
+    },
+    "notification": {
+      "columns": [
+        "id",
+        "recipient_id",
+        "type",
+        "target_type",
+        "target_id",
+        "target_date",
+        "message",
+        "is_read",
+        "created_at"
+      ],
+      "count": 59,
+      "sha256": "cd0d55e404d977a25c6659d15ab5aa4fd991e22284a8cc3a57a56e8612fb3030"
+    },
+    "organization_lock": {
+      "columns": [
+        "id"
+      ],
+      "count": 1,
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+    },
+    "payroll_month": {
+      "columns": [
+        "id",
+        "pay_month",
+        "status",
+        "generated_at",
+        "generated_by",
+        "confirmed_at",
+        "confirmed_by"
+      ],
+      "count": 3,
+      "sha256": "78a9122d066bedd8020d253a72ecf462d41b9c03e0e66f166bb9fb40ddfad555"
+    },
+    "payslip": {
+      "columns": [
+        "id",
+        "payroll_id",
+        "employee_id",
+        "employee_no",
+        "snapshot_json"
+      ],
+      "count": 61,
+      "sha256": "f063c3f071892df5ef5415cd8834c69a9a02936c3b448a84861f3356edea4cae"
+    },
+    "salary_setting": {
+      "columns": [
+        "employee_id",
+        "base_salary",
+        "allowance",
+        "formula_version",
+        "rate1",
+        "rate2",
+        "rate3"
+      ],
+      "count": 59,
+      "sha256": "52e66e25236793409e8907e100eb42be3459cc2b93339d00bfc5954374b6cb9c"
+    },
+    "user_account": {
+      "columns": [
+        "id",
+        "employee_id",
+        "password_hash",
+        "role",
+        "enabled"
+      ],
+      "count": 73,
+      "sha256": "ab690ff36a86bdda48e415a64b85ebc882dd99a214882ab49b1bcd3d23bcf9af"
+    }
+  }
+}

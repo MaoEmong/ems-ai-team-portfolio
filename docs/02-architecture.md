@@ -170,12 +170,13 @@ flowchart LR
   Browser[브라우저] --> Front[React · TypeScript · Vite :5173]
   Front --> API[Spring Boot 3 · Security JWT · JPA :8080]
   API --> DB[(MySQL :3306)]
-  API -. 4단계 .-> Adapter[공통 LLM 인터페이스]
-  Adapter -.-> Claude[Claude API]
-  Adapter -.-> Ollama[Ollama]
+  API --> Adapter[LlmClient · 권한/상한/출력 검증]
+  Adapter --> Claude[Anthropic Messages API]
+  Adapter --> Ollama[Ollama HTTP]
+  Adapter --> Mock[Mock · 실제 추론 아님]
 ```
 
-Docker Compose가 MySQL·백엔드·프론트엔드를 로컬에서 구성합니다. Ollama는 향후 선택 서비스입니다. 백엔드는 `http://localhost:5173` CORS를 허용합니다. Flyway가 스키마 변경을 관리합니다. 제품 LLM 자격증명과 호출은 백엔드에서 관리합니다.
+Docker Compose가 MySQL·백엔드·프론트엔드를 로컬에서 구성합니다. Ollama는 기존 호스트 서비스를 선택 연결하며 모델을 자동 다운로드하지 않습니다. 백엔드는 `http://localhost:5173` CORS를 허용합니다. Flyway가 스키마 변경을 관리합니다. 제품 LLM 자격증명과 호출은 백엔드에서 관리합니다.
 
 ## MVP 실제 ERD
 
@@ -301,3 +302,11 @@ erDiagram
 appointment는 대상/작성자 및 전후 조직 FK, 당시 이름·level 스냅샷, (employee_id,effective_date DESC,id DESC) 인덱스를 가집니다. audit_log의 actor/target은 nullable 논리 참조이며 FK가 아닙니다. DATETIME(6), JSON 스냅샷, 시간·actor·target·action·success별 시간/ID 인덱스를 사용합니다. 성공 업무/감사는 같은 트랜잭션, 실패 로그인/가져오기는 별도 기록입니다.
 
 사원 PUT 조직 필드 생략/null/동일 값은 유지, 변경은409입니다. 발령은 행 잠금 후 DB 전 값을 읽어 현재 소속·이력·감사를 갱신합니다. 대시보드는 현재 상태/분포와 오늘까지의 날짜 집계를 구분합니다. 파일 한도·셀 형식·감사 허용 필드는 상세 API를 따릅니다.
+
+## AI 데이터 흐름·스키마
+
+[AI API v1.0](api/phase4-ai-api.md)·[정책표](phase4-ai-policy.md). 기존V4스키마를 유지하며 새테이블/결과저장·V5는 없다. AI_INVOKE는 기존 audit_log의 문자열action과 메타데이터만 확장한다.
+
+인증/인가·입력/평가사전검사→사용자별호출제한→LlmClient(Mock/Anthropic/Ollama)→엄격JSON/스키마·인용검증→읽기전용결과→별도짧은감사트랜잭션 순서다. 제공자base URL은 서버설정만 받고 리다이렉트/도구/SQL실행은 금지한다. 검색은 카탈로그만 전송하고 사용자 적용후 기존GET,평가요약은허용코멘트만,규정은고정합성문서만 전송한다. 공유캐시·자동재시도·제공자자동대체는 없다.
+
+[ADR0112](adr/0112-ai-provider-abstraction-and-model-setting.md)·[0113](adr/0113-ai-prompt-output-and-data-boundaries.md)·[프론트0206](adr/0206-ai-explicit-execution-and-ephemeral-results.md). 모델설정과실호출,인용일치와의미정확성을구분한다.

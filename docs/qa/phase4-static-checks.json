@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-16T12:23:48.535Z",
+  "missingOwnedLinks": [],
+  "contractHash": "E117946FE967747697A8AD6A3D0AF9A729991DB1A547BB6A468D7B09601A5617",
+  "existingMigrationChanges": [],
+  "phase3bLine523TrailingWhitespace": false,
+  "stagedChecks": {
+    "backend": {
+      "exit": 0,
+      "files": 34
+    },
+    "frontend": {
+      "exit": 0,
+      "files": 106,
+      "includesNewFiles": true
+    },
+    "docs": {
+      "exit": 0,
+      "files": 68,
+      "includesNewFiles": true
+    }
+  },
+  "finalOwnedLinks": []
+}

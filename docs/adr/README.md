@@ -49,3 +49,9 @@
 - [0110-demo-payroll-month-snapshots](0110-demo-payroll-month-snapshots.md)
 - [0111-evaluation-state-and-private-drafts](0111-evaluation-state-and-private-drafts.md)
 - [0205-phase3b-server-values-and-snapshots](0205-phase3b-server-values-and-snapshots.md)
+
+## AI 추가 결정
+
+- [0112-ai-provider-abstraction-and-model-setting](0112-ai-provider-abstraction-and-model-setting.md)
+- [0113-ai-prompt-output-and-data-boundaries](0113-ai-prompt-output-and-data-boundaries.md)
+- [0206-ai-explicit-execution-and-ephemeral-results](0206-ai-explicit-execution-and-ephemeral-results.md)
