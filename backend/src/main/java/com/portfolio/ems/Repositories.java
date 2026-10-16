@@ -26,3 +26,4 @@ interface PositionRepository extends JpaRepository<Position,Long> {
  @Lock(LockModeType.PESSIMISTIC_WRITE) @Query("select p from Position p where p.id=:id")
  Optional<Position> lockById(@Param("id") Long id);
 }
+interface JobTitleRepository extends JpaRepository<JobTitle,Long> { boolean existsByNameAndIdNot(String name,Long id); @Lock(LockModeType.PESSIMISTIC_WRITE) @Query("select t from JobTitle t where t.id=:id") Optional<JobTitle> lockById(@Param("id") Long id); }

@@ -64,6 +64,7 @@ class EmployeeService {
  }
  public Dto.EmployeeView update(Long id,Dto.UpdateEmployee r) {
   Employee e=employees.lockById(id).orElseThrow(ApiException::missing); requireActive(e);
+  if(r.jobTitleId()!=null&&(e.jobTitle==null||!r.jobTitleId().equals(e.jobTitle.id)))throw ApiException.conflict("APPOINTMENT_REQUIRED");
   if(r.status()==EmployeeStatus.RETIRED) throw ApiException.invalid("status","퇴사 처리 API를 사용하세요.");
   if((r.departmentId()!=null&&!r.departmentId().equals(e.department.id))||(r.positionId()!=null&&!r.positionId().equals(e.position.id)))
    throw ApiException.conflict("APPOINTMENT_REQUIRED");
@@ -86,7 +87,7 @@ class EmployeeService {
   if(last!=null&&r.retireDate().isBefore(last))throw ApiException.invalid("retireDate","마지막 발령일 이전일 수 없습니다.");
   var before=Dto.employee(e);
   leaves.retire(e);
-  e.status=EmployeeStatus.RETIRED; e.retireDate=r.retireDate(); e.account.enabled=false;
+  e.status=EmployeeStatus.RETIRED; e.retireDate=r.retireDate(); e.account.enabled=false;e.jobTitle=null;
   employees.flush();var result=Dto.employee(e);
   audit.record("EMPLOYEE_RETIRE","EMPLOYEE",e.id,e.name,before,result,Map.of());return result;
  }

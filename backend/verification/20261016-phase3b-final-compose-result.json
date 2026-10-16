@@ -1,0 +1,52 @@
+{
+  "startedAt": "2026-10-16T19:02:51.492575+09:00",
+  "legacyProject": "ems-backend-smoke",
+  "freshProject": "ems-backend-3b-final-20261016190251",
+  "freshSeed": {
+    "employees": 31,
+    "accounts": 31,
+    "retired": 5,
+    "default": 26,
+    "salarySettings": 31,
+    "confirmedMonths": 1,
+    "payslips": 26,
+    "evaluationForms": 4,
+    "evaluationStates": 4,
+    "hierarchyAndTitles": true
+  },
+  "freshHttp": "PASS",
+  "strictIntegerMoney400": true,
+  "restartAllTablesPreserved": true,
+  "finishedAt": "2026-10-16T19:06:33.890007+09:00",
+  "downVolumesPreserved": true,
+  "command": "py -3 backend/build/phase3b-final-compose-verify.py",
+  "sourceManifest": {
+    "reference": "20261016-phase3b-source-manifest.json",
+    "relationship": "final tested source; source unchanged after successful Gradle run"
+  },
+  "images": {
+    "backend": {
+      "tag": "ems-backend-smoke-backend:latest",
+      "imageId": "미확인"
+    },
+    "frontend": {
+      "tag": "ems-backend-smoke-frontend:latest",
+      "imageId": "미확인"
+    },
+    "note": "Tags copied from verification script; mutable tags do not establish historical image digest. No Docker query performed."
+  },
+  "databasePaths": {
+    "legacy": {
+      "project": "ems-backend-smoke",
+      "volume": "ems-backend-smoke_mysql_data",
+      "usedInThisRun": false,
+      "purpose": "image tag namespace reference only; no legacy database used in this run"
+    },
+    "fresh": {
+      "project": "ems-backend-3b-final-20261016190251",
+      "volume": "ems-backend-3b-final-20261016190251_mysql_data",
+      "usedInThisRun": true,
+      "purpose": "new isolated empty database and restart preservation"
+    }
+  }
+}

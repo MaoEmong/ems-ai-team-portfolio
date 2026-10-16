@@ -53,8 +53,9 @@ class Errors {
   String code;
   if(msg.contains("uk_employee_no")) code="DUPLICATE_EMPLOYEE_NO";
   else if(msg.contains("uk_employee_email")) code="DUPLICATE_EMAIL";
-  else if(msg.contains("uk_department_name")||msg.contains("uk_position_name")) code="DUPLICATE_NAME";
+  else if(msg.contains("uk_department_name")||msg.contains("uk_position_name")||msg.contains("uk_job_title_name")) code="DUPLICATE_NAME";
   else if(msg.contains("fk_employee_department")) code="DEPARTMENT_IN_USE";
+  else if(msg.contains("fk_employee_job_title")||msg.contains("fk_appointment_from_job_title")||msg.contains("fk_appointment_to_job_title")) code="JOB_TITLE_IN_USE";
   else if(msg.contains("fk_employee_position")) code="POSITION_IN_USE";
   else return ResponseEntity.internalServerError().body(new ErrorBody("INTERNAL_ERROR","서버 오류가 발생했습니다.",List.of()));
   return api(ApiException.conflict(code));

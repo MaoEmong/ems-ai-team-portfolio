@@ -8,6 +8,7 @@ class Department {
  @Id @GeneratedValue(strategy=GenerationType.IDENTITY) Long id;
  @Column(nullable=false,unique=true,length=100) String name;
  @Column(length=500) String description;
+ @ManyToOne @JoinColumn(name="parent_id") Department parent;
 }
 @Entity @Table(name="job_position")
 class Position {
@@ -28,7 +29,14 @@ class Employee {
  LocalDate retireDate;
  @ManyToOne(optional=false) @JoinColumn(name="department_id") Department department;
  @ManyToOne(optional=false) @JoinColumn(name="position_id") Position position;
+ @ManyToOne @JoinColumn(name="job_title_id") JobTitle jobTitle;
  @OneToOne(mappedBy="employee",cascade=CascadeType.ALL,optional=false) Account account;
+}
+@Entity @Table(name="job_title")
+class JobTitle {
+ @Id @GeneratedValue(strategy=GenerationType.IDENTITY) Long id;
+ @Column(nullable=false,unique=true,length=100) String name;
+ @Column(length=500) String description;
 }
 @Entity @Table(name="user_account")
 class Account {

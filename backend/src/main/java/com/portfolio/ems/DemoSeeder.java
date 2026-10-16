@@ -12,10 +12,11 @@ import java.util.UUID;
 @Component @ConditionalOnProperty(name="ems.seed.enabled",havingValue="true",matchIfMissing=true)
 class DemoSeeder implements ApplicationRunner {
  private final EmployeeRepository employees;private final DepartmentRepository departments;private final PositionRepository positions;private final PasswordEncoder passwords;
+ private final Phase3bDemoSeeder phase3b;
  private final String adminId,adminPassword,demoPassword;private final Clock clock;private final JdbcTemplate jdbc;
  DemoSeeder(EmployeeRepository e,DepartmentRepository d,PositionRepository p,PasswordEncoder passwords,
  @Value("${ems.seed.admin-login-id}") String adminId,@Value("${ems.seed.admin-password}") String adminPassword,
- @Value("${ems.seed.demo-admin-password:}") String demoPassword,Clock clock,JdbcTemplate jdbc){
+ @Value("${ems.seed.demo-admin-password:}") String demoPassword,Clock clock,JdbcTemplate jdbc,Phase3bDemoSeeder phase3b){this.phase3b=phase3b;
  employees=e;departments=d;positions=p;this.passwords=passwords;this.adminId=adminId;this.adminPassword=adminPassword;this.demoPassword=demoPassword;this.clock=clock;this.jdbc=jdbc;
  }
  @Override @Transactional public void run(ApplicationArguments args){
@@ -30,7 +31,7 @@ class DemoSeeder implements ApplicationRunner {
   for(int i=1;i<=30;i++)seed("DEMO%03d".formatted(i),"가상사원%03d".formatted(i),"demo%03d@example.invalid".formatted(i),
    i==1?Role.ADMIN:Role.EMPLOYEE,i==1&&!demoPassword.isEmpty()?passwords.encode(demoPassword):randomHash,
    ds.get((i-1)%ds.size()),ps.get((i-1)%ps.size()),i,today);
-  employees.flush();
+  employees.flush();phase3b.seed();
  }
  private void seed(String no,String name,String email,Role role,String hash,Department d,Position p,int i,LocalDate today){
   Employee e=new Employee();e.employeeNo=no;e.name=name;e.email=email;e.phone="000-0000-%04d".formatted(i);

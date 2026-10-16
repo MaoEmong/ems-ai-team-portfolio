@@ -1,0 +1,164 @@
+{
+  "command": ".\\gradlew.bat test integrationTest bootJar",
+  "completedAt": "2026-10-16T17:00:03+09:00",
+  "result": "BUILD SUCCESSFUL",
+  "duration": "2m36s",
+  "suites": {
+    "test": {
+      "totals": {
+        "tests": 107,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "classes": [
+        {
+          "name": "com.portfolio.ems.ApiControllerTest",
+          "tests": "8",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:57:38.319Z"
+        },
+        {
+          "name": "com.portfolio.ems.CatalogServiceTest",
+          "tests": "2",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:57:38.880Z"
+        },
+        {
+          "name": "com.portfolio.ems.EmployeeServiceTest",
+          "tests": "6",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:57:39.191Z"
+        },
+        {
+          "name": "com.portfolio.ems.EvaluationControllerTest",
+          "tests": "6",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:57:39.798Z"
+        },
+        {
+          "name": "com.portfolio.ems.FileServiceTest",
+          "tests": "3",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:57:40.105Z"
+        },
+        {
+          "name": "com.portfolio.ems.LeavePolicyTest",
+          "tests": "40",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:57:40.158Z"
+        },
+        {
+          "name": "com.portfolio.ems.OrganizationPayrollControllerTest",
+          "tests": "4",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:57:40.528Z"
+        },
+        {
+          "name": "com.portfolio.ems.PayrollFormulaTest",
+          "tests": "4",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:57:40.585Z"
+        },
+        {
+          "name": "com.portfolio.ems.Phase2ControllerTest",
+          "tests": "3",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:57:41.047Z"
+        },
+        {
+          "name": "com.portfolio.ems.Phase3ControllerTest",
+          "tests": "4",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:57:41.416Z"
+        },
+        {
+          "name": "com.portfolio.ems.SheetCodecTest",
+          "tests": "27",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:57:41.476Z"
+        }
+      ]
+    },
+    "integrationTest": {
+      "totals": {
+        "tests": 66,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "classes": [
+        {
+          "name": "com.portfolio.ems.EvaluationMySqlTest",
+          "tests": "31",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:58:16.546Z"
+        },
+        {
+          "name": "com.portfolio.ems.MigrationUpgradeTest",
+          "tests": "1",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:58:39.317Z"
+        },
+        {
+          "name": "com.portfolio.ems.MySqlIntegrationTest",
+          "tests": "1",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:58:59.807Z"
+        },
+        {
+          "name": "com.portfolio.ems.OrganizationPayrollMySqlTest",
+          "tests": "7",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:59:18.265Z"
+        },
+        {
+          "name": "com.portfolio.ems.Phase2MySqlTest",
+          "tests": "12",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:59:35.300Z"
+        },
+        {
+          "name": "com.portfolio.ems.Phase3MySqlTest",
+          "tests": "14",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0",
+          "timestamp": "2026-10-16T07:59:57.393Z"
+        }
+      ]
+    }
+  }
+}

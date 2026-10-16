@@ -13,7 +13,7 @@ import java.util.*;
 class AuditService {
  static final Set<String> ACTIONS=Set.of("LOGIN_SUCCESS","LOGIN_FAILURE","EMPLOYEE_CREATE","EMPLOYEE_UPDATE","EMPLOYEE_RETIRE",
   "APPOINTMENT_CREATE","DEPARTMENT_CREATE","DEPARTMENT_UPDATE","DEPARTMENT_DELETE","POSITION_CREATE","POSITION_UPDATE","POSITION_DELETE",
-  "EMPLOYEE_IMPORT","EMPLOYEE_EXPORT","ATTENDANCE_CORRECT","LEAVE_REQUEST","LEAVE_APPROVE","LEAVE_REJECT","LEAVE_CANCEL");
+  "EMPLOYEE_IMPORT","EMPLOYEE_EXPORT","ATTENDANCE_CORRECT","LEAVE_REQUEST","LEAVE_APPROVE","LEAVE_REJECT","LEAVE_CANCEL","JOB_TITLE_CREATE","JOB_TITLE_UPDATE","JOB_TITLE_DELETE","SALARY_SETTING_UPDATE","PAYROLL_GENERATE","PAYROLL_RECALCULATE","PAYROLL_CONFIRM","EVALUATION_CYCLE_CREATE","EVALUATION_CYCLE_UPDATE","EVALUATION_CYCLE_OPEN","EVALUATION_CYCLE_CLOSE","EVALUATION_SELF_SAVE","EVALUATION_SELF_SUBMIT","EVALUATION_MANAGER_SAVE","EVALUATION_FINALIZE","EVALUATION_REASSIGN");
  private final JdbcTemplate jdbc; private final ObjectMapper json; private final Clock clock;
  AuditService(JdbcTemplate jdbc,ObjectMapper json,Clock clock) { this.jdbc=jdbc;this.json=json;this.clock=clock; }
  static Dto.User current() {
@@ -37,6 +37,11 @@ class AuditService {
  private void write(Dto.User user,String action,String type,Long id,String label,boolean success,Object before,Object after,Map<String,?> metadata) {
   if(!ACTIONS.contains(action)) throw new IllegalArgumentException("Unknown audit action");
   Set<String> allowed=switch(action) {
+   case "SALARY_SETTING_UPDATE" -> Set.of("employeeId");
+   case "PAYROLL_GENERATE","PAYROLL_RECALCULATE","PAYROLL_CONFIRM" -> Set.of("month","count");
+   case "EVALUATION_CYCLE_CREATE","EVALUATION_CYCLE_UPDATE","EVALUATION_CYCLE_OPEN","EVALUATION_CYCLE_CLOSE" -> Set.of("cycleId");
+   case "EVALUATION_SELF_SAVE","EVALUATION_SELF_SUBMIT","EVALUATION_MANAGER_SAVE","EVALUATION_FINALIZE" -> Set.of("cycleId","employeeId","reviewerId");
+   case "EVALUATION_REASSIGN" -> Set.of("cycleId","employeeId","oldReviewerId","newReviewerId");
    case "ATTENDANCE_CORRECT" -> Set.of("date","reason");
    case "LEAVE_CANCEL" -> Set.of("system");
    case "LOGIN_FAILURE" -> Set.of("reason");
@@ -65,7 +70,7 @@ class AuditService {
   AppointmentStore.validatePage(page,size);
   if(from!=null&&to!=null&&from.isAfter(to)) throw ApiException.invalid("from","종료 시각 이후일 수 없습니다.");
   if(action!=null&&!ACTIONS.contains(action)) throw ApiException.invalid("action","지원하지 않는 행위입니다.");
-  if(targetType!=null&&!Set.of("EMPLOYEE","DEPARTMENT","POSITION","LEAVE").contains(targetType)) throw ApiException.invalid("targetType","지원하지 않는 대상입니다.");
+  if(targetType!=null&&!Set.of("EMPLOYEE","DEPARTMENT","POSITION","LEAVE","JOB_TITLE","SALARY_SETTING","PAYROLL","EVALUATION_CYCLE","EVALUATION").contains(targetType)) throw ApiException.invalid("targetType","지원하지 않는 대상입니다.");
   StringBuilder where=new StringBuilder(" WHERE 1=1"); List<Object> params=new ArrayList<>();
   append(where,params,"actor_id",actorId); append(where,params,"target_type",targetType); append(where,params,"target_id",targetId);
   append(where,params,"action",action); append(where,params,"success",success);

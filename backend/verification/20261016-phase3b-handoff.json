@@ -1,0 +1,22 @@
+{
+  "sharedPortsFree": true,
+  "preservedVolumes": [
+    "ems-backend-3a-fresh-20261016133836_mysql_data",
+    "ems-backend-3b-final-20261016170043_mysql_data",
+    "ems-backend-3b-final-20261016190251_mysql_data",
+    "ems-backend-3b-fresh-20261016164924_mysql_data",
+    "ems-backend-smoke_mysql_data",
+    "ems-docqa3a-fresh-20261016_mysql_data",
+    "ems-docqa-fresh-20261016_mysql_data"
+  ],
+  "checkedPorts": [
+    3306,
+    8080,
+    5173
+  ],
+  "checkedAt": "2026-10-16T19:08:22.9625089+09:00",
+  "runningContainers": [],
+  "검증 작업OwnershipReturned": true,
+  "metadataAmendment": "검증 작업: compose-result.json and final-compose-result.json add command, sourceManifest, images (recorded tags; image IDs unverified), databasePaths (legacy/fresh project and volume); records only, no build/test/Compose/port or QA environment operations.",
+  "metadataAmendedAt": "2026-10-16T19:11:55.550648+09:00"
+}

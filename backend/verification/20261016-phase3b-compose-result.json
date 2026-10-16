@@ -1,0 +1,72 @@
+{
+  "startedAt": "2026-10-16T16:49:24.617918+09:00",
+  "legacyProject": "ems-backend-smoke",
+  "freshProject": "ems-backend-3b-fresh-20261016164924",
+  "legacy": {
+    "from": "3",
+    "to": "4",
+    "existingColumnDigestsUnchanged": true,
+    "counts": {
+      "department": 7,
+      "job_position": 6,
+      "employee": 53,
+      "user_account": 53,
+      "appointment": 4,
+      "audit_log": 120,
+      "attendance": 5,
+      "leave_balance": 8,
+      "leave_request": 8,
+      "notification": 33,
+      "demo_seed_marker": 1
+    },
+    "newTablesEmpty": true
+  },
+  "legacyHttp": "PASS",
+  "frontendAndCors": 200,
+  "freshSeed": {
+    "employees": 31,
+    "accounts": 31,
+    "retired": 5,
+    "default": 26,
+    "salarySettings": 31,
+    "confirmedMonths": 1,
+    "payslips": 26,
+    "evaluationForms": 4,
+    "evaluationStates": 4,
+    "hierarchyAndTitles": true
+  },
+  "freshHttp": "PASS",
+  "restartAllTablesPreserved": true,
+  "finishedAt": "2026-10-16T16:57:24.294810+09:00",
+  "downVolumesPreserved": true,
+  "command": "py -3 backend/build/phase3b-compose-verify.py",
+  "sourceManifest": {
+    "reference": "20261016-phase3b-source-manifest.json",
+    "relationship": "final tested source; this earlier migration run predates StrictMoney input validation strengthening; not an exact historical source manifest"
+  },
+  "images": {
+    "backend": {
+      "tag": "ems-backend-smoke-backend:latest",
+      "imageId": "미확인"
+    },
+    "frontend": {
+      "tag": "ems-backend-smoke-frontend:latest",
+      "imageId": "미확인"
+    },
+    "note": "Tags copied from verification script; mutable tags do not establish historical image digest. No Docker query performed."
+  },
+  "databasePaths": {
+    "legacy": {
+      "project": "ems-backend-smoke",
+      "volume": "ems-backend-smoke_mysql_data",
+      "usedInThisRun": true,
+      "purpose": "V3 to V4 upgrade"
+    },
+    "fresh": {
+      "project": "ems-backend-3b-fresh-20261016164924",
+      "volume": "ems-backend-3b-fresh-20261016164924_mysql_data",
+      "usedInThisRun": true,
+      "purpose": "new isolated empty database and restart preservation"
+    }
+  }
+}
