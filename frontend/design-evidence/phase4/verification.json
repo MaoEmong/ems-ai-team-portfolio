@@ -1,0 +1,308 @@
+{
+  "chromium": {
+    "command": "DEBUG=pw:webserver npx playwright test --reporter=list",
+    "port": 5174,
+    "startKst": "2026-10-16 20:51:19 +09:00",
+    "passed": 10,
+    "seconds": 35.8,
+    "serverTerminated": true,
+    "failed": 0,
+    "endKst": "2026-10-16 20:51:55 +09:00"
+  },
+  "engine": "codex",
+  "contract": {
+    "sha256": "E117946FE967747697A8AD6A3D0AF9A729991DB1A547BB6A468D7B09601A5617",
+    "version": "1.0"
+  },
+  "source": [
+    {
+      "sha256": "A266BFE2C54481632AC0DC2E878A325454B43B539AB98C505A3D029C05C8E67C",
+      "name": "ai-evaluation-bridge.test.ts"
+    },
+    {
+      "sha256": "750A414D9E86B0553943404478182DCDC19FB31A09FB943C1F9FD057078A3B6D",
+      "name": "ai-evaluation-bridge.ts"
+    },
+    {
+      "sha256": "73201F2D37E241C9B036A6EAFF64C630606181B638DA7C6C02BDD226AF2C3131",
+      "name": "ai-integration.test.tsx"
+    },
+    {
+      "sha256": "0AFB3B2AC42C541FE6E9F94F518B789CEA596A277A690ABE94B635781795494B",
+      "name": "ai.test.tsx"
+    },
+    {
+      "sha256": "1E32A46E09F118EFEB8293D914F707EC52EE86B21C2FE46DA2B946C303AEEC36",
+      "name": "ai.tsx"
+    },
+    {
+      "sha256": "AB3B2167B7920D10F26D7E34F54587E377D64E2B732E8B2111DCDE99F79A3C46",
+      "name": "api.ts"
+    },
+    {
+      "sha256": "E3D3F80F40BAE9C4A22F48D48D14731F63A06DE07F145B5E2EEC93F4C3B4BEFC",
+      "name": "app.test.tsx"
+    },
+    {
+      "sha256": "725E9098135ED1D9A32D5E5AD23A7497A528AD29F61872728563347A3CC4E73A",
+      "name": "App.tsx"
+    },
+    {
+      "sha256": "73B210B8C5CCCAB74263865A1E9C374206A50DAD6652AE5B2359F49E16E79F71",
+      "name": "appointments.tsx"
+    },
+    {
+      "sha256": "045A6BCEED02D754538B0E23C1FE0211C18EB5A6DC026FA94EE90494B5809EF7",
+      "name": "attendance.tsx"
+    },
+    {
+      "sha256": "8A1BF993BA5B6C9F56563F28C80025C159A5695FE0FAF0237C1FC1CA2F50D19E",
+      "name": "audit-values.tsx"
+    },
+    {
+      "sha256": "66B89A9C580D067F674A83D536F35A9F1EE42DCB2DA9E18A8CF78DEE97216FD7",
+      "name": "audit.tsx"
+    },
+    {
+      "sha256": "FA781D268F4FEA05DF7331A76C3BD32488D423283C78FDA9D1049D8F9AE38256",
+      "name": "auth.tsx"
+    },
+    {
+      "sha256": "C4C290BA497C364CB55CFD7FF5070572E5C08094B4F9F436D12DAAF0BB8E8175",
+      "name": "catalog.tsx"
+    },
+    {
+      "sha256": "617AEFA3A1B70E445ECE1079A650CFDF93659DF68549BBDA9D9982C7EEAB5E7A",
+      "name": "dashboard.tsx"
+    },
+    {
+      "sha256": "93DA01B83F43EAE1D45DE6CA45385CD4E8801F64E11045FA2D657014C5E88A46",
+      "name": "design.css"
+    },
+    {
+      "sha256": "A861B4E1B921B0CA594C0A9EF328990B85858D5783AE46AA33C4A2A74A133547",
+      "name": "employees.tsx"
+    },
+    {
+      "sha256": "ADBF627748BFFAB16CD23BB1AACC8FCE70B8C44771D98E718A3470E6A60DC99C",
+      "name": "evaluations.tsx"
+    },
+    {
+      "sha256": "4445FD7B7807E852B88CBB0A0F8862DAA3D39D258233B3C1C6070BCF3BF23D9B",
+      "name": "files.tsx"
+    },
+    {
+      "sha256": "7D2F1EC7AD6C4382C0B7A239869E4DCE76FA4AC0A524025F655BDC0DDE2C1057",
+      "name": "leaves.tsx"
+    },
+    {
+      "sha256": "710EE94232F384DA9FE1FB08B5DC95D8FDF4062BA61B3336449855AB31C4CB84",
+      "name": "main.tsx"
+    },
+    {
+      "sha256": "14A4FD10EAA5194AC3C9C733AEF67FEBEA6B14F9A7486B07CE76967658705111",
+      "name": "mock-contract.test.ts"
+    },
+    {
+      "sha256": "BDA9EBD33B6311983112B41577D644F6A9C187FA2D36D54BDA43D8015D14EEB8",
+      "name": "mock-phase2.test.ts"
+    },
+    {
+      "sha256": "360D074490CEAD8B32B68E9F00393CE39EFCB98807541E958CA19C7DD20461D4",
+      "name": "mock-phase2.ts"
+    },
+    {
+      "sha256": "11548FFD4B6B865968E7ED0EF383E1102C3311A3EF634BB8B35C86F79832B4C8",
+      "name": "mock-phase3a.test.ts"
+    },
+    {
+      "sha256": "76D312829908F40B3CD33503076E4EB02B215118E46DF4338E1FEFB2B0993067",
+      "name": "mock-phase3a.ts"
+    },
+    {
+      "sha256": "0133EEDDC861CA2D6CDF9D41095FB83CF8A70419F00DB06C7898E5763A40CB3E",
+      "name": "mock-phase3b.test.ts"
+    },
+    {
+      "sha256": "5FCA7E474314A1E99903718E2CBC15E9B7C22AA1CCC2D48C8066463317DD9182",
+      "name": "mock-phase3b.ts"
+    },
+    {
+      "sha256": "2F0702F6E1EF0453DC521898006AF6DA65DF51FFF523CA0F033DC9DDDDF63EC7",
+      "name": "mock-phase4.test.ts"
+    },
+    {
+      "sha256": "A0E083E23B0AFCE76A107833FAF7A476BE551CB7196E9CF1710B0A76A36AABBF",
+      "name": "mock-phase4.ts"
+    },
+    {
+      "sha256": "EED39441C13164DD2EAE106DC0D80FE3D985EF8C491B131B1D137F5D3D743A77",
+      "name": "mock.ts"
+    },
+    {
+      "sha256": "8BC389FA861070837934DB38F98BE4B5D42F2D092725147510B4179ACCD714F1",
+      "name": "notifications.test.tsx"
+    },
+    {
+      "sha256": "A9338ABDAB1429798BEE4678018F1D36BCFF2D59B27E55A516A8F9A825AB34CA",
+      "name": "notifications.tsx"
+    },
+    {
+      "sha256": "FEBF8A6167CFF9CE9DEEB0C94CBA7B87E06BA901A7AF15F16397E4DA0FF725CD",
+      "name": "organization.test.tsx"
+    },
+    {
+      "sha256": "99FAC4964D67FFCEB2A8D7C941025F3893CD9ECE12D88B897A8B1A79DEB2B863",
+      "name": "organization.tsx"
+    },
+    {
+      "sha256": "B33290870079A1798C861D2D61822CA776ACB336AE933314AC7CFACEEACE1862",
+      "name": "payroll.tsx"
+    },
+    {
+      "sha256": "4CAE0B8A28338E0B1C70A5FD021E7CFDEA409DFFE8171ADD19B5D41D366252B1",
+      "name": "phase2-utils.ts"
+    },
+    {
+      "sha256": "99F03D529810B49B53F8A801C5E06BE5D963F9D033AE1A4039C1C8FF2524A3F0",
+      "name": "phase2.test.tsx"
+    },
+    {
+      "sha256": "22771346CE40E70EBFDF606AE98EA0C4141D733A04C3AFF69C89BC8DFE979A4B",
+      "name": "phase3a.test.tsx"
+    },
+    {
+      "sha256": "7FF96407D52D77B15560FE0DB5E58E4DEA78B4F52413157251521CAD198C3AA4",
+      "name": "phase3b-workflows.test.tsx"
+    },
+    {
+      "sha256": "E396DB231AC103CAF4B49A07EFC7EC60B183F84DD2345E5DB03C32AC0DFF46BA",
+      "name": "style.css"
+    },
+    {
+      "sha256": "105C5A1ADB5B24B74DF42EBB1A5C8C466E3F3F36282B2109370321ED23956285",
+      "name": "types-phase3a.ts"
+    },
+    {
+      "sha256": "9FA686F7F6DBD18BD171CD9BFF341055C24389CB9F025B66BF13069ABCBAD4B2",
+      "name": "types-phase3b.ts"
+    },
+    {
+      "sha256": "078A7F779B3F8FBE06357883FC45B9C15EB61D7D1CE4C812DC5A36EFAAD5BA3E",
+      "name": "types.ts"
+    },
+    {
+      "sha256": "5A6546EE960C670DF5086869458B164742C2132E97496C7FC9BC78562527F0C6",
+      "name": "ui.tsx"
+    },
+    {
+      "sha256": "576E4B6CCCCBDF0C8CA516B2C2BA89F181AC4809AF46A23885FE96B429C91838",
+      "name": "use-notifications.ts"
+    },
+    {
+      "sha256": "5B1EEC7CADD58E92CA06F70F4EB381240801021295BB0CFAB99C26CA74886715",
+      "name": "validation.ts"
+    }
+  ],
+  "build": {
+    "exitCode": 0,
+    "ts2322": "resolved",
+    "command": "npm run build (tsc -b && vite build)",
+    "periodKst": "2026-10-16 20:51",
+    "warning": "ExcelJS chunk >500kB"
+  },
+  "typecheck": {
+    "exitCode": 0,
+    "command": "npm run typecheck",
+    "periodKst": "2026-10-16 20:50"
+  },
+  "checkedAt": "2026-10-16T20:52:42.3844937+09:00",
+  "screenshots": [
+    {
+      "sha256": "09DE0AD71BE183E17991C652C1A1829B45E9567B5F1F5A7B7A9FB2B8902D99B5",
+      "name": "desktop-evaluation-summary.png"
+    },
+    {
+      "sha256": "BAD0762F5C4951BB16DC459976BEB69501A939C3F240517AD667BC5F9973611E",
+      "name": "desktop-policy-answer.png"
+    },
+    {
+      "sha256": "1C98476410E7BC6A89B5988D925A4CA37963F04AE148ED4428535FDD39B7F1EF",
+      "name": "desktop-policy-employee.png"
+    },
+    {
+      "sha256": "DE2BA65103B11E9B71BE98E117A397472C4E4E434C050FDC3A5A5AFF23C564ED",
+      "name": "desktop-policy-no-evidence.png"
+    },
+    {
+      "sha256": "B192E2A70DA4EC08DB8FC86497BB01241C532A7464BD3E633339D79D0FA37E8E",
+      "name": "desktop-search-applied.png"
+    },
+    {
+      "sha256": "30E1CD1D43B7ACAB7144D9E03F408DC8029574348B99BEB6BE577CAAA49BA61C",
+      "name": "desktop-search-proposal.png"
+    },
+    {
+      "sha256": "837FCA253D89BA85E224677608B64F7F63CA5A61B9444D7A244F523D4D037E74",
+      "name": "desktop-search-ready.png"
+    },
+    {
+      "sha256": "9BA50D398C28FFB7E87FD49D8ED023D4FE2A1AAEA44F6F4BCE4681D5512EE990",
+      "name": "desktop-search-unsupported.png"
+    },
+    {
+      "sha256": "C5F726E049C8ACA460835AB7E0BA8D6B758EEB89C99DFC0B76D960ADC5A11D60",
+      "name": "desktop-unfinalized-no-summary.png"
+    },
+    {
+      "sha256": "09567EB78BC1285B74F457C99491A22517EB040FE3E71B0DDB08C9F7BEC95BB3",
+      "name": "mobile-evaluation-summary.png"
+    },
+    {
+      "sha256": "6CAC198AF17BBD273A6E0DD259C92B5869A36D536FF7A8402E1D0DD8681460C6",
+      "name": "mobile-policy-answer.png"
+    },
+    {
+      "sha256": "02D133C879639F5BFA3E9E09F823142F698AB439CF963C5D57D94B48F6651201",
+      "name": "mobile-policy-employee.png"
+    },
+    {
+      "sha256": "7A882A3B1942892E3635A01EA26288775FBC0F446F45FE93C00C69F4246B40B6",
+      "name": "mobile-policy-no-evidence.png"
+    },
+    {
+      "sha256": "61F50B239DF49B51D07AE6E2FECA20041472CC83827F46BDF7665A034102133F",
+      "name": "mobile-search-applied.png"
+    },
+    {
+      "sha256": "8E07C98A605F43CC813CAC4B504F43D9C624F08904533A92778E12728FB99DB1",
+      "name": "mobile-search-proposal.png"
+    },
+    {
+      "sha256": "948C572D56D2852CBCE52C70267AF93D5F1D2134D6535587A4956AC14C7014AF",
+      "name": "mobile-search-ready.png"
+    },
+    {
+      "sha256": "419E926B7DBD7B502155EE54DAC0D6F9C2C066B4FE5498EC8E3E1F91059C870F",
+      "name": "mobile-search-unsupported.png"
+    },
+    {
+      "sha256": "9658F3DDC071442332802FB58440ED4373CE30D42023B3B43FF5122424B55C1E",
+      "name": "mobile-unfinalized-no-summary.png"
+    }
+  ],
+  "unit": {
+    "command": "npm test",
+    "files": 14,
+    "failed": 0,
+    "passed": 276,
+    "startKst": "2026-10-16 20:50:51 +09:00",
+    "seconds": 10.42
+  },
+  "notRun": [
+    "Actual backend E2E",
+    "Actual Compose",
+    "Anthropic inference",
+    "Ollama inference"
+  ]
+}

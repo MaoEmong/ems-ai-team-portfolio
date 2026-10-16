@@ -4,6 +4,7 @@ import { useAuth } from "./auth";
 import { ApiError, send } from "./api";
 import { FileActions } from "./files";
 import { Appointments } from "./appointments";
+import { EmployeeSearchAi } from "./ai";
 import {
   ErrorNotice,
   FormErrors,
@@ -20,7 +21,10 @@ import {
   type EmployeeForm,
 } from "./validation";
 export function EmployeeList() {
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<{
+    keyword: string; departmentId: string; positionId: string;
+    status: "" | "ACTIVE" | "ON_LEAVE" | "RETIRED"; sort: string; size: string;
+  }>({
     keyword: "",
     departmentId: "",
     positionId: "",
@@ -29,6 +33,7 @@ export function EmployeeList() {
     size: "20",
   });
   const [page, setPage] = useState(0);
+  const [previousAiFilters, setPreviousAiFilters] = useState<typeof filters>();
   const departments = useResource<Department[]>("/departments");
   const positions = useResource<Position[]>("/positions");
   const query = new URLSearchParams(
@@ -54,6 +59,14 @@ export function EmployeeList() {
         </Link>
       </div>
       <FileActions filters={filters} total={result.data?.totalElements} />
+      <EmployeeSearchAi currentFilters={filters} departments={departments.data} positions={positions.data} onApply={(proposal) => {
+        setPreviousAiFilters(filters);
+        setFilters(f => ({ ...f, keyword: "", departmentId: "", positionId: "", status: "", sort: "employeeNo,asc",
+          ...Object.fromEntries(Object.entries(proposal).filter(([key]) => ["keyword", "departmentId", "positionId", "status", "sort"].includes(key)).map(([key,value]) => [key,String(value)])),
+        }));
+        setPage(0);
+      }} />
+      {previousAiFilters && <div className="notice info"><p role="status">AI 제안 필터를 적용했습니다. 필터는 직접 바꿀 수 있습니다.</p><div className="actions"><button onClick={() => { setFilters(previousAiFilters); setPage(0); setPreviousAiFilters(undefined); }}>이전 필터로 되돌리기</button><button onClick={() => setPreviousAiFilters(undefined)}>안내 닫기</button></div></div>}
       <section className="panel">
         <div className="filters">
           <Field name="keyword" label="사원 검색">

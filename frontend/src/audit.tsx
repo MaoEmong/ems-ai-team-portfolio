@@ -4,6 +4,7 @@ import type { AuditLog, Page } from "./types";
 import { ErrorNotice, Field, useResource } from "./ui";
 import { formatSeoul, seoulDateRange } from "./phase2-utils";
 export const actionLabels: Record<string, string> = {
+  AI_INVOKE: "AI 실행",
   JOB_TITLE_CREATE: "직책 등록",
   JOB_TITLE_UPDATE: "직책 수정",
   JOB_TITLE_DELETE: "직책 삭제",

@@ -530,3 +530,85 @@
 ### 11.8 민감 정보와 공개 전 화면
 - 공개 전 본인 평가 화면에는 관리자 점수·코멘트·등급 **자리 자체를 만들지 않는다**.
 - 본인 급여 404는 초안 존재 여부를 드러내지 않는 같은 문구를 쓴다.
+
+---
+
+## 12. 4단계 AI 확장 규칙
+
+- 추가: 2026-10-16, Claude 디자이너, 검증 작업. 화면 명세는 [phase4-screens.md](phase4-screens.md).
+- 기준은 `phase4-ai-api.md` 승인 계약 v1.0이다. SHA256 `E117946F…9601A5617`은 Claude가 직접 대조해 일치를 확인했다.
+- 새 색 토큰은 만들지 않는다. 기존 info·warning·neutral·danger 묶음만 쓴다.
+- **개발 AI와 제품 제공자를 구분한다.**
+  - 개발 AI: 시안·구현을 만든 Claude·Codex.
+  - 제품 제공자: `provider` 값 mock·anthropic·ollama.
+  - 화면 문구에는 제품 제공자만 서버 값으로 쓴다. 하드코딩하지 않는다.
+
+### 12.1 호출 원칙
+- 자동 호출이 없다. 명시적인 [실행] 버튼을 누를 때만 요청한다.
+  - 실패·취소 뒤에도 자동 재시도, 카운트다운 재실행, 백오프를 하지 않는다.
+  - 실패 시 Mock 결과로 대체하지 않는다.
+- 비스트리밍이다. 완성 응답만 표시한다.
+- 실행 즉시 버튼을 비활성으로 두고 라벨을 "…중"으로 바꾼다. 입력은 읽기 전용이 된다.
+  - 서버는 사원별 동시 1건, 분당 10회로 제한한다. 이를 넘으면 429 `AI_BUSY`·`AI_RATE_LIMITED`다.
+- [요청 취소]는 브라우저 요청만 끊는다. 고정 문구: "요청을 중단해도 제공자 쪽 처리와 비용이 취소된다는 보장은 없습니다."
+- 실행 전 고지 외의 승인 단계(동의 체크박스·확인 모달)는 만들지 않는다.
+
+### 12.2 실행 전 고지 블록 (`GET /ai/config`)
+- info 띠로 그리고 닫기 버튼이 없다. 실행 버튼 바로 위에 두며, 모바일에서도 접지 않는다.
+- 내용:
+  - 제공자 · 모델 · 프롬프트 버전.
+  - Mock 배지(`mock`=true).
+  - `externalTransfer`=true면 기능별 전송·제외 필드(계약 §5 표 문구)와 자유 텍스트 개인정보 안내.
+  - 감사 기록 안내 한 줄.
+- Ollama도 `externalTransfer`=true다. 문구는 "EMS 서버 밖"이라고 쓰고 "클라우드"라고 쓰지 않는다.
+- 설정 조회 실패 → 실행 버튼 비활성. `enabled.{employeeSearch|evaluationSummary|policyQa}`=false → neutral 띠만 두고 실행 버튼 없음. `enabled`는 권한이 아니다.
+
+### 12.3 AI 결과 카드
+- surface 배경, `--color-border` 테두리, **왼쪽 4px 막대**다. 막대 색은 info 묶음 글자색 `#1f5bc4`다. 사람이 쓴 원문·서버 확정값 블록(테두리만)과 구별한다.
+- 머리 라벨은 "AI 생성 결과"로 고정한다.
+  - 하단 caption은 `meta`의 provider·model·promptVersion·generatedAt, 그리고 mono `requestId`다. config 값이 아니라 meta 값을 쓴다.
+  - 공통 안내: "AI가 생성한 보조 결과이며 틀릴 수 있습니다. 원문을 확인해 주세요."
+- 본문은 텍스트 전용이다(`white-space: pre-wrap`). HTML·마크다운 해석, 자동 링크, 이미지가 없다. URL 문자열도 앵커로 만들지 않는다.
+- 저장·제출·코멘트 적용·복사 버튼이 없다. 예외는 AI-01 [제안 적용] 하나다.
+- 입력이 바뀌면 warning 글자 "입력이 바뀌었습니다. 이 결과는 이전 입력 기준입니다."를 붙인다.
+
+### 12.4 AI 배지·상태 표기
+| 의미 | 라벨 | 묶음 | 비고 |
+|---|---|---|---|
+| `meta.mock`·config `mock` true | Mock · 실제 추론 아님 | warning | 고지와 결과 카드 양쪽. 글자 배지 |
+| AI-01 바뀌는 조건 | 변경 | neutral | 비교표 행 |
+| `AMBIGUOUS` | 조건을 확인해 주세요 | warning **글자** | 정상 200 결과. 배지·danger 없음 |
+| `UNSUPPORTED` | 필터로 바꿀 수 없는 질문입니다 | neutral 글자 | 〃 |
+| `INSUFFICIENT_EVIDENCE` | 답변할 수 없음 | neutral 글자 | 〃, 답변·근거 영역을 그리지 않음 |
+
+- 반짝이(✨) 같은 장식 아이콘만으로 AI를 나타내지 않는다. 글자 "AI"로 쓴다.
+
+### 12.5 오류 문구 표준 (`code` 기준, [다시 실행] 지름길은 `retryable`=true일 때만)
+| HTTP | code | retryable | 묶음 | 문구 |
+|---|---|---|---|---|
+| 400 | VALIDATION_ERROR | false | warning | 입력을 확인해 주세요. (fieldErrors는 입력란 아래) |
+| 400 | AI_INPUT_TOO_LARGE | false | warning | 입력이 너무 깁니다. / (AI-02) 평가 자료가 요약 가능한 분량을 넘어 요약할 수 없습니다. |
+| 400 | AI_NO_COMMENTS | false | neutral | 요약할 코멘트가 없습니다. |
+| 404 | NOT_FOUND | — | neutral | 평가서를 찾을 수 없습니다. |
+| 409 | AI_EVALUATION_NOT_FINALIZED | false | warning | 최종 확정된 평가서만 요약할 수 있습니다. (재조회) |
+| 429 | AI_BUSY | true | warning | 다른 AI 요청을 처리하고 있습니다. 끝난 뒤 다시 실행해 주세요. |
+| 429 | AI_RATE_LIMITED | true | warning | AI 기능은 1분에 10회까지 실행할 수 있습니다. 잠시 후 다시 실행해 주세요. |
+| 502 | AI_PROVIDER_ERROR | true | danger | AI 제공자와 통신하지 못했습니다. |
+| 502 | AI_PROVIDER_REJECTED | false | danger | AI 제공자가 요청을 거절했습니다. 관리자에게 제공자 설정 확인을 요청해 주세요. |
+| 502 | AI_INVALID_OUTPUT | true | danger | AI 응답 형식이 올바르지 않아 결과를 표시하지 않았습니다. |
+| 503 | AI_NOT_CONFIGURED | false | danger | AI 제공자 설정이 완료되지 않아 실행할 수 없습니다. |
+| 503 | AI_DISABLED | false | neutral | 이 기능은 현재 꺼져 있습니다. (config 재조회) |
+| 504 | AI_TIMEOUT | true | danger | AI 응답 시간이 초과되었습니다. 제공자 쪽 처리는 계속되었을 수 있습니다. |
+- 401·403은 §4.4 기존 패턴을 따른다. 모르는 code는 HTTP 상태별 일반 문구를 쓴다. 오류 띠에 질문·응답 원문을 넣지 않는다.
+
+### 12.6 민감 정보·저장
+- 질문 원문과 결과 본문을 넣지 않는 곳: URL, localStorage·sessionStorage, history state, 토스트·`role=status`, `<title>`, 브레드크럼. 서버도 결과를 저장하지 않는다.
+- live region은 짧은 상태만 읽는다. 도착 후 포커스는 결과 카드 제목으로 간다.
+- AI-02 요약은 FINALIZED 평가서에만 있다(§11.8과 같다). 요청은 `evaluationId`만 보낸다. 요약 카드에서 점수·등급을 다시 그리지 않는다.
+
+### 12.7 근거 표시 (AI-03)
+- 인용 1건은 카드 1장이다. 머리는 "문서 {documentId} · 버전 {version} · 절 {sectionId}"이고 세 값 모두 `--font-mono`다.
+- `excerpt`(≤300자)는 `<blockquote>` 일반 텍스트로 전부 보인다. 링크는 금지한다.
+- `answer=null`(`INSUFFICIENT_EVIDENCE`)이면 답변·근거 영역을 그리지 않는다.
+- 페이지 머리와 결과 카드에 서버 `notice`를 둔다. 실행 전에는 계약 고정 문구 "가상 회사의 합성 데모 규정이며 실제 회사 규정이나 법률 안내가 아닙니다."를 쓴다.
+- 인용 검증 한계 안내: "답변이 질문에 맞는지와 의미가 정확한지는 보장하지 않으니 근거 원문을 확인해 주세요."

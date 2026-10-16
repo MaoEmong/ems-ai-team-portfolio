@@ -1131,3 +1131,35 @@ pre {
   .attendance-card-bottom button { min-height: 44px; padding: 4px 10px; }
   .attendance-clock-actions > button { width: 100%; min-height: 48px; }
 }
+/* AI: ephemeral text results and explicit execution disclosures. */
+.ai-panel { margin-block: 20px; }
+.ai-disclosure, .ai-notice { overflow-wrap: anywhere; }
+.ai-disclosure { background: var(--surface-subtle, #f1f5f9); padding: 16px; border-radius: 8px; margin-block: 16px; }
+.ai-result { border-left: 4px solid var(--info, #2463b2); padding: 16px; margin-block: 20px; min-width: 0; }
+.ai-result-text, .ai-citation { white-space: pre-wrap; overflow-wrap: anywhere; }
+.ai-meta { display: grid; gap: 6px; color: var(--text-muted, #526176); font-size: 12px; overflow-wrap: anywhere; margin-top: 16px; }
+.ai-meta dt { font-weight: 600; }
+.ai-meta dd { margin: 0; }
+.ai-error { margin-block: 16px; }
+.ai-citation { border: 1px solid var(--border, #a6b1c1); padding: 12px; margin-block: 12px; border-radius: 6px; }
+.ai-filter-comparison { width: 100%; }
+.ai-changed { font-weight: 700; }
+.ai-summary-area { margin-block: 28px; border-top: 1px solid var(--border, #a6b1c1); padding-top: 20px; }
+.ai-panel button + button { margin-left: 8px; }
+.ai-disclosure > button::before { content: "▸ "; }
+.ai-disclosure > button[aria-expanded="true"]::before { content: "▾ "; }
+.ai-citation blockquote { margin: 8px 0; padding-left: 12px; border-left: 3px solid var(--info, #2463b2); }
+.ai-citation ol, .ai-result ol { padding-left: 20px; }
+.ai-meta { gap: 2px; line-height: 1.4; }
+.ai-panel textarea { width: 100%; min-height: 100px; }
+@media (max-width: 720px) {
+  .ai-panel .workflow-actions { display: flex; flex-wrap: wrap; }
+  .ai-panel .workflow-actions button { flex: 1 1 140px; }
+  .ai-disclosure, .ai-result { padding: 12px; }
+  .ai-filter-comparison caption { display: block; width: 100%; }
+  .ai-panel button { width: 100%; margin-block: 4px; }
+  .ai-panel button + button { margin-left: 0; }
+  .ai-keyboard-hint { display: none; }
+  .ai-filter-comparison td, .ai-filter-comparison th { text-align: left; }
+  .ai-filter-comparison td::before { text-align: left; }
+}

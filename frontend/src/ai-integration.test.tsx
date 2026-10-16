@@ -1,0 +1,27 @@
+import { afterEach, expect, it, vi } from 'vitest';
+import { cleanup, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
+import { AuthProvider } from './auth';
+import { App } from './App';
+import { mockFetch } from './mock';
+afterEach(()=>{cleanup();sessionStorage.clear();vi.unstubAllGlobals();});
+it('AI 제안 전후 기존 검색을 구분하고 전체교체 뒤 수동 수정과 되돌리기를 유지한다',async()=>{
+ sessionStorage.clear();const fetcher=vi.fn(mockFetch);vi.stubGlobal('fetch',fetcher);
+ render(<MemoryRouter><AuthProvider><App/></AuthProvider></MemoryRouter>);const user=userEvent.setup();
+ await user.type(await screen.findByLabelText('아이디 (사번)'),'admin');await user.type(screen.getByLabelText('비밀번호'),'demo1234!');await user.click(screen.getByRole('button',{name:'로그인'}));await user.click(await screen.findByRole('link',{name:'사원 관리'}));
+ await user.type(await screen.findByLabelText('사원 검색'),'before');
+ await waitFor(()=>expect(fetcher.mock.calls.some(([url])=>String(url).includes('keyword=before'))).toBe(true));
+ const count=()=>fetcher.mock.calls.filter(([url])=>String(url).includes('/employees?')).length;
+ await user.click(screen.getByRole('button',{name:'자연어로 필터 제안 (AI)'}));
+ await user.type(screen.getByLabelText('필터 제안 질문'),'재직 중인 개발팀 사원을 이름순으로');
+ const before=count();await user.click(screen.getByRole('button',{name:'AI로 필터 제안'}));
+ await screen.findByRole('button',{name:'제안 적용'});expect(count()).toBe(before);
+ await user.click(screen.getByRole('button',{name:'제안 적용'}));
+ await waitFor(()=>expect(screen.getByLabelText('사원 검색')).toHaveProperty('value',''));
+ expect(screen.getByLabelText('부서')).toHaveProperty('value','1');expect(screen.getByLabelText('재직 상태')).toHaveProperty('value','ACTIVE');
+ const latest=fetcher.mock.calls.filter(([url])=>String(url).includes('/employees?')).at(-1)![0];const query=new URL(String(latest)).searchParams;
+ expect(query.has('keyword')).toBe(false);expect(query.has('jobTitleId')).toBe(false);expect(query.get('sort')).toBe('name,asc');
+ await user.type(screen.getByLabelText('사원 검색'),'manual');expect(screen.getByLabelText('사원 검색')).toHaveProperty('value','manual');
+ await user.click(screen.getByRole('button',{name:'이전 필터로 되돌리기'}));expect(screen.getByLabelText('사원 검색')).toHaveProperty('value','before');
+});

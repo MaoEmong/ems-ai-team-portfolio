@@ -1,5 +1,7 @@
 import { createPhase3b, type MockDepartment, type MockEmployee, type MockJobTitle } from './mock-phase3b';
 import { createPhase3a } from './mock-phase3a';
+import { createPhase4 } from './mock-phase4';
+import { readAiEvaluation } from './ai-evaluation-bridge';
 import type { Department, Employee, Position } from './types';
 import { clone, createPhase2, fail, filteredEmployees, json, page, positiveId, validDate } from './mock-phase2';
 
@@ -24,6 +26,19 @@ const phase3b = createPhase3b({ employees, departments: () => departments, jobTi
 const created = (data: { id: number }, resource: string) => {
   const response = json(data, 201); response.headers.set('Location', `/api/v1/${resource}/${data.id}`); return response;
 };
+const phase4 = createPhase4({
+  catalogs: () => ({ departments, positions }),
+  getEvaluation: async (id, actor) => {
+    const employee = employees.find(e => e.id === actor.id);
+    if (!employee) return null;
+    const response = await phase3b.handle(new URL(`http://mock/api/v1/evaluations/${id}`), 'GET', {}, employee);
+    return readAiEvaluation(response);
+  },
+  audit: event => {
+    const actor = employees.find(e => e.id === event.actor.id);
+    phase2.audit(actor, 'AI_INVOKE', null, null, null, event.metadata, event.success);
+  },
+});
 
 export async function mockFetch(input: string | URL | Request, init: RequestInit = {}): Promise<Response> {
   const req = input instanceof Request ? input : undefined;
@@ -55,6 +70,8 @@ export async function mockFetch(input: string | URL | Request, init: RequestInit
   const me = employees.find(e => e.id === session?.id);
   if (!session || session.expires <= Date.now() || !me || me.status === 'RETIRED') return json({ code: 'UNAUTHORIZED', message: '아이디 또는 비밀번호를 확인하세요.', fieldErrors: [] }, 401);
   if (path === '/auth/me' && method === 'GET') return json({ id: me.id, employeeNo: me.employeeNo, name: me.name, role: me.role });
+  const phase4Response = await phase4.handle(url, method, body, me, typeof raw === 'string' ? raw : undefined);
+  if (phase4Response) return phase4Response;
   const phase3bResponse = await phase3b.handle(url, method, body, me);
   if (phase3bResponse) return phase3bResponse;
   const phase3Response = await phase3a.handle(url, method, body, me);

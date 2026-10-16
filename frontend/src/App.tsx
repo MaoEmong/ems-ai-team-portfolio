@@ -20,6 +20,7 @@ import { AuditLogs } from "./audit";
 import { Attendance } from "./attendance";
 import { Leaves, LeaveDetail } from "./leaves";
 import { NotificationBell } from "./notifications";
+import { PolicyQa } from "./ai";
 import { Organization } from "./organization";
 import { SalarySettings, PayrollList, PayrollMonthDetail, MyPayslips, PayslipDetail } from "./payroll";
 import { EvaluationCycles, EvaluationCycleCreate, EvaluationCycleDetail, EvaluationList, AssignedEvaluations, EvaluationDetail } from "./evaluations";
@@ -105,6 +106,7 @@ function Layout() {
   const { pathname } = useLocation();
   const group = pathname.startsWith("/admin/") || ["/job-titles","/departments","/positions","/dashboard","/audit-logs"].includes(pathname) || pathname.startsWith("/employees") ? "관리" : "내 업무";
   const pageName = pathname === "/organization" ? "조직도"
+    : pathname === "/ai/policies" ? "규정 Q&A"
     : pathname === "/job-titles" ? "직책 관리"
     : pathname.startsWith("/admin/payroll") ? "데모 급여 관리"
     : pathname.startsWith("/my/payslips") ? "내 급여명세서"
@@ -172,6 +174,7 @@ function Layout() {
             <NavLink to="/my/leaves">휴가 신청·내 휴가</NavLink>
             <NavLink to="/me">내 정보</NavLink>
             <NavLink to="/organization">조직도</NavLink>
+            <NavLink to="/ai/policies">규정 Q&A</NavLink>
             <NavLink to="/my/payslips">내 급여명세서</NavLink>
             <NavLink to="/my/evaluations">내 평가</NavLink>
           </div>
@@ -235,6 +238,7 @@ export function App() {
           <Route index element={<Home />} />
           <Route path="/me" element={<EmployeeDetail self />} />
           <Route path="/organization" element={<Organization />} />
+          <Route path="/ai/policies" element={<PolicyQa />} />
           <Route path="/my/payslips" element={<MyPayslips />} />
           <Route path="/my/payslips/:id" element={<PayslipDetail />} />
           <Route path="/my/evaluations" element={<EvaluationList />} />
