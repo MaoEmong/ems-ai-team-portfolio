@@ -1,0 +1,294 @@
+[
+  {
+    "path": "backend/build.gradle",
+    "sha256": "56c86d1aa9e88afb2fc9f9329d5d51362bf4a113b70252ee78dac8b78357ba57"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/AiBodyLimitFilter.java",
+    "sha256": "dba9c8d3c6c1be9690bea3bb53e88cdb609c98118fd637ace2b51fa50f6a22d8"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/AiController.java",
+    "sha256": "48c75c3667898915350bd3696d50bca6d65ab35f0211d2eb7871271f922e6009"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/AiJson.java",
+    "sha256": "d4688876772113448852c3b1cd71c4b558a059ad53ffb53c4451ed9395f18fea"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/AiProblem.java",
+    "sha256": "367bbeeb3efed0ce14f8ce88029bdd3176e89bb9061723f9a8aae828c71319ad"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/AiService.java",
+    "sha256": "bcd47d2b5477ae957e0c6a3ed0b49e51bee783aaa5e0e8d5bacd05eb444ab204"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/AiSettings.java",
+    "sha256": "f81d9c3b7fcc1bd5807fa8d5092ff011c7ef822c76a465e6664c3cd84cdd03b0"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/ApiController.java",
+    "sha256": "f3046b10a0269ba215456c0136919c59aad5459263817f278952fb49976af675"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/AppointmentService.java",
+    "sha256": "3e92c5568d743c66040585fb3c66a94244d6a4e2b41239f1b917b22efebc4505"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/AppointmentStore.java",
+    "sha256": "7f8df8a2150ef5155df8c461a730faf7499ce1e6bd40cc5380d90cb4b7258e9d"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/AttendanceService.java",
+    "sha256": "8b1de2865a4b7e77c2715e1db9e7274e4719973f785c987e77b18a8c656e8982"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/AuditService.java",
+    "sha256": "6932c8229d0ce0e473a02e7a712f90c5eb6c56155674d7663d18da650af7e6ba"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/AuthService.java",
+    "sha256": "b03b8145b3654380a37b7221ff9f868291a5111b752d31b63ff62d67724d21c4"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/CatalogService.java",
+    "sha256": "6653949827acedfdea7bcd3e079fc69d42405dd903d70ea1fe114b672c290416"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/DashboardService.java",
+    "sha256": "1c349e289b405c4ddadd8c83e5c63c7c87b6021f1f17e3304f86c04bc40e1eff"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/DemoSeeder.java",
+    "sha256": "1c5b21a979f7d29ab248a2a5a028ecefa096b143c0f29ede5412ebc9aee2e9ba"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/Domain.java",
+    "sha256": "b4912b168dd33bf79d68d33f4dffc7ea5a79d0a054b678a23ab8647b8814e623"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/Dto.java",
+    "sha256": "ceb4c5507ebb83bf306df870e1a3a45db7dcd45f32e04dc6bf35b9cf3e68026d"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/EmployeeService.java",
+    "sha256": "7c85233b33cf6e5afe0e37ca3ad815a561f111c0d296d58c50d7d630051e821b"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/EmsApplication.java",
+    "sha256": "5ff2d40eca53e70736c2376c2814aedab71efc955976aee396b87404cbccc62c"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/Errors.java",
+    "sha256": "b8fcf881f41fbd0d8c19f760db3be227924c3fbd4809f944217ebff344dc49de"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/EvaluationController.java",
+    "sha256": "d483875c3c9744c27aa1d8f959258d93d0ec2ac615d80f526d1fcd65014a2115"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/EvaluationDemoSeeder.java",
+    "sha256": "6217c0b44aedbf615a404e7d66f4eb26a5ebf0683ac5f49d886e8d4869e0d97a"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/EvaluationDto.java",
+    "sha256": "dd0da5dea88c875f770d395f403b65f87656da7c1cd6163e172a8c3dbe8c6b9c"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/EvaluationService.java",
+    "sha256": "e1fb4aa9317719eaeceafd09fd58558df8697e677cba382aa0be7bc9246daab8"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/FileService.java",
+    "sha256": "0e0a132237dcfbe8ea3910667fae3a921275de3513c65159bdbd0b725536944e"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/HttpLlmClient.java",
+    "sha256": "b68bb250988f3a0184887b8f6beb0af6fd5df51dd502a16d0cbad5fd6cb4f7ea"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/ImportErrors.java",
+    "sha256": "3f46beab2801f3cf34689af0cb61ebc65bbd115bdd6119abe1e887d408ab503a"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/LeavePolicy.java",
+    "sha256": "903a7d72d655575fb0b5b44a11229136e468f3473989c29f800b305a921f4c69"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/LeaveService.java",
+    "sha256": "fda7f8fdc45d71dd8114992abd9e73b57a6ef72337d7db00a931ee2d1059f06a"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/LlmClient.java",
+    "sha256": "3c7f57fb2aac7a03422f7cfaa4b8dc6ec2d5580f435e8f334f04e9e9fe388219"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/NotificationService.java",
+    "sha256": "a35f49f039125b8804d73d58dc8f9bf80b86f50b7981fb3c34e178c63711adc9"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/OrganizationController.java",
+    "sha256": "e2e7a75ce0838cd15191f72518e1b084964f731afcfe283082d5998d84fa4727"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/OrganizationService.java",
+    "sha256": "f9f1a27186de0ab3be504b31269312ba29b646cbdd06e1991a3b274819d64530"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/PayrollController.java",
+    "sha256": "56414ccb3daf74a03fc7d8f9758e8e5431a4c0499afb59d7dfdf6490fc04f404"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/PayrollService.java",
+    "sha256": "c2328956268d992cbcd26742b8418c91701a70bf40503f0f117ca7f725d049d3"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/Phase2Controller.java",
+    "sha256": "38b1af18cb42dd811cb18a5b235b750bfa791ea9beaa447d69e6b37229bc964c"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/Phase2Dto.java",
+    "sha256": "81a4b904b826b669b2a775f0380070d25dd83e3c7a29aaf7de62a89d9a8a7638"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/Phase3bDemoSeeder.java",
+    "sha256": "da2f3d5a11d9019ecee146efb989eba7030757457b24d52f70de00483ee567a0"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/Phase3Controller.java",
+    "sha256": "354045fc8e97df0d254f17d08882ea727e0e5c054bf69fb2d04d93d69e501f88"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/Phase3Dto.java",
+    "sha256": "588eaef83b6faec2764a596295aeaaa55d9ca307fcae40ce6a96051e730d9fe4"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/Repositories.java",
+    "sha256": "59e481fc0e6376927ed4fdbd5f0ec9d482969b5055481e2a18b9164b9201dc1e"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/SecurityConfig.java",
+    "sha256": "d0e4a00d2aa8ffa6d60d99a0838b335c04d31401d9eaae5b087229becce4d936"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/SheetCodec.java",
+    "sha256": "a00c93721aa3fa66f7dc0ec807aa14f727b8e33c707d001a8e87870d79077ad8"
+  },
+  {
+    "path": "backend/src/main/java/com/portfolio/ems/StrictMoney.java",
+    "sha256": "e28064a58ccf0074ed96325b1c3c55611f843653cea72c4dc8fdc2902e5521c6"
+  },
+  {
+    "path": "backend/src/main/resources/ai/policies/demo-policy-v1.json",
+    "sha256": "1754ed0e54bb24f79ef5150984304a28bf71e006b9366f7ed109c686678568d0"
+  },
+  {
+    "path": "backend/src/main/resources/ai/prompts/ems-ai-v1.txt",
+    "sha256": "5d31d9ab791253a0ca1d63cd0b598940248846118abcf311256a03f0d791cb06"
+  },
+  {
+    "path": "backend/src/main/resources/application.yml",
+    "sha256": "8b904344cd673cadb6abc46e3e3fa2977299bbf093b47df78486f29086dbc963"
+  },
+  {
+    "path": "backend/src/main/resources/db/migration/V1__schema_and_demo.sql",
+    "sha256": "f080ca7a7c94450155bd5a14f62515d9e189a8c9a52ca38c0c73cd41f9925ef3"
+  },
+  {
+    "path": "backend/src/main/resources/db/migration/V2__appointments_and_audit.sql",
+    "sha256": "1e51bb96d6777fb5e4f0a0494ad2359f17801b70a2ceb224fc029467f1a14b2c"
+  },
+  {
+    "path": "backend/src/main/resources/db/migration/V3__attendance_leave_notifications.sql",
+    "sha256": "b8b64e4087935ae42125f1c42bf2d7ae24d446a228bc264fccef8c9730cd63da"
+  },
+  {
+    "path": "backend/src/main/resources/db/migration/V4__organization_payroll_evaluation.sql",
+    "sha256": "715667560560f4a93dac6c55e3fdf9d60ff0c8c19430812d2f575d63ac2807ae"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/AiMySqlTest.java",
+    "sha256": "92c93f0b5583e9a244ba3138352b58bf930ceea52e3ddae2c9177f2aa86ea17c"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/AiServiceTest.java",
+    "sha256": "738e8e767b68f6d12db5a6169e01181f3516420f5ab3585357d518885e868e07"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/ApiControllerTest.java",
+    "sha256": "d02e298cc1df4dc71771d2bb8de238e2673cfb1762fa15f99b322f2e0715d274"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/CatalogServiceTest.java",
+    "sha256": "a58c8d45a337e56913b2baf22672a0031102396cffea7fd374c2fd6baedc1693"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/EmployeeServiceTest.java",
+    "sha256": "020909f0699127bae982f39043f9fc784ce14fa53a0c45d19f490aa48f97cf20"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/EvaluationControllerTest.java",
+    "sha256": "b90217394000a3f056e7f9afa82b3c4f5033f467e54693c6b9c4059e39ae79de"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/EvaluationMySqlTest.java",
+    "sha256": "81b617a2c026ab52826f5a6626ce802d427ddcca02b4b69799503a30048ee3b7"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/FileServiceTest.java",
+    "sha256": "faaf93fbff3bd9a19e06e916a783ea34fe84ae425daf9703d8e3457e196b36c3"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/LeavePolicyTest.java",
+    "sha256": "7d69913a0afbee061d703f720ae695976d96f37c1f8c5b99f42ac4268362552b"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/LlmAdapterTest.java",
+    "sha256": "582b47df550d047e1442bcd3bd07144227f38097a6ccf122c85e3670d9de7d13"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/MigrationUpgradeTest.java",
+    "sha256": "0d8a514305587caf55d7f7dd58bd75bf8c9061a6d2ab04ba532ab09d49f2770a"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/MySqlIntegrationTest.java",
+    "sha256": "965f3968dde7ed8af78306e77e6bc94b670cd27cdb341bdc39b36dbc6801e140"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/OrganizationPayrollControllerTest.java",
+    "sha256": "aa8df768ee25cc0ae14e463c27ea93f41699e2317d9591d3b2f1c6a44e19c9a0"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/OrganizationPayrollMySqlTest.java",
+    "sha256": "83f034aa293d37fba2f7420b46220889add008eed619ab769beed5c2a6dd58ae"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/PayrollFormulaTest.java",
+    "sha256": "e99de18eeef7b02e117cb244223a2b0b9b2701bac961ae8d01c81cb1b5533bc3"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/Phase2ControllerTest.java",
+    "sha256": "017068e926217ade15ce1cf9a5fb36353116e4fbbe14619fbc13baa355d95b42"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/Phase2MySqlTest.java",
+    "sha256": "6111f61fb3be309513700c563b74506e70c8fb61cbf01b873f75a1b92e109b86"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/Phase3ControllerTest.java",
+    "sha256": "6e090b59842faeff65cb230e32b9fc724f3a42eee02936ab225b048dc7084303"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/Phase3MySqlTest.java",
+    "sha256": "698567905ee83d7b7dd1ab4d8586246689e65c0ca79cf29e120a52d670bed38f"
+  },
+  {
+    "path": "backend/src/test/java/com/portfolio/ems/SheetCodecTest.java",
+    "sha256": "4255542991bd55eebeff5483da8380a47bf3ed152d203687ddb22f8f451c449b"
+  },
+  {
+    "path": "docker-compose.yml",
+    "sha256": "7055f04491a0a9009828035d49663acd2e8f8d07c554f9d8dfbb3fae9dbdbc55"
+  }
+]

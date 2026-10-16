@@ -11,7 +11,7 @@ import java.util.*;
 
 @Service
 class AuditService {
- static final Set<String> ACTIONS=Set.of("LOGIN_SUCCESS","LOGIN_FAILURE","EMPLOYEE_CREATE","EMPLOYEE_UPDATE","EMPLOYEE_RETIRE",
+ static final Set<String> ACTIONS=Set.of("AI_INVOKE","LOGIN_SUCCESS","LOGIN_FAILURE","EMPLOYEE_CREATE","EMPLOYEE_UPDATE","EMPLOYEE_RETIRE",
   "APPOINTMENT_CREATE","DEPARTMENT_CREATE","DEPARTMENT_UPDATE","DEPARTMENT_DELETE","POSITION_CREATE","POSITION_UPDATE","POSITION_DELETE",
   "EMPLOYEE_IMPORT","EMPLOYEE_EXPORT","ATTENDANCE_CORRECT","LEAVE_REQUEST","LEAVE_APPROVE","LEAVE_REJECT","LEAVE_CANCEL","JOB_TITLE_CREATE","JOB_TITLE_UPDATE","JOB_TITLE_DELETE","SALARY_SETTING_UPDATE","PAYROLL_GENERATE","PAYROLL_RECALCULATE","PAYROLL_CONFIRM","EVALUATION_CYCLE_CREATE","EVALUATION_CYCLE_UPDATE","EVALUATION_CYCLE_OPEN","EVALUATION_CYCLE_CLOSE","EVALUATION_SELF_SAVE","EVALUATION_SELF_SUBMIT","EVALUATION_MANAGER_SAVE","EVALUATION_FINALIZE","EVALUATION_REASSIGN");
  private final JdbcTemplate jdbc; private final ObjectMapper json; private final Clock clock;
@@ -34,9 +34,12 @@ class AuditService {
  public void importFailure(String code,int count) {
   write(current(),"EMPLOYEE_IMPORT","EMPLOYEE",null,null,false,null,null,Map.of("code",code,"errorCount",count));
  }
+ @Transactional(propagation=Propagation.REQUIRES_NEW)
+ public void aiInvoke(Dto.User user,boolean success,Map<String,?> metadata) { write(user,"AI_INVOKE",null,null,null,success,null,null,metadata); }
  private void write(Dto.User user,String action,String type,Long id,String label,boolean success,Object before,Object after,Map<String,?> metadata) {
   if(!ACTIONS.contains(action)) throw new IllegalArgumentException("Unknown audit action");
   Set<String> allowed=switch(action) {
+   case "AI_INVOKE" -> Set.of("feature","provider","model","promptVersion","durationMs","errorCode");
    case "SALARY_SETTING_UPDATE" -> Set.of("employeeId");
    case "PAYROLL_GENERATE","PAYROLL_RECALCULATE","PAYROLL_CONFIRM" -> Set.of("month","count");
    case "EVALUATION_CYCLE_CREATE","EVALUATION_CYCLE_UPDATE","EVALUATION_CYCLE_OPEN","EVALUATION_CYCLE_CLOSE" -> Set.of("cycleId");

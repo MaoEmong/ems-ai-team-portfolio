@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-16T19:47:58.355551+09:00",
+  "command": "py -3 backend/verification/phase4_provider_smoke.py",
+  "executionScope": "Provider HTTP direct synthetic smoke; not full EMS E2E; no response text or key recorded",
+  "providers": {
+    "claude": {
+      "status": "NOT_RUN",
+      "reason": "ANTHROPIC_API_KEY absent from explicitly supplied process environment",
+      "model": "claude-sonnet-5-5"
+    },
+    "ollama": {
+      "status": "NOT_RUN",
+      "reason": "Host Ollama service unavailable or no existing model; no model download attempted"
+    },
+    "mock": {
+      "status": "PASS",
+      "scope": "unit and MySQL; Compose result separate"
+    },
+    "adapterContract": {
+      "status": "PASS",
+      "cases": 14,
+      "scope": "local HTTP stub; fake key; not real provider inference"
+    }
+  }
+}

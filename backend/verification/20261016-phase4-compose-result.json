@@ -1,0 +1,205 @@
+{
+  "command": "py -3 backend/verification/phase4_compose_verify.py --backend-only",
+  "startedAt": "2026-10-16T19:50:51.699653+09:00",
+  "sourceManifest": "20261016-phase4-source-manifest.json",
+  "databasePaths": {
+    "legacy": {
+      "project": "ems-backend-smoke",
+      "volume": "ems-backend-smoke_mysql_data"
+    },
+    "fresh": {
+      "project": "ems-backend-ai-fresh-20261016195051",
+      "volume": "ems-backend-ai-fresh-20261016195051_mysql_data"
+    }
+  },
+  "legacy": {
+    "fromVersion": "4",
+    "toVersion": "4",
+    "allTablesPreservedBeforeHttp": true,
+    "schemaChange": false
+  },
+  "legacyHttp": {
+    "mockConfig": true,
+    "filterProposalOnly": true,
+    "unsupported": true,
+    "policyCitation": true,
+    "insufficientEvidence": true,
+    "forbiddenNoInvokeAudit": true,
+    "unfinalized409": true,
+    "otherAdmin404": true,
+    "finalizedSummaryReadOnly": true,
+    "auditMetadataOnly": true,
+    "oversize400": true,
+    "mode": "sequential HTTP; concurrency and rollback are separate MySQL tests"
+  },
+  "freshSeed": {
+    "employees": 31,
+    "accounts": 31,
+    "retired": 5,
+    "defaultEmployees": 26,
+    "salarySettings": 31
+  },
+  "freshHttp": {
+    "mockConfig": true,
+    "filterProposalOnly": true,
+    "unsupported": true,
+    "policyCitation": true,
+    "insufficientEvidence": true,
+    "forbiddenNoInvokeAudit": true,
+    "unfinalized409": true,
+    "otherAdmin404": true,
+    "finalizedSummaryReadOnly": true,
+    "auditMetadataOnly": true,
+    "oversize400": true,
+    "mode": "sequential HTTP; concurrency and rollback are separate MySQL tests"
+  },
+  "restartPreserved": true,
+  "cors200": true,
+  "frontend200": "NOT_RUN: backend-only scope",
+  "images": {
+    "backend": {
+      "tag": "ems-backend-smoke-backend:latest",
+      "id": "sha256:27627d4528ac453db78bee4b33a6fa2f1efcd80ed0ede3707405ef501ae215c2"
+    },
+    "frontend": {
+      "tag": "ems-backend-smoke-frontend:latest",
+      "id": "sha256:6996e03704a7672d315041a918997c7975add27b64dbc44447cbb12a1267a0e6",
+      "usedInThisRun": false
+    }
+  },
+  "finishedAt": "2026-10-16T19:54:18.465391+09:00",
+  "downVolumesPreserved": true,
+  "scopeNote": "MySQL/backend real images only; frontend build was blocked by parallel frontend TS2322 and is not verified here. CORS preflight verified independently.",
+  "additionalExecutions": [
+    {
+      "command": "py -3 backend/verification/phase4_full_compose_verify.py",
+      "startedAt": "2026-10-16T21:01:36.905227+09:00",
+      "sourceManifest": "20261016-phase4-full-source-manifest.json",
+      "serviceScope": [
+        "mysql",
+        "backend",
+        "frontend"
+      ],
+      "trigger": "검증 작업 explicit frontend completion notification",
+      "databasePaths": {
+        "legacy": {
+          "project": "ems-backend-smoke",
+          "volume": "ems-backend-smoke_mysql_data"
+        },
+        "fresh": {
+          "project": "ems-backend-ai-full-fresh-20261016210136",
+          "volume": "ems-backend-ai-full-fresh-20261016210136_mysql_data"
+        }
+      },
+      "legacyBaselineCounts": {
+        "appointment": 19,
+        "attendance": 7,
+        "audit_log": 334,
+        "demo_seed_marker": 1,
+        "department": 16,
+        "employee": 71,
+        "evaluation_assignment": 6,
+        "evaluation_cycle": 4,
+        "evaluation_form": 6,
+        "evaluation_item": 7,
+        "flyway_schema_history": 4,
+        "job_position": 7,
+        "job_title": 3,
+        "leave_balance": 16,
+        "leave_request": 11,
+        "notification": 59,
+        "organization_lock": 1,
+        "payroll_month": 3,
+        "payslip": 61,
+        "salary_setting": 59,
+        "user_account": 71
+      },
+      "legacy": {
+        "fromVersion": "4",
+        "toVersion": "4",
+        "allTablesPreservedBeforeHttp": true,
+        "schemaChange": false
+      },
+      "legacyHttp": {
+        "mockConfig": true,
+        "filterProposalOnly": true,
+        "unsupported": true,
+        "policyCitation": true,
+        "insufficientEvidence": true,
+        "forbiddenNoInvokeAudit": true,
+        "unfinalized409": true,
+        "otherAdmin404": true,
+        "finalizedSummaryReadOnly": true,
+        "auditMetadataOnly": true,
+        "oversize400": true,
+        "mode": "sequential HTTP; concurrency and rollback are separate MySQL tests"
+      },
+      "legacyAfterHttpCounts": {
+        "appointment": 19,
+        "attendance": 7,
+        "audit_log": 348,
+        "demo_seed_marker": 1,
+        "department": 16,
+        "employee": 73,
+        "evaluation_assignment": 7,
+        "evaluation_cycle": 5,
+        "evaluation_form": 7,
+        "evaluation_item": 8,
+        "flyway_schema_history": 4,
+        "job_position": 7,
+        "job_title": 3,
+        "leave_balance": 16,
+        "leave_request": 11,
+        "notification": 59,
+        "organization_lock": 1,
+        "payroll_month": 3,
+        "payslip": 61,
+        "salary_setting": 59,
+        "user_account": 73
+      },
+      "freshSeed": {
+        "employees": 31,
+        "accounts": 31,
+        "retired": 5,
+        "defaultEmployees": 26,
+        "salarySettings": 31,
+        "evaluationForms": 4,
+        "evaluationStates": 4
+      },
+      "freshHttp": {
+        "mockConfig": true,
+        "filterProposalOnly": true,
+        "unsupported": true,
+        "policyCitation": true,
+        "insufficientEvidence": true,
+        "forbiddenNoInvokeAudit": true,
+        "unfinalized409": true,
+        "otherAdmin404": true,
+        "finalizedSummaryReadOnly": true,
+        "auditMetadataOnly": true,
+        "oversize400": true,
+        "mode": "sequential HTTP; concurrency and rollback are separate MySQL tests"
+      },
+      "restartPreserved": true,
+      "cors200": true,
+      "frontend200": true,
+      "images": {
+        "backend": {
+          "tag": "ems-backend-smoke-backend:latest",
+          "id": "sha256:d3b894de5ff2a50ad74251e4102d524538d3c21df6f53d8b8259b6fbe161560a"
+        },
+        "frontend": {
+          "tag": "ems-backend-smoke-frontend:latest",
+          "id": "sha256:b2dd55736cbf7725baee991bb788bd08d93f08edf117f230cf9f97946cc1d609"
+        },
+        "mysql": {
+          "tag": "mysql:8.0",
+          "id": "sha256:7dcddc01f13bab2f15cde676d44d01f61fc9f99fe7785e86196dfc07d358ae2b"
+        }
+      },
+      "finishedAt": "2026-10-16T21:04:49.989217+09:00",
+      "downVolumesPreserved": true,
+      "sourceStableDuringExecution": true
+    }
+  ]
+}

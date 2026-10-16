@@ -1,0 +1,231 @@
+{
+  "backendReference": "20261016-phase4-source-manifest.json",
+  "backendReferenceSha256": "7475e584e5979470a14d2b26260ea15cc2620ecc5623ba9c9a287622c4e85293",
+  "backendUnchanged": true,
+  "frontend": [
+    {
+      "path": "frontend/.dockerignore",
+      "sha256": "a0deb126cf5bef2b491d37cf0adfb169492d6e0570fb94e2a134fcec68ca31e4"
+    },
+    {
+      "path": "frontend/Dockerfile",
+      "sha256": "366afca231c5371136b6327955e153f32c6328a85d44223118185b01e0ecff30"
+    },
+    {
+      "path": "frontend/index.html",
+      "sha256": "d5f8354e2e62f465577c0cc9032d8dc174c2c6ae6eff99182f0756deb6fa604b"
+    },
+    {
+      "path": "frontend/nginx.conf",
+      "sha256": "b959c252358ffae1a82591ba6617906bf332d4f6740d8710142a4e664f93ddab"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sha256": "0e0a9101ce3c1f2eefee8b1d8b35643e0c693536804c7a3c492af14de2a66bc5"
+    },
+    {
+      "path": "frontend/package.json",
+      "sha256": "65e6500f4a07498e95f9cf5dfbeae79325a18f17afd57b329f7a9ffc4987a8e8"
+    },
+    {
+      "path": "frontend/playwright.config.ts",
+      "sha256": "6e5c5f741da2fe8ca1a0af9ef0d152a57cee9c0188cb74f2d71dd47d371b052a"
+    },
+    {
+      "path": "frontend/src/ai-evaluation-bridge.test.ts",
+      "sha256": "a266bfe2c54481632ac0dc2e878a325454b43b539ab98c505a3d029c05c8e67c"
+    },
+    {
+      "path": "frontend/src/ai-evaluation-bridge.ts",
+      "sha256": "750a414d9e86b0553943404478182dcdc19fb31a09fb943c1f9fd057078a3b6d"
+    },
+    {
+      "path": "frontend/src/ai-integration.test.tsx",
+      "sha256": "73201f2d37e241c9b036a6eaff64c630606181b638da7c6c02bdd226af2c3131"
+    },
+    {
+      "path": "frontend/src/ai.test.tsx",
+      "sha256": "0afb3b2ac42c541fe6e9f94f518b789cea596a277a690abe94b635781795494b"
+    },
+    {
+      "path": "frontend/src/ai.tsx",
+      "sha256": "1e32a46e09f118efeb8293d914f707ec52ee86b21c2fe46da2b946c303aeec36"
+    },
+    {
+      "path": "frontend/src/api.ts",
+      "sha256": "ab3b2167b7920d10f26d7e34f54587e377d64e2b732e8b2111dcde99f79a3c46"
+    },
+    {
+      "path": "frontend/src/app.test.tsx",
+      "sha256": "e3d3f80f40bae9c4a22f48d48d14731f63a06de07f145b5e2eec93f4c3b4befc"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "sha256": "725e9098135ed1d9a32d5e5ad23a7497a528ad29f61872728563347a3cc4e73a"
+    },
+    {
+      "path": "frontend/src/appointments.tsx",
+      "sha256": "73b210b8c5cccab74263865a1e9c374206a50dad6652ae5b2359f49e16e79f71"
+    },
+    {
+      "path": "frontend/src/attendance.tsx",
+      "sha256": "045a6bceed02d754538b0e23c1fe0211c18eb5a6dc026fa94ee90494b5809ef7"
+    },
+    {
+      "path": "frontend/src/audit-values.tsx",
+      "sha256": "8a1bf993ba5b6c9f56563f28c80025c159a5695fe0faf0237c1fc1ca2f50d19e"
+    },
+    {
+      "path": "frontend/src/audit.tsx",
+      "sha256": "66b89a9c580d067f674a83d536f35a9f1ee42dcb2da9e18a8cf78dee97216fd7"
+    },
+    {
+      "path": "frontend/src/auth.tsx",
+      "sha256": "fa781d268f4fea05df7331a76c3bd32488d423283c78fda9d1049d8f9ae38256"
+    },
+    {
+      "path": "frontend/src/catalog.tsx",
+      "sha256": "c4c290ba497c364cb55cfd7ff5070572e5c08094b4f9f436d12daaf0bb8e8175"
+    },
+    {
+      "path": "frontend/src/dashboard.tsx",
+      "sha256": "617aefa3a1b70e445ece1079a650cfdf93659df68549bbda9d9982c7eeab5e7a"
+    },
+    {
+      "path": "frontend/src/design.css",
+      "sha256": "93da01b83f43eae1d45de6ca45385cd4e8801f64e11045fa2d657014c5e88a46"
+    },
+    {
+      "path": "frontend/src/employees.tsx",
+      "sha256": "a861b4e1b921b0ca594c0a9ef328990b85858d5783ae46aa33c4a2a74a133547"
+    },
+    {
+      "path": "frontend/src/evaluations.tsx",
+      "sha256": "adbf627748bffab16cd23bb1aacc8fce70b8c44771d98e718a3470e6a60dc99c"
+    },
+    {
+      "path": "frontend/src/files.tsx",
+      "sha256": "4445fd7b7807e852b88cbb0a0f8862daa3d39d258233b3c1c6070bcf3bf23d9b"
+    },
+    {
+      "path": "frontend/src/leaves.tsx",
+      "sha256": "7d2f1ec7ad6c4382c0b7a239869e4dce76fa4ac0a524025f655bdc0dde2c1057"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "sha256": "710ee94232f384da9fe1fb08b5dc95d8fdf4062ba61b3336449855ab31c4cb84"
+    },
+    {
+      "path": "frontend/src/mock-contract.test.ts",
+      "sha256": "14a4fd10eaa5194ac3c9c733aef67febea6b14f9a7486b07ce76967658705111"
+    },
+    {
+      "path": "frontend/src/mock-phase2.test.ts",
+      "sha256": "bda9ebd33b6311983112b41577d644f6a9c187fa2d36d54bda43d8015d14eeb8"
+    },
+    {
+      "path": "frontend/src/mock-phase2.ts",
+      "sha256": "360d074490cead8b32b68e9f00393ce39efcb98807541e958ca19c7dd20461d4"
+    },
+    {
+      "path": "frontend/src/mock-phase3a.test.ts",
+      "sha256": "11548ffd4b6b865968e7ed0ef383e1102c3311a3ef634bb8b35c86f79832b4c8"
+    },
+    {
+      "path": "frontend/src/mock-phase3a.ts",
+      "sha256": "76d312829908f40b3cd33503076e4eb02b215118e46df4338e1fefb2b0993067"
+    },
+    {
+      "path": "frontend/src/mock-phase3b.test.ts",
+      "sha256": "0133eeddc861ca2d6cdf9d41095fb83cf8a70419f00db06c7898e5763a40cb3e"
+    },
+    {
+      "path": "frontend/src/mock-phase3b.ts",
+      "sha256": "5fca7e474314a1e99903718e2cbc15e9b7c22aa1ccc2d48c8066463317dd9182"
+    },
+    {
+      "path": "frontend/src/mock-phase4.test.ts",
+      "sha256": "2f0702f6e1ef0453dc521898006af6da65df51fff523ca0f033dc9ddddf63ec7"
+    },
+    {
+      "path": "frontend/src/mock-phase4.ts",
+      "sha256": "a0e083e23b0afce76a107833faf7a476be551cb7196e9cf1710b0a76a36aabbf"
+    },
+    {
+      "path": "frontend/src/mock.ts",
+      "sha256": "eed39441c13164dd2eae106dc0d80fe3d985ef8c491b131b1d137f5d3d743a77"
+    },
+    {
+      "path": "frontend/src/notifications.test.tsx",
+      "sha256": "8bc389fa861070837934db38f98be4b5d42f2d092725147510b4179accd714f1"
+    },
+    {
+      "path": "frontend/src/notifications.tsx",
+      "sha256": "a9338abdab1429798bee4678018f1d36bcff2d59b27e55a516a8f9a825ab34ca"
+    },
+    {
+      "path": "frontend/src/organization.test.tsx",
+      "sha256": "febf8a6167cff9ce9deeb0c94cba7b87e06ba901a7af15f16397e4da0ff725cd"
+    },
+    {
+      "path": "frontend/src/organization.tsx",
+      "sha256": "99fac4964d67ffceb2a8d7c941025f3893cd9ece12d88b897a8b1a79deb2b863"
+    },
+    {
+      "path": "frontend/src/payroll.tsx",
+      "sha256": "b33290870079a1798c861d2d61822ca776acb336ae933314ac7cfaceeace1862"
+    },
+    {
+      "path": "frontend/src/phase2-utils.ts",
+      "sha256": "4cae0b8a28338e0b1c70a5fd021e7cfdea409dffe8171add19b5d41d366252b1"
+    },
+    {
+      "path": "frontend/src/phase2.test.tsx",
+      "sha256": "99f03d529810b49b53f8a801c5e06be5d963f9d033ae1a4039c1c8ff2524a3f0"
+    },
+    {
+      "path": "frontend/src/phase3a.test.tsx",
+      "sha256": "22771346ce40e70ebfdf606ae98ea0c4141d733a04c3aff69c89bc8dfe979a4b"
+    },
+    {
+      "path": "frontend/src/phase3b-workflows.test.tsx",
+      "sha256": "7ff96407d52d77b15560fe0db5e58e4dea78b4f52413157251521cad198c3aa4"
+    },
+    {
+      "path": "frontend/src/style.css",
+      "sha256": "e396db231ac103caf4b49a07efc7ec60b183f84dd2345e5db03c32ac0dff46ba"
+    },
+    {
+      "path": "frontend/src/types-phase3a.ts",
+      "sha256": "105c5a1adb5b24b74df42ebb1a5c8c466e3f3f36282b2109370321ed23956285"
+    },
+    {
+      "path": "frontend/src/types-phase3b.ts",
+      "sha256": "9fa686f7f6dbd18bd171cd9bff341055c24389cb9f025b66bf13069abcbad4b2"
+    },
+    {
+      "path": "frontend/src/types.ts",
+      "sha256": "078a7f779b3f8fbe06357883fc45b9c15eb61d7d1ce4c812dc5a36efaad5ba3e"
+    },
+    {
+      "path": "frontend/src/ui.tsx",
+      "sha256": "5a6546ee960c670df5086869458b164742c2132e97496c7fc9bc78562527f0c6"
+    },
+    {
+      "path": "frontend/src/use-notifications.ts",
+      "sha256": "576e4b6ccccbdf0c8ca516b2c2ba89f181ac4809af46a23885fe96b429c91838"
+    },
+    {
+      "path": "frontend/src/validation.ts",
+      "sha256": "5b1eec7cadd58e92ca06f70f4eb381240801021295bb0cfab99c26ca74886715"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "sha256": "513fc7b6b4b6899996695b64d9475cf87a70dd0c2b1f392e2307866901d376ab"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "sha256": "fb423a36e4481ce6e1fc8004608e165a5a2452010d3fb4e2f3e7000c210a2865"
+    }
+  ]
+}

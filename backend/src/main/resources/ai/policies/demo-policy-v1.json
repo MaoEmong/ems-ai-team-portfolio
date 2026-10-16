@@ -1,0 +1,5 @@
+[
+ {"documentId":"DEMO-ATTENDANCE","version":"1.0","sectionId":"HOURS","text":"가상 회사의 근무일은 월요일부터 금요일까지입니다. 기본 출근 기준은 09:00, 퇴근 기준은 18:00입니다."},
+ {"documentId":"DEMO-ATTENDANCE","version":"1.0","sectionId":"HALF_DAY","text":"오전 반차일의 출근 기준은 14:00입니다. 오후 반차일의 퇴근 기준은 14:00입니다."},
+ {"documentId":"DEMO-LEAVE","version":"1.0","sectionId":"APPROVAL","text":"가상 회사의 휴가 신청은 다른 관리자가 승인합니다. 본인 신청의 자기 승인은 허용하지 않습니다."}
+]

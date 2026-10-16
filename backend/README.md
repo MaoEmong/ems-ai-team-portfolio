@@ -106,3 +106,29 @@ PENDING은 시작일과 무관하게 본인이 취소할 수 있다. 지난 PEND
 ## 3B 최종 검증 결과 (2026-10-16)
 최종 Gradle test/integrationTest/bootJar 성공: 단위·컨트롤러107개, MySQL66개, 실패·오류·스킵0. 최종 이미지 Compose HTTP 재확인(19:02:51~19:06:33 KST), 정수 금액400, v1.1 배정 요약, 새 DB31명/급여설정31개/직전월 대상명세26개와 평가4상태, 재시작 보존을 통과했다. 기존 V3→V4 보존은 별도 선행 전후 증거와 최종 MySQL 테스트로 확인했다. 검증 서비스는 down했고 볼륨을 유지했다.
 증거: [verification](verification/), 상세 명령·시각·역할·미실행 범위: [3B 개발일지](../docs/devlog/20261016-backend-phase3b.md). Chromium/디자인 검수는 다른 팀 담당이며 백엔드 HTTP로 대체하지 않는다.
+
+## 4단계 AI 설정·사용
+API: [phase4-ai-api.md v1.0](../docs/api/phase4-ai-api.md). GET /api/v1/ai/config, POST /ai/employee-search, /ai/evaluation-summary, /ai/policy-qa(모두 /api/v1 기준). 검색은 ADMIN의 필터 제안만 반환하며 실제 검색은 확인 후 기존 API를 사용한다. 평가 요약은 FINALIZED 본인/배정 평가자만 가능하다. 규정은 합성 데모 자료이며 실제 회사 규정이나 법률 안내가 아니다.
+Mock이 기본이며 **실제 추론 아님**을 응답/화면에서 구분한다. 실패 시 Mock으로 바꾸지 않는다. 비스트리밍·재시도0·동시1/사용자·60초10회이며 단일 서버 메모리 기준이다. 모든 키/URL은 서버 설정만 사용한다.
+
+| 환경변수 | 기본값·설명 |
+|---|---|
+| EMS_AI_PROVIDER | mock / anthropic / ollama; 기본 mock |
+| EMS_AI_MODEL | 비어 있으면 mock=deterministic-v1, anthropic=claude-sonnet-5-5; Ollama는 기존 설치 모델 명시 |
+| ANTHROPIC_API_KEY | 선택 비밀값. anthropic에서만 필요, 없으면503. 저장소/로그에 넣지 않는다 |
+| ANTHROPIC_BASE_URL | https://api.anthropic.com; 서버 운영 설정 |
+| OLLAMA_BASE_URL | http://host.docker.internal:11434 (Compose); 호스트 직접 실행은 http://localhost:11434 |
+| EMS_AI_TIMEOUT_MS | 30000, 1~30000 |
+| EMS_AI_MAX_TOKENS | 1024, 1~8192 |
+| EMS_AI_EMPLOYEE_SEARCH_ENABLED | true |
+| EMS_AI_EVALUATION_SUMMARY_ENABLED | true |
+| EMS_AI_POLICY_QA_ENABLED | true |
+
+루트 .env.example 취합은 문서QA 담당이다. 비밀 키 값이 아닌 변수 이름/설명만 공유한다. provider/model을 환경에 설정하고 docker compose up --build -d로 재생성한다. Claude 키는 명시적으로 제공된 환경변수로만 받고, 키를 자동 탐색하지 않는다. Ollama는 기존 호스트 서비스와 모델만 사용하며 모델 다운로드는 하지 않는다.
+질문500자, 평가20항목/코멘트12000자, 요청16KiB, 모델JSON64KiB/HTTP봉투128KiB를 제한한다. AI는 개인정보 자동 익명화나 의미 정확성을 보장하지 않으므로 원문과 인용을 확인한다. 서버 프로세스 밖으로 보내는 Anthropic/Ollama는 externalTransfer=true다.
+테스트: backend에서 .\gradlew.bat test integrationTest bootJar. 실제 Mock Compose 검증: 프로젝트 루트에서 py -3 backend/verification/phase4_compose_verify.py. 기존 로컬 검증 환경파일 backend/build/compose-smoke.env가 필요하며 이 파일은 Git에 넣지 않는다. 스크립트는 공유3306/8080/5173을 사용하므로 팀 간 사용 시간을 조율한다. 종료 시 down(-v 없음)으로 볼륨을 유지한다.
+제공자 확인: py -3 backend/verification/phase4_provider_smoke.py는 환경 키와 이미 설치된 Ollama만 확인한다. 실호출 가능할 때 합성 연결 테스트만 수행하고 원문 응답/키는 기록하지 않는다. Mock·어댑터 계약·실제 추론·Chromium·Claude 디자인 검수는 서로 다른 증거다. 최종 결과는 [개발일지](../docs/devlog/20261016-backend-phase4-ai.md)와 verification/20261016-phase4-*.json을 참조한다.
+
+4단계 최종 자동 검증(2026-10-16 19:46 KST): test/integrationTest/bootJar 성공, 단위141/MySQL73, 실패·오류·스킵0. Claude 키 부재와 호스트 Ollama 기존 서비스/모델 확인 불가로 실제 추론은 미실행이다. Mock MySQL/backend HTTP와 프론트/Chromium 검수는 분리한다. 자세한 증거와 인계는 4단계 개발일지를 참조한다.
+
+9단계 전체3서비스 재확인: 2026-10-16T21:01:36.905227+09:00 ~ 2026-10-16T21:04:49.989217+09:00; 최종 프론트 빌드·frontend200, Mock AI3기능/CORS, 유지DB보존·새DB시드·재시작·down/볼륨 유지를 확인했다. 기존 backend-only 증거는 보존했고 verification/20261016-phase4-compose-result.json의 additionalExecutions 및 full-compose-result.json에 별도 실행으로 남겼다. 프론트/백엔드 소스 식별은 full-source-manifest.json을 참조한다.

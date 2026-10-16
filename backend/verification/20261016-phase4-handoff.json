@@ -1,0 +1,40 @@
+{
+  "runningContainers": [],
+  "sharedPortsFree": true,
+  "sourceManifest": "20261016-phase4-source-manifest.json",
+  "scope": "Backend-only HTTP completed; frontend build failure reported separately; no frontend files changed",
+  "checkedAt": "2026-10-16T19:55:22.2342024+09:00",
+  "preservedVolumes": [
+    "ems-backend-3a-fresh-20261016133836_mysql_data",
+    "ems-backend-3b-final-20261016170043_mysql_data",
+    "ems-backend-3b-final-20261016190251_mysql_data",
+    "ems-backend-3b-fresh-20261016164924_mysql_data",
+    "ems-backend-ai-fresh-20261016195051_mysql_data",
+    "ems-backend-smoke_mysql_data",
+    "ems-docqa3a-fresh-20261016_mysql_data",
+    "ems-docqa3b-fresh-20261016_mysql_data",
+    "ems-docqa-fresh-20261016_mysql_data"
+  ],
+  "checkedPorts": [
+    3306,
+    8080,
+    5173
+  ],
+  "fullComposeHandoff": {
+    "sourceManifest": "20261016-phase4-full-source-manifest.json",
+    "runningContainers": [],
+    "checkedAt": "2026-10-16T21:05:57.6043627+09:00",
+    "fullExecution": "20261016-phase4-full-compose-result.json",
+    "preservedVolumes": [
+      "ems-backend-smoke_mysql_data",
+      "ems-backend-ai-full-fresh-20261016210136_mysql_data"
+    ],
+    "qaTable": "20261016-phase4-qa-handoff.md",
+    "checkedPorts": [
+      3306,
+      8080,
+      5173
+    ],
+    "sharedPortsFree": true
+  }
+}

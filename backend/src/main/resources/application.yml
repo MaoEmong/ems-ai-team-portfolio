@@ -26,3 +26,14 @@ ems:
     admin-login-id: ${ADMIN_LOGIN_ID}
     admin-password: ${ADMIN_INITIAL_PASSWORD}
     demo-admin-password: ${DEMO_ADMIN_INITIAL_PASSWORD:}
+
+  ai:
+    provider: ${EMS_AI_PROVIDER:mock}
+    model: ${EMS_AI_MODEL:}
+    timeout-ms: ${EMS_AI_TIMEOUT_MS:30000}
+    max-tokens: ${EMS_AI_MAX_TOKENS:1024}
+    anthropic-base-url: ${ANTHROPIC_BASE_URL:https://api.anthropic.com}
+    ollama-base-url: ${OLLAMA_BASE_URL:http://host.docker.internal:11434}
+    employee-search-enabled: ${EMS_AI_EMPLOYEE_SEARCH_ENABLED:true}
+    evaluation-summary-enabled: ${EMS_AI_EVALUATION_SUMMARY_ENABLED:true}
+    policy-qa-enabled: ${EMS_AI_POLICY_QA_ENABLED:true}
