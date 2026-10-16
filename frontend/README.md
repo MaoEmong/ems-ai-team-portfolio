@@ -1,6 +1,29 @@
 # EMS 프론트엔드
 
-React · TypeScript · Vite 기반 1·2단계 EMS. Node.js 24와 npm을 사용한다. API 계약은 `../docs/api/mvp-api.md`와 `../docs/api/phase2-api.md`를 따른다.
+## 3A 최종 인계 검증 (2026-10-16, KST)
+
+| 명령 | 실행 시각 | 최종 결과 |
+|---|---|---|
+| `npm run typecheck` | 15:36 | PASS |
+| `npm test` | 15:36:37 | 7파일97/97 PASS, 기존45개 포함 단일 실행 |
+| `npm run build` | 15:36 | PASS, ExcelJS 청크929.39kB 경고 |
+| `npx playwright test --reporter=list` | 15:37 | 5174 Chromium6/6 PASS: 기존2·2단계 양 화면2·3A 양 화면2 |
+
+Codex가 구현·테스트·재촬영을 맡았고 같은 Claude UIUX디자이너가24장을 직접 열어 재확인했다. 높음·중간 디자인 지적은0이며, 알려진 낮음7건은 근거·수용 주체·위험을 검수 문서§8에 명시했다. 재확인 이후 코드는 바꾸지 않아 위 수치가 현재 코드에 유효하다. 수정 전95개 결과나15:30대 대기 결과를 합산하지 않았다.
+
+목업 E2E는5174를 사용한다. 최초 기본 셸에서 webServer 응답이 멈췄으나 근본 원인은 확정되지 않았다. 승인 셸에서 `DEBUG=pw:webserver` 진단 시 Vite HTTP200·6/6·서버 종료를 확인했고 최종 실행 후5174 리스너도 없었다. 실제 Compose5173은 프론트 자체 검증에 사용하지 않았다.
+
+사원 이름·사번·부서·직급 표시는 `src/attendance.tsx`의 `EmployeeIdentity`가 기존 `GET /employees/{id}`를 사용한다. 정정 모달·월별 근태와 `src/leaves.tsx` 결재 필터에서 재사용하며 새 API는 없다. 미래 정정 제한의 계약 근거는 `../docs/api/phase3a-api.md`의 '입사일~오늘'·'미래불가'다. 화면에서 버튼을 숨겼다는 사실은 서버가 거절했다는 증거가 아니며 실제 거절·불변성은 문서QA가 확인한다.
+
+실제 백엔드 E2E는 **미실행(문서QA 담당)**이다. 실측 대비·스크린리더·실제 API 화면과 일부 상태 장면도 디자인 검수 미확인 범위다. 최종 근거는 `../docs/design/design-review-phase3a.md`, `../docs/adr/0204-notification-polling-and-account-isolation.md`, `../docs/devlog/20261016-frontend-phase3a.md`에 있다.
+
+추가 Git diff-check는 `src/api.ts`, `src/mock-phase2.ts`, `src/mock.ts`의 EOF 빈 줄3건으로 exit1이었다. 필수 실행 검증의 통과와 별개인 스타일 잔여이며, 알려진 낮음 디자인7건·ExcelJS 청크 경고와 함께 인계한다.
+
+3A에는 출퇴근·월별 근태·관리자 정정, 휴가 신청·잔액·결재, 앱 내 알림을 추가했다. 관리자도 '내 업무' 메뉴를 사용할 수 있다. 휴가 처리 버튼은 서버 allowedActions를 따르며 지각·조퇴·휴가와 연차 잔액은 서버 판정 값을 표시한다. PENDING 본인 취소는 시작일과 무관하게 가능하고, 승인된 휴가는 시작일 전에만 취소할 수 있다. 상세 정책·API는 `../docs/api/phase3a-api.md`를 따른다.
+
+알림은 보이는 탭에서30초마다, 화면 복귀·업무 처리 후 즉시 갱신한다. 계정 전환·로그아웃 시 요청과 캐시를 정리하고 이전 응답을 폐기한다. 알림 미리보기에는 신청·반려 사유를 넣지 않는다. 연차·근태는 법적 적합성을 검증하지 않은 포트폴리오 데모 정책이다. 3A 목업에도 실제 DB 잠금·트랜잭션 보증은 없으며 실제 백엔드 E2E는 문서QA가 별도로 수행한다.
+
+React · TypeScript · Vite 기반 1~3A단계 EMS. Node.js 24와 npm을 사용한다. API 계약은 `../docs/api/mvp-api.md`, `../docs/api/phase2-api.md`, `../docs/api/phase3a-api.md`를 따른다.
 
 ## 실행
 
@@ -41,7 +64,7 @@ npm run build
 npm audit
 ```
 
-브라우저 목업 E2E(관리자/일반 사원, 모바일 포함)는 다음으로 실행한다. Playwright가 목업 개발 서버를 5173 포트로 자동 시작하므로 해당 포트를 비워 둔다.
+브라우저 목업 E2E(관리자/일반 사원, 모바일 포함)는 다음으로 실행한다. Playwright가 목업 개발 서버를 5174 포트로 자동 시작하므로 해당 포트를 비워 둔다. 실제 Compose 프론트 5173과 분리한 검증 전용 포트이며 일반 개발 서버·Docker 포트는 기존 안내를 따른다.
 
 ```powershell
 npx playwright install chromium

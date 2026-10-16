@@ -4,12 +4,16 @@ export function auditTarget(item: AuditLog) {
   if (["EMPLOYEE_IMPORT", "EMPLOYEE_EXPORT"].includes(item.action))
     return "사원 · 여러 사원(개별 대상 없음)";
   return (
-    (item.targetLabel ? `${({EMPLOYEE:"사원", DEPARTMENT:"부서", POSITION:"직급"} as Record<string,string>)[item.targetType || ""] || "대상"} · ${item.targetLabel}` : "") ||
+    (item.targetLabel
+      ? `${({ EMPLOYEE: "사원", DEPARTMENT: "부서", POSITION: "직급" } as Record<string, string>)[item.targetType || ""] || "대상"} · ${item.targetLabel}`
+      : "") ||
     (
-      { EMPLOYEE: "사원", DEPARTMENT: "부서", POSITION: "직급" } as Record<
-        string,
-        string
-      >
+      {
+        EMPLOYEE: "사원",
+        DEPARTMENT: "부서",
+        POSITION: "직급",
+        LEAVE: "휴가",
+      } as Record<string, string>
     )[item.targetType || ""] ||
     "해당 없음"
   );

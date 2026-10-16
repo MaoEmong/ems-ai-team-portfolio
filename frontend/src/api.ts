@@ -24,7 +24,7 @@ export async function requestResponse(
     { ...options, headers },
   );
   if (!response.ok) {
-    if (response.status === 401) {
+    if (response.status === 401 && sessionStorage.getItem(TOKEN_KEY) === token) {
       sessionStorage.removeItem(TOKEN_KEY);
       window.dispatchEvent(new Event("ems:unauthorized"));
     }
@@ -49,3 +49,4 @@ export const send = <T>(path: string, method: string, body?: unknown) =>
     method,
     body: body === undefined ? undefined : JSON.stringify(body),
   });
+

@@ -17,6 +17,9 @@ import { Catalog } from "./catalog";
 import { Dashboard } from "./dashboard";
 import { ImportEmployees } from "./files";
 import { AuditLogs } from "./audit";
+import { Attendance } from "./attendance";
+import { Leaves, LeaveDetail } from "./leaves";
+import { NotificationBell } from "./notifications";
 function Login() {
   const auth = useAuth();
   const navigate = useNavigate();
@@ -97,20 +100,29 @@ function Layout() {
   const { user, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
-  const pageName =
-    pathname === "/dashboard"
-      ? "대시보드"
-      : pathname === "/audit-logs"
-        ? "감사 로그"
-        : pathname === "/employees/import"
-          ? "엑셀 가져오기"
-          : pathname.startsWith("/employees")
-            ? "사원 관리"
-            : pathname === "/departments"
-              ? "부서 관리"
-              : pathname === "/positions"
-                ? "직급 관리"
-                : "내 정보";
+  const pageName = pathname.startsWith("/my/attendance")
+    ? "출퇴근·근태"
+    : pathname === "/admin/attendance"
+      ? "근태 관리"
+      : pathname === "/my/leaves"
+        ? "내 휴가"
+        : pathname === "/admin/leaves"
+          ? "휴가 결재"
+          : pathname.startsWith("/leaves/")
+            ? "휴가 신청 상세"
+            : pathname === "/dashboard"
+              ? "대시보드"
+              : pathname === "/audit-logs"
+                ? "감사 로그"
+                : pathname === "/employees/import"
+                  ? "엑셀 가져오기"
+                  : pathname.startsWith("/employees")
+                    ? "사원 관리"
+                    : pathname === "/departments"
+                      ? "부서 관리"
+                      : pathname === "/positions"
+                        ? "직급 관리"
+                        : "내 정보";
   useEffect(() => {
     document.title = `${pageName} · EMS`;
     setMenuOpen(false);
@@ -140,8 +152,19 @@ function Layout() {
           className={menuOpen ? "is-open" : ""}
           aria-label="주 메뉴"
         >
+          <div role="group" aria-labelledby="my-work-label">
+            <p className="nav-group" id="my-work-label">
+              내 업무
+            </p>
+            <NavLink to="/my/attendance">출퇴근·근태</NavLink>
+            <NavLink to="/my/leaves">휴가 신청·내 휴가</NavLink>
+            <NavLink to="/me">내 정보</NavLink>
+          </div>
           {user?.role === "ADMIN" && (
             <>
+              <p className="nav-group">관리</p>
+              <NavLink to="/admin/attendance">근태 관리</NavLink>
+              <NavLink to="/admin/leaves">휴가 결재</NavLink>
               <NavLink to="/dashboard">대시보드</NavLink>
               <NavLink to="/employees">사원 관리</NavLink>
               <NavLink to="/departments">부서 관리</NavLink>
@@ -149,7 +172,6 @@ function Layout() {
               <NavLink to="/audit-logs">감사 로그</NavLink>
             </>
           )}
-          <NavLink to="/me">내 정보</NavLink>
         </nav>
         <div className="sidebar-bottom">
           {mockMode ? "합성 데이터 · 목업 모드" : "실제 API 모드"}
@@ -158,7 +180,10 @@ function Layout() {
       <div className="workspace">
         <header>
           <nav className="breadcrumb" aria-label="현재 위치">
-            <Link to="/">홈</Link> / {pageName}{/^\/employees\/\d+/.test(pathname) && <> / 사원 상세{pathname.endsWith("/edit") && " / 정보 수정"}</>}
+            <Link to="/">홈</Link> / {pathname.startsWith("/my/") ? "내 업무 / " : pathname.startsWith("/admin/") ? "관리 / " : pathname.startsWith("/leaves/") ? `${user?.role === "ADMIN" ? "관리" : "내 업무"} / ` : ""}{pageName}
+            {/^\/employees\/\d+/.test(pathname) && (
+              <> / 사원 상세{pathname.endsWith("/edit") && " / 정보 수정"}</>
+            )}
           </nav>
           <span>
             {user?.name}{" "}
@@ -166,6 +191,7 @@ function Layout() {
               {user?.role === "ADMIN" ? "관리자" : "일반 사원"}
             </small>
           </span>
+          <NotificationBell key={user?.id} />
           <button onClick={logout}>로그아웃</button>
         </header>
         <main className="content" id="main" tabIndex={-1}>
@@ -189,8 +215,13 @@ export function App() {
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/me" element={<EmployeeDetail self />} />
+          <Route path="/my/attendance" element={<Attendance />} />
+          <Route path="/my/leaves" element={<Leaves />} />
+          <Route path="/leaves/:id" element={<LeaveDetail />} />
           <Route path="/employees/:id" element={<EmployeeDetail />} />
           <Route element={<Guard admin />}>
+            <Route path="/admin/attendance" element={<Attendance admin />} />
+            <Route path="/admin/leaves" element={<Leaves admin />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/employees/import" element={<ImportEmployees />} />
             <Route path="/audit-logs" element={<AuditLogs />} />

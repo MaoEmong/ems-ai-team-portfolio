@@ -73,7 +73,7 @@ export interface AuditLog {
   occurredAt: string;
   actor: Pick<User, "id" | "employeeNo" | "name"> | null;
   action: string;
-  targetType: "EMPLOYEE" | "DEPARTMENT" | "POSITION" | null;
+  targetType: "EMPLOYEE" | "DEPARTMENT" | "POSITION" | "LEAVE" | null;
   targetId: number | null;
   targetLabel: string | null;
   success: boolean;

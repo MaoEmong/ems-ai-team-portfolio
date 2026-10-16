@@ -4,6 +4,11 @@ import type { AuditLog, Page } from "./types";
 import { ErrorNotice, Field, useResource } from "./ui";
 import { formatSeoul, seoulDateRange } from "./phase2-utils";
 export const actionLabels: Record<string, string> = {
+  ATTENDANCE_CORRECT: "근태 정정",
+  LEAVE_REQUEST: "휴가 신청",
+  LEAVE_APPROVE: "휴가 승인",
+  LEAVE_REJECT: "휴가 반려",
+  LEAVE_CANCEL: "휴가 취소",
   LOGIN_SUCCESS: "로그인 성공",
   LOGIN_FAILURE: "로그인 실패",
   EMPLOYEE_CREATE: "사원 등록",
@@ -230,6 +235,7 @@ export function AuditLogs() {
                 <option value="EMPLOYEE">사원</option>
                 <option value="DEPARTMENT">부서</option>
                 <option value="POSITION">직급</option>
+                <option value="LEAVE">휴가</option>
               </select>
             </Field>
             {input("targetId", "대상 ID", "number")}

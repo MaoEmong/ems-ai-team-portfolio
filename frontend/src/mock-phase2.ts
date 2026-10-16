@@ -6,11 +6,11 @@ export const fail = (code: string, status = 400, field?: string) => json({ code,
 export const seoulToday = () => new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
 export const validDate = (v: unknown): v is string => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && Number.isFinite(Date.parse(v)) && new Date(v).toISOString().slice(0, 10) === v;
 export const positiveId = (v: unknown) => typeof v === 'number' && Number.isSafeInteger(v) && v > 0;
-type Audit = Omit<AuditLog, 'actor'> & { actor: Pick<Employee, 'id' | 'employeeNo' | 'name'> | null };
+type Audit = Omit<AuditLog, 'actor' | 'targetType'> & { targetType: AuditLog['targetType'] | 'LEAVE'; actor: Pick<Employee, 'id' | 'employeeNo' | 'name'> | null };
 interface State { employees: Employee[]; departments: () => Department[]; positions: () => Position[]; passwords: Map<string, string>; beforeImportCommit?: () => Promise<void> }
 export const importHeaders = ['employeeNo', 'name', 'email', 'phone', 'hireDate', 'departmentId', 'positionId', 'role', 'initialPassword'];
 const exportHeaders = ['employeeNo', 'name', 'email', 'phone', 'hireDate', 'status', 'retireDate', 'departmentName', 'positionName', 'role'];
-const actions = ['LOGIN_SUCCESS', 'LOGIN_FAILURE', 'EMPLOYEE_CREATE', 'EMPLOYEE_UPDATE', 'EMPLOYEE_RETIRE', 'APPOINTMENT_CREATE', 'DEPARTMENT_CREATE', 'DEPARTMENT_UPDATE', 'DEPARTMENT_DELETE', 'POSITION_CREATE', 'POSITION_UPDATE', 'POSITION_DELETE', 'EMPLOYEE_IMPORT', 'EMPLOYEE_EXPORT'];
+const actions = ['LOGIN_SUCCESS', 'LOGIN_FAILURE', 'EMPLOYEE_CREATE', 'EMPLOYEE_UPDATE', 'EMPLOYEE_RETIRE', 'APPOINTMENT_CREATE', 'DEPARTMENT_CREATE', 'DEPARTMENT_UPDATE', 'DEPARTMENT_DELETE', 'POSITION_CREATE', 'POSITION_UPDATE', 'POSITION_DELETE', 'EMPLOYEE_IMPORT', 'EMPLOYEE_EXPORT', 'ATTENDANCE_CORRECT', 'LEAVE_REQUEST', 'LEAVE_APPROVE', 'LEAVE_REJECT', 'LEAVE_CANCEL'];
 export function page<T>(items: T[], q: URLSearchParams) {
   const p = Number(q.get('page') ?? 0), size = Number(q.get('size') ?? 20);
   if (!/^\d+$/.test(q.get('page') ?? '0') || !/^\d+$/.test(q.get('size') ?? '20') || !Number.isSafeInteger(p) || !Number.isSafeInteger(size) || size < 1 || size > 100) return fail('VALIDATION_ERROR');
@@ -32,20 +32,20 @@ function fileResponse(body: BodyInit, type: string, name: string) { return new R
 
 export function createPhase2(state: State) {
   const appointments: Appointment[] = [], audits: Audit[] = [];
-  function audit(actor: Employee | undefined, action: string, targetType: Audit['targetType'] = null, before: object | null = null, after: object | null = null, metadata: Record<string, unknown> = {}, success = true) {
+  function audit(actor: Employee | undefined, action: string, targetType: Audit['targetType'] = null, before: object | null = null, after: object | null = null, metadata: Record<string, unknown> = {}, success = true, targetOverride?: { id: number; label: string }) {
     const target = (after ?? before) as { id?: number; name?: string } | null;
     const snapshot = (value: object | null): Record<string, unknown> | null => {
       if (!value) return null;
-      const fields = targetType === 'EMPLOYEE' ? ['id', 'employeeNo', 'name', 'email', 'phone', 'hireDate', 'status', 'retireDate', 'department', 'position', 'role'] : targetType === 'DEPARTMENT' ? ['id', 'name', 'description'] : ['id', 'name', 'level'];
+      const fields = action === 'ATTENDANCE_CORRECT' ? ['checkIn', 'checkOut', 'corrected'] : targetType === 'LEAVE' ? ['id', 'employee', 'type', 'startDate', 'endDate', 'days', 'reason', 'status', 'rejectReason', 'decidedBy', 'decidedAt', 'cancelledBy', 'createdAt'] : targetType === 'EMPLOYEE' ? ['id', 'employeeNo', 'name', 'email', 'phone', 'hireDate', 'status', 'retireDate', 'department', 'position', 'role'] : targetType === 'DEPARTMENT' ? ['id', 'name', 'description'] : ['id', 'name', 'level'];
       const result = Object.fromEntries(Object.entries(value).filter(([key]) => fields.includes(key)));
-      if (targetType === 'EMPLOYEE') {
+      if (targetType === 'EMPLOYEE' && action !== 'ATTENDANCE_CORRECT') {
         const e = value as Employee;
         result.department = { id: e.department.id, name: e.department.name };
         result.position = { id: e.position.id, name: e.position.name, level: e.position.level };
       }
       return result;
     };
-    audits.push(clone({ id: audits.length + 1, occurredAt: new Date().toISOString(), actor: actor ? { id: actor.id, employeeNo: actor.employeeNo, name: actor.name } : null, action, targetType, targetId: target?.id ?? null, targetLabel: target?.name ?? null, success, before: snapshot(before), after: snapshot(after), metadata }) as Audit);
+    audits.push(clone({ id: audits.length + 1, occurredAt: new Date().toISOString(), actor: actor ? { id: actor.id, employeeNo: actor.employeeNo, name: actor.name } : null, action, targetType, targetId: targetOverride?.id ?? target?.id ?? null, targetLabel: targetOverride?.label ?? target?.name ?? null, success, before: snapshot(before), after: snapshot(after), metadata }) as Audit);
   }
   function history(id: number) { return appointments.filter(a => a.employeeId === id).sort((a, b) => b.effectiveDate.localeCompare(a.effectiveDate) || b.id - a.id); }
   function referenced(resource: string, id: number) { return appointments.some(a => resource === 'departments' ? a.fromDepartment.id === id || a.toDepartment.id === id : a.fromPosition.id === id || a.toPosition.id === id); }
@@ -86,7 +86,7 @@ export function createPhase2(state: State) {
     if (path === '/audit-logs' && method === 'GET') {
       const from = q.get('from'), to = q.get('to');
       const instant = (v: string) => /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?(?:Z|[+-]\d\d:\d\d)$/.test(v) && validDate(v.slice(0, 10)) && Number.isFinite(Date.parse(v));
-      if (['actorId', 'targetId'].some(k => q.has(k) && (!/^[1-9]\d*$/.test(q.get(k)!) || !positiveId(Number(q.get(k))))) || (q.has('targetType') && !['EMPLOYEE', 'DEPARTMENT', 'POSITION'].includes(q.get('targetType')!)) || (q.has('action') && !actions.includes(q.get('action')!)) || (q.has('success') && !['true', 'false'].includes(q.get('success')!)) || (from !== null && !instant(from)) || (to !== null && !instant(to)) || (from && to && Date.parse(from) > Date.parse(to))) return fail('VALIDATION_ERROR');
+      if (['actorId', 'targetId'].some(k => q.has(k) && (!/^[1-9]\d*$/.test(q.get(k)!) || !positiveId(Number(q.get(k))))) || (q.has('targetType') && !['EMPLOYEE', 'DEPARTMENT', 'POSITION', 'LEAVE'].includes(q.get('targetType')!)) || (q.has('action') && !actions.includes(q.get('action')!)) || (q.has('success') && !['true', 'false'].includes(q.get('success')!)) || (from !== null && !instant(from)) || (to !== null && !instant(to)) || (from && to && Date.parse(from) > Date.parse(to))) return fail('VALIDATION_ERROR');
       return page(audits.filter(a => (!q.has('actorId') || a.actor?.id === Number(q.get('actorId'))) && (!q.has('targetId') || a.targetId === Number(q.get('targetId'))) && (!q.has('targetType') || a.targetType === q.get('targetType')) && (!q.has('action') || a.action === q.get('action')) && (!q.has('success') || a.success === (q.get('success') === 'true')) && (!from || Date.parse(a.occurredAt) >= Date.parse(from)) && (!to || Date.parse(a.occurredAt) < Date.parse(to))).sort((a, b) => b.occurredAt.localeCompare(a.occurredAt) || b.id - a.id), q);
     }
     if (path === '/employees/export' && method === 'GET') {
@@ -185,4 +185,5 @@ export function createPhase2(state: State) {
   }
   return { handle, audit, history, referenced };
 }
+
 
