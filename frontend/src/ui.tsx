@@ -41,6 +41,9 @@ export function useResource<T>(path: string) {
 export function ErrorNotice({ error }: { error: unknown }) {
   if (!error) return null;
   const workErrors: Record<string, string> = {
+    DEPARTMENT_CYCLE: "부서 자신이나 하위 부서를 상위 부서로 지정할 수 없습니다. 최신 부서 계층을 확인하세요.",
+    DEPARTMENT_HAS_CHILDREN: "하위 부서가 있어 삭제할 수 없습니다. 부서 계층을 먼저 확인하세요.",
+    JOB_TITLE_IN_USE: "현재 사원 또는 과거 발령 이력에서 참조하는 직책은 삭제할 수 없습니다.",
     LEAVE_START_PASSED: "시작일이 지나 승인하거나 이미 시작한 승인 휴가를 취소할 수 없습니다. 최신 상태를 다시 확인하세요.",
     LEAVE_ALREADY_PROCESSED: "이미 처리된 신청입니다. 최신 상태를 다시 확인하세요.",
     INSUFFICIENT_LEAVE_BALANCE: "사용 가능한 연차가 부족합니다. 잔액을 다시 확인하세요.",

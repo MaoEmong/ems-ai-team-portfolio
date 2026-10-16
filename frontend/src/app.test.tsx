@@ -204,7 +204,8 @@ describe("사원 폼과 관리 흐름", () => {
       within(screen.getByRole("dialog")).getByRole("button", { name: "삭제" }),
     );
     await waitFor(() => expect(screen.queryByText("변경 부서")).toBeNull());
-    await user.click(screen.getByRole("button", { name: "삭제 개발팀" }));
+    // The 3B seed makes 개발팀 the parent; use the occupied leaf to exercise IN_USE.
+    await user.click(screen.getByRole("button", { name: "삭제 운영팀" }));
     await user.click(
       within(screen.getByRole("dialog")).getByRole("button", { name: "삭제" }),
     );

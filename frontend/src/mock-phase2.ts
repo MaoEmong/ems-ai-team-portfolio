@@ -1,3 +1,4 @@
+import type { AuditTarget3B, MockEmployee, MockJobTitle } from './mock-phase3b';
 import type { Appointment, AuditLog, DashboardData, Department, Employee, Position } from './types';
 
 export const clone = <T>(value: T): T => JSON.parse(JSON.stringify(value));
@@ -6,11 +7,12 @@ export const fail = (code: string, status = 400, field?: string) => json({ code,
 export const seoulToday = () => new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
 export const validDate = (v: unknown): v is string => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && Number.isFinite(Date.parse(v)) && new Date(v).toISOString().slice(0, 10) === v;
 export const positiveId = (v: unknown) => typeof v === 'number' && Number.isSafeInteger(v) && v > 0;
-type Audit = Omit<AuditLog, 'actor' | 'targetType'> & { targetType: AuditLog['targetType'] | 'LEAVE'; actor: Pick<Employee, 'id' | 'employeeNo' | 'name'> | null };
-interface State { employees: Employee[]; departments: () => Department[]; positions: () => Position[]; passwords: Map<string, string>; beforeImportCommit?: () => Promise<void> }
+type Audit = Omit<AuditLog, 'actor' | 'targetType'> & { targetType: AuditLog['targetType'] | 'LEAVE' | AuditTarget3B; actor: Pick<Employee, 'id' | 'employeeNo' | 'name'> | null };
+type Appointment3B = Appointment & { fromJobTitle: { id: number; name: string } | null; toJobTitle: { id: number; name: string } | null };
+interface State { jobTitles?: () => MockJobTitle[]; clock?: () => Date; employees: Employee[]; departments: () => Department[]; positions: () => Position[]; passwords: Map<string, string>; beforeImportCommit?: () => Promise<void> }
 export const importHeaders = ['employeeNo', 'name', 'email', 'phone', 'hireDate', 'departmentId', 'positionId', 'role', 'initialPassword'];
 const exportHeaders = ['employeeNo', 'name', 'email', 'phone', 'hireDate', 'status', 'retireDate', 'departmentName', 'positionName', 'role'];
-const actions = ['LOGIN_SUCCESS', 'LOGIN_FAILURE', 'EMPLOYEE_CREATE', 'EMPLOYEE_UPDATE', 'EMPLOYEE_RETIRE', 'APPOINTMENT_CREATE', 'DEPARTMENT_CREATE', 'DEPARTMENT_UPDATE', 'DEPARTMENT_DELETE', 'POSITION_CREATE', 'POSITION_UPDATE', 'POSITION_DELETE', 'EMPLOYEE_IMPORT', 'EMPLOYEE_EXPORT', 'ATTENDANCE_CORRECT', 'LEAVE_REQUEST', 'LEAVE_APPROVE', 'LEAVE_REJECT', 'LEAVE_CANCEL'];
+const actions = ['LOGIN_SUCCESS', 'LOGIN_FAILURE', 'EMPLOYEE_CREATE', 'EMPLOYEE_UPDATE', 'EMPLOYEE_RETIRE', 'APPOINTMENT_CREATE', 'DEPARTMENT_CREATE', 'DEPARTMENT_UPDATE', 'DEPARTMENT_DELETE', 'POSITION_CREATE', 'POSITION_UPDATE', 'POSITION_DELETE', 'EMPLOYEE_IMPORT', 'EMPLOYEE_EXPORT', 'ATTENDANCE_CORRECT', 'LEAVE_REQUEST', 'LEAVE_APPROVE', 'LEAVE_REJECT', 'LEAVE_CANCEL', 'JOB_TITLE_CREATE', 'JOB_TITLE_UPDATE', 'JOB_TITLE_DELETE', 'SALARY_SETTING_UPDATE', 'PAYROLL_GENERATE', 'PAYROLL_RECALCULATE', 'PAYROLL_CONFIRM', 'EVALUATION_CYCLE_CREATE', 'EVALUATION_CYCLE_UPDATE', 'EVALUATION_CYCLE_OPEN', 'EVALUATION_CYCLE_CLOSE', 'EVALUATION_SELF_SAVE', 'EVALUATION_SELF_SUBMIT', 'EVALUATION_MANAGER_SAVE', 'EVALUATION_MANAGER_FINALIZE', 'EVALUATION_REASSIGN'];
 export function page<T>(items: T[], q: URLSearchParams) {
   const p = Number(q.get('page') ?? 0), size = Number(q.get('size') ?? 20);
   if (!/^\d+$/.test(q.get('page') ?? '0') || !/^\d+$/.test(q.get('size') ?? '20') || !Number.isSafeInteger(p) || !Number.isSafeInteger(size) || size < 1 || size > 100) return fail('VALIDATION_ERROR');
@@ -31,24 +33,25 @@ async function xlsxResponse(book: Awaited<ReturnType<typeof workbook>>, name: st
 function fileResponse(body: BodyInit, type: string, name: string) { return new Response(body, { headers: { 'Content-Type': type, 'Content-Disposition': `attachment; filename*=UTF-8''${encodeURIComponent(name)}`, 'Access-Control-Expose-Headers': 'Content-Disposition' } }); }
 
 export function createPhase2(state: State) {
-  const appointments: Appointment[] = [], audits: Audit[] = [];
+  const appointments: Appointment3B[] = [], audits: Audit[] = [];
   function audit(actor: Employee | undefined, action: string, targetType: Audit['targetType'] = null, before: object | null = null, after: object | null = null, metadata: Record<string, unknown> = {}, success = true, targetOverride?: { id: number; label: string }) {
     const target = (after ?? before) as { id?: number; name?: string } | null;
     const snapshot = (value: object | null): Record<string, unknown> | null => {
       if (!value) return null;
-      const fields = action === 'ATTENDANCE_CORRECT' ? ['checkIn', 'checkOut', 'corrected'] : targetType === 'LEAVE' ? ['id', 'employee', 'type', 'startDate', 'endDate', 'days', 'reason', 'status', 'rejectReason', 'decidedBy', 'decidedAt', 'cancelledBy', 'createdAt'] : targetType === 'EMPLOYEE' ? ['id', 'employeeNo', 'name', 'email', 'phone', 'hireDate', 'status', 'retireDate', 'department', 'position', 'role'] : targetType === 'DEPARTMENT' ? ['id', 'name', 'description'] : ['id', 'name', 'level'];
+      const fields = action === 'ATTENDANCE_CORRECT' ? ['checkIn', 'checkOut', 'corrected'] : targetType === 'LEAVE' ? ['id', 'employee', 'type', 'startDate', 'endDate', 'days', 'reason', 'status', 'rejectReason', 'decidedBy', 'decidedAt', 'cancelledBy', 'createdAt'] : targetType === 'EMPLOYEE' ? ['id', 'employeeNo', 'name', 'email', 'phone', 'hireDate', 'status', 'retireDate', 'department', 'position', 'jobTitle', 'role'] : targetType === 'DEPARTMENT' ? ['id', 'name', 'description', 'parentId'] : targetType === 'JOB_TITLE' ? ['id', 'name', 'description'] : targetType === 'PAYROLL' ? ['status'] : ['EVALUATION', 'EVALUATION_CYCLE'].includes(targetType ?? '') ? ['state'] : targetType === 'SALARY_SETTING' ? [] : ['id', 'name', 'level'];
+      if (targetType === 'SALARY_SETTING') return null;
       const result = Object.fromEntries(Object.entries(value).filter(([key]) => fields.includes(key)));
       if (targetType === 'EMPLOYEE' && action !== 'ATTENDANCE_CORRECT') {
-        const e = value as Employee;
+        const e = value as MockEmployee;
         result.department = { id: e.department.id, name: e.department.name };
-        result.position = { id: e.position.id, name: e.position.name, level: e.position.level };
+        result.position = { id: e.position.id, name: e.position.name, level: e.position.level }; result.jobTitle = e.jobTitle ? { id: e.jobTitle.id, name: e.jobTitle.name } : null;
       }
       return result;
     };
     audits.push(clone({ id: audits.length + 1, occurredAt: new Date().toISOString(), actor: actor ? { id: actor.id, employeeNo: actor.employeeNo, name: actor.name } : null, action, targetType, targetId: targetOverride?.id ?? target?.id ?? null, targetLabel: targetOverride?.label ?? target?.name ?? null, success, before: snapshot(before), after: snapshot(after), metadata }) as Audit);
   }
   function history(id: number) { return appointments.filter(a => a.employeeId === id).sort((a, b) => b.effectiveDate.localeCompare(a.effectiveDate) || b.id - a.id); }
-  function referenced(resource: string, id: number) { return appointments.some(a => resource === 'departments' ? a.fromDepartment.id === id || a.toDepartment.id === id : a.fromPosition.id === id || a.toPosition.id === id); }
+  function referenced(resource: string, id: number) { return appointments.some(a => resource === 'departments' ? a.fromDepartment.id === id || a.toDepartment.id === id : resource === 'job-titles' ? a.fromJobTitle?.id === id || a.toJobTitle?.id === id : a.fromPosition.id === id || a.toPosition.id === id); }
   async function handle(url: URL, method: string, body: Record<string, unknown>, raw: BodyInit | null | undefined, me: Employee): Promise<Response | undefined> {
     const path = url.pathname.replace('/api/v1', ''), q = url.searchParams;
     const match = path.match(/^\/employees\/(\d+)\/appointments$/);
@@ -62,15 +65,24 @@ export function createPhase2(state: State) {
       if (method === 'GET') return page(prior, q);
       if (method !== 'POST') return fail('NOT_FOUND', 404);
       if (e.status === 'RETIRED') return fail('EMPLOYEE_RETIRED', 409);
-      if (!validDate(body.effectiveDate) || body.effectiveDate < e.hireDate || body.effectiveDate > seoulToday() || (prior[0] && body.effectiveDate < prior[0].effectiveDate)) return fail('VALIDATION_ERROR', 400, 'effectiveDate');
+      if (!validDate(body.effectiveDate) || body.effectiveDate < e.hireDate || body.effectiveDate > (state.clock ? new Date(state.clock().getTime() + 9 * 3600000).toISOString().slice(0, 10) : seoulToday()) || (prior[0] && body.effectiveDate < prior[0].effectiveDate)) return fail('VALIDATION_ERROR', 400, 'effectiveDate');
       if (typeof body.reason !== 'string' || !body.reason.trim() || body.reason.length > 200) return fail('VALIDATION_ERROR', 400, 'reason');
       if (![body.departmentId, body.positionId].every(positiveId)) return fail('VALIDATION_ERROR');
       const department = state.departments().find(d => d.id === body.departmentId), position = state.positions().find(p => p.id === body.positionId);
       if (!department || !position) return fail('NOT_FOUND', 404);
-      if (department.id === e.department.id && position.id === e.position.id) return fail('VALIDATION_ERROR');
+      const employee3b = e as MockEmployee;
+      if (body.changeJobTitle !== undefined && typeof body.changeJobTitle !== 'boolean') return fail('VALIDATION_ERROR', 400, 'changeJobTitle');
+      let jobTitle = employee3b.jobTitle ?? null;
+      if (body.changeJobTitle === true) {
+        if (body.jobTitleId != null && !positiveId(body.jobTitleId)) return fail('VALIDATION_ERROR', 400, 'jobTitleId');
+        const catalog = body.jobTitleId == null ? null : state.jobTitles?.().find(t => t.id === body.jobTitleId);
+        if (body.jobTitleId != null && !catalog) return fail('NOT_FOUND', 404);
+        jobTitle = catalog ? { id: catalog.id, name: catalog.name } : null;
+      }
+      if (department.id === e.department.id && position.id === e.position.id && (jobTitle?.id ?? null) === (employee3b.jobTitle?.id ?? null)) return fail('VALIDATION_ERROR');
       const before = clone(e), actor = clone(me);
-      const a: Appointment = clone({ id: appointments.length + 1, employeeId: e.id, effectiveDate: body.effectiveDate, fromDepartment: { id: e.department.id, name: e.department.name }, toDepartment: { id: department.id, name: department.name }, fromPosition: e.position, toPosition: position, reason: body.reason, createdBy: { id: me.id, name: me.name }, createdAt: new Date().toISOString() });
-      e.department = department; e.position = position; appointments.push(a);
+      const a: Appointment3B = clone({ id: appointments.length + 1, employeeId: e.id, effectiveDate: body.effectiveDate, fromDepartment: { id: e.department.id, name: e.department.name }, toDepartment: { id: department.id, name: department.name }, fromPosition: e.position, toPosition: position, fromJobTitle: employee3b.jobTitle ? { id: employee3b.jobTitle.id, name: employee3b.jobTitle.name } : null, toJobTitle: jobTitle, reason: body.reason, createdBy: { id: me.id, name: me.name }, createdAt: new Date().toISOString() });
+      e.department = department; e.position = position; employee3b.jobTitle = jobTitle; appointments.push(a);
       audit(actor, 'APPOINTMENT_CREATE', 'EMPLOYEE', before, e, { appointmentId: a.id });
       return json(a, 201);
     }
@@ -86,7 +98,7 @@ export function createPhase2(state: State) {
     if (path === '/audit-logs' && method === 'GET') {
       const from = q.get('from'), to = q.get('to');
       const instant = (v: string) => /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?(?:Z|[+-]\d\d:\d\d)$/.test(v) && validDate(v.slice(0, 10)) && Number.isFinite(Date.parse(v));
-      if (['actorId', 'targetId'].some(k => q.has(k) && (!/^[1-9]\d*$/.test(q.get(k)!) || !positiveId(Number(q.get(k))))) || (q.has('targetType') && !['EMPLOYEE', 'DEPARTMENT', 'POSITION', 'LEAVE'].includes(q.get('targetType')!)) || (q.has('action') && !actions.includes(q.get('action')!)) || (q.has('success') && !['true', 'false'].includes(q.get('success')!)) || (from !== null && !instant(from)) || (to !== null && !instant(to)) || (from && to && Date.parse(from) > Date.parse(to))) return fail('VALIDATION_ERROR');
+      if (['actorId', 'targetId'].some(k => q.has(k) && (!/^[1-9]\d*$/.test(q.get(k)!) || !positiveId(Number(q.get(k))))) || (q.has('targetType') && !['EMPLOYEE', 'DEPARTMENT', 'POSITION', 'LEAVE', 'JOB_TITLE', 'SALARY_SETTING', 'PAYROLL', 'EVALUATION_CYCLE', 'EVALUATION'].includes(q.get('targetType')!)) || (q.has('action') && !actions.includes(q.get('action')!)) || (q.has('success') && !['true', 'false'].includes(q.get('success')!)) || (from !== null && !instant(from)) || (to !== null && !instant(to)) || (from && to && Date.parse(from) > Date.parse(to))) return fail('VALIDATION_ERROR');
       return page(audits.filter(a => (!q.has('actorId') || a.actor?.id === Number(q.get('actorId'))) && (!q.has('targetId') || a.targetId === Number(q.get('targetId'))) && (!q.has('targetType') || a.targetType === q.get('targetType')) && (!q.has('action') || a.action === q.get('action')) && (!q.has('success') || a.success === (q.get('success') === 'true')) && (!from || Date.parse(a.occurredAt) >= Date.parse(from)) && (!to || Date.parse(a.occurredAt) < Date.parse(to))).sort((a, b) => b.occurredAt.localeCompare(a.occurredAt) || b.id - a.id), q);
     }
     if (path === '/employees/export' && method === 'GET') {
@@ -140,7 +152,7 @@ export function createPhase2(state: State) {
       if (number > 1 && row.actualCellCount) rows.push({ number, values: importHeaders.map((_, i) => row.getCell(i + 1).value) });
     });
     if (!rows.length || rows.length > 1000) return failure('IMPORT_INVALID_FILE');
-    const pending: { employee: Employee; password: string }[] = [];
+    const pending: { employee: MockEmployee; password: string }[] = [];
     // Exact string equality is deliberately a mock approximation, not MySQL collation.
     const numbers = new Set(state.employees.map(e => e.employeeNo)), emails = new Set(state.employees.map(e => e.email));
     for (const row of rows) {
@@ -168,7 +180,7 @@ export function createPhase2(state: State) {
         const value = data[field];
         if (typeof value === 'string') { if (set.has(value)) add(field, '이미 사용 중인 값입니다.'); set.add(value); }
       }
-      if (!errors.some(e => e.row === row.number)) pending.push({ employee: { id: 0, employeeNo: data.employeeNo as string, name: data.name as string, email: data.email as string, phone: data.phone as string, hireDate: data.hireDate as string, role: data.role as Employee['role'], status: 'ACTIVE', retireDate: null, department: department!, position: position! }, password: data.initialPassword as string });
+      if (!errors.some(e => e.row === row.number)) pending.push({ employee: { id: 0, employeeNo: data.employeeNo as string, name: data.name as string, email: data.email as string, phone: data.phone as string, hireDate: data.hireDate as string, role: data.role as Employee['role'], status: 'ACTIVE', retireDate: null, jobTitle: null, department: department!, position: position! }, password: data.initialPassword as string });
     }
     if (errors.length) return failure('IMPORT_VALIDATION_ERROR');
     // Browser task boundary permits another request to commit between validation
@@ -185,5 +197,3 @@ export function createPhase2(state: State) {
   }
   return { handle, audit, history, referenced };
 }
-
-

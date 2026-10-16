@@ -1,20 +1,14 @@
 import type { AuditLog } from "./types";
+const targetLabels: Record<string,string> = { EMPLOYEE: "사원", DEPARTMENT: "부서", POSITION: "직급", LEAVE: "휴가", JOB_TITLE: "직책", SALARY_SETTING: "급여 설정", PAYROLL: "월 급여", EVALUATION_CYCLE: "평가 주기", EVALUATION: "평가서" };
 export function auditTarget(item: AuditLog) {
   if (item.action.startsWith("LOGIN_")) return "해당 없음";
   if (["EMPLOYEE_IMPORT", "EMPLOYEE_EXPORT"].includes(item.action))
     return "사원 · 여러 사원(개별 대상 없음)";
   return (
     (item.targetLabel
-      ? `${({ EMPLOYEE: "사원", DEPARTMENT: "부서", POSITION: "직급" } as Record<string, string>)[item.targetType || ""] || "대상"} · ${item.targetLabel}`
+      ? `${targetLabels[item.targetType || ""] || "대상"} · ${item.targetLabel}`
       : "") ||
-    (
-      {
-        EMPLOYEE: "사원",
-        DEPARTMENT: "부서",
-        POSITION: "직급",
-        LEAVE: "휴가",
-      } as Record<string, string>
-    )[item.targetType || ""] ||
+    targetLabels[item.targetType || ""] ||
     "해당 없음"
   );
 }

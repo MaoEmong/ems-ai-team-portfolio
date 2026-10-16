@@ -10,6 +10,7 @@ export interface Department {
   id: number;
   name: string;
   description?: string;
+  parentId?: number | null;
 }
 export interface Position {
   id: number;
@@ -17,6 +18,7 @@ export interface Position {
   level: number;
 }
 export interface Employee extends User {
+  jobTitle?: { id: number; name: string } | null;
   email: string;
   phone: string;
   hireDate: string;
@@ -57,6 +59,8 @@ export interface DashboardData {
   monthly: { month: string; hires: number; retirements: number }[];
 }
 export interface Appointment {
+  fromJobTitle?: { id: number; name: string } | null;
+  toJobTitle?: { id: number; name: string } | null;
   id: number;
   employeeId: number;
   effectiveDate: string;
@@ -73,7 +77,7 @@ export interface AuditLog {
   occurredAt: string;
   actor: Pick<User, "id" | "employeeNo" | "name"> | null;
   action: string;
-  targetType: "EMPLOYEE" | "DEPARTMENT" | "POSITION" | "LEAVE" | null;
+  targetType: "EMPLOYEE" | "DEPARTMENT" | "POSITION" | "LEAVE" | "JOB_TITLE" | "SALARY_SETTING" | "PAYROLL" | "EVALUATION_CYCLE" | "EVALUATION" | null;
   targetId: number | null;
   targetLabel: string | null;
   success: boolean;

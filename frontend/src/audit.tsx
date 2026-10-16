@@ -4,6 +4,22 @@ import type { AuditLog, Page } from "./types";
 import { ErrorNotice, Field, useResource } from "./ui";
 import { formatSeoul, seoulDateRange } from "./phase2-utils";
 export const actionLabels: Record<string, string> = {
+  JOB_TITLE_CREATE: "직책 등록",
+  JOB_TITLE_UPDATE: "직책 수정",
+  JOB_TITLE_DELETE: "직책 삭제",
+  SALARY_SETTING_UPDATE: "급여 설정 변경",
+  PAYROLL_GENERATE: "월 급여 생성",
+  PAYROLL_RECALCULATE: "월 급여 재계산",
+  PAYROLL_CONFIRM: "월 급여 확정",
+  EVALUATION_CYCLE_CREATE: "평가 주기 등록",
+  EVALUATION_CYCLE_UPDATE: "평가 주기 수정",
+  EVALUATION_CYCLE_OPEN: "평가 주기 개시",
+  EVALUATION_CYCLE_CLOSE: "평가 주기 마감",
+  EVALUATION_SELF_SAVE: "자기평가 저장",
+  EVALUATION_SELF_SUBMIT: "자기평가 제출",
+  EVALUATION_MANAGER_SAVE: "관리자 평가 저장",
+  EVALUATION_FINALIZE: "평가 확정",
+  EVALUATION_REASSIGN: "평가자 재배정",
   ATTENDANCE_CORRECT: "근태 정정",
   LEAVE_REQUEST: "휴가 신청",
   LEAVE_APPROVE: "휴가 승인",
@@ -25,6 +41,13 @@ export const actionLabels: Record<string, string> = {
   EMPLOYEE_EXPORT: "사원 내보내기",
 };
 const labels: Record<string, string> = {
+  jobTitle: "직책",
+  jobTitleId: "직책 ID",
+  parentId: "상위 부서 ID",
+  month: "대상 월",
+  count: "건수",
+  cycleId: "평가 주기 ID",
+  reviewerId: "평가자 ID",
   employeeNo: "사번",
   name: "이름",
   email: "이메일",
@@ -236,6 +259,11 @@ export function AuditLogs() {
                 <option value="DEPARTMENT">부서</option>
                 <option value="POSITION">직급</option>
                 <option value="LEAVE">휴가</option>
+                <option value="JOB_TITLE">직책</option>
+                <option value="SALARY_SETTING">급여 설정</option>
+                <option value="PAYROLL">월 급여</option>
+                <option value="EVALUATION_CYCLE">평가 주기</option>
+                <option value="EVALUATION">평가서</option>
               </select>
             </Field>
             {input("targetId", "대상 ID", "number")}

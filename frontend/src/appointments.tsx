@@ -6,15 +6,18 @@ import type {
   Page,
   Position,
 } from "./types";
-import { send } from "./api";
+import { ApiError, send } from "./api";
 import { ErrorNotice, Field, Modal, fieldErrors, useResource } from "./ui";
 import { seoulToday, formatSeoul } from "./phase2-utils";
+import type { JobTitle } from "./types-phase3b";
 export function validateAppointment(
   form: {
     effectiveDate: string;
     departmentId: string;
     positionId: string;
     reason: string;
+    changeJobTitle?: boolean;
+    jobTitleId?: string;
   },
   employee: Employee,
   lastDate: string,
@@ -25,9 +28,10 @@ export function validateAppointment(
   if (!form.positionId) errors.positionId = "직급을 선택하세요.";
   if (
     Number(form.departmentId) === employee.department.id &&
-    Number(form.positionId) === employee.position.id
+    Number(form.positionId) === employee.position.id &&
+    !(form.changeJobTitle && (form.jobTitleId || "") !== String(employee.jobTitle?.id || ""))
   )
-    errors.departmentId = "부서나 직급 중 하나 이상을 바꿔야 합니다.";
+    errors.departmentId = "부서·직급·직책 중 하나 이상을 바꿔야 합니다.";
   if (
     !form.effectiveDate ||
     form.effectiveDate < employee.hireDate ||
@@ -45,19 +49,24 @@ function AppointmentForm({
   lastDate,
   onClose,
   onSaved,
+  onConflict,
 }: {
   employee: Employee;
   lastDate: string;
   onClose: () => void;
   onSaved: () => void;
+  onConflict: () => void;
 }) {
   const departments = useResource<Department[]>("/departments");
   const positions = useResource<Position[]>("/positions");
+  const jobTitles = useResource<JobTitle[]>("/job-titles");
   const [form, setForm] = useState({
     departmentId: String(employee.department.id),
     positionId: String(employee.position.id),
     effectiveDate: seoulToday(),
     reason: "",
+    changeJobTitle: false,
+    jobTitleId: employee.jobTitle?.id ? String(employee.jobTitle.id) : "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [error, setError] = useState<unknown>();
@@ -77,11 +86,13 @@ function AppointmentForm({
         ...form,
         departmentId: Number(form.departmentId),
         positionId: Number(form.positionId),
+        jobTitleId: form.changeJobTitle ? (form.jobTitleId ? Number(form.jobTitleId) : null) : undefined,
       });
       onSaved();
     } catch (e) {
       setError(e);
       setErrors(fieldErrors(e));
+      if (e instanceof ApiError && e.status === 409) onConflict();
     } finally {
       lock.current = false;
       setBusy(false);
@@ -91,12 +102,17 @@ function AppointmentForm({
     <Modal titleId="appointment-title" busy={busy} onClose={onClose}>
       <h2 id="appointment-title">발령 등록</h2>
       <p>
-        {employee.name} ({employee.employeeNo})의 부서·직급을 변경합니다.
+        {employee.name} ({employee.employeeNo})의 부서·직급·직책을 변경합니다.
       </p>
       <div className="readonly-block">
         현재 소속: {employee.department.name} · {employee.position.name}
       </div>
       <form noValidate onSubmit={submit}>
+        <label className="checkbox-label"><input type="checkbox" checked={form.changeJobTitle} onChange={e=>setForm(f=>({...f,changeJobTitle:e.target.checked}))}/>직책 변경</label>
+        {form.changeJobTitle && <Field name="appointmentJobTitle" label="발령 후 직책"><select id="appointmentJobTitle" value={form.jobTitleId} onChange={e=>setForm(f=>({...f,jobTitleId:e.target.value}))}><option value="">직책 해제</option>{jobTitles.data?.map(t=><option key={t.id} value={t.id}>{t.name}</option>)}</select></Field>}
+        <p className="muted">현재 직책: {employee.jobTitle?.name || "없음"}. 변경을 선택하지 않으면 유지합니다. 직책은 관리자 권한을 부여하지 않습니다.</p>
+        <p className="notice info">변경 요약: {departments.data?.find(d=>d.id===Number(form.departmentId))?.name || employee.department.name} · {positions.data?.find(p=>p.id===Number(form.positionId))?.name || employee.position.name} · 직책 {form.changeJobTitle ? jobTitles.data?.find(t=>t.id===Number(form.jobTitleId))?.name || "해제" : `${employee.jobTitle?.name || "없음"} (유지)`}</p>
+        <ErrorNotice error={jobTitles.error}/>
         <ErrorNotice error={error || departments.error || positions.error} />
         <div className="form-grid">
           <Field
@@ -185,6 +201,7 @@ function AppointmentForm({
               positions.loading ||
               !!departments.error ||
               !!positions.error
+              || (form.changeJobTitle && (jobTitles.loading || !!jobTitles.error))
             }
             aria-busy={busy}
           >
@@ -274,6 +291,7 @@ export function Appointments({
                       <th>부서</th>
                       <th>직급</th>
                       <th>사유</th>
+                      <th>직책</th>
                       <th>등록자</th>
                     </tr>
                   </thead>
@@ -317,6 +335,7 @@ export function Appointments({
                         <td data-label="사유" className="wrap">
                           {a.reason}
                         </td>
+                        <td data-label="직책"><span>{a.fromJobTitle?.name || "—"} → {a.toJobTitle?.name || "—"}</span></td>
                         <td data-label="등록자">{a.createdBy.name}</td>
                       </tr>
                     ))}
@@ -343,13 +362,14 @@ export function Appointments({
           </>
         )
       )}
-      <p className="muted">부서·직급 이름과 등록자는 발령 당시 정보입니다.</p>
+      <p className="muted">부서·직급·직책 이름과 등록자는 발령 당시 정보입니다. 과거 직책의 —는 기록되지 않은 정보이며 당시 직책을 복원했다는 뜻이 아닙니다.</p>
       {open && (
         <AppointmentForm
           employee={employee}
           lastDate={latest.data?.content[0]?.effectiveDate || employee.hireDate}
           onClose={() => setOpen(false)}
           onSaved={saved}
+          onConflict={() => { result.reload(); latest.reload(); onSaved(); }}
         />
       )}
     </section>

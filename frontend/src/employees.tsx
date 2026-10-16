@@ -280,6 +280,7 @@ export function EmployeeDetail({ self = false }: { self?: boolean }) {
             ["전화번호", e.phone || "—"],
             ["부서", e.department.name],
             ["직급", e.position.name],
+            ["직책", e.jobTitle?.name || "없음"],
             ["입사일", e.hireDate],
             ["재직 상태", statusLabels[e.status]],
             ["퇴사일", e.retireDate || "—"],

@@ -2,16 +2,28 @@ import { useState, type FormEvent } from "react";
 import { send } from "./api";
 import { ErrorNotice, Field, Modal, fieldErrors, useResource } from "./ui";
 import type { Department, Position } from "./types";
-export function Catalog({ kind }: { kind: "departments" | "positions" }) {
+export function Catalog({ kind }: { kind: "departments" | "positions" | "job-titles" }) {
   const department = kind === "departments";
-  const title = department ? "부서" : "직급";
+  const position = kind === "positions";
+  const title = department ? "부서" : position ? "직급" : "직책";
   const result = useResource<(Department & Partial<Position>)[]>(`/${kind}`);
   const [editing, setEditing] = useState<number | null>(null);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [level, setLevel] = useState("1");
+  const [parentId, setParentId] = useState("");
   const [error, setError] = useState<unknown>();
   const [errors, setErrors] = useState<Record<string, string>>({});
+  function invalidParent(id: number) {
+    const seen = new Set<number>();
+    let current = result.data?.find(d => d.id === id);
+    while (current && !seen.has(current.id)) {
+      if (current.id === editing) return true;
+      seen.add(current.id);
+      current = result.data?.find(d => d.id === current?.parentId);
+    }
+    return false;
+  }
   const [busy, setBusy] = useState(false);
   const [deleting, setDeleting] = useState<{ id: number; name: string } | null>(
     null,
@@ -21,6 +33,7 @@ export function Catalog({ kind }: { kind: "departments" | "positions" }) {
     setName("");
     setDescription("");
     setLevel("1");
+    setParentId("");
     setErrors({});
     setError(undefined);
   };
@@ -28,7 +41,9 @@ export function Catalog({ kind }: { kind: "departments" | "positions" }) {
     event.preventDefault();
     const validation: Record<string, string> = {};
     if (!name.trim()) validation.name = "이름을 입력하세요.";
-    if (!department && (!level.trim() || !Number.isInteger(Number(level))))
+    if (name.length > 100) validation.name = "이름은 100자 이하로 입력하세요.";
+    if (!position && description.length > 500) validation.description = "설명은 500자 이하로 입력하세요.";
+    if (position && (!level.trim() || !Number.isInteger(Number(level))))
       validation.level = "정수를 입력하세요.";
     setErrors(validation);
     setError(undefined);
@@ -38,13 +53,14 @@ export function Catalog({ kind }: { kind: "departments" | "positions" }) {
       await send(
         `/${kind}${editing ? `/${editing}` : ""}`,
         editing ? "PUT" : "POST",
-        department ? { name, description } : { name, level: Number(level) },
+        position ? { name, level: Number(level) } : { name, description, ...(department ? {parentId: parentId ? Number(parentId) : null} : {}) },
       );
       reset();
       result.reload();
     } catch (e) {
       setError(e);
       setErrors(fieldErrors(e));
+      result.reload();
     } finally {
       setBusy(false);
     }
@@ -60,6 +76,7 @@ export function Catalog({ kind }: { kind: "departments" | "positions" }) {
       result.reload();
     } catch (e) {
       setError(e);
+      result.reload();
     } finally {
       setBusy(false);
     }
@@ -73,6 +90,7 @@ export function Catalog({ kind }: { kind: "departments" | "positions" }) {
           <p className="muted">
             현재 소속 사원(퇴사자 포함) 또는 과거 발령 이력에서 참조하는 {title}
             는 삭제할 수 없습니다.
+            {department && " 하위 부서가 있는 부서도 삭제할 수 없습니다."}
           </p>
         </div>
       </div>
@@ -90,7 +108,8 @@ export function Catalog({ kind }: { kind: "departments" | "positions" }) {
                   <thead>
                     <tr>
                       <th>이름</th>
-                      <th>{department ? "설명" : "정렬 순서"}</th>
+                      <th>{position ? "정렬 순서" : "설명"}</th>
+                      {department && <th>상위 부서</th>}
                       <th>관리</th>
                     </tr>
                   </thead>
@@ -99,8 +118,9 @@ export function Catalog({ kind }: { kind: "departments" | "positions" }) {
                       <tr key={item.id}>
                         <td>{item.name}</td>
                         <td>
-                          {department ? item.description || "—" : item.level}
+                          {position ? item.level : item.description || "—"}
                         </td>
+                        {department && <td>{result.data?.find(d=>d.id===item.parentId)?.name || "최상위"}</td>}
                         <td>
                           <div className="actions">
                             <button
@@ -110,6 +130,7 @@ export function Catalog({ kind }: { kind: "departments" | "positions" }) {
                                 setName(item.name);
                                 setDescription(item.description || "");
                                 setLevel(String(item.level ?? 1));
+                                setParentId(item.parentId ? String(item.parentId) : "");
                                 setErrors({});
                                 setError(undefined);
                               }}
@@ -152,7 +173,7 @@ export function Catalog({ kind }: { kind: "departments" | "positions" }) {
               onChange={(e) => setName(e.target.value)}
             />
           </Field>
-          {department ? (
+          {!position ? (
             <Field name="description" label="설명" error={errors.description}>
               <textarea
                 id="description"
@@ -172,6 +193,7 @@ export function Catalog({ kind }: { kind: "departments" | "positions" }) {
               />
             </Field>
           )}
+          {department && <Field name="parentDepartment" label="상위 부서" error={errors.parentId}><select id="parentDepartment" value={parentId} disabled={busy} onChange={e=>setParentId(e.target.value)}><option value="">최상위 부서</option>{result.data?.map(d=><option key={d.id} value={d.id} disabled={invalidParent(d.id)}>{d.name}{invalidParent(d.id) ? " (자기 또는 하위 부서)" : ""}</option>)}</select><small className="muted">상위를 바꾸면 하위 부서도 함께 옮겨집니다. 사원의 소속은 바뀌지 않으며 순환 여부는 서버가 최종 확인합니다.</small></Field>}
           <div className="actions">
             {editing && (
               <button type="button" disabled={busy} onClick={reset}>

@@ -1,0 +1,302 @@
+{
+  "contract": {
+    "file": "docs/api/phase3b-api.md",
+    "version": "v1.1",
+    "sha256": "9A56EAD34B8E4B8134FBD3A8E92B4D0F3FCFAFAF22495EC0D5ACB20AA6F0B3B2"
+  },
+  "actor": "Codex frontend lead",
+  "date": "2026-10-16",
+  "tests": {
+    "command": "npm test",
+    "start": "17:52:05 KST",
+    "files": 10,
+    "passed": 166,
+    "failed": 0,
+    "baselineTestsIncluded": 97
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "timeWindow": "17:52–17:53 KST",
+    "passed": true
+  },
+  "build": {
+    "command": "npm run build",
+    "timeWindow": "17:52–17:53 KST",
+    "passed": true,
+    "warning": "Existing ExcelJS chunk >500 kB"
+  },
+  "browser": {
+    "command": "npx playwright test --reporter=list",
+    "timeWindow": "17:52–17:53 KST",
+    "port": 5174,
+    "passed": 8,
+    "failed": 0,
+    "durationSeconds": 29.3,
+    "coverage": "baseline 2, phase2 2, phase3a 2, phase3b desktop/mobile 2"
+  },
+  "design": {
+    "reviewer": "Claude UIUX designer",
+    "document": "docs/design/design-review-phase3b.md",
+    "finalSection": 10,
+    "remainingHigh": 0,
+    "remainingMedium": 0,
+    "reviewedSnapshot": "17:47:32–44 KST",
+    "recaptureIdenticalSha256Count": 63
+  },
+  "actualBackendE2E": "NOT RUN; document QA owns integration",
+  "composeUsed": false,
+  "screenshotHashes": [
+    {
+      "name": "desktop-cycle-close-dialog.png",
+      "hash": "CC9A2941055A73D6369720E9F4775E8F488542DED515BFD26672FF67FADBB5F6"
+    },
+    {
+      "name": "desktop-department-hierarchy.png",
+      "hash": "7A160C5F217527A974400C52A85498603EB76FDAE5EEE236B50FC62BC910A104"
+    },
+    {
+      "name": "desktop-evaluation-confirm.png",
+      "hash": "DEB403BCCB362E4FEC49506AA2C1F15DDDE942E40F43EB0AE002E3B045F1DA49"
+    },
+    {
+      "name": "desktop-evaluation-create.png",
+      "hash": "959E6FFFA7998A21B29D9620E3A46F35006E02054BD7CF38F94E3149169915D8"
+    },
+    {
+      "name": "desktop-evaluation-cycles.png",
+      "hash": "86CEA482F246FDA75AABA36174DF36C71BF80F808C265963867B3EF3CC412098"
+    },
+    {
+      "name": "desktop-evaluation-draft.png",
+      "hash": "ED2CB45475AC32DA9ECDDD1C68366A0930A9114D72CF64377CF1ED002BC0CFD7"
+    },
+    {
+      "name": "desktop-evaluation-open.png",
+      "hash": "ED62C4482F03D1E2F6D4D3487C092F3BC68506B4017589AC1CF1318F116AEF2C"
+    },
+    {
+      "name": "desktop-evaluation-result.png",
+      "hash": "A59B2DF81E9290B6C7F4BF818683017E9B305242FC46DC02962B9A4B8ED27A51"
+    },
+    {
+      "name": "desktop-job-title-appointment-actions.png",
+      "hash": "0D79FD72B4E4ECA9D2A7EBD2C6B5F63AD6DC98FF040650DDFC0FDBD71D740B0A"
+    },
+    {
+      "name": "desktop-job-title-appointment.png",
+      "hash": "10129D8B79FBDF12DD8FDD21AB83AF82840B08D1F145A4B9362318367437C512"
+    },
+    {
+      "name": "desktop-job-title-history.png",
+      "hash": "46A82620AE4084C8A60555CA630DE1AD836107D1515FFE84EF4ED3EFA2F69BEE"
+    },
+    {
+      "name": "desktop-job-titles.png",
+      "hash": "4A7F97312E3B5E6AD36AF6D9EC3216A1DC0E442E457601AA97B583C66E573AB4"
+    },
+    {
+      "name": "desktop-manager-evaluation.png",
+      "hash": "0A6B0E493F8297274B2758F8EFF3F77A5A69D7FC761B246ED1C8C991B94E9FDB"
+    },
+    {
+      "name": "desktop-my-evaluations.png",
+      "hash": "E5D300E66D5F05358E8672D48B88A60F6C69591FA3BEDB59700F1838ECC5477B"
+    },
+    {
+      "name": "desktop-my-payslip-list.png",
+      "hash": "EF23314EC8C747BECA94124F4DE7BEED23507831BE76692E05AF72A4829E5316"
+    },
+    {
+      "name": "desktop-my-payslip.png",
+      "hash": "E748A8FB5FB4338A25BF3AE30D692DCF025A963B82DF145C4BE034CDD24D5130"
+    },
+    {
+      "name": "desktop-my-result.png",
+      "hash": "1C700582929CD4E4EB2EC41026F521C0B679F3C22DA5EC527167617D02579558"
+    },
+    {
+      "name": "desktop-organization-tree.png",
+      "hash": "01E604C5B8F91C98073546D243B640354C2A96E1034B46F054830E107C252497"
+    },
+    {
+      "name": "desktop-organization.png",
+      "hash": "799956A967D111E8CF45B44DD8F5A57C0CB36C1B85EEA8AC61E3A7ABE8CB5EF6"
+    },
+    {
+      "name": "desktop-payroll-confirm-active.png",
+      "hash": "0A6A038BB6D229585862F2530E95ED500B608EDA42D3E4F13FD1188D60A6AC19"
+    },
+    {
+      "name": "desktop-payroll-confirm.png",
+      "hash": "5177B7144DC70F333530B1481656312A822AECC995FB59BA79B32FFE652F95C7"
+    },
+    {
+      "name": "desktop-payroll-confirmed-card.png",
+      "hash": "433E17DD88799B40A7140608F181FA2F21EDB4E32B90CA1CF26726046BEBDDE4"
+    },
+    {
+      "name": "desktop-payroll-confirmed.png",
+      "hash": "66FAFEBDE365B7067FD2EC79E862D2EDD3B6E5EF41AC2276D7D1EFA3C3F5C26A"
+    },
+    {
+      "name": "desktop-payroll-draft-card.png",
+      "hash": "A294A90CC061651DE45CCA64C2D280C3FEC400755D2FE956AF0000CB67986186"
+    },
+    {
+      "name": "desktop-payroll-draft.png",
+      "hash": "7B38E6FCAD4C3A5FBA83465D8BC55E9C4DB745DCBC132BA8DC5AE60B5B725CB7"
+    },
+    {
+      "name": "desktop-payroll-list.png",
+      "hash": "C5BD0D511ECC9492D6D06909115EC0AF3DF43B5E6E3448A28C76D749DEFDBEE8"
+    },
+    {
+      "name": "desktop-recalculate-confirm.png",
+      "hash": "1623BD0FE850C108CF663839584953DBDE357F5FFA988859F433A4016C93CFC2"
+    },
+    {
+      "name": "desktop-reviewer-dialog.png",
+      "hash": "6B669EFDAB1277130543FFFEEA5F6C44FC3AF6E85A472FD79E26B46A3359CAB4"
+    },
+    {
+      "name": "desktop-salary-settings.png",
+      "hash": "C8AF34769C4337D4F1303B3C6F6D753059B7AE7A0B8BBC1B53A9F55F3A9977F1"
+    },
+    {
+      "name": "desktop-self-evaluation.png",
+      "hash": "E661790F7026660999331FD075E4B64ADD32CBE008E4433E0FF9B438E84F0B32"
+    },
+    {
+      "name": "desktop-self-submitted.png",
+      "hash": "D04D1F524A077E478CB2270B6028AB22BB4338971BB300A3F3A956AD86B30F6E"
+    },
+    {
+      "name": "mobile-cycle-close-dialog.png",
+      "hash": "7E17103E44B7030555DEA1F7F435EB716E990A616D0D141CB631C6FCDD2BE427"
+    },
+    {
+      "name": "mobile-department-hierarchy.png",
+      "hash": "BFBB35481D7D941301C65B87040438F9E284023E370EBDE68B52197C186C6F06"
+    },
+    {
+      "name": "mobile-evaluation-confirm.png",
+      "hash": "B80A9C068B357708BB674385E6CBE6858EC84A36AA4C6539324CC3B5192A57E0"
+    },
+    {
+      "name": "mobile-evaluation-create.png",
+      "hash": "EDA8607004701AEA0644690E97D6BD29DAC2CA9DB5456C83C3F70FCD10F5BCF3"
+    },
+    {
+      "name": "mobile-evaluation-cycles.png",
+      "hash": "36766D70C006C9310B71FFC63304673AF9D2D97C623C73E6DF53916412BB852D"
+    },
+    {
+      "name": "mobile-evaluation-draft.png",
+      "hash": "C60A84C2316E8BCB204F2CB334CFDAF6E174B1D43BE4AA820753789E3CA3B2D3"
+    },
+    {
+      "name": "mobile-evaluation-open.png",
+      "hash": "9D945719536FD6FBA0AE06198DA4304B7DB3C10AB7D274C3EFECBEF924587EF1"
+    },
+    {
+      "name": "mobile-evaluation-result.png",
+      "hash": "2886A4132099BB56ED4744B4676882E7187C57FB47AB27EEF01D311BEFAA89E3"
+    },
+    {
+      "name": "mobile-job-title-appointment-actions.png",
+      "hash": "9868DD7A8DB29DA491ACDC34485B63A78E7AE89ED48135DDF02B69863AD3EFAF"
+    },
+    {
+      "name": "mobile-job-title-appointment.png",
+      "hash": "A25243B6C8897101315472B0AA7AF0AD4A690323A1D4A1AB4127040410BD8C46"
+    },
+    {
+      "name": "mobile-job-title-history.png",
+      "hash": "C6256C85660D8FDE9E85F7AD870F7D362F7228694A6117C24749DC62AC040F95"
+    },
+    {
+      "name": "mobile-job-titles.png",
+      "hash": "ED1342ECE494365A211B62B965ACD3584CB7C9BA4437274F951254EE7DB3488D"
+    },
+    {
+      "name": "mobile-manager-evaluation.png",
+      "hash": "B6C96082BDB04828A5C61FE6E1F989C696791C18B27246FE9C774838D94FCF52"
+    },
+    {
+      "name": "mobile-my-evaluations.png",
+      "hash": "77660168CC40A1C27D7A163ED63AFE045B78CF08F03767A9A24040E810F6CACB"
+    },
+    {
+      "name": "mobile-my-payslip-list.png",
+      "hash": "F7B68FD89526BE5CFEB5712E9D18F99B40297E7E590380618E675ED8A9697DA7"
+    },
+    {
+      "name": "mobile-my-payslip.png",
+      "hash": "931B2AEEB9F155B85CE869F42D42ABEAA9897490F188842F4013D675EC88D5C8"
+    },
+    {
+      "name": "mobile-my-result.png",
+      "hash": "1C9F0F9E110F75330E3E159402A01FC93DB2ED42A8D79AF68CF7A4958911F08E"
+    },
+    {
+      "name": "mobile-organization-360.png",
+      "hash": "DEAD99AE5E5E25378AF4DB6740F1A873F177EB12EAAAA663269973B4A6111847"
+    },
+    {
+      "name": "mobile-organization-tree.png",
+      "hash": "E4820545B6EA47060C45E7E9E7C7AF3F66BF18CCC84B4B75F18E316E045697A3"
+    },
+    {
+      "name": "mobile-organization.png",
+      "hash": "8F79917294054D58BA6D3646730573B414C5D1C47526B4BEDC852B73C061DFE2"
+    },
+    {
+      "name": "mobile-payroll-confirm-active.png",
+      "hash": "C2A6F21504A2742C3D2AF252BD2ACB3F7475BE47A7526310F8C4EEEC7D8599B1"
+    },
+    {
+      "name": "mobile-payroll-confirm.png",
+      "hash": "8869E1F23554808D58D38B6CD5EECF260B866A104F9848D8A87E8EFC57DFA4AD"
+    },
+    {
+      "name": "mobile-payroll-confirmed-card.png",
+      "hash": "841400EDFBA592E94DA967EA192BAAAFFCD32AC5F340DCCB1A9B49D022B34E74"
+    },
+    {
+      "name": "mobile-payroll-confirmed.png",
+      "hash": "21D7AEF40C112058A590B1F7161F58B8A49780BFC4FEAF230DC484528D83C6D8"
+    },
+    {
+      "name": "mobile-payroll-draft-card.png",
+      "hash": "3B1DE57A3C709CDE9E50FF612F958CFAFBF2AA6C2419CF8C617ED73C925797F2"
+    },
+    {
+      "name": "mobile-payroll-draft.png",
+      "hash": "B2AAC951F6A9AB7E595C5E8A7784A5EDA4E98CC9C1E6ED0C6F4BDEBBAA9D0E50"
+    },
+    {
+      "name": "mobile-payroll-list.png",
+      "hash": "442FEA90E8F20C5BD9511E1C9C185A649968D55BAEB3B89B44274F5EDFDFEF5C"
+    },
+    {
+      "name": "mobile-recalculate-confirm.png",
+      "hash": "D1C7AF20500CD2AA8F705B71CEC46D2F229C7E4DBE4F4E2328CF3B99B5E84C21"
+    },
+    {
+      "name": "mobile-reviewer-dialog.png",
+      "hash": "ADF0FE8023011D731B8E2A52675DFB7ADCA291BB276EDF043F0D96DEDBC56FCE"
+    },
+    {
+      "name": "mobile-salary-settings.png",
+      "hash": "174B1232307DF9873EDCBC3589B0B8BA0DC94A34DDB6F94F85AF4BCC31488801"
+    },
+    {
+      "name": "mobile-self-evaluation.png",
+      "hash": "5F9A10C487F13DAC268DBA9BFE619376BBC9E526624B0D43ABBF7D1A8A973F85"
+    },
+    {
+      "name": "mobile-self-submitted.png",
+      "hash": "DB05CC03CA8080C2BED153AA638585C706EE818A81963B78F67F908CF9167B00"
+    }
+  ]
+}

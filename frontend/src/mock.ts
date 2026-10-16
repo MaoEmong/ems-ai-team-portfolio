@@ -1,22 +1,26 @@
+import { createPhase3b, type MockDepartment, type MockEmployee, type MockJobTitle } from './mock-phase3b';
 import { createPhase3a } from './mock-phase3a';
 import type { Department, Employee, Position } from './types';
 import { clone, createPhase2, fail, filteredEmployees, json, page, positiveId, validDate } from './mock-phase2';
 
-let departments: Department[] = [
-  { id: 1, name: '개발팀', description: '서비스 개발' },
-  { id: 2, name: '운영팀', description: '서비스 운영' },
+let departments: MockDepartment[] = [
+  { id: 1, name: '개발팀', description: '서비스 개발', parentId: null },
+  { id: 2, name: '운영팀', description: '서비스 운영', parentId: 1 },
 ];
 let positions: Position[] = [{ id: 1, name: '사원', level: 1 }, { id: 2, name: '매니저', level: 2 }];
-const employees: Employee[] = Array.from({ length: 31 }, (_, i) => ({
+const employees: MockEmployee[] = Array.from({ length: 31 }, (_, i) => ({
   id: i + 1, employeeNo: i === 0 ? 'admin' : `EMP${String(i).padStart(3, '0')}`,
   name: i === 0 ? '데모 관리자' : `테스트 사원 ${i}`, role: i === 0 || i === 30 ? 'ADMIN' : 'EMPLOYEE',
   email: `demo${i}@example.test`, phone: '010-0000-0000', hireDate: '2026-01-01', status: 'ACTIVE',
-  retireDate: null, department: departments[i % 2], position: positions[i % 2],
+  retireDate: null, jobTitle: null, department: departments[i % 2], position: positions[i % 2],
 }));
+const jobTitles: MockJobTitle[] = [{ id: 1, name: '팀장', description: '합성 직책' }, { id: 2, name: '파트장', description: '합성 직책' }];
+employees[0].jobTitle = { id: 1, name: jobTitles[0].name };
 const passwords = new Map(employees.map(e => [e.employeeNo, 'demo1234!']));
 const sessions = new Map<string, { id: number; expires: number }>();
-const phase2 = createPhase2({ employees, departments: () => departments, positions: () => positions, passwords });
+const phase2 = createPhase2({ employees, departments: () => departments, positions: () => positions, passwords, jobTitles: () => jobTitles });
 const phase3a = createPhase3a({ employees, audit: (actor, action, targetType, before, after, metadata, target) => phase2.audit(actor, action, targetType, before, after, metadata, true, target) });
+const phase3b = createPhase3b({ employees, departments: () => departments, jobTitles, departmentInUse: id => employees.some(e => e.department.id === id) || phase2.referenced('departments', id), jobTitleInUse: id => phase2.referenced('job-titles', id), audit: (actor, action, targetType, before, after, metadata, target) => phase2.audit(actor, action, targetType, before, after, metadata, true, target), seed: true });
 const created = (data: { id: number }, resource: string) => {
   const response = json(data, 201); response.headers.set('Location', `/api/v1/${resource}/${data.id}`); return response;
 };
@@ -51,6 +55,8 @@ export async function mockFetch(input: string | URL | Request, init: RequestInit
   const me = employees.find(e => e.id === session?.id);
   if (!session || session.expires <= Date.now() || !me || me.status === 'RETIRED') return json({ code: 'UNAUTHORIZED', message: '아이디 또는 비밀번호를 확인하세요.', fieldErrors: [] }, 401);
   if (path === '/auth/me' && method === 'GET') return json({ id: me.id, employeeNo: me.employeeNo, name: me.name, role: me.role });
+  const phase3bResponse = await phase3b.handle(url, method, body, me);
+  if (phase3bResponse) return phase3bResponse;
   const phase3Response = await phase3a.handle(url, method, body, me);
   if (phase3Response) return phase3Response;
   const phaseResponse = await phase2.handle(url, method, body, raw, me);
@@ -72,7 +78,7 @@ export async function mockFetch(input: string | URL | Request, init: RequestInit
       const last = phase2.history(id)[0];
       if (!validDate(body.retireDate) || body.retireDate < employee.hireDate || (last && body.retireDate < last.effectiveDate)) return fail('VALIDATION_ERROR', 400, 'retireDate');
       const before = clone(employee), actor = clone(me);
-      employee.status = 'RETIRED'; employee.retireDate = body.retireDate;
+      employee.status = 'RETIRED'; employee.retireDate = body.retireDate; employee.jobTitle = null;
       phase3a.retire(employee, actor);
       phase2.audit(actor, 'EMPLOYEE_RETIRE', 'EMPLOYEE', before, employee);
       return json(employee);
@@ -92,6 +98,7 @@ export async function mockFetch(input: string | URL | Request, init: RequestInit
       if (method === 'POST' && (typeof body.initialPassword !== 'string' || new TextEncoder().encode(body.initialPassword).length > 72)) return fail('VALIDATION_ERROR', 400, 'initialPassword');
       for (const field of ['departmentId', 'positionId']) if (body[field] != null && !positiveId(body[field])) return fail('VALIDATION_ERROR', 400, field);
       if (employee) {
+        if (body.jobTitleId != null && (!positiveId(body.jobTitleId) || body.jobTitleId !== (employee.jobTitle?.id ?? null))) return fail('APPOINTMENT_REQUIRED', 409);
         const leaveHireDateError = phase3a.hireDateError(employee.id, body.hireDate);
         if (leaveHireDateError) return leaveHireDateError;
         if ((body.departmentId != null && body.departmentId !== employee.department.id) || (body.positionId != null && body.positionId !== employee.position.id)) return fail('APPOINTMENT_REQUIRED', 409);
@@ -110,7 +117,7 @@ export async function mockFetch(input: string | URL | Request, init: RequestInit
         phase2.audit(actor, 'EMPLOYEE_UPDATE', 'EMPLOYEE', before, employee);
         return json(employee);
       }
-      const e: Employee = { ...data, id: Math.max(0, ...employees.map(e => e.id)) + 1, employeeNo: body.employeeNo, status: 'ACTIVE', retireDate: null };
+      const e: MockEmployee = { ...data, id: Math.max(0, ...employees.map(e => e.id)) + 1, employeeNo: body.employeeNo, status: 'ACTIVE', retireDate: null, jobTitle: null };
       employees.push(e); passwords.set(e.employeeNo, body.initialPassword);
       phase2.audit(me, 'EMPLOYEE_CREATE', 'EMPLOYEE', null, e);
       return created(e, resource);
@@ -147,6 +154,3 @@ export async function mockFetch(input: string | URL | Request, init: RequestInit
   }
   return fail('NOT_FOUND', 404);
 }
-
-
-

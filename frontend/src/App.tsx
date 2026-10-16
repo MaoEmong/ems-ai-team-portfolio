@@ -20,6 +20,9 @@ import { AuditLogs } from "./audit";
 import { Attendance } from "./attendance";
 import { Leaves, LeaveDetail } from "./leaves";
 import { NotificationBell } from "./notifications";
+import { Organization } from "./organization";
+import { SalarySettings, PayrollList, PayrollMonthDetail, MyPayslips, PayslipDetail } from "./payroll";
+import { EvaluationCycles, EvaluationCycleCreate, EvaluationCycleDetail, EvaluationList, AssignedEvaluations, EvaluationDetail } from "./evaluations";
 function Login() {
   const auth = useAuth();
   const navigate = useNavigate();
@@ -100,7 +103,16 @@ function Layout() {
   const { user, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
-  const pageName = pathname.startsWith("/my/attendance")
+  const group = pathname.startsWith("/admin/") || ["/job-titles","/departments","/positions","/dashboard","/audit-logs"].includes(pathname) || pathname.startsWith("/employees") ? "관리" : "내 업무";
+  const pageName = pathname === "/organization" ? "조직도"
+    : pathname === "/job-titles" ? "직책 관리"
+    : pathname.startsWith("/admin/payroll") ? "데모 급여 관리"
+    : pathname.startsWith("/my/payslips") ? "내 급여명세서"
+    : pathname.startsWith("/admin/reviews") ? "평가 주기 관리"
+    : pathname.startsWith("/evaluations/") ? "평가서"
+    : pathname.startsWith("/my/evaluations") ? "내 평가"
+    : pathname.startsWith("/assigned-evaluations") ? "담당 평가"
+    : pathname.startsWith("/my/attendance")
     ? "출퇴근·근태"
     : pathname === "/admin/attendance"
       ? "근태 관리"
@@ -159,6 +171,9 @@ function Layout() {
             <NavLink to="/my/attendance">출퇴근·근태</NavLink>
             <NavLink to="/my/leaves">휴가 신청·내 휴가</NavLink>
             <NavLink to="/me">내 정보</NavLink>
+            <NavLink to="/organization">조직도</NavLink>
+            <NavLink to="/my/payslips">내 급여명세서</NavLink>
+            <NavLink to="/my/evaluations">내 평가</NavLink>
           </div>
           {user?.role === "ADMIN" && (
             <>
@@ -169,6 +184,10 @@ function Layout() {
               <NavLink to="/employees">사원 관리</NavLink>
               <NavLink to="/departments">부서 관리</NavLink>
               <NavLink to="/positions">직급 관리</NavLink>
+              <NavLink to="/job-titles">직책 관리</NavLink>
+              <NavLink to="/admin/payroll">데모 급여 관리</NavLink>
+              <NavLink to="/admin/reviews">평가 주기 관리</NavLink>
+              <NavLink to="/assigned-evaluations">담당 평가</NavLink>
               <NavLink to="/audit-logs">감사 로그</NavLink>
             </>
           )}
@@ -180,7 +199,7 @@ function Layout() {
       <div className="workspace">
         <header>
           <nav className="breadcrumb" aria-label="현재 위치">
-            <Link to="/">홈</Link> / {pathname.startsWith("/my/") ? "내 업무 / " : pathname.startsWith("/admin/") ? "관리 / " : pathname.startsWith("/leaves/") ? `${user?.role === "ADMIN" ? "관리" : "내 업무"} / ` : ""}{pageName}
+            <Link to="/">홈</Link> / {group} / {pageName}
             {/^\/employees\/\d+/.test(pathname) && (
               <> / 사원 상세{pathname.endsWith("/edit") && " / 정보 수정"}</>
             )}
@@ -215,11 +234,24 @@ export function App() {
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/me" element={<EmployeeDetail self />} />
+          <Route path="/organization" element={<Organization />} />
+          <Route path="/my/payslips" element={<MyPayslips />} />
+          <Route path="/my/payslips/:id" element={<PayslipDetail />} />
+          <Route path="/my/evaluations" element={<EvaluationList />} />
+          <Route path="/evaluations/:id" element={<EvaluationDetail />} />
           <Route path="/my/attendance" element={<Attendance />} />
           <Route path="/my/leaves" element={<Leaves />} />
           <Route path="/leaves/:id" element={<LeaveDetail />} />
           <Route path="/employees/:id" element={<EmployeeDetail />} />
           <Route element={<Guard admin />}>
+            <Route path="/assigned-evaluations" element={<AssignedEvaluations />} />
+            <Route path="/admin/payroll" element={<PayrollList />} />
+            <Route path="/admin/payroll/settings" element={<SalarySettings />} />
+            <Route path="/admin/payroll/:month" element={<PayrollMonthDetail />} />
+            <Route path="/admin/reviews" element={<EvaluationCycles />} />
+            <Route path="/admin/reviews/new" element={<EvaluationCycleCreate />} />
+            <Route path="/admin/reviews/:id" element={<EvaluationCycleDetail />} />
+            <Route path="/job-titles" element={<Catalog kind="job-titles" key="job-titles" />} />
             <Route path="/admin/attendance" element={<Attendance admin />} />
             <Route path="/admin/leaves" element={<Leaves admin />} />
             <Route path="/dashboard" element={<Dashboard />} />
