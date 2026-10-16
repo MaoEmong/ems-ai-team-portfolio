@@ -1,0 +1,24 @@
+{
+  "startedAt": "2026-10-16T13:38:36.902632+09:00",
+  "legacyProject": "ems-backend-smoke",
+  "freshProject": "ems-backend-3a-fresh-20261016133836",
+  "legacy": {
+    "fromVersion": "2",
+    "toVersion": "3",
+    "counts": "43\t43\t3\t49",
+    "businessChecksumsUnchanged": true
+  },
+  "legacyHttp": "PASS",
+  "frontendAndCors": "200",
+  "freshSeed": {
+    "employees": 31,
+    "accounts": 31,
+    "retired": 5,
+    "defaultHttpList": 26,
+    "demo001Role": "ADMIN"
+  },
+  "freshHttp": "PASS",
+  "restartPreservesData": true,
+  "finishedAt": "2026-10-16T13:41:58.639569+09:00",
+  "downVolumesPreserved": true
+}

@@ -39,6 +39,8 @@ class Errors {
    field=m.getPath().get(0).getFieldName();
   return api(ApiException.invalid(field,"JSON 형식 또는 값이 올바르지 않습니다."));
  }
+ @ExceptionHandler(org.springframework.web.bind.MissingServletRequestParameterException.class)
+ ResponseEntity<ErrorBody> missingParameter(org.springframework.web.bind.MissingServletRequestParameterException e) {return api(ApiException.invalid(e.getParameterName(),"필수 파라미터입니다."));}
  @ExceptionHandler(MethodArgumentTypeMismatchException.class)
  ResponseEntity<ErrorBody> type(MethodArgumentTypeMismatchException e) {
   return api(ApiException.invalid(e.getName(),"형식이 올바르지 않습니다."));

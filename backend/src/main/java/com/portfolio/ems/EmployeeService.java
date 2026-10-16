@@ -13,9 +13,9 @@ import java.util.*;
 class EmployeeService {
  private final EmployeeRepository employees; private final DepartmentRepository departments;
  private final PositionRepository positions; private final PasswordEncoder passwords;
- private final AppointmentStore appointments; private final AuditService audit;
- EmployeeService(EmployeeRepository e,DepartmentRepository d,PositionRepository p,PasswordEncoder passwords,AppointmentStore appointments,AuditService audit) {
-  employees=e; departments=d; positions=p; this.passwords=passwords; this.appointments=appointments;this.audit=audit;
+ private final AppointmentStore appointments; private final AuditService audit; private final LeaveService leaves;private final AttendanceService attendance;
+ EmployeeService(EmployeeRepository e,DepartmentRepository d,PositionRepository p,PasswordEncoder passwords,AppointmentStore appointments,AuditService audit,LeaveService leaves,AttendanceService attendance) {
+  employees=e; departments=d; positions=p; this.passwords=passwords; this.appointments=appointments;this.audit=audit;this.leaves=leaves;this.attendance=attendance;
  }
  @Transactional(readOnly=true)
  public Dto.PageView<Dto.EmployeeView> list(String keyword,Long departmentId,Long positionId,EmployeeStatus status,int page,int size,String sort) {
@@ -67,6 +67,9 @@ class EmployeeService {
   if(r.status()==EmployeeStatus.RETIRED) throw ApiException.invalid("status","퇴사 처리 API를 사용하세요.");
   if((r.departmentId()!=null&&!r.departmentId().equals(e.department.id))||(r.positionId()!=null&&!r.positionId().equals(e.position.id)))
    throw ApiException.conflict("APPOINTMENT_REQUIRED");
+  if(!e.hireDate.equals(r.hireDate())&&leaves.hasRecords(id))throw ApiException.conflict("LEAVE_RECORDS_EXIST");
+  var firstAttendance=attendance.firstDate(id);
+  if(firstAttendance!=null&&r.hireDate().isAfter(firstAttendance))throw ApiException.invalid("hireDate","첫 근태 기록 이후일 수 없습니다.");
   var first=appointments.firstDate(id);
   if(first!=null&&r.hireDate().isAfter(first))throw ApiException.invalid("hireDate","최초 발령일 이후일 수 없습니다.");
   var before=Dto.employee(e);
@@ -82,6 +85,7 @@ class EmployeeService {
   var last=appointments.lastDate(id);
   if(last!=null&&r.retireDate().isBefore(last))throw ApiException.invalid("retireDate","마지막 발령일 이전일 수 없습니다.");
   var before=Dto.employee(e);
+  leaves.retire(e);
   e.status=EmployeeStatus.RETIRED; e.retireDate=r.retireDate(); e.account.enabled=false;
   employees.flush();var result=Dto.employee(e);
   audit.record("EMPLOYEE_RETIRE","EMPLOYEE",e.id,e.name,before,result,Map.of());return result;

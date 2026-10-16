@@ -25,3 +25,4 @@ ems:
     enabled: ${SEED_ENABLED:true}
     admin-login-id: ${ADMIN_LOGIN_ID}
     admin-password: ${ADMIN_INITIAL_PASSWORD}
+    demo-admin-password: ${DEMO_ADMIN_INITIAL_PASSWORD:}

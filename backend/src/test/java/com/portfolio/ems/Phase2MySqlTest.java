@@ -107,7 +107,10 @@ class Phase2MySqlTest {
   call(delete("/api/v1/departments/"+d),admin,null).andExpect(status().isConflict()).andExpect(jsonPath("$.code").value("DEPARTMENT_IN_USE"));
   call(delete("/api/v1/positions/"+p),admin,null).andExpect(status().isConflict()).andExpect(jsonPath("$.code").value("POSITION_IN_USE"));
  }
- @Test void dashboardUsesSeoulDayAndTwelveMonthsWithoutFutureDates() throws Exception {
+ @Test @org.springframework.transaction.annotation.Transactional
+ void dashboardUsesSeoulDayAndTwelveMonthsWithoutFutureDates() throws Exception {
+  // Isolate a deliberately empty month; the transaction rolls this fixture back.
+  jdbc.update("UPDATE employee SET hire_date='2020-01-01' WHERE hire_date>='2025-11-01' AND hire_date<'2025-12-01'");
   JsonNode before=response(call(get("/api/v1/dashboard"),admin,null).andExpect(status().isOk()));
   long id=employee(unique()).get("id").asLong();
   jdbc.update("UPDATE employee SET hire_date='2026-10-17' WHERE id=?",id);

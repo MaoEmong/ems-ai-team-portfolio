@@ -1,0 +1,98 @@
+[
+  {
+    "suite": "com.portfolio.ems.MigrationUpgradeTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "timestamp": "2026-10-16T04:22:32.037Z"
+  },
+  {
+    "suite": "com.portfolio.ems.MySqlIntegrationTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "timestamp": "2026-10-16T04:22:52.831Z"
+  },
+  {
+    "suite": "com.portfolio.ems.Phase2MySqlTest",
+    "tests": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "timestamp": "2026-10-16T04:23:07.175Z"
+  },
+  {
+    "suite": "com.portfolio.ems.Phase3MySqlTest",
+    "tests": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "timestamp": "2026-10-16T04:22:13.658Z"
+  },
+  {
+    "suite": "com.portfolio.ems.ApiControllerTest",
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "timestamp": "2026-10-16T04:21:41.239Z"
+  },
+  {
+    "suite": "com.portfolio.ems.CatalogServiceTest",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "timestamp": "2026-10-16T04:21:41.872Z"
+  },
+  {
+    "suite": "com.portfolio.ems.EmployeeServiceTest",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "timestamp": "2026-10-16T04:21:42.197Z"
+  },
+  {
+    "suite": "com.portfolio.ems.FileServiceTest",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "timestamp": "2026-10-16T04:21:42.601Z"
+  },
+  {
+    "suite": "com.portfolio.ems.LeavePolicyTest",
+    "tests": 40,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "timestamp": "2026-10-16T04:21:42.670Z"
+  },
+  {
+    "suite": "com.portfolio.ems.Phase2ControllerTest",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "timestamp": "2026-10-16T04:21:43.302Z"
+  },
+  {
+    "suite": "com.portfolio.ems.Phase3ControllerTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "timestamp": "2026-10-16T04:21:43.781Z"
+  },
+  {
+    "suite": "com.portfolio.ems.SheetCodecTest",
+    "tests": 27,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "timestamp": "2026-10-16T04:21:43.848Z"
+  }
+]

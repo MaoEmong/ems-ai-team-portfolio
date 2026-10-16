@@ -43,7 +43,7 @@ class MySqlIntegrationTest {
   call(post("/api/v1/auth/login"),null,Map.of("loginId","TESTADMIN","password","wrong"))
    .andExpect(status().isUnauthorized()).andExpect(jsonPath("$.code").value("UNAUTHORIZED"));
   call(get("/api/v1/employees"),admin,null).andExpect(status().isOk())
-   .andExpect(jsonPath("$.totalElements").value(31)).andExpect(jsonPath("$.size").value(20));
+   .andExpect(jsonPath("$.totalElements").value(26)).andExpect(jsonPath("$.size").value(20));
   long d=response(call(post("/api/v1/departments"),admin,Map.of("name","통합가상부서","description","합성"))
    .andExpect(status().isCreated()).andExpect(header().exists("Location"))).get("id").asLong();
   long p=response(call(post("/api/v1/positions"),admin,Map.of("name","통합가상직급","level",9))

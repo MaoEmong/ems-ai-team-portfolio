@@ -13,7 +13,7 @@ import java.util.*;
 class AuditService {
  static final Set<String> ACTIONS=Set.of("LOGIN_SUCCESS","LOGIN_FAILURE","EMPLOYEE_CREATE","EMPLOYEE_UPDATE","EMPLOYEE_RETIRE",
   "APPOINTMENT_CREATE","DEPARTMENT_CREATE","DEPARTMENT_UPDATE","DEPARTMENT_DELETE","POSITION_CREATE","POSITION_UPDATE","POSITION_DELETE",
-  "EMPLOYEE_IMPORT","EMPLOYEE_EXPORT");
+  "EMPLOYEE_IMPORT","EMPLOYEE_EXPORT","ATTENDANCE_CORRECT","LEAVE_REQUEST","LEAVE_APPROVE","LEAVE_REJECT","LEAVE_CANCEL");
  private final JdbcTemplate jdbc; private final ObjectMapper json; private final Clock clock;
  AuditService(JdbcTemplate jdbc,ObjectMapper json,Clock clock) { this.jdbc=jdbc;this.json=json;this.clock=clock; }
  static Dto.User current() {
@@ -37,6 +37,8 @@ class AuditService {
  private void write(Dto.User user,String action,String type,Long id,String label,boolean success,Object before,Object after,Map<String,?> metadata) {
   if(!ACTIONS.contains(action)) throw new IllegalArgumentException("Unknown audit action");
   Set<String> allowed=switch(action) {
+   case "ATTENDANCE_CORRECT" -> Set.of("date","reason");
+   case "LEAVE_CANCEL" -> Set.of("system");
    case "LOGIN_FAILURE" -> Set.of("reason");
    case "EMPLOYEE_CREATE" -> Set.of("source");
    case "APPOINTMENT_CREATE" -> Set.of("appointmentId");
@@ -63,7 +65,7 @@ class AuditService {
   AppointmentStore.validatePage(page,size);
   if(from!=null&&to!=null&&from.isAfter(to)) throw ApiException.invalid("from","종료 시각 이후일 수 없습니다.");
   if(action!=null&&!ACTIONS.contains(action)) throw ApiException.invalid("action","지원하지 않는 행위입니다.");
-  if(targetType!=null&&!Set.of("EMPLOYEE","DEPARTMENT","POSITION").contains(targetType)) throw ApiException.invalid("targetType","지원하지 않는 대상입니다.");
+  if(targetType!=null&&!Set.of("EMPLOYEE","DEPARTMENT","POSITION","LEAVE").contains(targetType)) throw ApiException.invalid("targetType","지원하지 않는 대상입니다.");
   StringBuilder where=new StringBuilder(" WHERE 1=1"); List<Object> params=new ArrayList<>();
   append(where,params,"actor_id",actorId); append(where,params,"target_type",targetType); append(where,params,"target_id",targetId);
   append(where,params,"action",action); append(where,params,"success",success);
