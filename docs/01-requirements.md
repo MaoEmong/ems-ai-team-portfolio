@@ -14,9 +14,9 @@
 | EVAL-02 | 자기평가·관리자평가 | DRAFT/OPEN/CLOSED·OPEN항목스냅샷·자기제출/관리자초안/확정·미완료마감표시·재배정초기화. 본인/배정평가자만상세,다른ADMIN404·자기결재403 |
 | EVAL-03 | 최종 점수·등급 | 관리자평균HALF_UP소수둘째자리·S4.50/A3.50/B2.50/C1.50/나머지D·서버확정스냅샷. 자기점수미합산·공개전민감키부재·감사점수/코멘트제외 |
 
-설계 검토의 통합 검수 시작 뒤 실제 Compose/MySQL/Chromium에서 검수했다. [실제 V4 ERD](02-architecture.md)와 [정책 결정표](phase3b-policy.md)를 함께 따른다. **포트폴리오용 데모 급여 — 실제 세법·4대보험 산정 아님**. 팀장 휴가 승인 확장은 제외한다.
+설계 검토와 인계 확인 뒤 실제 Compose/MySQL/Chromium에서 검수했다. [실제 V4 ERD](02-architecture.md)와 [정책 결정표](phase3b-policy.md)를 함께 따른다. **포트폴리오용 데모 급여 — 실제 세법·4대보험 산정 아님**. 팀장 휴가 승인 확장은 제외한다.
 
-기준: [킥오프 결정](meetings/2026-10-16-kickoff.md)과 후속 단계 회의록. 아래는 요구사항이며 기능별 실제 결과는 QA 보고서에 기록합니다. 현재 승인 AI3기능까지 실제 Mock 환경에서 구현·검수했으며 실추론 미실행과 제외범위는 별도로 기록합니다.
+기준: [킥오프 결정](meetings/2026-10-16-kickoff.md)과 후속 단계 설계 검토 기록. 아래는 요구사항이며 기능별 실제 결과는 QA 보고서에 기록합니다. 현재 승인 AI3기능까지 실제 Mock 환경에서 구현·검수했으며 실추론 미실행과 제외범위는 별도로 기록합니다.
 
 ## 1단계 MVP
 
@@ -66,7 +66,7 @@
 
 ## 4단계 AI
 
-**계약 확정·실제 Mock 통합 검수 완료.** Claude Code(설계 검토)이 승인한 [AI API v1.0](api/phase4-ai-api.md), SHA-256 `E117946FE967747697A8AD6A3D0AF9A729991DB1A547BB6A468D7B09601A5617`을 따른다. [정책표](phase4-ai-policy.md)·[착수 회의록](meetings/2026-10-16-phase4-ai-kickoff.md). 검증 작업 배정이 **통합 검수 시작**이며 그 뒤 실제 검수했다. [현재 결과·미실행](qa/2026-10-16-phase4-ai-integration.md), [전체 목표 대조표](completion-matrix.md)를 따른다. Mock/어댑터 구현과 실제 Claude/Ollama 추론 성공은 별개이며 실추론은 미실행이다.
+**계약 확정·실제 Mock 통합 검수 완료.** Claude Code(설계 검토)가 승인한 [AI API v1.0](api/phase4-ai-api.md), SHA-256 `E117946FE967747697A8AD6A3D0AF9A729991DB1A547BB6A468D7B09601A5617`을 따른다. [정책표](phase4-ai-policy.md)·[착수 설계 검토 기록](meetings/2026-10-16-phase4-ai-kickoff.md). 최종 인계 확인 뒤 실제 통합 검수했다. [현재 결과·미실행](qa/2026-10-16-phase4-ai-integration.md), [전체 목표 대조표](completion-matrix.md)를 따른다. Mock/어댑터 구현과 실제 Claude/Ollama 추론 성공은 별개이며 실추론은 미실행이다.
 
 초기 로드맵의 ID를 승인 API와 맞춘다. 기존 AI-01(공통 제공자)은 AI-CFG-01로, 기존 AI-02(검색)는 AI-01로, 기존 AI-03(요약)는 AI-02로, 기존 AI-04(규정)는 AI-03으로 대응한다. 기능을 추가·누락한 것이 아니라 승인 계약의 식별자로 정리한 것이다.
 

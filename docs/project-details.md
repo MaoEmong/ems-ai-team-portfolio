@@ -17,7 +17,7 @@ docker compose --project-name ems-demo3a --env-file .env down
 
 같은 프로젝트를 다시 쓰면 새 빈DB가 아니라 유지DB입니다. 기존볼륨을 삭제하지 말고 다른 고유프로젝트를 사용합니다. 관리자는 자기결재가 금지되므로 다른 합성ADMIN으로 계정을 바꿔 결재합니다. 유지환경에서는 API/관리화면에서 합성ADMIN을 생성할 수 있습니다. 목업Chromium은5174,실제Compose웹은5173입니다.
 
-디자인원본·재확인은 [Claude 검수](design/design-review-phase3a.md)7.2/7.5/8을 참조합니다. 낮음N-01~07·ExcelJS청크경고·프론트EOF빈줄3건은 3A 당시 잔여 기록입니다. 3B에서는 담당 변경 범위의 EOF를 프론트가 정리했고 현재 잔여는 3B 검수 보고서8~9절을 따릅니다.
+디자인원본·재확인은 [Claude Code 검수](design/design-review-phase3a.md)7.2/7.5/8을 참조합니다. 낮음N-01~07·ExcelJS청크경고·프론트EOF빈줄3건은 3A 당시 잔여 기록입니다. 3B에서는 담당 변경 범위의 EOF를 프론트가 정리했고 현재 잔여는 3B 검수 보고서8~9절을 따릅니다.
 
 백엔드 중심 풀스택 사원관리 웹 애플리케이션이자 **AI 활용 포트폴리오**입니다. 승인된 AI3기능까지 구현했습니다. 실제 Compose/MySQL/Chromium에서 기존62개 회귀와 AI12개 시나리오를 검수했습니다. 기본 Mock은 실제 추론이 아니며 실제 Claude/Ollama 추론은 키/기존서비스 부재로 미실행입니다.
 
@@ -90,7 +90,7 @@ docker compose down
 
 - [2단계 API](api/phase2-api.md) · [실제 통합 검수](qa/2026-10-16-phase2-integration.md)
 - [종료·착수 회의](meetings/2026-10-16-phase1-closing.md) · [역할별 엔진 배분 ADR](adr/0002-task-based-engine-allocation.md)
-- [디자인 시스템](design/design-system.md) · [시안](design/mockups.html) · [Claude 검수 기록](design/design-review-phase2.md)
+- [디자인 시스템](design/design-system.md) · [시안](design/mockups.html) · [Claude Code 검수 기록](design/design-review-phase2.md)
 
 디자인은 Claude, 구현·실제 검수는 Codex가 담당했습니다. 목업 디자인 검수와 실제 API 검증의 범위는 각각의 문서에서 구분합니다.
 
@@ -109,7 +109,7 @@ docker compose --project-name ems-demo3b --env-file .env ps
 docker compose --project-name ems-demo3b --env-file .env down
 ```
 
-[3B 정책](phase3b-policy.md) · [API v1.1](api/phase3b-api.md) · [실제 통합 검수](qa/2026-10-16-phase3b-integration.md) · [Claude 검수](design/design-review-phase3b.md) · [마무리 회의](meetings/2026-10-16-phase3b-finalization.md). 급여 파일 다운로드·평가 알림은 이번 범위가 아닙니다.
+[3B 정책](phase3b-policy.md) · [API v1.1](api/phase3b-api.md) · [실제 통합 검수](qa/2026-10-16-phase3b-integration.md) · [Claude Code 검수](design/design-review-phase3b.md) · [마무리 회의](meetings/2026-10-16-phase3b-finalization.md). 급여 파일 다운로드·평가 알림은 이번 범위가 아닙니다.
 
 ![새 DB의 데모 급여 — 실제 API](qa/phase3b-screenshots/payroll-fresh.png)
 

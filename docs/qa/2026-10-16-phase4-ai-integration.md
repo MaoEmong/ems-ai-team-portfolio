@@ -2,7 +2,7 @@
 
 ## 1. 착수·범위·결과
 
-실행 주체 **Codex 담당**. 검증 작업 배정이 통합 검수 시작라는 설계 검토 결정 뒤2026-10-16 21:11~21:18 KST 실행했다. 실제 Docker Compose(MySQL/backend/frontend),MySQL8,Playwright Chromium,localhost5173/8080이며 목업라우팅을 삽입하지 않았다. 서버 제공자는 기본Mock이다. 계약 [v1.0](../api/phase4-ai-api.md) SHA-256 E117946FE967747697A8AD6A3D0AF9A729991DB1A547BB6A468D7B09601A5617·7~10단계 결정 기준이다.
+실행 주체 **Codex 문서QA담당**. 검증 작업 배정이 통합 검수 시작라는 설계 검토 결정 뒤2026-10-16 21:11~21:18 KST 실행했다. 실제 Docker Compose(MySQL/backend/frontend),MySQL8,Playwright Chromium,localhost5173/8080이며 목업라우팅을 삽입하지 않았다. 서버 제공자는 기본Mock이다. 계약 [v1.0](../api/phase4-ai-api.md) SHA-256 E117946FE967747697A8AD6A3D0AF9A729991DB1A547BB6A468D7B09601A5617·7~10단계 결정 기준이다.
 
 **기존47+15=62회귀와AI12개 PASS, 새빈DB PASS, 제품결함0건.** [집계JSON](phase4-summary.json). backend/frontend코드를수정하지않았으며 이번 QA에는 검사실패/보정도없다. 과거3B 검사실패 이력은 과거보고서에 보존했다. 실Claude/Ollama추론·환각방지품질을 검증한 결과가 아니다.
 
@@ -14,8 +14,8 @@
 | HTTP스텁계약 | Codex백엔드,LlmAdapterTest suite19:43:55.539 | 14사례,가짜키/로컬HTTP.실모델아님 | [provider-runs](../../backend/verification/20261016-phase4-provider-runs.json) |
 | backend-only Mock HTTP | Codex백엔드,19:50:51~19:54:18 | mysql/backend만,당시frontend미실행 | [compose](../../backend/verification/20261016-phase4-compose-result.json) 기존필드 |
 | 전체3서비스 Mock HTTP | Codex백엔드,21:01:36~21:04:49 | frontend200/Mock3기능/CORS/보존/새DB/down | [full-compose](../../backend/verification/20261016-phase4-full-compose-result.json),additionalExecutions |
-| 프론트목업·자동검증 | Codex 담당,20:50~20:51 | 최종276/276,타입/빌드PASS,5174Chromium10/10.실백엔드E2E미실행 | [프론트일지](../devlog/20261016-frontend-phase4.md) |
-| Claude디자인 | Claude UIUX디자이너,최종20:51본확인 | 최종18장중대표6조각직접열람,나머지2차판정유지.높음/중간0,낮음수용6 | [검수8절](../design/design-review-phase4.md) |
+| 프론트목업·자동검증 | Codex프론트담당,20:50~20:51 | 최종276/276,타입/빌드PASS,5174Chromium10/10.실백엔드E2E미실행 | [프론트일지](../devlog/20261016-frontend-phase4.md) |
+| Claude디자인 | Claude Code(디자인),최종20:51본확인 | 최종18장중대표6조각직접열람,나머지2차판정유지.높음/중간0,낮음수용6 | [검수8절](../design/design-review-phase4.md) |
 | QA브라우저/API | Codex문서QA,21:11~21:18 | 실제기존62+AI12·보존/새DB,Mock제공자 | 아래JSON·스크립트·화면 |
 | Anthropic실추론 | 백엔드19:47:58환경확인 | **NOT_RUN**: 명시프로세스환경의ANTHROPIC_API_KEY없음.키탐색없음 | provider-runs |
 | Ollama실추론 | 백엔드19:47:58환경확인 | **NOT_RUN**: 기존호스트서비스/모델확인불가.다운로드없음 | provider-runs |
@@ -200,7 +200,7 @@ docker compose -f docker-compose.yml -f docs/qa/fresh.compose.yml --project-name
 
 ## 8. 결함·잔여·전체목표
 
-제품결함0건/새수정배정없음. 기존62+AI12실제검수와새DB는PASS. frontend기존ExcelJS청크경고,최종낮음디자인수용6건(L05/L07/L12=Claude,L11/N-01/N-02=Codex 담당)은잔여이며원본근거/미확인을유지한다. 3B시안523행공백은프론트정리본을staged검사로확인한다. 실추론·접근성등미실행과범용HR질의/평가자동작성등제외는 [전체목표대조표](../completion-matrix.md)에분리했다. 최종목표판정은설계 검토에서완료 검토로수행한다.
+제품결함0건/새수정배정없음. 기존62+AI12실제검수와새DB는PASS. frontend기존ExcelJS청크경고,최종낮음디자인수용6건(L05/L07/L12=Claude,L11/N-01/N-02=Codex 담당)은잔여이며원본근거/미확인을유지한다. 3B시안523행공백은프론트정리본을staged검사로확인한다. 실추론·접근성등미실행과범용HR질의/평가자동작성등제외는 [전체목표대조표](../completion-matrix.md)에분리했다. 최종목표판정은설계 검토 결과와 실제 검수 근거로 수행한다.
 
 ## 9. 커밋 전 검사
 

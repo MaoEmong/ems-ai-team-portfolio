@@ -2,7 +2,7 @@
 
 ## 1. 범위·착수·환경
 
-실행 주체: **Codex 담당**, 2026-10-16 19:11~19:18 KST(각 JSON은 UTC ISO 시각). 설계 검토 의 **통합 검수 시작** 뒤 시작했다. 계약은 [phase3b API v1.1](../api/phase3b-api.md), SHA-256 9A56EAD34B8E4B8134FBD3A8E92B4D0F3FCFAFAF22495EC0D5ACB20AA6F0B3B2. 실제 Docker Compose 3서비스·MySQL8·Playwright Chromium,5173/8080,목업 없음. backend/frontend 코드를 수정하지 않았다.
+실행 주체: **Codex 문서QA담당**, 2026-10-16 19:11~19:18 KST(각 JSON은 UTC ISO 시각). 설계 검토 의 **통합 검수 시작** 뒤 시작했다. 계약은 [phase3b API v1.1](../api/phase3b-api.md), SHA-256 9A56EAD34B8E4B8134FBD3A8E92B4D0F3FCFAFAF22495EC0D5ACB20AA6F0B3B2. 실제 Docker Compose 3서비스·MySQL8·Playwright Chromium,5173/8080,목업 없음. backend/frontend 코드를 수정하지 않았다.
 
 결과: **기존20+14+3A13=47 PASS, 3B15 PASS, 새DB PASS, 제품 결함0건**. [집계 JSON](phase3b-summary.json). 첫 QA 시도3개 실패는 아래 검사 오류로 구분한다. 모든 요구사항의 법률/세무 적합성·접근성까지 보증하는 결과가 아니다.
 
@@ -14,7 +14,7 @@
 | Codex 백엔드 |16:49:24~16:57:24 별도 V3→V4|기존11테이블 기존컬럼/ID 보존, [원본](../../backend/verification/20261016-phase3b-compose-result.json)|
 | Codex 백엔드 |19:02:51~19:06:33 최종 이미지HTTP|[원본](../../backend/verification/20261016-phase3b-final-compose-result.json), 선행 실행과 분리|
 | Codex 프론트 |17:52~17:53 최종전체테스트·타입·빌드·5174목업|166/166,Chromium8/8, [일지](../devlog/20261016-frontend-phase3b.md), 실제API E2E 미실행|
-| Claude 디자이너 |시안·실제 이미지 검수/재확인|[검수10~11절](../design/design-review-phase3b.md), 최종63장 중22장 직접·41장 직전판정 유지. 코드 테스트와 구분|
+| Claude Code(디자인) |시안·실제 이미지 검수/재확인|[검수10~11절](../design/design-review-phase3b.md), 최종63장 중22장 직접·41장 직전판정 유지. 코드 테스트와 구분|
 | Codex 문서QA |19:11~19:18,아래 명령|실제62개/새DB, source-manifest59파일 모두 일치,[종료 JSON](phase3b-final-state.json)|
 
 검증 작업 구현 담당은 빌드/Compose를 실행하지 않았다. 평가 MySQL 예정29가 아닌 최종31개를 백엔드66개 안의 해당 테스트로 기록하며 합산하지 않는다.
@@ -178,4 +178,4 @@ docker compose -f docker-compose.yml -f docs/qa/fresh.compose.yml --project-name
 
 일회성 safe.directory를 사용했다. 백엔드41파일·프론트136파일 단계별로 로컬 실제비밀값5종과 대조해 검출0, 빌드/로컬env 산출물0을 확인했다. 백엔드gradlew100755, API해시일치,V1~V3변경없음, 공통문서상대링크누락0. [검사JSON](phase3b-secret-checks.json),[정적검사](phase3b-static-checks.json).
 
-추가 낮음 문서 잔여: 프론트디자인 소유 docs/design/phase3b-screens.md:523 trailing whitespace1건. 신규파일을 포함한 프론트 staged diff에서 발견했다. 앞선 tracked working-tree diff의 통과범위와 다르며 전체문서 공백0으로 주장하지 않는다. 검토 기록로 담당프론트·재현 git show --check 3da431c를 보고했고 타팀파일은 수정하지 않았다. 기능영향없음. 백엔드 d1f88b5·프론트 3da431c·후속 문서QA의3논리커밋이며 각본문에 실제엔진/팀역할을 기록한다.
+추가 낮음 문서 잔여: 프론트디자인 소유 docs/design/phase3b-screens.md:523 trailing whitespace1건. 신규파일을 포함한 프론트 staged diff에서 발견했다. 앞선 tracked working-tree diff의 통과범위와 다르며 전체문서 공백0으로 주장하지 않는다. 검토 기록으로 담당프론트·재현 git show --check 3da431c를 보고했고 타팀파일은 수정하지 않았다. 기능영향없음. 백엔드 d1f88b5·프론트 3da431c·후속 문서QA의3논리커밋이며 각본문에 실제엔진/팀역할을 기록한다.

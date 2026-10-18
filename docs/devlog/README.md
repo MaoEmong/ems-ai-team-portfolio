@@ -4,7 +4,7 @@
 
 - [백엔드3A](20261016-backend-phase3a.md)
 - [연차정책담당](20261016-backend-leave-policy.md)
-- [프론트·Claude검수](20261016-frontend-phase3a.md)
+- [프론트·Claude Code 검수](20261016-frontend-phase3a.md)
 - [문서QA](20261016-docqa-phase3a.md)
 
 파일명: `YYYYMMDD-<팀>-<작업>.md`. 각 팀은 고유 파일을 작성하고 색인은 문서QA가 통합합니다.
@@ -21,7 +21,7 @@
 
 ```markdown
 # 날짜 · 팀 · 작업명
-## 받은 지시
+## 작업 범위
 - 작업 번호, 요청자, 범위, 인수 조건
 ## 수행 내용
 - 변경 파일과 기능 ID

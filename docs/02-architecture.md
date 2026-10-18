@@ -251,7 +251,7 @@ Employee 응답 필드: id,employeeNo,name,email,phone,hireDate,status,retireDat
 
 Access token만 사용하고 refresh는 없습니다. 프론트 sessionStorage 보관, 401 시 로그인 이동, 로그아웃 시 클라이언트 토큰 삭제입니다. 로그아웃 자체가 서버 토큰을 폐기하지 않는 한계와 저장 방식의 근거는 백엔드 인증 ADR에 기록합니다.
 
-## 검증 및 소유권
+## 검증 및 편집 범위
 
 문서QA는 공통 문서와 초기 Git, 백엔드는 backend·Compose·상세 API·백엔드 ADR, 프론트는 frontend(Dockerfile 포함)·프론트 ADR을 담당합니다. Compose는 백엔드 단일 편집입니다. MySQL 통합 검증은 Testcontainers 또는 Compose로 수행하며 미실행과 통과를 구분합니다.
 

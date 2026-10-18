@@ -1,6 +1,6 @@
 {
   "actor": "Codex 문서QA",
-  "authorization": "검증 작업 배정 자체 통합 검수 시작",
+  "authorization": "최종 인계와 검증 준비 완료 확인 후 실제 통합 검수",
   "preservation": {
     "from": "1\t1\n2\t1\n3\t1\n4\t1",
     "to": "1\t1\n2\t1\n3\t1\n4\t1",

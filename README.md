@@ -22,7 +22,7 @@
 
 [전체 갤러리](docs/screenshots/README.md) · [통합 manifest](docs/screenshots/capture-set.json) · [Claude 실제 이미지 검수](docs/screenshots/claude-image-review.md)
 
-Codex 촬영과 Claude 검수는2026-10-19 KST 기준이며, QA가 대표3장을 직접 열어 마스크·Mock/데모 고지를 대조했습니다. 이미지 출처는 이 프로젝트의 합성 데이터 화면이며 외부 이미지가 아닙니다.
+Codex 촬영과 Claude Code 검수는2026-10-19 KST 기준이며, QA가 대표3장을 직접 열어 마스크·Mock/데모 고지를 대조했습니다. 이미지 출처는 이 프로젝트의 합성 데이터 화면이며 외부 이미지가 아닙니다.
 
 ## 기술 스택과 구조
 
@@ -72,8 +72,10 @@ docker compose --project-name ems-portfolio-local down
 
 ## AI 협업 사례
 
+Claude Code와 Codex가 설계·백엔드·프론트·문서/QA 역할을 나눠 맡고 교차 검수했습니다. ADR·개발일지·실제 검수 자료로 판단과 수정 과정을 연결했습니다.
+
 - 사용자 목표를 Claude Code가 계약·정책으로 정리하고 Codex가 구현·검증했습니다. 급여의 월 단위 원자 처리와 확정 스냅샷은 [ADR 0110](docs/adr/0110-demo-payroll-month-snapshots.md)과 [백엔드 일지](docs/devlog/20261016-backend-phase3b.md)에 연결됩니다.
-- Claude 디자이너의 이미지 지적을 Codex가 반영하고 재검증·재확인했습니다. [3A 디자인 검수](docs/design/design-review-phase3a.md), [프론트 일지](docs/devlog/20261016-frontend-phase3a.md)에 지적·반영·미확인 범위가 남아 있습니다.
+- Claude Code(디자인)의 이미지 지적을 Codex가 반영하고 재검증·재확인했습니다. [3A 디자인 검수](docs/design/design-review-phase3a.md), [프론트 일지](docs/devlog/20261016-frontend-phase3a.md)에 지적·반영·미확인 범위가 남아 있습니다.
 - AI 출력의 명시적 적용과 읽기 전용 결과는 [ADR 0206](docs/adr/0206-ai-explicit-execution-and-ephemeral-results.md), [AI 일지](docs/devlog/20261016-frontend-phase4.md), [통합 검수](docs/qa/2026-10-16-phase4-ai-integration.md)로 추적합니다. 측정하지 않은 시간·비용 절감이나 엔진 우열은 주장하지 않습니다.
 
 ## 검수와 문서

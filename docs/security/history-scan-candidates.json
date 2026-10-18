@@ -1259,5 +1259,6 @@
       "diffCheckExitCode": 0
     }
   },
-  "excludedFiles": []
+  "excludedFiles": [],
+  "documentationNote": "역사적 실행 근거의 서술과 식별 메타데이터만 정리했다. 테스트 수치와 실행 시각, 과거 SHA 참조는 보존했으며 이번 문서 편집을 새 제품 검증으로 계산하지 않는다."
 }
