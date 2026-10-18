@@ -3,7 +3,9 @@
 Spring Boot 3.5.6, Java 21(요구사항 Java 17+), Gradle 8.14.3, JPA, Spring Security JWT, MySQL 8, Flyway.
 
 ## 실행
-프로젝트 루트 ems에서 .env.example을 .env로 복사한 뒤 로컬 값으로 바꾼다. 공통 .env.example은 문서QA 소유이며 아래 변수를 취합해야 한다.
+새 사용자는 [로컬 실행·합성 촬영 상태 준비](docs/portfolio-local-runbook.md)를 따른다. 보안 점검 결과와 실행 한계는 [백엔드 보안 점검](../docs/security/backend-security-review.md)에 있다.
+
+프로젝트 루트 ems에서 .env.example을 .env로 복사한 뒤 로컬 값으로 바꾼다. 기존 .env는 덮어쓰지 않는다.
 
 | 변수 | 의미 |
 | --- | --- |
@@ -30,7 +32,7 @@ JWT_SECRET=<random-secret-at-least-32-UTF8-bytes>
 SEED_ENABLED=true
 ```
 
-ADMIN_LOGIN_ID는 최대 50자이며 합성 사원에 쓰는 DEMO### 형식은 제외한다. ADMIN_INITIAL_PASSWORD는 공백만으로 구성할 수 없으며 UTF-8 72바이트 이하다. 예시의 꺾쇠괄호 값은 실행 전에 반드시 교체한다. 공통 .env.example 취합은 문서QA가 담당한다.
+ADMIN_LOGIN_ID는 최대 50자이며 합성 사원에 쓰는 DEMO### 형식은 제외한다. ADMIN_INITIAL_PASSWORD는 공백만으로 구성할 수 없으며 UTF-8 72바이트 이하다. 예시의 꺾쇠괄호 값은 실행 전에 반드시 교체한다. `.env.example`에 필요한 키가 있으며 기본 AI 제공자는 Mock이다.
 
 ```sh
 docker compose up --build -d
@@ -39,7 +41,7 @@ docker compose logs backend
 
 Compose는 mysql/backend/frontend 세 서비스를 시작한다. 프론트 http://localhost:5173, 백엔드 http://localhost:8080/api/v1, MySQL localhost:3306. frontend는 0.0.0.0:5173(IPv6에서는 [::]:5173에도 노출), mysql과 backend는 127.0.0.1:3306/8080 loopback 바인딩이다. CORS는 http://localhost:5173만 허용하며 Content-Disposition을 노출한다. 프론트 VITE_API_URL=http://localhost:8080 및 VITE_MOCK_API=false는 빌드 인자이며 변경 후 다시 빌드해야 한다.
 
-Flyway가 부서·직급과 스키마를 만들고 빈 employee 테이블에는 관리자 1명과 합성 사원 30명을 생성한다. 기존 DB 재시작 시 비밀번호를 재설정하지 않는다. 데모 사원은 알 수 없는 무작위 비밀번호로 생성되므로 로그인 시연용 사원은 관리자 API로 initialPassword를 지정해 생성한다. 환경변수나 토큰을 로그/커밋에 넣지 않는다.
+Flyway가 스키마를 만들고 새 빈 DB 런타임 시드가 관리자 1명과 합성 사원 30명을 생성한다. 기존 DB는 자동 재시드하거나 비밀번호를 재설정하지 않는다. DEMO001은 합성 ADMIN이며 새 DB에서만 선택 변수 DEMO_ADMIN_INITIAL_PASSWORD를 적용한다. 빈 값이면 알려진 비밀번호가 없다. 다른 데모 계정은 무작위 비밀번호이므로 일반 사원 로그인 시연은 정상 사원 생성 API에서 로컬 initialPassword를 지정한다. 환경변수나 토큰을 로그/커밋에 넣지 않는다.
 
 로컬 실행은 Java 21을 설치하고 위 환경변수를 프로세스에 설정한 뒤 MySQL을 시작한다. Spring Boot가 .env 파일을 자동 로드하지는 않는다.
 ```sh

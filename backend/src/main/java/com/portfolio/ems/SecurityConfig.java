@@ -40,6 +40,12 @@ class SecurityConfig {
  }
  @Bean SecurityFilterChain security(HttpSecurity http,AccountRepository accounts,ObjectMapper mapper) throws Exception {
   http.csrf(c->c.disable()).cors(c->{}).sessionManagement(c->c.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+  // Official mitigation for CVE-2026-22732: write security/cache headers before the chain.
+  http.headers(headers->headers.addObjectPostProcessor(new org.springframework.security.config.ObjectPostProcessor<org.springframework.security.web.header.HeaderWriterFilter>() {
+   @Override public <O extends org.springframework.security.web.header.HeaderWriterFilter> O postProcess(O filter) {
+    filter.setShouldWriteHeadersEagerly(true); return filter;
+   }
+  }));
   http.authorizeHttpRequests(a->a
    .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
    .requestMatchers(HttpMethod.POST,"/api/v1/auth/login").permitAll()

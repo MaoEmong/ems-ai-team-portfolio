@@ -1,0 +1,12 @@
+import groovy.json.JsonOutput
+allprojects {
+ tasks.register("securityResolvedInventory") {
+  doLast {
+   def artifacts = configurations.runtimeClasspath.resolvedConfiguration.resolvedArtifacts.collect { a -> [group:a.moduleVersion.id.group,name:a.moduleVersion.id.name,version:a.moduleVersion.id.version] }.unique().sort { a,b -> (a.group+":"+a.name) <=> (b.group+":"+b.name) }
+   def output = new File(rootProject.projectDir,"build/security/runtime-inventory.json")
+   output.parentFile.mkdirs()
+   output.text = JsonOutput.prettyPrint(JsonOutput.toJson([generatedAt:java.time.OffsetDateTime.now().toString(),configuration:"runtimeClasspath",artifacts:artifacts]))
+   println("Resolved runtime components: "+artifacts.size())
+  }
+ }
+}

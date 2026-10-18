@@ -1,0 +1,426 @@
+{
+  "collectedAt": "2026-10-18T23:07:40.682647+09:00",
+  "sourceBaseline": "9bc7afb",
+  "finalCommand": ".\\gradlew.bat test bootJar",
+  "workingDirectory": "backend",
+  "result": "BUILD SUCCESSFUL",
+  "durationSecondsObserved": 18,
+  "unitTotals": {
+    "tests": 147,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "unitSuites": [
+    {
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.portfolio.ems.AiServiceTest",
+      "timestampUtc": "2026-10-18T13:50:50.664Z",
+      "cases": [
+        "minuteLimitAfterTenAndFailuresDoNotLeakText()",
+        "inputKeysAndTypesAreStrictAndBounded()",
+        "simultaneousCallsHaveOneSlotAndReleaseOnFailure()",
+        "missingKeyNeverFallsBackAndAuditFailureNeverLeaksProviderOutput()",
+        "employeeCannotSearchOrInvoke()",
+        "summaryStripsScoresIdentityAndIncludesUntrustedComments()",
+        "otherAdminAndUnfinalizedEvaluationCannotInvoke()",
+        "exactCitationAndMockAreDeterministic()",
+        "[1] output={\"status\":\"OK\",\"filters\":{\"sql\":\"DROP\"},\"message\":\"x\"}",
+        "[2] output={\"status\":\"OK\",\"filters\":{\"departmentId\":999},\"message\":\"x\"}",
+        "[3] output={\"status\":\"OK\",\"filters\":{\"positionId\":1.5},\"message\":\"x\"}",
+        "[4] output={\"status\":\"OK\",\"filters\":{},\"message\":\"x\"}",
+        "[5] output={\"status\":\"AMBIGUOUS\",\"filters\":{\"status\":\"ACTIVE\"},\"message\":\"x\"}",
+        "[6] output={\"status\":\"OK\",\"filters\":{\"sort\":\"name;DROP\"},\"message\":\"x\"}",
+        "[7] output={\"status\":\"OK\",\"status\":\"OK\",\"filters\":{},\"message\":\"x\"}",
+        "[8] output={} trailing",
+        "[9] output=[1]",
+        "[10] output=not json",
+        "invalidCitationReturnsNoModelAnswer()",
+        "searchCapturesOnlyCatalogNotEmployeeRowsAndDoesNotExecuteSearch()"
+      ]
+    },
+    {
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.portfolio.ems.ApiControllerTest",
+      "timestampUtc": "2026-10-18T13:50:54.788Z",
+      "cases": [
+        "invalidCreateReturnsFieldErrors()",
+        "employeeMayReadCatalogsButCannotWrite()",
+        "invalidRetireDateNamesTheField()",
+        "anonymousGetsJson401()",
+        "expiredAndMalformedTokensAreUnauthorized()",
+        "corsAllowsFrontendAuthorizationHeader()",
+        "disabledAccountIsUnauthorizedWithValidToken()",
+        "employeeCannotListEmployees()"
+      ]
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.portfolio.ems.CatalogServiceTest",
+      "timestampUtc": "2026-10-18T13:50:55.289Z",
+      "cases": [
+        "departmentWithAnyEmployeeCannotBeDeleted()",
+        "positionWithAnyEmployeeCannotBeDeleted()"
+      ]
+    },
+    {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.portfolio.ems.EmployeeServiceTest",
+      "timestampUtc": "2026-10-18T13:50:55.537Z",
+      "cases": [
+        "retirementBeforeHireFailsWithoutChangingAccount()",
+        "duplicateEmployeeNumberFailsBeforePasswordHashing()",
+        "retirementDisablesAccountAndPreservesIdentity()",
+        "repeatedRetirementIsStateConflict()",
+        "otherEmployeeIsDeniedBeforeLookup()",
+        "unsupportedSortIsRejected()"
+      ]
+    },
+    {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.portfolio.ems.EvaluationControllerTest",
+      "timestampUtc": "2026-10-18T13:50:56.072Z",
+      "cases": [
+        "createValidatesNestedInputAndReturns201()",
+        "rejectsFractionalTextualOutOfRangeScoresAndLongComments()",
+        "privateAndUnrelatedDetailsPreserveServiceErrors()",
+        "anonymousAndEmployeeCannotManageCyclesOrReassign()",
+        "cycleAndListRoutesUseDeclaredPagingDefaults()",
+        "routesDraftAndSubmitSeparatelyAndPassesAuthenticatedIdentity()"
+      ]
+    },
+    {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.portfolio.ems.FileServiceTest",
+      "timestampUtc": "2026-10-18T13:50:56.303Z",
+      "cases": [
+        "exportOverLimitDoesNotGeneratePartialFileOrSuccessAudit()",
+        "missingFormatFailsBeforeLoadingEmployees()",
+        "exportRecordsOnlyTruncatedSearchAndNoExtraMetadata()"
+      ]
+    },
+    {
+      "tests": 40,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.portfolio.ems.LeavePolicyTest",
+      "timestampUtc": "2026-10-18T13:50:56.341Z",
+      "cases": [
+        "[1] hire=2024-02-29, today=2025-02-27, start=2024-02-29, end=2025-02-27, granted=11",
+        "[2] hire=2024-02-29, today=2025-02-28, start=2025-02-28, end=2026-02-27, granted=15",
+        "[3] hire=2024-02-29, today=2026-02-28, start=2026-02-28, end=2027-02-27, granted=15",
+        "[4] hire=2024-02-29, today=2027-02-28, start=2027-02-28, end=2028-02-28, granted=16",
+        "[5] hire=2024-02-29, today=2028-02-28, start=2027-02-28, end=2028-02-28, granted=16",
+        "[6] hire=2024-02-29, today=2028-02-29, start=2028-02-29, end=2029-02-27, granted=16",
+        "[7] hire=2024-02-29, today=2029-02-28, start=2029-02-28, end=2030-02-27, granted=17",
+        "[8] hire=2024-02-29, today=2032-02-29, start=2032-02-29, end=2033-02-27, granted=18",
+        "[9] hire=2024-02-28, today=2028-02-28, start=2028-02-28, end=2029-02-27, granted=16",
+        "[1] hire=2025-01-31, today=2025-02-27, granted=0",
+        "[2] hire=2025-01-31, today=2025-02-28, granted=1",
+        "[3] hire=2025-01-31, today=2025-03-28, granted=1",
+        "[4] hire=2025-01-31, today=2025-03-30, granted=1",
+        "[5] hire=2025-01-31, today=2025-03-31, granted=2",
+        "[6] hire=2025-01-31, today=2025-04-29, granted=2",
+        "[7] hire=2025-01-31, today=2025-04-30, granted=3",
+        "[8] hire=2024-01-31, today=2024-02-28, granted=0",
+        "[9] hire=2024-01-31, today=2024-02-29, granted=1",
+        "[10] hire=2025-08-31, today=2025-09-30, granted=1",
+        "[11] hire=2025-08-31, today=2025-10-30, granted=1",
+        "[12] hire=2025-08-31, today=2025-10-31, granted=2",
+        "[13] hire=2025-08-31, today=2026-02-28, granted=6",
+        "[14] hire=2024-02-29, today=2024-03-28, granted=0",
+        "[15] hire=2024-02-29, today=2024-03-29, granted=1",
+        "[1] hire=2026-01-15, today=2026-01-15, start=2026-01-15, end=2027-01-14, granted=0",
+        "[2] hire=2026-01-15, today=2026-01-14, start=2026-01-15, end=2027-01-14, granted=0",
+        "[3] hire=2028-02-29, today=2026-10-16, start=2028-02-29, end=2029-02-27, granted=0",
+        "[4] hire=2026-01-15, today=2027-01-14, start=2026-01-15, end=2027-01-14, granted=11",
+        "[5] hire=2026-01-15, today=2027-01-15, start=2027-01-15, end=2028-01-14, granted=15",
+        "[6] hire=2026-01-15, today=2028-01-14, start=2027-01-15, end=2028-01-14, granted=15",
+        "[7] hire=2026-01-15, today=2028-01-15, start=2028-01-15, end=2029-01-14, granted=15",
+        "[8] hire=2026-01-15, today=2029-01-15, start=2029-01-15, end=2030-01-14, granted=16",
+        "[9] hire=2026-01-15, today=2030-01-15, start=2030-01-15, end=2031-01-14, granted=16",
+        "[10] hire=2026-01-15, today=2031-01-15, start=2031-01-15, end=2032-01-14, granted=17",
+        "[11] hire=2026-01-15, today=2046-01-15, start=2046-01-15, end=2047-01-14, granted=24",
+        "[12] hire=2026-01-15, today=2047-01-14, start=2046-01-15, end=2047-01-14, granted=24",
+        "[13] hire=2026-01-15, today=2047-01-15, start=2047-01-15, end=2048-01-14, granted=25",
+        "[14] hire=2026-01-15, today=2048-01-15, start=2048-01-15, end=2049-01-14, granted=25",
+        "[15] hire=2026-01-15, today=2086-01-15, start=2086-01-15, end=2087-01-14, granted=25",
+        "grantsOneDayOnEachOfTheElevenMonthlyBoundaries()"
+      ]
+    },
+    {
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.portfolio.ems.LlmAdapterTest",
+      "timestampUtc": "2026-10-18T13:50:56.381Z",
+      "cases": [
+        "[1] raw=not json",
+        "[2] raw={\"content\":[{\"type\":\"tool_use\"}]}",
+        "[3] raw={\"content\":[]}",
+        "ollamaRequestDoesNotSendAnthropicKey()",
+        "[1] code=429",
+        "[2] code=500",
+        "[3] code=503",
+        "anthropicRequestHeadersAndNonstreamingContract()",
+        "timeoutAndNoRetry()",
+        "outputAndEnvelopeByteLimits()",
+        "[1] code=400",
+        "[2] code=401",
+        "[3] code=403",
+        "[4] code=302"
+      ]
+    },
+    {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.portfolio.ems.OrganizationPayrollControllerTest",
+      "timestampUtc": "2026-10-18T13:50:57.241Z",
+      "cases": [
+        "employeeCannotChangeOrganizationOrSalaryOrPayroll()",
+        "privatePayslipKeeps404AndAnonymousOrganizationIs401()",
+        "salaryAcceptsIntegerZeroWithoutCoercion()",
+        "salaryRejectsFractionsStringsNegativeAndOverflow()"
+      ]
+    },
+    {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.portfolio.ems.PayrollFormulaTest",
+      "timestampUtc": "2026-10-18T13:50:57.303Z",
+      "cases": [
+        "roundsEachDeductionBeforeSumming()",
+        "zeroSalaryIsValid()",
+        "invalidAmountIsRejected()",
+        "maximumAmountsStayWithinSafeIntegerRange()"
+      ]
+    },
+    {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.portfolio.ems.Phase2ControllerTest",
+      "timestampUtc": "2026-10-18T13:50:57.792Z",
+      "cases": [
+        "importRowsAreReturnedWithoutChangingBaseErrorShape()",
+        "allAdminReadApisDenyEmployee()",
+        "missingReasonReturnsValidationError()"
+      ]
+    },
+    {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.portfolio.ems.Phase3ControllerTest",
+      "timestampUtc": "2026-10-18T13:50:58.182Z",
+      "cases": [
+        "employeeCannotReadAdminListsOrDecide()",
+        "anonymousCannotReadPersonalData()",
+        "requiredReasonsAndReadAllBoundaryAreValidated()",
+        "readNotificationReturns204WithAuthenticatedOwner()"
+      ]
+    },
+    {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.portfolio.ems.SecurityReviewWebTest",
+      "timestampUtc": "2026-10-18T13:50:58.527Z",
+      "cases": [
+        "expiredWrongIssuerAndTamperedSignatureRejectBeforeAccountLookup()",
+        "bcryptHasUniqueSaltAndShortJwtSecretFailsClosed()",
+        "nonApiActuatorAndUnknownRoutesAreDenied()",
+        "currentAccountRoleAndEnabledOverrideOldJwtOnEveryRequest()",
+        "corsIsExactLocalOriginWithoutCredentialCookies()",
+        "eagerSecurityHeadersCoverSensitiveSuccess401And403()"
+      ]
+    },
+    {
+      "tests": 27,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.portfolio.ems.SheetCodecTest",
+      "timestampUtc": "2026-10-18T13:50:58.834Z",
+      "cases": [
+        "[1] column=0",
+        "[2] column=4",
+        "[3] column=8",
+        "templateContainsReferencesAndTextColumnStylesWithoutDataRows()",
+        "requiresExactHeadersAndSheet()",
+        "[1] value=0",
+        "[2] value=-1",
+        "[3] value=1.5",
+        "[4] value= 1",
+        "[5] value=9223372036854775808",
+        "rejectsEmptyAndTooManyRowsButAllows1000()",
+        "rejectsTotalInflatedSizeBelowUploadSizeLimit()",
+        "preservesLeadingZeroWhitespaceAndActualRowNumber()",
+        "[1] column=0",
+        "[2] column=5",
+        "[3] column=8",
+        "[4] column=10",
+        "rejectsActualEntrySizeAndExcessiveCompression()",
+        "[1] value=2026-02-30",
+        "[2] value=2026-1-01",
+        "[3] value=2026-10-16 ",
+        "[4] value=0000-01-01",
+        "rejectsExcelDateEvenWithDateDisplayFormat()",
+        "xlsxExportsOnlyTenStringColumnsEvenForFormulaLikeInput()",
+        "rejectsWrongExtensionCorruptionAndFileSize()",
+        "csvUsesBomQuotesAndEscapesFormulaPrefixes()",
+        "validatesBeanConstraintsAndUtf8PasswordLimit()"
+      ]
+    }
+  ],
+  "fullAttempts": {
+    "command": ".\\gradlew.bat test integrationTest bootJar",
+    "attempts": 2,
+    "result": "BUILD FAILED - Docker engine unavailable",
+    "observedDurationSeconds": [
+      30,
+      24
+    ],
+    "integrationStatus": "NOT_EXECUTED_ENVIRONMENT",
+    "initializationFailureClasses": 8,
+    "businessTestsPassed": null,
+    "reason": "Docker Desktop Linux engine named pipe unavailable; approved hidden start attempted once without success",
+    "lastAttemptSuites": [
+      {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "suite": "com.portfolio.ems.AiMySqlTest",
+        "timestampUtc": "2026-10-18T13:37:36.297Z",
+        "cases": [
+          "initializationError"
+        ]
+      },
+      {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "suite": "com.portfolio.ems.EvaluationMySqlTest",
+        "timestampUtc": "2026-10-18T13:37:36.327Z",
+        "cases": [
+          "initializationError"
+        ]
+      },
+      {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "suite": "com.portfolio.ems.MigrationUpgradeTest",
+        "timestampUtc": "2026-10-18T13:37:36.339Z",
+        "cases": [
+          "initializationError"
+        ]
+      },
+      {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "suite": "com.portfolio.ems.MySqlIntegrationTest",
+        "timestampUtc": "2026-10-18T13:37:36.356Z",
+        "cases": [
+          "initializationError"
+        ]
+      },
+      {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "suite": "com.portfolio.ems.OrganizationPayrollMySqlTest",
+        "timestampUtc": "2026-10-18T13:37:36.376Z",
+        "cases": [
+          "initializationError"
+        ]
+      },
+      {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "suite": "com.portfolio.ems.Phase2MySqlTest",
+        "timestampUtc": "2026-10-18T13:37:36.395Z",
+        "cases": [
+          "initializationError"
+        ]
+      },
+      {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "suite": "com.portfolio.ems.Phase3MySqlTest",
+        "timestampUtc": "2026-10-18T13:37:36.413Z",
+        "cases": [
+          "initializationError"
+        ]
+      },
+      {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "suite": "com.portfolio.ems.SecurityReviewMySqlTest",
+        "timestampUtc": "2026-10-18T13:37:36.429Z",
+        "cases": [
+          "initializationError"
+        ]
+      }
+    ],
+    "note": "XML failure entries are initializationError placeholders, not executed MySQL business tests"
+  },
+  "newTests": {
+    "SecurityReviewWebTest": {
+      "executed": 6,
+      "passed": 6,
+      "method": "MockMvc actual security filter; mocked account repository"
+    },
+    "SecurityReviewMySqlTest": {
+      "written": 6,
+      "compiled": true,
+      "executed": false
+    }
+  },
+  "limitations": [
+    "No shared host ports 3306/8080/5173 used",
+    "No Compose execution",
+    "No actual provider inference",
+    "No penetration test"
+  ],
+  "migrationChanges": []
+}

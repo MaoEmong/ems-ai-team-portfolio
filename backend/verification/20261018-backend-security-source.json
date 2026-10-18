@@ -1,0 +1,17 @@
+{
+  "baseline": "9bc7afb",
+  "files": [
+    {
+      "path": "backend/src/main/java/com/portfolio/ems/SecurityConfig.java",
+      "sha256": "88205afd25931bf366812ab30b537b51cbedd61010f95c67989b08fe29b8407d"
+    },
+    {
+      "path": "backend/src/test/java/com/portfolio/ems/SecurityReviewWebTest.java",
+      "sha256": "33f0bd64a118d5bf9edaede82f25d290ee8502b72537d10cfa8b4bf137171378"
+    },
+    {
+      "path": "backend/src/test/java/com/portfolio/ems/SecurityReviewMySqlTest.java",
+      "sha256": "14d47e7295b952813538bad34337ee5499356126b8b5888c7b0a32e5a2ed8712"
+    }
+  ]
+}

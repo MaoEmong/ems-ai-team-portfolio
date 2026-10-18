@@ -1,0 +1,3579 @@
+{
+  "tool": "OSV API querybatch + advisory details",
+  "command": "py -3 backend/build/security/osv-audit.py",
+  "startedAt": "2026-10-18T22:29:06.237092+09:00",
+  "configuration": "runtimeClasspath",
+  "components": 91,
+  "scope": "Version matching only; reachability requires manual application review; excludes JDK/container OS/Gradle plugins/test classpath",
+  "status": "COMPLETED",
+  "uniqueAdvisories": 68,
+  "finishedAt": "2026-10-18T22:29:13.856156+09:00",
+  "sourceCommit": "9bc7afb",
+  "inventory": "20261018-backend-runtime-inventory.json",
+  "findings": [
+    {
+      "component": "ch.qos.logback:logback-core",
+      "version": "1.5.18",
+      "id": "GHSA-25qh-j22f-pwp8",
+      "aliases": [
+        "CVE-2025-11226"
+      ],
+      "summary": "QOS.CH logback-core is vulnerable to Arbitrary Code Execution through file processing",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-11226"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/qos-ch/logback/issues/974"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/qos-ch/logback/commit/61f6a2544f36b3016e0efd434ee21f19269f1df7"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/qos-ch/logback"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/qos-ch/logback/releases/tag/v_1.5.19"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logback.qos.ch/news.html#1.3.16"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logback.qos.ch/news.html#1.5.19"
+        }
+      ],
+      "osvFixedVersions": [
+        "1.3.16",
+        "1.5.19"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No remote log receiver or user-controlled logging configuration in application; requires configuration/local write conditions. Not a general absence-of-risk conclusion.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "application.yml / Dockerfile: no receiver or user-controlled logging configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "ch.qos.logback:logback-core",
+      "version": "1.5.18",
+      "id": "GHSA-jhq6-gfmj-v8fx",
+      "aliases": [
+        "CVE-2026-10532"
+      ],
+      "summary": "Logback vulnerable to Object Injection through HardenedObjectInputStream modules",
+      "severity": "LOW",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10532"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/qos-ch/logback"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/qos-ch/logback/releases/tag/v_1.5.34"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logback.qos.ch/news.html#1.5.34"
+        }
+      ],
+      "osvFixedVersions": [
+        "1.5.34"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No remote log receiver or user-controlled logging configuration in application; requires configuration/local write conditions. Not a general absence-of-risk conclusion.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "application.yml / Dockerfile: no receiver or user-controlled logging configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "ch.qos.logback:logback-core",
+      "version": "1.5.18",
+      "id": "GHSA-p47f-322f-whfh",
+      "aliases": [
+        "CVE-2026-9828"
+      ],
+      "summary": "QOS.CH Sarl logback logback-core has a deserialization of untrusted data vulnerability",
+      "severity": "LOW",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9828"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/qos-ch/logback"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logback.qos.ch/news.html#1.5.33"
+        }
+      ],
+      "osvFixedVersions": [
+        "1.5.33"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No remote log receiver or user-controlled logging configuration in application; requires configuration/local write conditions. Not a general absence-of-risk conclusion.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "application.yml / Dockerfile: no receiver or user-controlled logging configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "ch.qos.logback:logback-core",
+      "version": "1.5.18",
+      "id": "GHSA-qqpg-mvqg-649v",
+      "aliases": [
+        "CVE-2026-1225"
+      ],
+      "summary": "Logback allows an attacker to instantiate classes already present on the class path",
+      "severity": "LOW",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1225"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/qos-ch/logback/issues/997"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/qos-ch/logback/commit/1f97ae1844b1be8486e4e9cade98d7123d3eded5"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/qos-ch/logback"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logback.qos.ch/news.html#1.5.25"
+        }
+      ],
+      "osvFixedVersions": [
+        "1.5.25"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No remote log receiver or user-controlled logging configuration in application; requires configuration/local write conditions. Not a general absence-of-risk conclusion.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "application.yml / Dockerfile: no receiver or user-controlled logging configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "com.fasterxml.jackson.core:jackson-core",
+      "version": "2.19.2",
+      "id": "GHSA-72hv-8253-57qq",
+      "aliases": [
+        "CVE-2026-18401"
+      ],
+      "summary": "jackson-core: Number Length Constraint Bypass in Async Parser Leads to Potential DoS Condition",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/security/advisories/GHSA-72hv-8253-57qq"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18401"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/pull/1555"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/commit/b0c428e6f993e1b5ece5c1c3cb2523e887cd52cf"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/FasterXML/jackson-core"
+        }
+      ],
+      "osvFixedVersions": [
+        "2.18.6",
+        "2.21.1"
+      ],
+      "assessment": "NO_EXPLICIT_FEATURE_PATH",
+      "reachabilityNote": "Blocking servlet JSON conversion and String/tree mapper are used; no explicit async or DataInput parser path. Runtime internals not exhaustively traced.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "Dto, EvaluationDto, AiJson, MVC controllers: typed DTOs / blocking JSON, no identified special parser/typing configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "com.fasterxml.jackson.core:jackson-core",
+      "version": "2.19.2",
+      "id": "GHSA-7hhh-6rmp-j9qf",
+      "aliases": [
+        "CVE-2026-89425"
+      ],
+      "summary": "jackson-core: UTF8DataInputJsonParser._reportInvalidToken() missing maxErrorTokenLength limit -> unbounded StringBuilder growth (DoS)",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/security/advisories/GHSA-7hhh-6rmp-j9qf"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89425"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/pull/1698"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/commit/211cf2c5d91abbec38067f37efc1363cd4e88ee3"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/FasterXML/jackson-core"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/releases/tag/jackson-core-2.18.11"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/releases/tag/jackson-core-3.2.3"
+        }
+      ],
+      "osvFixedVersions": [
+        "2.18.11",
+        "2.21.7",
+        "2.22.3"
+      ],
+      "assessment": "NO_EXPLICIT_FEATURE_PATH",
+      "reachabilityNote": "Blocking servlet JSON conversion and String/tree mapper are used; no explicit async or DataInput parser path. Runtime internals not exhaustively traced.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "Dto, EvaluationDto, AiJson, MVC controllers: typed DTOs / blocking JSON, no identified special parser/typing configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "com.fasterxml.jackson.core:jackson-core",
+      "version": "2.19.2",
+      "id": "GHSA-p6pp-m3f8-5c89",
+      "aliases": [
+        "CVE-2026-89407"
+      ],
+      "summary": " jackson-core: ReDoS: quadratic backtracking in NumberInput.PATTERN_FLOAT via looksLikeValidNumber()",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/security/advisories/GHSA-p6pp-m3f8-5c89"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89407"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/issues/1649"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/pull/1650"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/pull/1701"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/commit/731e794f62623aa0d86ced52490166be903fbb1d"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/commit/e7acd64cc99bd346704423dc2bfea1ab0a08ddff"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/FasterXML/jackson-core"
+        }
+      ],
+      "osvFixedVersions": [
+        "2.18.11",
+        "2.21.7",
+        "2.22.3"
+      ],
+      "assessment": "POTENTIAL_PARSER_PATH",
+      "reachabilityNote": "JSON parsing is network reachable; exact coercion/regex path and exploitability not reproduced. Needs patched dependency or further review before public deployment.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "판단 불가",
+      "sourceEvidence": "Dto, EvaluationDto, AiJson, MVC controllers: typed DTOs / blocking JSON, no identified special parser/typing configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "com.fasterxml.jackson.core:jackson-core",
+      "version": "2.19.2",
+      "id": "GHSA-r7wm-3cxj-wff9",
+      "aliases": [
+        "CVE-2026-68494"
+      ],
+      "summary": "jackson-core: Async parser maxNumberLength bypass via chunked digit accumulation (incomplete fix for GHSA-72hv-8253-57qq)",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/security/advisories/GHSA-r7wm-3cxj-wff9"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68494"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/pull/1611"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/commit/050b429804dce2a7e08f0be1b0b4c3d040fdb9cd"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/commit/4cdd529749da396cc7edf6d4a2aad41d47902641"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-core/commit/c5941e5aae7fd5aeac55d66933cfb82b9aabeef8"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/FasterXML/jackson-core"
+        }
+      ],
+      "osvFixedVersions": [
+        "2.18.8",
+        "2.21.4"
+      ],
+      "assessment": "NO_EXPLICIT_FEATURE_PATH",
+      "reachabilityNote": "Blocking servlet JSON conversion and String/tree mapper are used; no explicit async or DataInput parser path. Runtime internals not exhaustively traced.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "Dto, EvaluationDto, AiJson, MVC controllers: typed DTOs / blocking JSON, no identified special parser/typing configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "com.fasterxml.jackson.core:jackson-databind",
+      "version": "2.19.2",
+      "id": "GHSA-3pjw-73gf-8qr5",
+      "aliases": [
+        "CVE-2026-59888"
+      ],
+      "summary": "jackson-databind: @JsonIgnore on a Record property is bypassed with a PropertyNamingStrategy",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/security/advisories/GHSA-3pjw-73gf-8qr5"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59888"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/pull/5974"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/commit/baa2cdf5ca2b2717fbb88d91955d69d8651df3e4"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/commit/c7c678360624da5bc7eed2152789fa522880db9d"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/FasterXML/jackson-databind"
+        }
+      ],
+      "osvFixedVersions": [
+        "2.18.8",
+        "2.21.4"
+      ],
+      "assessment": "NO_EXPLICIT_FEATURE_PATH",
+      "reachabilityNote": "No application default typing, polymorphic allowlist, identity-reference, JsonIgnore policy, or Path/InetAddress/Duration input DTO matching these prerequisites found; typed DTO/tree parsing only. No exploitability claim.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "Dto, EvaluationDto, AiJson, MVC controllers: typed DTOs / blocking JSON, no identified special parser/typing configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "com.fasterxml.jackson.core:jackson-databind",
+      "version": "2.19.2",
+      "id": "GHSA-5jmj-h7xm-6q6v",
+      "aliases": [
+        "CVE-2026-54515"
+      ],
+      "summary": "jackson-databind has case-insensitive deserialization bypasses per-property @JsonIgnoreProperties",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/security/advisories/GHSA-5jmj-h7xm-6q6v"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54515"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/issues/5962"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/issues/5964"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/commit/0e1b0b211f7a53baa62ba2f4c9bd006c7bf4d5fa"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/FasterXML/jackson-databind"
+        }
+      ],
+      "osvFixedVersions": [
+        "2.18.9",
+        "2.21.5",
+        "2.22.1",
+        "3.1.4"
+      ],
+      "assessment": "NO_EXPLICIT_FEATURE_PATH",
+      "reachabilityNote": "No application default typing, polymorphic allowlist, identity-reference, JsonIgnore policy, or Path/InetAddress/Duration input DTO matching these prerequisites found; typed DTO/tree parsing only. No exploitability claim.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "Dto, EvaluationDto, AiJson, MVC controllers: typed DTOs / blocking JSON, no identified special parser/typing configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "com.fasterxml.jackson.core:jackson-databind",
+      "version": "2.19.2",
+      "id": "GHSA-cxp5-3px4-pw24",
+      "aliases": [
+        "CVE-2026-91777"
+      ],
+      "summary": "jackson-databind quadratic forward-reference completion ",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/security/advisories/GHSA-cxp5-3px4-pw24"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91777"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/issues/6204"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/pull/6204"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/commit/37ad9b81712cbb9fb62c2d2c1813593252a24b67"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/FasterXML/jackson-databind"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.18.11"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.21.7"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.22.3"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-3.1.7"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-3.2.3"
+        }
+      ],
+      "osvFixedVersions": [
+        "2.18.11",
+        "2.21.7",
+        "2.22.3"
+      ],
+      "assessment": "NO_EXPLICIT_FEATURE_PATH",
+      "reachabilityNote": "No application default typing, polymorphic allowlist, identity-reference, JsonIgnore policy, or Path/InetAddress/Duration input DTO matching these prerequisites found; typed DTO/tree parsing only. No exploitability claim.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "Dto, EvaluationDto, AiJson, MVC controllers: typed DTOs / blocking JSON, no identified special parser/typing configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "com.fasterxml.jackson.core:jackson-databind",
+      "version": "2.19.2",
+      "id": "GHSA-gx83-3vf8-gh7j",
+      "aliases": [
+        "CVE-2026-83557"
+      ],
+      "summary": "jackson-databind: Comparable missing from DefaultBaseTypeLimitingValidator's unsafe base types (incomplete PolymorphicTypeValidator denylist)",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/security/advisories/GHSA-gx83-3vf8-gh7j"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-83557"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/issues/6156"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/pull/6155"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/commit/eb3b7fc0f9c0d27f471550ac3316b17d1987388f"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/FasterXML/jackson-databind"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.18.10"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.21.6"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.22.2"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-3.1.6"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-3.2.2"
+        }
+      ],
+      "osvFixedVersions": [
+        "2.18.10",
+        "2.21.6",
+        "2.22.2"
+      ],
+      "assessment": "NO_EXPLICIT_FEATURE_PATH",
+      "reachabilityNote": "No application default typing, polymorphic allowlist, identity-reference, JsonIgnore policy, or Path/InetAddress/Duration input DTO matching these prerequisites found; typed DTO/tree parsing only. No exploitability claim.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "Dto, EvaluationDto, AiJson, MVC controllers: typed DTOs / blocking JSON, no identified special parser/typing configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "com.fasterxml.jackson.core:jackson-databind",
+      "version": "2.19.2",
+      "id": "GHSA-hgj6-7826-r7m5",
+      "aliases": [
+        "CVE-2026-54514"
+      ],
+      "summary": "jackson-databind: InetSocketAddress deserialization triggers eager DNS resolution (SSRF)",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/security/advisories/GHSA-hgj6-7826-r7m5"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54514"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/pull/5951"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/commit/1f5a1037b1e9e05920e755cb35f198bcd46667e4"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/FasterXML/jackson-databind"
+        }
+      ],
+      "osvFixedVersions": [
+        "2.18.8",
+        "2.21.4",
+        "3.1.4"
+      ],
+      "assessment": "NO_EXPLICIT_FEATURE_PATH",
+      "reachabilityNote": "No application default typing, polymorphic allowlist, identity-reference, JsonIgnore policy, or Path/InetAddress/Duration input DTO matching these prerequisites found; typed DTO/tree parsing only. No exploitability claim.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "Dto, EvaluationDto, AiJson, MVC controllers: typed DTOs / blocking JSON, no identified special parser/typing configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "com.fasterxml.jackson.core:jackson-databind",
+      "version": "2.19.2",
+      "id": "GHSA-j3rv-43j4-c7qm",
+      "aliases": [
+        "CVE-2026-54512"
+      ],
+      "summary": "jackson-databind has a PolymorphicTypeValidator bypass via generic type parameters that allows arbitrary class instantiation",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/security/advisories/GHSA-j3rv-43j4-c7qm"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54512"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/issues/5988"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/commit/434d6c511de7fdd9872f29157aafb6162d12d8d5"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/FasterXML/jackson-databind"
+        }
+      ],
+      "osvFixedVersions": [
+        "2.18.8",
+        "2.21.4",
+        "3.1.4"
+      ],
+      "assessment": "NO_EXPLICIT_FEATURE_PATH",
+      "reachabilityNote": "No application default typing, polymorphic allowlist, identity-reference, JsonIgnore policy, or Path/InetAddress/Duration input DTO matching these prerequisites found; typed DTO/tree parsing only. No exploitability claim.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "Dto, EvaluationDto, AiJson, MVC controllers: typed DTOs / blocking JSON, no identified special parser/typing configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "com.fasterxml.jackson.core:jackson-databind",
+      "version": "2.19.2",
+      "id": "GHSA-q4xh-88c3-wmh7",
+      "aliases": [
+        "CVE-2026-68497"
+      ],
+      "summary": "jackson-databind: Duration XMLGregorianCalendar Unbounded Number Parse DoS",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/security/advisories/GHSA-q4xh-88c3-wmh7"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68497"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/pull/6127"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/commit/a99b7e74c8928f43f6975773a8c862c8316178bd"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/FasterXML/jackson-databind"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.18.10"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.21.6"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.22.2"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-3.1.6"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-3.2.2"
+        }
+      ],
+      "osvFixedVersions": [
+        "2.18.10",
+        "2.21.6",
+        "2.22.2"
+      ],
+      "assessment": "NO_EXPLICIT_FEATURE_PATH",
+      "reachabilityNote": "No application default typing, polymorphic allowlist, identity-reference, JsonIgnore policy, or Path/InetAddress/Duration input DTO matching these prerequisites found; typed DTO/tree parsing only. No exploitability claim.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "Dto, EvaluationDto, AiJson, MVC controllers: typed DTOs / blocking JSON, no identified special parser/typing configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "com.fasterxml.jackson.core:jackson-databind",
+      "version": "2.19.2",
+      "id": "GHSA-rmj7-2vxq-3g9f",
+      "aliases": [
+        "CVE-2026-54513"
+      ],
+      "summary": "jackson-databind has an array subtype allowlist bypass in BasicPolymorphicTypeValidator (allowIfSubTypeIsArray)",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/security/advisories/GHSA-rmj7-2vxq-3g9f"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54513"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/issues/5983"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/issues/5981"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/pull/5984"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/commit/24529da29fdf46ff94ca38de9ebf31cd188f5e8e"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/commit/01d1692c8d0ed03e51a0e3c4f8a9e6908e4931e5"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:50849"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:54435"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:54622"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:62260"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:66488"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:66545"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/security/cve/CVE-2026-54513"
+        },
+        {
+          "type": "WEB",
+          "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2492010"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/FasterXML/jackson-databind"
+        },
+        {
+          "type": "WEB",
+          "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-54513.json"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:36839"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:40895"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:41951"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:43218"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:43400"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:44061"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:44062"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:44063"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:44064"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:44065"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:44066"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:44271"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:48095"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:48151"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:50846"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:50847"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2026:50848"
+        }
+      ],
+      "osvFixedVersions": [
+        "2.18.8",
+        "2.21.4",
+        "3.1.4"
+      ],
+      "assessment": "NO_EXPLICIT_FEATURE_PATH",
+      "reachabilityNote": "No application default typing, polymorphic allowlist, identity-reference, JsonIgnore policy, or Path/InetAddress/Duration input DTO matching these prerequisites found; typed DTO/tree parsing only. No exploitability claim.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "Dto, EvaluationDto, AiJson, MVC controllers: typed DTOs / blocking JSON, no identified special parser/typing configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "com.fasterxml.jackson.core:jackson-databind",
+      "version": "2.19.2",
+      "id": "GHSA-vvgp-rfg2-7rr6",
+      "aliases": [
+        "CVE-2026-77310"
+      ],
+      "summary": "jackson-databind: Incomplete fix for CVE-2026-54514: eager DNS resolution (SSRF) still present in InetAddress deserialization",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/security/advisories/GHSA-vvgp-rfg2-7rr6"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77310"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/pull/6058"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/commit/2fc7bd9057dd051d7dea0e5fcad89822d0fa5ebd"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/FasterXML/jackson-databind"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.18.9"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.21.5"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.22.1"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-3.1.5"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-3.2.1"
+        }
+      ],
+      "osvFixedVersions": [
+        "2.18.9",
+        "2.21.5",
+        "2.22.1"
+      ],
+      "assessment": "NO_EXPLICIT_FEATURE_PATH",
+      "reachabilityNote": "No application default typing, polymorphic allowlist, identity-reference, JsonIgnore policy, or Path/InetAddress/Duration input DTO matching these prerequisites found; typed DTO/tree parsing only. No exploitability claim.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "Dto, EvaluationDto, AiJson, MVC controllers: typed DTOs / blocking JSON, no identified special parser/typing configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "com.fasterxml.jackson.core:jackson-databind",
+      "version": "2.19.2",
+      "id": "GHSA-wjgm-6hv5-3cvf",
+      "aliases": [
+        "CVE-2026-19032"
+      ],
+      "summary": "jackson-databind: Path Deserialization Missing Scheme Allowlist for FileSystemProvider Resolution",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/security/advisories/GHSA-wjgm-6hv5-3cvf"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19032"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/pull/6129"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/commit/cc6756b61ed90b6b9227f670e0408d5d9bd48551"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/commit/ce26eda3481cd796f76ba4c53ffe1da23b53f166"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/commit/d94bb632becfe0ba96926b9909ab06d1f87aad6d"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/FasterXML/jackson-databind"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.18.10"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.21.6"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.22.2"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-3.1.6"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-3.2.2"
+        }
+      ],
+      "osvFixedVersions": [
+        "2.18.10",
+        "2.21.6",
+        "2.22.2"
+      ],
+      "assessment": "NO_EXPLICIT_FEATURE_PATH",
+      "reachabilityNote": "No application default typing, polymorphic allowlist, identity-reference, JsonIgnore policy, or Path/InetAddress/Duration input DTO matching these prerequisites found; typed DTO/tree parsing only. No exploitability claim.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "Dto, EvaluationDto, AiJson, MVC controllers: typed DTOs / blocking JSON, no identified special parser/typing configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "com.fasterxml.jackson.core:jackson-databind",
+      "version": "2.19.2",
+      "id": "GHSA-wv8q-qhhj-9h54",
+      "aliases": [
+        "CVE-2026-91776"
+      ],
+      "summary": "jackson-databind retains every unknown raw type ID ",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/security/advisories/GHSA-wv8q-qhhj-9h54"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91776"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/issues/6203"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/commit/2870d1d6dc1b7e1c07ee11dd5b04ab71cddbb577"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/FasterXML/jackson-databind"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.18.11"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.21.7"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.22.3"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-3.1.7"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-3.2.3"
+        }
+      ],
+      "osvFixedVersions": [
+        "2.18.11",
+        "2.21.7",
+        "2.22.3"
+      ],
+      "assessment": "NO_EXPLICIT_FEATURE_PATH",
+      "reachabilityNote": "No application default typing, polymorphic allowlist, identity-reference, JsonIgnore policy, or Path/InetAddress/Duration input DTO matching these prerequisites found; typed DTO/tree parsing only. No exploitability claim.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "Dto, EvaluationDto, AiJson, MVC controllers: typed DTOs / blocking JSON, no identified special parser/typing configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.commons:commons-lang3",
+      "version": "3.17.0",
+      "id": "GHSA-j288-q9x7-2f5v",
+      "aliases": [
+        "CVE-2025-48924"
+      ],
+      "summary": "Apache Commons Lang is vulnerable to Uncontrolled Recursion when processing long inputs",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-48924"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/commons-lang/commit/b424803abdb2bec818e4fbcb251ce031c22aca53"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/commons-lang"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/bgv0lpswokgol11tloxnjfzdl7yrc1g1"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.debian.org/debian-lts-announce/2025/08/msg00000.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.debian.org/debian-lts-announce/2025/08/msg00026.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.debian.org/debian-lts-announce/2025/09/msg00032.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.debian.org/debian-lts-announce/2025/09/msg00036.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2025/07/11/1"
+        }
+      ],
+      "osvFixedVersions": [
+        "3.18.0"
+      ],
+      "assessment": "REACHABILITY_NOT_PROVEN",
+      "reachabilityNote": "No explicit ClassUtils.getClass input path in application; POI/Flyway transitive usage not fully traced. Keep dependency advisory open.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "판단 불가",
+      "sourceEvidence": "runtime inventory / SheetCodec / FileService: transitive calls not fully traced",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.logging.log4j:log4j-api",
+      "version": "2.24.3",
+      "id": "GHSA-qv9r-c865-cp47",
+      "aliases": [
+        "CVE-2026-49844"
+      ],
+      "summary": "Apache Log4j API: Improper encoding of non-finite floating-point values during MapMessage JSON serialization",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49844"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/logging-log4j2/pull/4163"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/logging-log4j2/commit/19edb23e162d6c728a8c2221a240037d389ed300"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/logging-log4j2/commit/feadf8eb0b4acb6ddfa4c0ab2bbc6d88b8e12d82"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/logging-log4j2"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/logging-log4j2/releases/tag/rel/2.25.5"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/logging-log4j2/releases/tag/rel/2.26.1"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logging.apache.org/cyclonedx/vdr.xml"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logging.apache.org/log4j/2.x/manual/json-template-layout.html#event-template-resolver-message"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logging.apache.org/security.html#CVE-2026-49844"
+        }
+      ],
+      "osvFixedVersions": [
+        "2.25.5",
+        "2.26.1"
+      ],
+      "assessment": "NO_EXPLICIT_FEATURE_PATH",
+      "reachabilityNote": "Default logging implementation is Logback; application does not construct MapMessage JSON. Transitive internal paths not dynamically proven unreachable.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "runtime inventory / main logging search: Logback implementation, no MapMessage construction",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-563x-q5rq-57qp",
+      "aliases": [
+        "BIT-tomcat-2026-24880",
+        "CVE-2026-24880"
+      ],
+      "summary": "Apache Tomcat has an HTTP Request/Response Smuggling vulnerability",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24880"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/1b586d6aa8ae65726da5fa8799427b5d4718478a"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/1e71441a15972f56e661b0b549fb9e5d838b83bb"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/2cb06c34f661ca42f7570bbcc21e99806184bcc5"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/6d478dbe18b7c4bb671c30fedf130309b0dab77c"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/f07df938d00f7419b40fa65aa912966d0efac522"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/fde1a8235fb73125217bd41e162aa0a113f33552"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/tomcat"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/2c682qnlg2tv4o5knlggqbl9yc2gb5sn"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-10.html#Fixed_in_Apache_Tomcat_10.1.53"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-11.html#Fixed_in_Apache_Tomcat_11.0.20"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-9.html#Fixed_in_Apache_Tomcat_9.0.116"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.herodevs.com/vulnerability-directory/cve-2026-24880"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2026/04/09/20"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.52",
+        "11.0.20",
+        "9.0.116"
+      ],
+      "assessment": "POTENTIAL_TRANSPORT_PATH",
+      "reachabilityNote": "Embedded Tomcat parses untrusted HTTP; proxy/logging/parser prerequisites and exploitability not reproduced. Loopback limits default exposure but is not a patch.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "판단 불가",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-5m62-pw8w-7w9f",
+      "aliases": [
+        "BIT-tomcat-2026-43515",
+        "CVE-2026-43515"
+      ],
+      "summary": "Apache Tomcat - Security constraints not correctly applied",
+      "severity": "CRITICAL",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43515"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/276087d9c7abbcecc6c4fb4e4b08cf64780c6e36"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/c621317382682206fb58ab92ebd3e1b6fdd10ce9"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/db919ff9912b4d61d1b702a1342b8bde39270031"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/tomcat"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/746nxfxod0wsocxtmv8pb8nkgmwpc6bb"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-10.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-11.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-9.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2026/05/12/11"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.55",
+        "11.0.22",
+        "9.0.118"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "Container FORM/DIGEST/Realm/security-constraint authentication is not configured; JWT authorization is in Spring Security.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-5mp6-jrq3-r938",
+      "aliases": [
+        "BIT-tomcat-2026-43513",
+        "CVE-2026-43513"
+      ],
+      "summary": "Apache Tomcat: LockOutRealm treats user names as case-sensitive",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43513"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/4a90d3fa93988c447cd5bb7482f76ff70d7f15c2"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/6dd75beb55bd42fc5f78e929596b25018cd17717"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/83f3e51df7b87f5f6e626951c575ded1a512e8ef"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/tomcat"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/ytjcgldshj73lcnd1sh95od5hrghwogp"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-10.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-11.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-9.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2026/05/12/9"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.55",
+        "11.0.22",
+        "9.0.118"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "Container FORM/DIGEST/Realm/security-constraint authentication is not configured; JWT authorization is in Spring Security.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-9m3c-qcxr-9x87",
+      "aliases": [
+        "BIT-tomcat-2026-25854",
+        "CVE-2026-25854"
+      ],
+      "summary": "Apache Tomcat has an Open Redirect vulnerability",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25854"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/tomcat"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/ghct3b6o74bp2vm7q875s1zh0dqrz3h0"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2026/04/09/21"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.53",
+        "11.0.20",
+        "9.0.116"
+      ],
+      "assessment": "POTENTIAL_TRANSPORT_PATH",
+      "reachabilityNote": "Embedded Tomcat parses untrusted HTTP; proxy/logging/parser prerequisites and exploitability not reproduced. Loopback limits default exposure but is not a patch.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "판단 불가",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-9m89-8frq-c98c",
+      "aliases": [
+        "BIT-tomcat-2026-43514",
+        "CVE-2026-43514"
+      ],
+      "summary": "Apache Tomcat - AJP secret compared in non-constant time",
+      "severity": "LOW",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43514"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/933dcdbf2515972280002929e7e597dead2e9ffa"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/a102a2a157868ca51d83eaf5a119ccd9976a113e"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/d35d9d23263c8e4af561f615c960c91697ff200e"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/tomcat"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/2k654v5cq123npfsd1b2kk1y30owqb1m"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-10.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-11.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-9.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2026/05/12/10"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.55",
+        "11.0.22",
+        "9.0.118"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "Affected optional connector/servlet/endpoint/valve is not configured in this application. Review again if deployment enables it.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-9xv2-5v5q-p794",
+      "aliases": [
+        "BIT-tomcat-2026-65905",
+        "CVE-2026-65905"
+      ],
+      "summary": "Apache Tomcat's DIGEST authenticator has an Authentication Bypass by Capture-replay vulnerability",
+      "severity": "CRITICAL",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65905"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/tomcat"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/9v114xlpgbzrrbzz5vf9f6r2q4wnxwwj"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2026/08/26/4"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.58",
+        "11.0.25",
+        "9.0.121"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "Container FORM/DIGEST/Realm/security-constraint authentication is not configured; JWT authorization is in Spring Security.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-fpj8-gq4v-p354",
+      "aliases": [
+        "BIT-tomcat-2025-66614",
+        "CVE-2025-66614"
+      ],
+      "summary": "Apache Tomcat - Client certificate verification bypass",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66614"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/152c14885d45f5e0a8b59bd9f93c289cfe20ce30"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/258a591b61f8cf5c22109e21e5a2a38b63454fd2"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/5053fa82a1b2b52756810601227984a8b71888a4"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/9276b5e783c8cd5b3fe2bb716306b65004bdd940"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/972f9a5e2a07674d92610c478aac1b205d60724e"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/a4aa74232e826028cd2f7ba0445caf8a8b52c509"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/tomcat"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/vw6lxtlh2qbqwpb61wd3sv1flm2nttw7"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-10.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-11.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-9.html"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.50",
+        "11.0.15",
+        "9.0.113"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "Affected optional connector/servlet/endpoint/valve is not configured in this application. Review again if deployment enables it.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-fv25-8xcx-gqjc",
+      "aliases": [
+        "BIT-tomcat-2026-42498",
+        "CVE-2026-42498"
+      ],
+      "summary": "Apache Tomcat - WebSocket authentication header exposure",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42498"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/169d725788ea6aec217ecac70fe4161c837ba423"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/6cbe274592ef2d11607b5b188e1df649de52f8d5"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/b7b173694d588ddcfa432f079baf763cbbbaa5c4"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/tomcat"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/n61zwf75jrv09rz90j4jssncm244bwdb"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-10.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-11.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-9.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2026/05/12/14"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.55",
+        "11.0.22",
+        "9.0.118"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "Affected optional connector/servlet/endpoint/valve is not configured in this application. Review again if deployment enables it.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-gcx9-497g-6cp6",
+      "aliases": [
+        "BIT-tomcat-2026-65182",
+        "CVE-2026-65182"
+      ],
+      "summary": "Apache Tomcat has an Improper Access Control, Incorrect Authorization vulnerability",
+      "severity": "CRITICAL",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65182"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/8bafd79a3b54684e80e9cb1bafd4746aede7d3f5"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/b2c56ec8f20c66773a1a813034ffcdb60841f1cf"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/b79752d2a8578d94743e2a95c50af297f780c0df"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/joosxvzc9b49ttj8lj0jw9mqt0ml767m"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-10.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-11.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-9.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2026/08/26/1"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.58",
+        "11.0.25",
+        "9.0.121"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "Container FORM/DIGEST/Realm/security-constraint authentication is not configured; JWT authorization is in Spring Security.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-gx5v-xp9w-j4cg",
+      "aliases": [
+        "BIT-tomcat-2026-41284",
+        "CVE-2026-41284"
+      ],
+      "summary": "Apache Tomcat: Unbounded read in WebDAV LOCK and  PROPFIND handling",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41284"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/17dacd9aa48628da2eba37a9ab743c0b6c71685c"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/a96fffd18487a29c0a30d36f00cb2b2d91f6d42c"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/b3d1c1c239142e806be0b7329d304b94a58913ed"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/tomcat"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/2nvqjr7ovjmvx2vbhb7s61ycd5msc8qc"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-10.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-11.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-9.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2026/05/12/12"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.55",
+        "11.0.22",
+        "9.0.118"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "Affected optional connector/servlet/endpoint/valve is not configured in this application. Review again if deployment enables it.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-h3x4-894j-xpx5",
+      "aliases": [
+        "BIT-tomcat-2026-68525",
+        "CVE-2026-68525"
+      ],
+      "summary": "Apache Tomcat's FORM authentication process has an Incorrect Authorization vulnerability",
+      "severity": "CRITICAL",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68525"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/10d048e16034ddf12055e0cede0da05b15c823b8"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/32f0c38526b4e655ff0c17cd97afedefc624fe43"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/58123aa468a20e2a079b7e0c68a4009e2475c098"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/tomcat"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/x1y2lfsgzxwzc456f8954vbvgn03zhd7"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-10.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-11.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-9.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2026/08/26/7"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.58",
+        "11.0.25",
+        "9.0.121"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "Container FORM/DIGEST/Realm/security-constraint authentication is not configured; JWT authorization is in Spring Security.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-h6fc-48rj-7qqh",
+      "aliases": [
+        "BIT-tomcat-2026-43512",
+        "CVE-2026-43512"
+      ],
+      "summary": "Apache Tomcat - Digest authenticator will authenticate any unknown user",
+      "severity": "CRITICAL",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43512"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/3d4d3fae07a6cd9c2eb193c5491001740ec64448"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/6565a6cb6499e56fe2f34457cec99f9d1c4f39e9"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/a99c355e8199adbfd67c9a1fffbd85b810b196cd"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/7x09x7o12solvclslw3sz0288xc8wx73"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-10.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-11.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-9.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2026/05/12/8"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.55",
+        "11.0.22",
+        "9.0.118"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "Container FORM/DIGEST/Realm/security-constraint authentication is not configured; JWT authorization is in Spring Security.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-hgrr-935x-pq79",
+      "aliases": [
+        "BIT-tomcat-2025-61795",
+        "CVE-2025-61795"
+      ],
+      "summary": "Apache Tomcat Vulnerable to Improper Resource Shutdown or Release",
+      "severity": "LOW",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-61795"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/1cdf5f730ede75a0759492f179ac21ca4ff68e06"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/af6e9181620304c0d818121c29c074e1330610d0"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/afa422bd7ca1eef0f507259c682fd876494d9c3b"
+        },
+        {
+          "type": "WEB",
+          "url": "https://cert-portal.siemens.com/productcert/html/ssa-032379.html"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/tomcat"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/wm9mx8brmx9g4zpywm06ryrtvd3160pp"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-10.html#Fixed_in_Apache_Tomcat_10.1.47"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-11.html#Fixed_in_Apache_Tomcat_11.0.12"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-9.html#Fixed_in_Apache_Tomcat_9.0.110"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2025/10/27/6"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.47",
+        "11.0.12",
+        "9.0.110"
+      ],
+      "assessment": "POTENTIAL_TRANSPORT_PATH",
+      "reachabilityNote": "Embedded Tomcat parses untrusted HTTP; proxy/logging/parser prerequisites and exploitability not reproduced. Loopback limits default exposure but is not a patch.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "판단 불가",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-mgp5-rv84-w37q",
+      "aliases": [
+        "BIT-tomcat-2026-24734",
+        "CVE-2026-24734"
+      ],
+      "summary": "Apache Tomcat has an Improper Input Validation vulnerability",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24734"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/tomcat"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/292dlmx3fz1888v6v16221kpozq56gml"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.52",
+        "11.0.18",
+        "9.0.115"
+      ],
+      "assessment": "POTENTIAL_TRANSPORT_PATH",
+      "reachabilityNote": "Embedded Tomcat parses untrusted HTTP; proxy/logging/parser prerequisites and exploitability not reproduced. Loopback limits default exposure but is not a patch.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "판단 불가",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-r29c-68gh-xp6x",
+      "aliases": [
+        "BIT-tomcat-2026-41293",
+        "CVE-2026-41293"
+      ],
+      "summary": "Apache Tomcat - HTTP/2 request headers not validated",
+      "severity": "CRITICAL",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41293"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/19f17a257797e8d139b33ff9c88d362a273be148"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/1c70480466572c9192ed412ebefcd43fc63137fd"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/2a2476460e823789f530a22207873ea8cd6eff3b"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/3915fd27e6810b14ccd21e3d900bd8faef44d3df"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/57c2b3bfd62792631e1df24cf4237b990a0b36fa"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/c2925554c677da57390f940d856871e18daaacab"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/cf9452443bcbf3b1a4b435ef7d624364f1b65ca3"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/e5cef9618c3f4fd31bd6fb1e83f0f18022280dac"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/f72a6174ab1f0f5a053435f80448b4f6837fe6d7"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/tomcat"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/qwg0q16z7xkb2qrr853wdll5531mvl1r"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-10.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-11.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-9.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2026/05/12/13"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.55",
+        "11.0.22",
+        "9.0.118"
+      ],
+      "assessment": "CONFIGURATION_REVIEW_REQUIRED",
+      "reachabilityNote": "No HTTP/2 enabling property/customizer found; connector defaults and deployment changes need separate verification.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "판단 불가",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-rv64-5gf8-9qq8",
+      "aliases": [
+        "BIT-tomcat-2026-34483",
+        "CVE-2026-34483"
+      ],
+      "summary": "Apache Tomcat has an Improper Encoding or Escaping of Output vulnerability in the JsonAccessLogValve",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34483"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/tomcat"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/j1w7304yonlr8vo1tkb5nfs7od1y228b"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2026/04/09/26"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.54",
+        "11.0.21",
+        "9.0.116"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "Affected optional connector/servlet/endpoint/valve is not configured in this application. Review again if deployment enables it.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.apache.tomcat.embed:tomcat-embed-core",
+      "version": "10.1.46",
+      "id": "GHSA-x4m4-345f-5h5g",
+      "aliases": [
+        "BIT-tomcat-2026-34487",
+        "CVE-2026-34487"
+      ],
+      "summary": "Apache Tomcat vulnerable to Insertion of Sensitive Information into Log File",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34487"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/301bc6efbf72feb14dacfdfa3f50372182736150"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/5eff2a773b8b728083e5195b3183df1b9e12a03d"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/tomcat/commit/f593292a082e5ef9336a8db2b4b522f7f3e36976"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/tomcat"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread/4xpkwolpkrj8v5xzp5nyovtlqp3y850h"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-10.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-11.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tomcat.apache.org/security-9.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2026/04/09/28"
+        }
+      ],
+      "osvFixedVersions": [
+        "10.1.54",
+        "11.0.21",
+        "9.0.117"
+      ],
+      "assessment": "POTENTIAL_TRANSPORT_PATH",
+      "reachabilityNote": "Embedded Tomcat parses untrusted HTTP; proxy/logging/parser prerequisites and exploitability not reproduced. Loopback limits default exposure but is not a patch.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "판단 불가",
+      "sourceEvidence": "application.yml / Dockerfile / SecurityConfig / docker-compose.yml: embedded HTTP, custom JWT, optional connectors not enabled",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework.boot:spring-boot",
+      "version": "3.5.6",
+      "id": "GHSA-wwpq-f5c3-7hvx",
+      "aliases": [
+        "CVE-2026-40973"
+      ],
+      "summary": "Spring Boot accepts predictable temp directory without ownership verification",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40973"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-boot"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-40973"
+        }
+      ],
+      "osvFixedVersions": [
+        "3.5.14",
+        "4.0.6"
+      ],
+      "assessment": "LOCAL_ENVIRONMENT_CONDITION",
+      "reachabilityNote": "Embedded server temporary-directory creation is used; untrusted local filesystem actor prerequisite needs environment review. Non-root container is not a complete fix.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "판단 불가",
+      "sourceEvidence": "application.yml / Dockerfile / runtime inventory: embedded server, non-root container, no Artemis configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework.boot:spring-boot-autoconfigure",
+      "version": "3.5.6",
+      "id": "GHSA-ggg2-9786-hwc8",
+      "aliases": [
+        "CVE-2026-41001"
+      ],
+      "summary": "Spring Boot: Predictable Temp Directory in Artemis Auto-configuration",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41001"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-boot/commit/4218bd76e934e5cf9e3fd3997c67b8a6b0d0c111"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-boot"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41001"
+        }
+      ],
+      "osvFixedVersions": [
+        "3.5.15",
+        "4.0.7"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No Artemis dependency/configuration in resolved runtime; affected auto-configuration prerequisite not found.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "application.yml / Dockerfile / runtime inventory: embedded server, non-root container, no Artemis configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework.data:spring-data-commons",
+      "version": "3.5.4",
+      "id": "GHSA-5m4m-73w9-8433",
+      "aliases": [
+        "CVE-2026-41721"
+      ],
+      "summary": "Spring Data Commons: Denial of Service via excessive memory allocation in projection binding",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41721"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-data-commons/releases/tag/3.5.12"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-data-commons/releases/tag/4.0.6"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41721"
+        }
+      ],
+      "osvFixedVersions": [
+        "3.5.12",
+        "4.0.6"
+      ],
+      "assessment": "ALLOWLISTED_APP_PATHS",
+      "reachabilityNote": "Controllers do not bind generic projection/Pageable/Sort property paths; employee sorts are a fixed whitelist. Internal library paths not exhaustively proven unreachable.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "ApiController / EmployeeService / CatalogService: fixed sort whitelist, no projection or Pageable input binding",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework.data:spring-data-commons",
+      "version": "3.5.4",
+      "id": "GHSA-5vpf-xvv7-c8vh",
+      "aliases": [
+        "CVE-2026-41711"
+      ],
+      "summary": "Spring Data Commons: StackOverflowException when parsing Sort parameters (DoS)",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41711"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-data-commons"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-data-commons/releases/tag/3.5.12"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-data-commons/releases/tag/4.0.6"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41711"
+        }
+      ],
+      "osvFixedVersions": [
+        "3.5.12",
+        "4.0.6"
+      ],
+      "assessment": "ALLOWLISTED_APP_PATHS",
+      "reachabilityNote": "Controllers do not bind generic projection/Pageable/Sort property paths; employee sorts are a fixed whitelist. Internal library paths not exhaustively proven unreachable.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "ApiController / EmployeeService / CatalogService: fixed sort whitelist, no projection or Pageable input binding",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework.data:spring-data-commons",
+      "version": "3.5.4",
+      "id": "GHSA-88fw-v6x4-3f58",
+      "aliases": [
+        "CVE-2026-41695"
+      ],
+      "summary": "Spring Data: Unbounded property-path cache keyed by externally-supplied path string",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/security-advisories/security/advisories/GHSA-88fw-v6x4-3f58"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41695"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-data-commons/commit/96e9475b963218bb702959524187342671f6b080"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-data-commons/commit/a4f893b66c18c70f2b22f29a2b55097b73c89941"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/security-advisories"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-data-commons/releases/tag/3.5.12"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-data-commons/releases/tag/4.0.6"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41695"
+        }
+      ],
+      "osvFixedVersions": [
+        "3.5.12",
+        "4.0.6"
+      ],
+      "assessment": "ALLOWLISTED_APP_PATHS",
+      "reachabilityNote": "Controllers do not bind generic projection/Pageable/Sort property paths; employee sorts are a fixed whitelist. Internal library paths not exhaustively proven unreachable.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "ApiController / EmployeeService / CatalogService: fixed sort whitelist, no projection or Pageable input binding",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework.data:spring-data-commons",
+      "version": "3.5.4",
+      "id": "GHSA-9fw2-h3hf-293r",
+      "aliases": [
+        "CVE-2026-41716"
+      ],
+      "summary": "Spring Data Commons: Heap exhaustion from unbounded property-lookup cache retaining crafted string keys",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41716"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-data-commons"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-data-commons/releases/tag/3.5.12"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-data-commons/releases/tag/4.0.6"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41716"
+        }
+      ],
+      "osvFixedVersions": [
+        "3.5.12",
+        "4.0.6"
+      ],
+      "assessment": "ALLOWLISTED_APP_PATHS",
+      "reachabilityNote": "Controllers do not bind generic projection/Pageable/Sort property paths; employee sorts are a fixed whitelist. Internal library paths not exhaustively proven unreachable.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "ApiController / EmployeeService / CatalogService: fixed sort whitelist, no projection or Pageable input binding",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework.security:spring-security-core",
+      "version": "6.5.5",
+      "id": "GHSA-vxf7-qj7q-83fh",
+      "aliases": [
+        "CVE-2026-22746"
+      ],
+      "summary": "Spring Security Vulnerable to User Attribute Enumeration when Using DaoAuthenticationProvider",
+      "severity": "LOW",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22746"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-security"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-22746"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.5.10",
+        "7.0.5"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No X509, one-time-token service, DaoAuthenticationProvider, CookieRequestCache, or issuer-location discovery feature for this advisory found; local symmetric JWT and custom account lookup are used.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "SecurityConfig / AuthService / SecurityReviewWebTest: local symmetric JWT; eager HeaderWriterFilter regression",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework.security:spring-security-core",
+      "version": "6.5.5",
+      "id": "GHSA-x2wq-9x2f-fhj7",
+      "aliases": [
+        "CVE-2026-22751"
+      ],
+      "summary": "Spring Security Core has a TOCTOU race condition when One-Time Token login with JdbcOneTimeTokenService is configured",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22751"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-security/commit/163772775036c4146815a5266874278c6f45f047"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-security/commit/4187af38b251fc97fdf9949f7869618111e6e261"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-security"
+        },
+        {
+          "type": "WEB",
+          "url": "https://jinyeong.seol.pro/blogs/cve-2026-22751/en"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-22751"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.5.10",
+        "7.0.5"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No X509, one-time-token service, DaoAuthenticationProvider, CookieRequestCache, or issuer-location discovery feature for this advisory found; local symmetric JWT and custom account lookup are used.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "SecurityConfig / AuthService / SecurityReviewWebTest: local symmetric JWT; eager HeaderWriterFilter regression",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework.security:spring-security-oauth2-jose",
+      "version": "6.5.5",
+      "id": "GHSA-cvc6-q2cp-2xhw",
+      "aliases": [
+        "CVE-2026-22748"
+      ],
+      "summary": "Spring Security has Potential Security Misconfiguration when Using withIssuerLocation",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22748"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-security"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-22748"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.5.10",
+        "7.0.5"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No X509, one-time-token service, DaoAuthenticationProvider, CookieRequestCache, or issuer-location discovery feature for this advisory found; local symmetric JWT and custom account lookup are used.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "SecurityConfig / AuthService / SecurityReviewWebTest: local symmetric JWT; eager HeaderWriterFilter regression",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework.security:spring-security-web",
+      "version": "6.5.5",
+      "id": "GHSA-293q-567p-wmwq",
+      "aliases": [
+        "CVE-2026-47838"
+      ],
+      "summary": "Spring Security Vulnerable to Unauthorized User Impersonation when Using X.509 Client Certificates",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47838"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://github.com/advisories/GHSA-2jrg-rf5x-568g"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-47838"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "spring-projects/spring-security"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.5.11"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No X509, one-time-token service, DaoAuthenticationProvider, CookieRequestCache, or issuer-location discovery feature for this advisory found; local symmetric JWT and custom account lookup are used.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "SecurityConfig / AuthService / SecurityReviewWebTest: local symmetric JWT; eager HeaderWriterFilter regression",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework.security:spring-security-web",
+      "version": "6.5.5",
+      "id": "GHSA-mf92-479x-3373",
+      "aliases": [
+        "CVE-2026-22732"
+      ],
+      "summary": "Spring Security HTTP Headers Are not Written Under Some Conditions",
+      "severity": "CRITICAL",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22732"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-security"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-22732"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.5.9",
+        "7.0.4"
+      ],
+      "assessment": "VENDOR_WORKAROUND",
+      "reachabilityNote": "Spring Security default header filter is used; eager header mitigation applied. Version remains affected; regression result recorded separately.",
+      "resolution": "vendor workaround; no dependency upgrade",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "실제 도달 가능",
+      "sourceEvidence": "SecurityConfig / AuthService / SecurityReviewWebTest: local symmetric JWT; eager HeaderWriterFilter regression",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework.security:spring-security-web",
+      "version": "6.5.5",
+      "id": "GHSA-x2r2-rvhq-2mqv",
+      "aliases": [
+        "CVE-2026-41706"
+      ],
+      "summary": "Spring Security: Open Redirect via Unvalidated Post-Login Redirect URL Stored in CookieRequestCache",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41706"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-security"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-security/releases/tag/6.5.11"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-security/releases/tag/7.0.6"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41706"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.5.11",
+        "7.0.6"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No X509, one-time-token service, DaoAuthenticationProvider, CookieRequestCache, or issuer-location discovery feature for this advisory found; local symmetric JWT and custom account lookup are used.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "SecurityConfig / AuthService / SecurityReviewWebTest: local symmetric JWT; eager HeaderWriterFilter regression",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-core",
+      "version": "6.2.11",
+      "id": "GHSA-659m-px2c-25wj",
+      "aliases": [
+        "CVE-2026-41848"
+      ],
+      "summary": "Spring Framework Denial of Service via AntPathMatcher",
+      "severity": "LOW",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41848"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/commit/12b44f2545a1bec6150c7a05e66092c732597a94"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v6.2.19"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v7.0.8"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41848"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.2.19",
+        "7.0.8"
+      ],
+      "assessment": "LIMITED_FIXED_PATTERN_PATH",
+      "reachabilityNote": "Application uses fixed route patterns; no application-created matcher accepting arbitrary external patterns found. Framework internals not exhaustively traced.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "SecurityConfig / controller mappings: fixed route patterns, no external matcher patterns found",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-expression",
+      "version": "6.2.11",
+      "id": "GHSA-9f52-rjqv-25qv",
+      "aliases": [
+        "CVE-2026-41852"
+      ],
+      "summary": "Spring Framework Arbitrary Method Invocation in SpEL Expressions",
+      "severity": "LOW",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41852"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v6.2.19"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v7.0.8"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41852"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.2.19",
+        "7.0.8"
+      ],
+      "assessment": "NO_UNTRUSTED_EXPRESSION_PATH",
+      "reachabilityNote": "Only constant PreAuthorize expressions found; no user-input SpEL parser in application.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "main controllers: constant PreAuthorize expressions; no user-supplied SpEL",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-expression",
+      "version": "6.2.11",
+      "id": "GHSA-r5w3-xv2f-j59q",
+      "aliases": [
+        "CVE-2026-41850"
+      ],
+      "summary": "Spring Framework Algorithmic Denial of Service via SpEL Expressions",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41850"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v6.2.19"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v7.0.8"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41850"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.2.19",
+        "7.0.8"
+      ],
+      "assessment": "NO_UNTRUSTED_EXPRESSION_PATH",
+      "reachabilityNote": "Only constant PreAuthorize expressions found; no user-input SpEL parser in application.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "main controllers: constant PreAuthorize expressions; no user-supplied SpEL",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-expression",
+      "version": "6.2.11",
+      "id": "GHSA-wxpp-56q6-5pcg",
+      "aliases": [
+        "CVE-2026-41851"
+      ],
+      "summary": "Spring Framework Denial of Service via Unbounded Cache in SpEL",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41851"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/commit/2c18c33ce0f89bf718c184190cfb7ed49b4276fb"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/commit/76a36dfd707cddbe7118a81c2e055b36501d2cff"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v6.2.19"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v7.0.8"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41851"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.2.19",
+        "7.0.8"
+      ],
+      "assessment": "NO_UNTRUSTED_EXPRESSION_PATH",
+      "reachabilityNote": "Only constant PreAuthorize expressions found; no user-input SpEL parser in application.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "main controllers: constant PreAuthorize expressions; no user-supplied SpEL",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-web",
+      "version": "6.2.11",
+      "id": "GHSA-7m2p-62gw-p8qq",
+      "aliases": [
+        "CVE-2026-41854"
+      ],
+      "summary": "Spring Framework Server-Side Request Forgery via UriComponentsBuilder",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41854"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41854"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.2.19",
+        "7.0.8"
+      ],
+      "assessment": "NO_EXPLICIT_FEATURE_PATH",
+      "reachabilityNote": "No application UriComponentsBuilder processing untrusted URLs; AI destination is trusted server configuration and redirects are disabled.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "LlmClients / AI server configuration: no application UriComponentsBuilder input path",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-webmvc",
+      "version": "6.2.11",
+      "id": "GHSA-3chg-m5w7-qfv5",
+      "aliases": [
+        "CVE-2026-41845"
+      ],
+      "summary": "Spring Framework Cross-site Scripting via JavaScriptUtils",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41845"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/commit/86d99790dbaa8ce6bb1087ef92844d0abfdab015"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/commit/a1826b725c29fbb175fa7b4fc005aa3d78c32015"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v6.2.19"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v7.0.8"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41845"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.2.19",
+        "7.0.8"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No JSP/script/XSLT views, SSE/fragments, or redirect-returning MVC controllers found; endpoints return JSON DTOs.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "MVC controllers / SecurityConfig / application.yml / docker-compose.yml: JSON endpoints, separate static frontend, no JSP/XSLT/SSE/WAF configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-webmvc",
+      "version": "6.2.11",
+      "id": "GHSA-4773-3jfm-qmx3",
+      "aliases": [
+        "CVE-2026-22737"
+      ],
+      "summary": "Spring Framework Improper Path Limitation with Script View Templates",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22737"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-22737"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.2.17",
+        "7.0.6"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No JSP/script/XSLT views, SSE/fragments, or redirect-returning MVC controllers found; endpoints return JSON DTOs.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "MVC controllers / SecurityConfig / application.yml / docker-compose.yml: JSON endpoints, separate static frontend, no JSP/XSLT/SSE/WAF configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-webmvc",
+      "version": "6.2.11",
+      "id": "GHSA-6hcq-hmm3-jj3c",
+      "aliases": [
+        "CVE-2026-22735"
+      ],
+      "summary": "Spring MVC and WebFlux has Server Sent Event stream corruption",
+      "severity": "LOW",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22735"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-22735"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.2.17",
+        "7.0.6"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No JSP/script/XSLT views, SSE/fragments, or redirect-returning MVC controllers found; endpoints return JSON DTOs.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "MVC controllers / SecurityConfig / application.yml / docker-compose.yml: JSON endpoints, separate static frontend, no JSP/XSLT/SSE/WAF configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-webmvc",
+      "version": "6.2.11",
+      "id": "GHSA-6p4f-wcwh-5vvm",
+      "aliases": [
+        "CVE-2026-22745"
+      ],
+      "summary": "Spring MVC and WebFlux applications are vulnerable to Denial of Service attacks when resolving static resources",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22745"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-22745"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.2.18",
+        "7.0.7"
+      ],
+      "assessment": "NO_PUBLIC_RESOURCE_PATH",
+      "reachabilityNote": "Backend denies non-api requests and has no configured public versioned-resource handler; frontend is separate nginx. Framework internals not exhaustively traced.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "MVC controllers / SecurityConfig / application.yml / docker-compose.yml: JSON endpoints, separate static frontend, no JSP/XSLT/SSE/WAF configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-webmvc",
+      "version": "6.2.11",
+      "id": "GHSA-72pg-x5f8-j25j",
+      "aliases": [
+        "CVE-2026-41843"
+      ],
+      "summary": "Spring Framework Path Traversal via Versioned Static Resources in Spring MVC and WebFlux",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41843"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v6.2.19"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v7.0.8"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41843"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.2.19",
+        "7.0.8"
+      ],
+      "assessment": "NO_PUBLIC_RESOURCE_PATH",
+      "reachabilityNote": "Backend denies non-api requests and has no configured public versioned-resource handler; frontend is separate nginx. Framework internals not exhaustively traced.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "MVC controllers / SecurityConfig / application.yml / docker-compose.yml: JSON endpoints, separate static frontend, no JSP/XSLT/SSE/WAF configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-webmvc",
+      "version": "6.2.11",
+      "id": "GHSA-957g-f97v-vppc",
+      "aliases": [
+        "CVE-2026-41846"
+      ],
+      "summary": "Spring Framework Cross-site Scripting via JSP Form Tags",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41846"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/commit/1829b42b9c45e780c268dd17863d9198d62154d3"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/commit/e8f10244e3859e8bb5b6be3823c9bbea2c130573"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v6.2.19"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v7.0.8"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41846"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.2.19",
+        "7.0.8"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No JSP/script/XSLT views, SSE/fragments, or redirect-returning MVC controllers found; endpoints return JSON DTOs.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "MVC controllers / SecurityConfig / application.yml / docker-compose.yml: JSON endpoints, separate static frontend, no JSP/XSLT/SSE/WAF configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-webmvc",
+      "version": "6.2.11",
+      "id": "GHSA-cjpg-rgq5-fr37",
+      "aliases": [
+        "CVE-2026-41853"
+      ],
+      "summary": "Spring Framework Multipart Request Smuggling in Spring MVC and WebFlux",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41853"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v6.2.19"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v7.0.8"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41853"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.2.19",
+        "7.0.8"
+      ],
+      "assessment": "CONDITIONAL_DEPLOYMENT",
+      "reachabilityNote": "Multipart endpoint exists; default Compose has no WAF or multipart-parsing reverse proxy. Re-evaluate any proxy deployment.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "MVC controllers / SecurityConfig / application.yml / docker-compose.yml: JSON endpoints, separate static frontend, no JSP/XSLT/SSE/WAF configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-webmvc",
+      "version": "6.2.11",
+      "id": "GHSA-h3qp-gqrc-q736",
+      "aliases": [
+        "CVE-2026-41844"
+      ],
+      "summary": "Spring Framework Open Redirect in Spring MVC and WebFlux",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41844"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/commit/3aaec987651cf82fd4ed7e0ed9b3deddcdf58853"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/commit/7add5243b9db13a9f8e765c8ab8545c8e8fe606b"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v6.2.19"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v7.0.8"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41844"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.2.19",
+        "7.0.8"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No JSP/script/XSLT views, SSE/fragments, or redirect-returning MVC controllers found; endpoints return JSON DTOs.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "MVC controllers / SecurityConfig / application.yml / docker-compose.yml: JSON endpoints, separate static frontend, no JSP/XSLT/SSE/WAF configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-webmvc",
+      "version": "6.2.11",
+      "id": "GHSA-j9f9-w8pj-32f8",
+      "aliases": [
+        "CVE-2026-47890"
+      ],
+      "summary": "Spring Framework Server Sent Event stream corruption while rendering fragments",
+      "severity": "CRITICAL",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47890"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-47890"
+        }
+      ],
+      "osvFixedVersions": [
+        "7.0.9"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No JSP/script/XSLT views, SSE/fragments, or redirect-returning MVC controllers found; endpoints return JSON DTOs.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "MVC controllers / SecurityConfig / application.yml / docker-compose.yml: JSON endpoints, separate static frontend, no JSP/XSLT/SSE/WAF configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-webmvc",
+      "version": "6.2.11",
+      "id": "GHSA-mq64-j8f9-9gcj",
+      "aliases": [
+        "CVE-2026-41841"
+      ],
+      "summary": "Spring Framework Information Disclosure via Static Resource Cache in Spring MVC and WebFlux",
+      "severity": "MODERATE",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41841"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v6.2.19"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v7.0.8"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41841"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.2.19",
+        "7.0.8"
+      ],
+      "assessment": "NO_PUBLIC_RESOURCE_PATH",
+      "reachabilityNote": "Backend denies non-api requests and has no configured public versioned-resource handler; frontend is separate nginx. Framework internals not exhaustively traced.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "MVC controllers / SecurityConfig / application.yml / docker-compose.yml: JSON endpoints, separate static frontend, no JSP/XSLT/SSE/WAF configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-webmvc",
+      "version": "6.2.11",
+      "id": "GHSA-pc63-qcmh-9cmg",
+      "aliases": [
+        "CVE-2026-47884"
+      ],
+      "summary": "Spring Framework Improper Path Limitation in XsltView",
+      "severity": "CRITICAL",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47884"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/commit/692dbc9160de3b5de50ccedeee014716d0cedb7b"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-47884"
+        }
+      ],
+      "osvFixedVersions": [
+        "7.0.9"
+      ],
+      "assessment": "CONDITIONAL_NOT_CONFIGURED",
+      "reachabilityNote": "No JSP/script/XSLT views, SSE/fragments, or redirect-returning MVC controllers found; endpoints return JSON DTOs.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "MVC controllers / SecurityConfig / application.yml / docker-compose.yml: JSON endpoints, separate static frontend, no JSP/XSLT/SSE/WAF configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-webmvc",
+      "version": "6.2.11",
+      "id": "GHSA-wg35-8jpf-2xv3",
+      "aliases": [
+        "CVE-2026-22741"
+      ],
+      "summary": "Spring MVC and WebFlux applications are vulnerable to cache poisoning when resolving static resources.",
+      "severity": "LOW",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22741"
+        },
+        {
+          "type": "WEB",
+          "url": "https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-config/static-resources.html#page-title"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-22741"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.2.18",
+        "7.0.7"
+      ],
+      "assessment": "NO_PUBLIC_RESOURCE_PATH",
+      "reachabilityNote": "Backend denies non-api requests and has no configured public versioned-resource handler; frontend is separate nginx. Framework internals not exhaustively traced.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "MVC controllers / SecurityConfig / application.yml / docker-compose.yml: JSON endpoints, separate static frontend, no JSP/XSLT/SSE/WAF configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    },
+    {
+      "component": "org.springframework:spring-webmvc",
+      "version": "6.2.11",
+      "id": "GHSA-x23c-287f-qqv5",
+      "aliases": [
+        "CVE-2026-41842"
+      ],
+      "summary": "Spring Framework Denial of Service via Versioned Resources in Spring MVC and WebFlux",
+      "severity": "HIGH",
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41842"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v6.2.19"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/spring-projects/spring-framework/releases/tag/v7.0.8"
+        },
+        {
+          "type": "WEB",
+          "url": "https://spring.io/security/cve-2026-41842"
+        }
+      ],
+      "osvFixedVersions": [
+        "6.2.19",
+        "7.0.8"
+      ],
+      "assessment": "NO_PUBLIC_RESOURCE_PATH",
+      "reachabilityNote": "Backend denies non-api requests and has no configured public versioned-resource handler; frontend is separate nginx. Framework internals not exhaustively traced.",
+      "resolution": "dependency version unchanged; conditional/residual advisory",
+      "dynamicExploitReproduced": false,
+      "reviewClassification": "조건 미충족",
+      "sourceEvidence": "MVC controllers / SecurityConfig / application.yml / docker-compose.yml: JSON endpoints, separate static frontend, no JSP/XSLT/SSE/WAF configuration",
+      "classificationScope": "Current source and default Compose only; static prerequisite assessment, not an exploitation test"
+    }
+  ],
+  "severityCounts": {
+    "MODERATE": 28,
+    "LOW": 10,
+    "HIGH": 21,
+    "CRITICAL": 9
+  },
+  "assessmentCounts": {
+    "CONDITIONAL_NOT_CONFIGURED": 28,
+    "NO_EXPLICIT_FEATURE_PATH": 16,
+    "POTENTIAL_PARSER_PATH": 1,
+    "REACHABILITY_NOT_PROVEN": 1,
+    "POTENTIAL_TRANSPORT_PATH": 5,
+    "CONFIGURATION_REVIEW_REQUIRED": 1,
+    "LOCAL_ENVIRONMENT_CONDITION": 1,
+    "ALLOWLISTED_APP_PATHS": 4,
+    "VENDOR_WORKAROUND": 1,
+    "LIMITED_FIXED_PATTERN_PATH": 1,
+    "NO_UNTRUSTED_EXPRESSION_PATH": 3,
+    "NO_PUBLIC_RESOURCE_PATH": 5,
+    "CONDITIONAL_DEPLOYMENT": 1
+  },
+  "limitations": [
+    "OSV version matching is not reachability proof or a penetration test.",
+    "No Gradle dependency lockfile in baseline; exact resolved runtime inventory captured.",
+    "No forced updates; minimum header mitigation only.",
+    "JDK, base images, Gradle plugins and test-only dependencies are outside this runtime scan.",
+    "OSV fixed versions may include unreleased/withdrawn versions; verify vendor-supported release before upgrading."
+  ],
+  "classificationCounts": {
+    "조건 미충족": 58,
+    "판단 불가": 9,
+    "실제 도달 가능": 1
+  },
+  "classifiedAt": "2026-10-18T23:07:40.480857+09:00",
+  "classificationPolicy": "Actual application path / unmet prerequisites / unable to determine; version match is not an exploitable vulnerability count",
+  "patchDecision": "Vendor header workaround applied; no dependency upgrade. Other High/Critical paths remain conditional or undetermined; complete MySQL regression unavailable because Docker engine was not running. No minor/major upgrade performed."
+}
