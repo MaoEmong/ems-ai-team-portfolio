@@ -1,12 +1,12 @@
 # 2026-10-16 Compose 프론트 통합
 
-## 받은 지시
-설계 검토 검증 작업: 확정된 프론트 Docker 설정을 Compose에 통합하고 세 서비스 기동, 프론트 HTTP 200, CORS, 실제 API 경로를 확인한다. gradlew 실행 비트를 확인하되 Git 인덱스 변경·커밋은 하지 않는다. 검증 후 down으로 종료하고 볼륨을 유지한다. frontend/ 및 공통 문서는 수정하지 않는다.
+## 구현 기준
+작업 범위: 확정된 프론트 Docker 설정을 Compose에 통합하고 세 서비스 기동, 프론트 HTTP 200, CORS, 실제 API 경로를 확인한다. gradlew 실행 비트를 확인하되 Git 인덱스 변경·커밋은 하지 않는다. 검증 후 down으로 종료하고 볼륨을 유지한다. frontend/ 및 공통 문서는 수정하지 않는다.
 
 ## 수행 내용과 판단 근거
 - frontend/README.md, Dockerfile, src/api.ts를 읽고 확정 계약을 확인했다.
 - docker-compose.yml의 주석을 frontend 서비스로 전환: context=./frontend, build args VITE_API_URL=http://localhost:8080 및 VITE_MOCK_API="false", ports=5173:5173, depends_on=backend.
-- Vite 정적 번들이므로 런타임 environment 대신 빌드 인자를 사용했다. 이는 프론트팀 설정과 설계 검토 지시에 따른 결정이다.
+- Vite 정적 번들이므로 런타임 environment 대신 빌드 인자를 사용했다. 이는 프론트 빌드 설정과 실제 API 연결 조건에 따른 결정이다.
 - src/api.ts는 origin 뒤에 /api/v1 및 개별 경로를 붙인다. origin에 /api/v1을 중복 추가하지 않았다.
 - 기존 검증용 ems-backend-smoke 프로젝트와 Git 제외 환경파일 backend/build/compose-smoke.env를 재사용했다. 비밀값·토큰은 출력하지 않았다.
 - 실제 Chromium 브라우저로 nginx가 제공한 번들을 실행하고 관리자 로그인→사원 목록 네트워크 응답을 검증했다. 목업 성공을 실제 연동 성공으로 대신하지 않았다.
