@@ -1,4 +1,4 @@
-// 검증 작업: down only the explicitly selected capture project, never its volumes.
+// 통제 촬영: down only the explicitly selected capture project, never its volumes.
 import { spawn } from 'node:child_process';
 import { randomBytes } from 'node:crypto';
 import { writeFile, readdir } from 'node:fs/promises';
@@ -19,12 +19,12 @@ function docker(args) {
     const child = spawn('docker', args, { cwd: root, env, windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] });
     let output = ''; child.stdout.on('data', data => { output += data; }); child.stderr.on('data', () => {});
     child.once('error', () => reject(new Error('DOCKER_START_FAILED')));
-    child.once('close', code => code === 0 ? done(output.trim()) : reject(new Error('DOCKER_EXIT_FAILED')));
+    child.once('close', code => code === 0 ? 완료(output.trim()) : reject(new Error('DOCKER_EXIT_FAILED')));
   });
 }
 const listening = port => new Promise(done => {
   const socket = createConnection({ host: '127.0.0.1', port }); let settled = false;
-  const finish = result => { if (!settled) { settled = true; socket.destroy(); done(result); } };
+  const finish = result => { if (!settled) { settled = true; socket.destroy(); 완료(result); } };
   socket.once('connect', () => finish(true)); socket.once('error', error => finish(error.code === 'ECONNREFUSED' ? false : null)); socket.setTimeout(2000, () => finish(null));
 });
 try {

@@ -19,7 +19,7 @@ for (const capture of captures) {
 const missing = plan.screens.flatMap(screen => screen.viewports.filter(viewport => !captures.some(capture => capture.screenId === screen.id && capture.viewportName === viewport)).map(viewport => ({ screenId: screen.id, viewport })));
 if (manifests.some(manifest => manifest.composeProject !== 'ems-photo-20261019-943cdb77d3' || manifest.frontendMode !== 'real-api' || manifest.provider !== 'mock')) throw new Error('CAPTURE_ENVIRONMENT_MISMATCH');
 const combined = {
-  task: 122, actor: 'Codex', assembledAt: new Date().toISOString(), status: missing.length ? 'partial-awaiting-human-review' : 'captured-awaiting-human-review',
+  actor: 'Codex', assembledAt: new Date().toISOString(), status: missing.length ? 'partial-awaiting-human-review' : 'captured-awaiting-human-review',
   composeProject: 'ems-photo-20261019-943cdb77d3', uiUrl: 'http://localhost:5173', frontendMode: 'real-api', provider: 'mock', actualInference: false,
   fullAttemptsUsed: 3, affectedAiRetryRuns: 1, sourceCommit: manifests[0].sourceCommit, sourceDirtyAtStart: manifests[0].sourceDirtyAtStart,
   sourceDirtyPathsAtEnvironmentStart: manifests[0].sourceDirtyPathsAtEnvironmentStart,
@@ -27,7 +27,7 @@ const combined = {
   plannedScreenCount: plan.screens.length, actualScreenCount: new Set(captures.map(capture => capture.screenId)).size,
   actualPngCount: captures.length, missingCaptures: missing, fileHashesVerified: true,
   originalFailuresPreserved: manifests[0].screenFailures,
-  publicationReview: 'pending-Claude-and-QA', runtimeSession: { id: 17993, state: 'retained-awaiting-explicit-shutdown-signal', credentialsPersisted: false }, captures,
+  publicationReview: 'pending-Claude-and-QA', runtimeProcess: { state: 'retained-awaiting-explicit-shutdown-signal', credentialsPersisted: false }, captures,
 };
 await writeFile(join(here, 'capture-set.json'), `${JSON.stringify(combined, null, 2)}\n`);
 process.stdout.write(`${JSON.stringify({ actualScreenCount: combined.actualScreenCount, actualPngCount: combined.actualPngCount, missingCaptures: missing, fileHashesVerified: true })}\n`);

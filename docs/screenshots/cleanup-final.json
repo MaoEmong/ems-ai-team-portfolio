@@ -38,6 +38,12 @@
     "code": "CIM_ACCESS_UNAVAILABLE",
     "retriedWithExplicitRuntimeApproval": true
   },
+  "runtimeProcess": {
+    "command": "FINISH_PROCESS",
+    "exitCode": 0,
+    "closed": true,
+    "credentialsPersisted": false
+  },
   "priorCleanupRecords": [
     "cleanup-ems-photo-20261019-6fdc37c2d8-1792348909966.json",
     "cleanup-ems-photo-20261019-8e5d11dcc7-1792348817856.json",
@@ -49,5 +55,7 @@
   "rawCredentialsOrLogsPersisted": false,
   "volumeDeletion": false,
   "additionalCaptures": 0,
-  "commits": 0
+  "commits": 0,
+  "httpEvidenceCurrentSha256": "cce582441fc85ef39152583b0f7fa37b6e26ddc0cfbe24c1129be88f115147e0",
+  "httpEvidenceHashBasis": "공개용 표현 정리 완료 후 현재 HTTP 근거 JSON의 해시다. 최초 HTTP 실행 당시 파일 해시로 소급하지 않는다."
 }

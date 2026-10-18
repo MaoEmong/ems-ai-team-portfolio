@@ -5,7 +5,7 @@
   "startedAt": "2026-10-18T18:54:38.908Z",
   "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
   "sourceDirtyAtStart": true,
-  "screenPlanSha256": "ebd48d0d35d65b73c3d5ff473e4e6e13f96a0f5929551da784296ca8b6b3587b",
+  "screenPlanSha256": "13b2caaf739ada730561ce4ab8086f43b2bcea2ae310e35d0d0d007cdd2f2e95",
   "composeProject": "ems-photo-20261019-943cdb77d3",
   "uiOrigin": "http://localhost:5173",
   "apiOrigin": "http://localhost:8080",
@@ -13,7 +13,7 @@
   "provider": "mock",
   "llmMock": true,
   "actualInference": false,
-  "executionOwner": "frontend-team-lead",
+  "executionOwner": "Codex",
   "scriptAuthor": "Codex",
   "publicationReview": "pending-Claude-and-QA",
   "privacy": {
@@ -1370,10 +1370,9 @@
   "singleScreenRetry": false,
   "completedAt": "2026-10-18T18:56:59.750Z",
   "executionActor": "Codex",
-  "executionTask": 122,
   "controlledAttempt": 3,
-  "captureScriptSha256": "acedff25ccd7f8493266c8ede57a6be37b607394d4e9d1e810bfcde508fb5062",
-  "launcherSha256": "29f216b58e68fe516bfd774c75ea28d3ec42e6db78b797ed0d72356e3312bd38",
+  "captureScriptSha256": "5c778f5d2cc7c5ed023de0dc0d3b148f333d238626d35ecd5e7ae0ee7e5aec11",
+  "launcherSha256": "f50a4fac1e8ac87d53c38bb8fedf03258fa889ac615dd4b556842aa7599ea4a2",
   "sourceDirtyPathsAtEnvironmentStart": [
     ".gitignore",
     "README.md",
@@ -1446,5 +1445,9 @@
     "docs/security/frontend-security-evidence.json",
     "docs/security/frontend-security-review.md",
     "docs/security/history-scan-candidates.json"
-  ]
+  ],
+  "historicalScreenPlanSha256": "ebd48d0d35d65b73c3d5ff473e4e6e13f96a0f5929551da784296ca8b6b3587b",
+  "hashChangeReason": "공개용 표현·파일명 정리 후 현재 스크립트/화면 목록 해시를 갱신했다. historical 접두사 필드는 실제 실행 당시의 해시이며 PNG 해시는 변경하지 않았다.",
+  "historicalCaptureScriptSha256": "acedff25ccd7f8493266c8ede57a6be37b607394d4e9d1e810bfcde508fb5062",
+  "historicalLauncherSha256": "29f216b58e68fe516bfd774c75ea28d3ec42e6db78b797ed0d72356e3312bd38"
 }

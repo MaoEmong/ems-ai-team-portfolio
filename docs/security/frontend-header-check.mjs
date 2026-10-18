@@ -1,4 +1,4 @@
-// 검증 작업: Run only after the team lead's explicit HTTP-start notice.
+// Run only with authorization for the local header inspection.
 import http from 'node:http';
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -6,7 +6,7 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 if (!process.argv.includes('--authorized-http-start')) {
-  process.stderr.write('Not executed: team-lead HTTP-start authorization is required.\n');
+  process.stderr.write('Not executed: local HTTP inspection authorization is required.\n');
   process.exitCode = 2;
 } else {
   const root = fileURLToPath(new URL('../../', import.meta.url));
@@ -24,9 +24,9 @@ if (!process.argv.includes('--authorized-http-start')) {
   if (runId && existsSync(outputPath)) throw new Error('Existing run-id output; no repeat permitted.');
   if (!runId && evidence.httpHeaderValidation?.startedAt) throw new Error('Existing run detected; no automatic repeat permitted.');
   const run = {
-    taskId: 111, executionTaskId: 123, followUpTaskId: runId ? 125 : null, runId, engine: 'Codex', startedAt: new Date().toISOString(),
+    runId, engine: 'Codex', startedAt: new Date().toISOString(),
     method: 'Node HTTP; sequential requests; no redirects, retries, credentials or body logging',
-    head: execFileSync('git', ['-c', 'safe.directory=E:/portfolio/ems', 'rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
+    head: execFileSync('git', ['-c', 'safe.directory=' + root, 'rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
     nginxSha256: createHash('sha256').update(readFileSync(new URL('../../frontend/nginx.conf', import.meta.url))).digest('hex').toUpperCase(),
     requests: [], status: 'running', errorResponseConfirmed: false,
     limits: 'Only localhost:5173 frontend headers. No API writes, Docker control, nginx syntax check or browser checks. Full CSP remains residual.',

@@ -549,7 +549,6 @@
     "Git history or other-team review",
     "Push/amend/rebase/global config/LICENSE changes"
   ],
-  "ownership": "Frontend publication evidence handed to team lead after local commit",
   "commitProcedure": "Stage exact file paths, cached diff --check, allowlist verification; commit hash supplied separately to avoid self reference.",
   "stagingValidation": {
     "checkedAt": "2026-10-18T19:56:17.596Z",
@@ -557,5 +556,118 @@
     "allowlistOnly": true,
     "cachedDiffCheck": "passed",
     "lineEndingNote": "Git emitted LF-to-CRLF working-copy warnings; no global setting changed and no manifest/PNG manually rewritten."
+  },
+  "inventoryNote": "File paths use current neutral aliases. The recorded inventory hashes and staging results describe the original publication review before documentation edits; they are historical, not fresh runtime verification.",
+  "editorialValidation": {
+    "checkedAt": "2026-10-18T20:34:23.817Z",
+    "applicationSourceUnchanged": true,
+    "applicationTestsAndBuild": "not rerun; no application source edits",
+    "jsonParsed": 9,
+    "inspectionScriptSyntax": "passed",
+    "localMarkdownLinksMissing": 0,
+    "nonDomainResidualCount": 0,
+    "domainExceptions": {
+      "locations": 14,
+      "reason": "Existing HR job-title fixtures and product role semantics retained."
+    },
+    "historicalCommitShaLocations": 11,
+    "historicalCommitShaValuesChanged": false,
+    "localAbsolutePaths": "none; one regex syntax match excluded after inspection",
+    "historicalEvidence": "Verification timestamps, counts, failures, limits and contributor engines preserved; inventory snapshots remain historical.",
+    "scope": "Documentation and standalone inspection-script metadata only; no staging or commit."
+  },
+  "integratedEditorialValidation": {
+    "checkedAt": "2026-10-18T20:41:15.777Z",
+    "scopeFiles": 354,
+    "countRules": "Unique file:line locations; both publication summary JSON files excluded from terminology and hash-location totals. Commit SHA means 40 hex characters; file SHA-256 is counted separately. HR role and rank locations use a union without double counting.",
+    "nonDomainResidualLocations": 0,
+    "hr": {
+      "unionLocations": 450,
+      "rankLocations": 53,
+      "authorizationRoleLocations": 398,
+      "authorizationRoleOccurrences": 419
+    },
+    "hashLocations": {
+      "historicalCommit": 172,
+      "fileSha256": 365,
+      "byScope": [
+        {
+          "scope": "frontend/",
+          "commit": 0,
+          "fileSha256": 134
+        },
+        {
+          "scope": "docs/adr/",
+          "commit": 0,
+          "fileSha256": 2
+        },
+        {
+          "scope": "docs/design/",
+          "commit": 0,
+          "fileSha256": 2
+        },
+        {
+          "scope": "docs/devlog/",
+          "commit": 2,
+          "fileSha256": 5
+        },
+        {
+          "scope": "docs/screenshots/",
+          "commit": 160,
+          "fileSha256": 200
+        },
+        {
+          "scope": "docs/security/",
+          "commit": 10,
+          "fileSha256": 22
+        }
+      ],
+      "historicalCommitValuesChanged": false
+    },
+    "jsonParsed": 29,
+    "inspectionScriptSyntax": {
+      "files": 5,
+      "passed": true,
+      "executed": false
+    },
+    "localFileLinksMissing": 0,
+    "whitespaceErrors": 0,
+    "applicationSourceUnchanged": true,
+    "productTestsAndBuild": "Not rerun; no frontend/src changes.",
+    "images": {
+      "historicalAndFinalPng": 90,
+      "byteIdenticalToParent": 90,
+      "finalPng": 53,
+      "finalScreens": 37,
+      "finalHashesMatched": 53,
+      "pixelReview": "Existing Claude review of 53 final PNG preserved; no fresh pixel review by integration author.",
+      "limits": "Four long desktop captures retain small-text uncertainty outside enlarged areas; masked underlying values unconfirmed. Medium2/low10 and representative exclusions retained.",
+      "randomCaptureSuffix": "Synthetic random capture suffix retained; not a tool name, control structure or credential."
+    },
+    "staticMockupAccountHint": {
+      "classification": "Static synthetic demo guidance; no authentication request, form submission, storage use or remote script link in the mockup.",
+      "actualEnvironmentCredentialsRead": false,
+      "limitation": "No comparison with live credentials was performed."
+    },
+    "confirmedRenames": 9,
+    "changedPathsIncludingRenamePairs": 63,
+    "logicalChangedFiles": 54,
+    "excludedMixedOwnershipPath": "docs/devlog/20261016-backend-compose-frontend.md",
+    "currentScreenshotHashReferences": {
+      "checked": 3,
+      "matched": 3
+    },
+    "historicalInventory": {
+      "entries": 124,
+      "currentByteDifferences": 29,
+      "missingPaths": 0,
+      "interpretation": "Recorded hashes belong to the original publication review; editorial differences are tracked separately."
+    },
+    "stageStatus": "Exact allowed paths staged; cached diff --check passed; mixed-ownership path excluded.",
+    "notPerformed": [
+      "Product tests/build/audit",
+      "Docker/HTTP rerun",
+      "Push or history rewrite"
+    ]
   }
 }

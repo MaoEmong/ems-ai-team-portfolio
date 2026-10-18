@@ -81,7 +81,7 @@ async function main() {
     screenPlanSha256: digest(planBytes), composeProject: project,
     uiOrigin: new URL(uiBase).origin, apiOrigin: new URL(apiBase).origin,
     frontendMode: 'real-api', provider: 'mock', llmMock: true, actualInference: false,
-    executionOwner: 'frontend-team-lead', scriptAuthor: 'Codex',
+    executionOwner: 'Codex', scriptAuthor: 'Codex',
     publicationReview: 'pending-Claude-and-QA',
     privacy: { credentialValuesPersisted: false, identityScreenshotMasks: true, trace: false, video: false, storageState: false, rawErrorsPersisted: false },
     preparation: [], captures: [], aiDiagnostics: [], screenFailures: [],

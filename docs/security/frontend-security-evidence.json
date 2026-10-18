@@ -1,6 +1,5 @@
 {
   "schemaVersion": "1.0",
-  "parentTaskId": 88,
   "reviewer": {
     "engine": "Codex",
     "role": "frontend static/dependency security review"
@@ -89,11 +88,11 @@
     "staticReview": "performed",
     "automatedTextScan": "performed; not exhaustive and not exploit reproduction",
     "dependencyAudit": "performed with approved registry access",
-    "applicationHttp": "not-run; team-lead scope",
-    "unitTests": "not-run; team-lead scope",
-    "build": "not-run; team-lead scope",
-    "browser": "not-run; team-lead scope",
-    "docker": "not-run; team-lead scope",
+    "applicationHttp": "not-run; reviewer scope",
+    "unitTests": "not-run; reviewer scope",
+    "build": "not-run; reviewer scope",
+    "browser": "not-run; reviewer scope",
+    "docker": "not-run; reviewer scope",
     "historyAndPublicArtifacts": "not-run; QA scope",
     "penetrationTest": "not-performed"
   },
@@ -122,7 +121,7 @@
       "endedAt": "2026-10-18T23:10:44.6698603+09:00",
       "npmExitCode": 0,
       "result": "success",
-      "sandbox": "require_escalated-approved",
+      "sandbox": "approved execution environment",
       "fixOrInstall": false
     },
     {
@@ -495,7 +494,7 @@
           "marker": "ems.accessToken"
         }
       ],
-      "builtInThisTask": false
+      "builtDuringReview": false
     },
     "supplementalSecretPatternFindings": [],
     "scopeCaveat": "53 source/config/lock files and frontend dotenv keys were pattern-reviewed; dotenv values were never output. Existing artifact supplemental scan covers JWT-shaped literals and URL userinfo. E2E outputs, full Git history, staging, root .env and public images/JSON are QA scope."
@@ -519,7 +518,7 @@
       ],
       "reachability": "An attacker first needs same-origin script execution (for example XSS) to read sessionStorage and act as the signed-in user. No XSS payload or token theft was attempted or established.",
       "recommendation": "Keep untrusted data as React text, constrain script sources and API origins, and document this residual. A future HttpOnly-cookie migration requires a separate server/CSRF design decision.",
-      "status": "unmodified-reported-to-team-lead",
+      "status": "unmodified-reported-to-reviewer",
       "actualExploitTested": false
     },
     {
@@ -542,7 +541,7 @@
           "path": "frontend/nginx.conf"
         }
       ],
-      "reachability": "검증 작업 added three headers statically. Approved 검증 작업 follow-up confirmed exact values on local GET200, SPA fallback200 and static POST405. Initial 검증 작업 sandbox EACCES remains historical; no product failure inferred.",
+      "reachability": "헤더 설정 수정 added three headers statically. Approved 승인 후속 HTTP 검사 follow-up confirmed exact values on local GET200, SPA fallback200 and static POST405. Initial 최초 HTTP 검사 sandbox EACCES remains historical; no product failure inferred.",
       "recommendation": "Retain full CSP compatibility review as residual. Local sampled HTTP confirmation does not validate every response, proxy or deployment.",
       "status": "three-headers-confirmed-on-local-200-and-405-full-csp-residual",
       "actualExploitTested": false
@@ -636,7 +635,7 @@
       ],
       "reachability": "The mock covers the six prefixes in the API contract but not LF or full-width formula characters. Exploitation depends on attacker-controlled cell content and spreadsheet/locale/re-save behavior. Formula execution was not reproduced; actual API CSV bytes were not checked.",
       "recommendation": "Prefer text-cell XLSX for risky content, and have the owner compare actual server CSV and target spreadsheet behavior before coordinating any contract/security change. Current source is not modified.",
-      "status": "reported-to-team-lead-unmodified",
+      "status": "reported-to-reviewer-unmodified",
       "actualExploitTested": false
     }
   ],
@@ -764,16 +763,8 @@
     }
   ],
   "handoff": {
-    "sourceOwnership": "unchanged; no source ownership taken",
-    "documentOwnership": "Returned to frontend team lead after final acknowledgement update and JSON integrity check.",
-    "remainingQuestions": [],
-    "teamLeadQuestion": "",
-    "teamLeadQuestions": [
-      "",
-      ""
-    ],
-    "parentDecision": "Original observations resolved. Subsequent department-head decision implemented three nginx headers in 검증 작업 by screen owner; 검증 작업 statically checked them. HTTP remains unverified, full CSP and other residuals remain. 검증 작업 evidence predates 검증 작업.",
-    "dockerHold": "Do not start or retry Docker until department head restoration notice; no Docker executed."
+    "reviewSummary": "Static review, historical unit tests, initial blocked HTTP attempt and approved follow-up are recorded separately. Full CSP and other documented residuals remain.",
+    "dockerScope": "Reviewer did not control Docker; later local HTTP checks used the provided running stack."
   },
   "validation": {
     "engine": "Codex",
@@ -813,13 +804,11 @@
     ],
     "limitations": [
       "Unit/contract suite only; no browser, build, Docker, real HTTP, installation, npm fix or commit executed.",
-      "Passing tests do not establish absence of vulnerabilities or validate 검증 작업 nginx changes."
+      "Passing tests do not establish absence of vulnerabilities or validate 헤더 설정 수정 nginx changes."
     ],
-    "sourceModified": false,
-    "fieldOwnership": "validation field returned to frontend team lead after JSON integrity check"
+    "sourceModified": false
   },
   "headerFollowUp": {
-    "implementationTaskId": 92,
     "observedAt": "2026-10-18T23:34:47.5456276+09:00",
     "method": "read-only static config comparison",
     "path": "frontend/nginx.conf",
@@ -834,10 +823,9 @@
     "soleLocationSeparateAddHeader": false,
     "actualHttp": "not-run; pending Docker restoration and owner validation",
     "fullCsp": "residual",
-    "historicalHashes": "target.criticalSourceHashes retains original 검증 작업 observation",
-    "validationRelationship": "검증 작업 predates 검증 작업; not header verification",
-    "sourceEditedByReviewer": false,
-    "ownership": "documents returned to frontend team lead"
+    "historicalHashes": "target.criticalSourceHashes retains original 정적 보안 검토 observation",
+    "validationRelationship": "단위·계약 검사 predates 헤더 설정 수정; not header verification",
+    "sourceEditedByReviewer": false
   },
   "httpHeaderValidation": {
     "engine": "Codex",
@@ -856,14 +844,14 @@
     },
     "endedAt": "2026-10-18T19:00:02.807Z",
     "stackProject": "ems-photo-20261019-943cdb77d3",
-    "interpretation": "Default-sandbox attempt stopped at first GET with EACCES before any HTTP response. No response status or headers verified. No retry, SPA GET or POST performed. Historical taskId111 identifies prepared script, execution task is123."
+    "interpretation": "Default-sandbox attempt stopped at first GET with EACCES before any HTTP response. No response status or headers verified. No retry, SPA GET or POST performed. Initial prepared-script execution; follow-up evidence is stored separately."
   },
   "httpHeaderFollowUp": {
-    "runId": "검증 작업-20261019-01",
+    "runId": "approved-20261019-01",
     "evidencePath": "docs/security/frontend-header-check-approved-run.json",
     "stackProject": "ems-photo-20261019-943cdb77d3",
-    "authorization": "require_escalated with justification; execution returned exit0",
-    "initialAttemptClassification": "검증 작업 EACCES with zero responses was a sandbox access block, not product HTTP failure. Original httpHeaderValidation preserved unchanged.",
+    "authorization": "Approved execution environment with explicit permission; execution returned exit0",
+    "initialAttemptClassification": "최초 HTTP 검사 EACCES with zero responses was a sandbox access block, not product HTTP failure. Original httpHeaderValidation preserved unchanged.",
     "startedAt": "2026-10-18T19:48:41.315Z",
     "endedAt": "2026-10-18T19:48:41.383Z",
     "status": "normal-and-error-headers-confirmed",

@@ -1,5 +1,5 @@
 {
-  "runId": "검증 작업-20261019-01",
+  "runId": "approved-20261019-01",
   "engine": "Codex",
   "startedAt": "2026-10-18T19:48:41.315Z",
   "method": "Node HTTP; sequential requests; no redirects, retries, credentials or body logging",

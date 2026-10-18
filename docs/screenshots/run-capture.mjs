@@ -1,4 +1,4 @@
-// 검증 작업: no credentials, raw logs, or authentication responses are persisted.
+// 초기 촬영: no credentials, raw logs, or authentication responses are persisted.
 import { randomBytes, createHash } from 'node:crypto';
 import { spawn } from 'node:child_process';
 import { readFile, writeFile, readdir } from 'node:fs/promises';
@@ -11,9 +11,9 @@ const env = { ...process.env }, random = () => randomBytes(24).toString('hex');
 const ledgerPath = join(here, 'capture-attempts.json');
 let ledger;
 try { ledger = JSON.parse(await readFile(ledgerPath, 'utf8')); }
-catch (error) { if (error.code !== 'ENOENT') throw new Error('ATTEMPT_LEDGER_INVALID'); ledger = { historicalAttempt: { task: 115, project: 'ems-photo-20261019-8e5d11dcc7', manifest: '2026-10-18T18-32-41-463Z-a23d30ba/manifest.json', actualPngCount: 0, code: 'API_HTTP_201' }, attempts: [] }; }
+catch (error) { if (error.code !== 'ENOENT') throw new Error('ATTEMPT_LEDGER_INVALID'); ledger = { historicalAttempt: { project: 'ems-photo-20261019-8e5d11dcc7', manifest: '2026-10-18T18-32-41-463Z-a23d30ba/manifest.json', actualPngCount: 0, code: 'API_HTTP_201' }, attempts: [] }; }
 if (ledger.attempts.length >= 3) throw new Error('AUTHORIZED_ATTEMPT_LIMIT');
-const evidence = { task: 122, attempt: ledger.attempts.length + 1, actor: 'Codex', project, startedAt: new Date().toISOString(), status: 'preflight', frontendMode: 'real-api', provider: 'mock', actualInference: false };
+const evidence = { attempt: ledger.attempts.length + 1, actor: 'Codex', project, startedAt: new Date().toISOString(), status: 'preflight', frontendMode: 'real-api', provider: 'mock', actualInference: false };
 evidence.captureScriptSha256 = createHash('sha256').update(await readFile(join(here, 'capture-portfolio.mjs'))).digest('hex');
 evidence.launcherSha256 = createHash('sha256').update(await readFile(fileURLToPath(import.meta.url))).digest('hex');
 ledger.attempts.push(evidence);
@@ -29,7 +29,7 @@ function run(command, args) {
     let output = '';
     child.stdout.on('data', data => { output += data; }); child.stderr.on('data', () => {});
     child.once('error', () => reject(new Error('PROCESS_START_FAILED')));
-    child.once('close', code => code === 0 ? done(output.trimEnd()) : reject(new Error(`PROCESS_EXIT_${Number.isInteger(code) ? code : 'UNKNOWN'}`)));
+    child.once('close', code => code === 0 ? 완료(output.trimEnd()) : reject(new Error(`PROCESS_EXIT_${Number.isInteger(code) ? code : 'UNKNOWN'}`)));
   });
 }
 try {
@@ -75,7 +75,7 @@ try {
     const manifestPath = join(here, name, 'manifest.json');
     const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
     const plan = JSON.parse(await readFile(join(here, 'screen-list.json'), 'utf8'));
-    manifest.executionActor = 'Codex'; manifest.executionTask = 122; manifest.controlledAttempt = evidence.attempt;
+    manifest.executionActor = 'Codex'; manifest.controlledAttempt = evidence.attempt;
     manifest.captureScriptSha256 = evidence.captureScriptSha256; manifest.launcherSha256 = evidence.launcherSha256;
     manifest.sourceDirtyPathsAtEnvironmentStart = evidence.dirtyPaths;
     manifest.plannedScreenCount = plan.screens.length;
@@ -93,11 +93,11 @@ try {
   evidence.status = evidence.captureStatus; evidence.stackRetained = true; evidence.completedAt = new Date().toISOString();
   await save(); emit(evidence);
   // Keep credentials only in this live process. No stack control commands here.
-  emit({ stage: 'SAFE_SESSION_WAIT', project, fullAttempt: evidence.attempt, allowedSingleAiRetries: 1 });
+  emit({ stage: 'CONTROL_WAIT', project, fullAttempt: evidence.attempt, allowedSingleAiRetries: 1 });
   const input = createInterface({ input: process.stdin, crlfDelay: Infinity }); let retried = false;
   for await (const command of input) {
-    if (command === 'CLOSE_SESSION') { input.close(); break; }
-    if (command !== 'RETRY_AI' || retried) { emit({ stage: 'COMMAND_NOT_ALLOWED' }); continue; }
+    if (command === 'FINISH_PROCESS') { input.close(); break; }
+    if (command !== 'RETRY_SELECTED' || retried) { emit({ stage: 'COMMAND_NOT_ALLOWED' }); continue; }
     retried = true; env.PORTFOLIO_SINGLE_AI = '1';
     const existing = new Set(await readdir(here));
     try { await run(process.execPath, ['docs/screenshots/capture-portfolio.mjs']); }

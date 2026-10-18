@@ -1,7 +1,7 @@
 {
   "actor": "Codex",
   "project": "ems-photo-20261019-d89f4f0b25",
-  "status": "blocked-safe-runtime-authentication-unavailable",
+  "status": "실행 중단-safe-runtime-authentication-unavailable",
   "authenticationEnvironmentPresence": {
     "adminId": false,
     "adminPassword": false,

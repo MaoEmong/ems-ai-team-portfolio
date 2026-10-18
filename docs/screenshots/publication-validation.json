@@ -1,0 +1,725 @@
+{
+  "checkedAt": "2026-10-18T20:37:33.863Z",
+  "contributor": "Codex",
+  "scope": [
+    "docs/screenshots/",
+    "docs/devlog/*frontend*"
+  ],
+  "jsonParse": {
+    "files": 20,
+    "passed": true
+  },
+  "scriptSyntax": {
+    "files": 4,
+    "passed": true,
+    "method": "node --check"
+  },
+  "relativeLinks": {
+    "missing": 0
+  },
+  "finalImages": {
+    "screens": 37,
+    "png": 53,
+    "sha256Matched": 53,
+    "modified": 0
+  },
+  "historicalCommits": {
+    "referenceLocations": 164,
+    "changed": 0,
+    "locations": [
+      {
+        "file": "docs/screenshots/2026-10-18T18-32-41-463Z-a23d30ba/manifest.json",
+        "line": 6
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/manifest.json",
+        "line": 6
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/manifest.json",
+        "line": 101
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/manifest.json",
+        "line": 124
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/manifest.json",
+        "line": 147
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/manifest.json",
+        "line": 170
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/manifest.json",
+        "line": 193
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/manifest.json",
+        "line": 216
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/manifest.json",
+        "line": 239
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/manifest.json",
+        "line": 262
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/manifest.json",
+        "line": 285
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/manifest.json",
+        "line": 308
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/manifest.json",
+        "line": 331
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/manifest.json",
+        "line": 354
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 6
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 108
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 131
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 154
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 177
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 200
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 223
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 246
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 269
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 292
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 315
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 338
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 361
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 384
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 407
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 430
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 453
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 476
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 499
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 522
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 545
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 568
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 591
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 614
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 637
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+        "line": 660
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 6
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 108
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 131
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 154
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 177
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 200
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 223
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 246
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 269
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 292
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 315
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 338
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 361
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 384
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 407
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 430
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 453
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 476
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 499
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 522
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 545
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 568
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 591
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 614
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 637
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 660
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 683
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 706
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 729
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 752
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 775
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 798
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 821
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 844
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 867
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 890
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 913
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 936
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 959
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 982
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 1005
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 1028
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 1051
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 1074
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 1097
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 1120
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 1143
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 1166
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 1189
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+        "line": 1212
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T19-39-27-026Z-430432da/manifest.json",
+        "line": 6
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T19-39-27-026Z-430432da/manifest.json",
+        "line": 44
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T19-39-27-026Z-430432da/manifest.json",
+        "line": 67
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T19-39-27-026Z-430432da/manifest.json",
+        "line": 90
+      },
+      {
+        "file": "docs/screenshots/2026-10-18T19-39-27-026Z-430432da/manifest.json",
+        "line": 113
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 12
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 92
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 101
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 169
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 192
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 215
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 238
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 261
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 284
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 307
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 330
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 353
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 376
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 399
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 422
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 445
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 468
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 491
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 514
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 537
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 560
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 583
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 606
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 629
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 652
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 675
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 698
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 721
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 744
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 767
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 790
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 813
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 836
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 859
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 882
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 905
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 928
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 951
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 974
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 997
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 1020
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 1043
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 1066
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 1089
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 1112
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 1135
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 1158
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 1181
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 1204
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 1227
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 1250
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 1273
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 1296
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 1319
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 1342
+      },
+      {
+        "file": "docs/screenshots/capture-set.json",
+        "line": 1365
+      },
+      {
+        "file": "docs/screenshots/execution-ems-photo-20261019-6fdc37c2d8.json",
+        "line": 12
+      },
+      {
+        "file": "docs/screenshots/execution-ems-photo-20261019-943cdb77d3.json",
+        "line": 12
+      },
+      {
+        "file": "docs/screenshots/execution-ems-photo-20261019-d89f4f0b25.json",
+        "line": 12
+      },
+      {
+        "file": "docs/screenshots/execution-initial.json",
+        "line": 9
+      },
+      {
+        "file": "docs/screenshots/README.md",
+        "line": 18
+      },
+      {
+        "file": "docs/screenshots/response-status-review.md",
+        "line": 3
+      },
+      {
+        "file": "docs/screenshots/run-capture.mjs",
+        "line": 37
+      },
+      {
+        "file": "docs/screenshots/capture-attempt-notes.md",
+        "line": 3
+      },
+      {
+        "file": "docs/screenshots/capture-attempts.json",
+        "line": 20
+      },
+      {
+        "file": "docs/screenshots/capture-attempts.json",
+        "line": 78
+      },
+      {
+        "file": "docs/screenshots/capture-attempts.json",
+        "line": 153
+      },
+      {
+        "file": "docs/devlog/20261018-frontend-finalization.md",
+        "line": 12
+      },
+      {
+        "file": "docs/devlog/20261019-frontend-capture.md",
+        "line": 3
+      }
+    ]
+  },
+  "wordingReview": {
+    "internalReferencesRemaining": 0,
+    "productAuthorizationAndHrTermOccurrences": 487,
+    "productRolesRetained": [
+      "ADMIN",
+      "EMPLOYEE"
+    ],
+    "uncertainEngineAttributionAdded": false,
+    "countScope": "검증 요약 파일 자체는 용어 집계에서 제외"
+  },
+  "hashReferences": {
+    "updated": 28,
+    "currentFiles": {
+      "captureScriptSha256": "5c778f5d2cc7c5ed023de0dc0d3b148f333d238626d35ecd5e7ae0ee7e5aec11",
+      "launcherSha256": "f50a4fac1e8ac87d53c38bb8fedf03258fa889ac615dd4b556842aa7599ea4a2",
+      "screenPlanSha256": "13b2caaf739ada730561ce4ab8086f43b2bcea2ae310e35d0d0d007cdd2f2e95"
+    },
+    "historicalValuesPreserved": true,
+    "reason": "공개용 표현과 파일명 변경을 반영한 현재 파일 해시다. historical 필드는 실행 당시 해시로 보존하며 PNG 해시는 바꾸지 않았다.",
+    "selfHashIncluded": false
+  },
+  "notPerformed": [
+    "Docker 실행",
+    "추가 촬영",
+    "제품 테스트·빌드",
+    "stage·commit"
+  ],
+  "scopeExcluded": [
+    "docs/devlog/20261016-backend-compose-frontend.md"
+  ],
+  "externalReferences": {
+    "httpEvidence": {
+      "path": "../security/frontend-header-check-approved-run.json",
+      "currentFileSha256": "cce582441fc85ef39152583b0f7fa37b6e26ddc0cfbe24c1129be88f115147e0",
+      "hashBasis": "표현 정리 후 현재 파일이며 최초 실행 당시 해시와 구분한다."
+    }
+  }
+}

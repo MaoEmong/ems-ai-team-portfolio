@@ -1,10 +1,10 @@
 # EMS 3A 화면 시안 — 근태 · 휴가 결재 · 알림
 
-- 작성: 프론트엔드팀 UI·UX 디자이너 (**Claude 엔진**), 2026-10-16, 검증 작업
-- 이후 흐름: 이 시안 → 담당이 Codex로 구현 → Claude 이미지 검수(별도 작업 분담)
-- 근거: 2026-10-16 3A 착수 회의록(설계 검토 결정). `docs/api/phase3a-api.md`는 작성 시점에 저장소에 없었다. **문서가 생기면 그 문서가 우선**이며, 이 시안과 다른 점은 시안을 계약에 맞춘다.
+- 작성: UI·UX 디자인 담당 (**Claude Code**), 2026-10-16
+- 이후 흐름: 이 시안 → Codex 구현 → Claude 이미지 검수(별도 단계)
+- 근거: 2026-10-16 3A 착수 회의록의 결정. `docs/api/phase3a-api.md`는 작성 시점에 저장소에 없었다. **문서가 생기면 그 문서가 우선**이며, 이 시안과 다른 점은 시안을 계약에 맞춘다.
 - 규칙 원본: [design-system.md](design-system.md)(2단계 토큰·컴포넌트 그대로 재사용, 3A 확장은 §10). 2단계 화면 명세 [screens.md](screens.md).
-- **보충 확정 계약 반영(2026-10-16, 설계 검토 확정·프론트 담당 전달)**: 아래 §9의 필드·엔드포인트가 확정되어 S1·S3·S4·S5에 연결했다. 상세 API 문서 전이라도 이 계약으로 진행한다.
+- **보충 확정 계약 반영(2026-10-16 확정)**: 아래 §9의 필드·엔드포인트가 확정되어 S1·S3·S4·S5에 연결했다. 상세 API 문서 전이라도 이 계약으로 진행한다.
 - **API 미정 필드 표기**: 응답 필드 이름이 회의록에 없는 곳은 `〈서버 값: 출근 시각〉`처럼 의미로만 적었다. 구현은 phase3a-api.md의 실제 필드에 연결한다. 시안이 필드 이름·형식·코드값을 새로 정하지 않는다.
 
 ---
@@ -498,11 +498,11 @@
 | 휴가 시작일 | **확정** — 시작일 ≥ 오늘(§3.3 min = today.date) |
 | 주말 today 응답 | **확정** — 주말도 하루 DTO. 주말 플래그 없음 → 화면 추정 금지, 409 NOT_A_WORKDAY 안내(§1.2) |
 | 결재 대기 건수 API | **확정: 없음** — 메뉴 숫자 표시 안 함 |
-| EMPLOYEE 첫 화면 | **확정** — 기존 `/me`(내 정보) 유지 (2026-10-16 프론트 담당 확인) |
+| EMPLOYEE 첫 화면 | **확정** — 기존 `/me`(내 정보) 유지 (2026-10-16 구현 담당(Codex) 확인) |
 
-- 기준: `docs/api/phase3a-api.md`(2026-10-16 확인본) + 설계 검토 보충(프론트 담당 전달). 이후 문서가 바뀌면 문서가 우선한다.
+- 기준: `docs/api/phase3a-api.md`(2026-10-16 확인본) + 보충 확정 사항. 이후 문서가 바뀌면 문서가 우선한다.
 
-## 9. 보충 확정 계약 요약 (2026-10-16, 설계 검토 확정 · 프론트 담당 전달)
+## 9. 보충 확정 계약 요약 (2026-10-16 확정)
 
 ### 9.1 근태
 - `GET /attendance/me/today` 추가 → 하루 DTO.
@@ -517,7 +517,7 @@
 - 항목: `allowedActions(APPROVE|REJECT|CANCEL), days, rejectReason, decidedBy, decidedAt, cancelledBy(SELF|SYSTEM|null)`.
 - 잔액: `approverAvailable=false`여도 신청 허용, 안내만(§3.2).
 - `GET /leaves/me?status&page&size` 지원.
-- 자기 신청 승인·반려 403. 시작일이 지난 PENDING은 allowedActions REJECT만, 승인 시도는 409 `LEAVE_START_PASSED`(반려 허용). 취소: PENDING은 시작일과 무관하게 본인 CANCEL, APPROVED는 시작일 전날까지만 본인 CANCEL(이후 409 `LEAVE_START_PASSED`). 화면은 allowedActions만 따른다(2026-10-16 검증 작업 전달 정책).
+- 자기 신청 승인·반려 403. 시작일이 지난 PENDING은 allowedActions REJECT만, 승인 시도는 409 `LEAVE_START_PASSED`(반려 허용). 취소: PENDING은 시작일과 무관하게 본인 CANCEL, APPROVED는 시작일 전날까지만 본인 CANCEL(이후 409 `LEAVE_START_PASSED`). 화면은 allowedActions만 따른다(2026-10-16 확정 정책).
 - 입사일이 미래이거나 ACTIVE가 아닌 사원의 출퇴근·신청은 409 `EMPLOYEE_NOT_ACTIVE`.
 
 ### 9.3 알림

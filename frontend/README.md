@@ -28,7 +28,7 @@ React · TypeScript · Vite 기반 1~3A단계 EMS. Node.js 24와 npm을 사용�
 ## 실행
 
 ```powershell
-cd E:\portfolio\ems\frontend
+cd frontend
 npm ci
 Copy-Item .env.example .env.local
 npm run dev -- --port 5173
@@ -114,7 +114,7 @@ Claude 디자인 검수는 3차까지 완료했으며 높음·중간 잔여 지�
 
 평가 주기 초안에서 항목과 대상·평가자를 배정한다. 열린 주기에서 자기평가 제출 후 배정 평가자가 관리자 평가를 확정한다. 버튼은 서버 allowedActions를 따르며 최종 점수·등급도 서버 값만 표시한다. 공개 전 관리자 점수·코멘트·등급 영역은 만들지 않는다.
 
-목업 Chromium은 실제 Compose 5173과 분리한 **5174**를 쓴다. 단위 테스트는 로컬 브라우저용 `.env.local`과 독립되도록 VITE_MOCK_API=false를 지정하며 테스트가 fetch 또는 목업 함수를 직접 제어한다. 구현·테스트는 Codex, 시안·실제 이미지 검수는 Claude가 맡았다. 기존 Codex 목업 담당과 새 Codex 화면 담당이 초안을 나눠 작성했고, 작업 진행 지연 후 디자인 수정과 최종 검증은 Codex 담당이 직접 수행했다. 실제 백엔드 E2E는 프론트팀에서 **미실행**이며 문서QA 담당이다. 실제 Compose는 사용하지 않았다.
+목업 Chromium은 실제 Compose 5173과 분리한 **5174**를 쓴다. 단위 테스트는 로컬 브라우저용 `.env.local`과 독립되도록 VITE_MOCK_API=false를 지정하며 테스트가 fetch 또는 목업 함수를 직접 제어한다. 구현·테스트는 Codex, 시안·실제 이미지 검수는 Claude가 맡았다. 기존 Codex 목업 담당과 새 Codex 화면 담당이 초안을 나눠 작성했고, 작업 진행 지연 후 디자인 수정과 최종 검증은 Codex가 직접 수행했다. 실제 백엔드 E2E는 프론트팀에서 **미실행**이며 문서QA 담당이다. 실제 Compose는 사용하지 않았다.
 
 계약은 확정 v1.1(저장16:45:06), SHA-256 `9A56EAD34B8E4B8134FBD3A8E92B4D0F3FCFAFAF22495EC0D5ACB20AA6F0B3B2`이다. GET 주기 상세의 참조형 배정을 POST/PUT 입력용 ID 쌍으로 명시적으로 변환한다.
 
@@ -139,8 +139,8 @@ Claude 3차 최종 이미지 검수는 높음·중간 잔여0으로 통과했다
 
 실행 전 `/ai/config`의 제공자·모델·Mock·외부 전송을 보여 준다. Mock은 **실제 추론 아님**이다. Ollama도 EMS 프로세스 밖으로 전송하므로 외부 전송 고지를 적용한다. 질문/코멘트의 자유 텍스트에 개인정보를 넣지 않아야 한다. 명시 실행만 POST를 만들고 자동 재시도하지 않는다. 취소는 브라우저 중단이며 제공자 처리·비용 취소를 보장하지 않는다. 질문과 결과는 화면 메모리에만 있으며 저장소·URL·콘솔에 남기지 않는다. 결과는 HTML/마크다운/자동 링크 없이 텍스트로 표시한다.
 
-최종 검증 작업 실행: 2026-10-16 20:50 KST `npm run typecheck` PASS, 20:50:51 단일 `npm test` 14파일276/276 PASS(10.42초), 20:51 `npm run build`(tsc -b 포함) PASS. 기존 TS2322는 목록 상태 타입 명시로 해결했다. 20:51:19~55 `npx playwright test --reporter=list`는 5174에서 기존8+AI 데스크톱/모바일2=10/10 PASS(35.8초), 서버 정상 종료·5174 LISTEN0을 확인했다. 최초 webServer 무응답은 정상 중단 후 승인 셸의 `DEBUG=pw:webserver`로 진단했고 HTTP200 기동/정상종료를 확인했다. 최초 무응답의 근본 원인은 미확정이다. 디자인 반영과 EOF 정리 후 위 결과를 새로 실행했다. 최초269/270 실패 및 JSX fragment 변환 실패는 일지의 실패 이력으로 보존한다. 검수 전 수치를 이월하지 않았다. 최종18장과 소스 해시는 `design-evidence/phase4/verification.json`에 있다.
+최종 검증 실행: 2026-10-16 20:50 KST `npm run typecheck` PASS, 20:50:51 단일 `npm test` 14파일276/276 PASS(10.42초), 20:51 `npm run build`(tsc -b 포함) PASS. 기존 TS2322는 목록 상태 타입 명시로 해결했다. 20:51:19~55 `npx playwright test --reporter=list`는 5174에서 기존8+AI 데스크톱/모바일2=10/10 PASS(35.8초), 서버 정상 종료·5174 LISTEN0을 확인했다. 최초 webServer 무응답은 정상 중단 후 승인 셸의 `DEBUG=pw:webserver`로 진단했고 HTTP200 기동/정상종료를 확인했다. 최초 무응답의 근본 원인은 미확정이다. 디자인 반영과 EOF 정리 후 위 결과를 새로 실행했다. 최초269/270 실패 및 JSX fragment 변환 실패는 일지의 실패 이력으로 보존한다. 검수 전 수치를 이월하지 않았다. 최종18장과 소스 해시는 `design-evidence/phase4/verification.json`에 있다.
 
-개발은 Codex 담당·목업담당·업무화면담당, 시안과 실제 이미지 검수는 Claude 디자이너가 맡는다. 제품 제공자의 실제 Claude/Ollama 호출과 실제 백엔드 E2E·Compose는 이 프론트 작업에서 **미실행**이며 백엔드/문서QA의 별도 증거다. 구현 담당 역할·소유권 반환과 최종 수치는 `../docs/devlog/20261016-frontend-phase4.md`, 설계 결정은 ADR0206, 이미지 결과는 `../docs/design/design-review-phase4.md`에서 관리한다. 기존 ExcelJS 큰 청크 경고가 남는다.
+개발은 Codex, 시안과 실제 이미지 검수는 Claude 디자이너가 맡는다. 제품 제공자의 실제 Claude/Ollama 호출과 실제 백엔드 E2E·Compose는 이 프론트 작업에서 **미실행**이며 백엔드/문서QA의 별도 증거다. 개발 참여자 역할·인계과 최종 수치는 `../docs/devlog/20261016-frontend-phase4.md`, 설계 결정은 ADR0206, 이미지 결과는 `../docs/design/design-review-phase4.md`에서 관리한다. 기존 ExcelJS 큰 청크 경고가 남는다.
 
 Claude 최종 이미지 검수는 높음0·중간0으로 통과했다. 낮음6건은 해소로 세지 않고 수용 주체와 위험을 검수 문서에 남겼다: 적용 조건 별도요약 생략, meta 간격, 중첩 패널, 모바일 비교 정렬, 유사 제목과 안내 반복. 대비 실측·키보드/스크린리더·실제 API/실추론·캡처 없는 오류와 일부 구간은 미확인이다. 디자인 최종확인 이후 앱 소스를 바꾸지 않았다.

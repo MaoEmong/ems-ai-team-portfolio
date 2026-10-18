@@ -18,7 +18,7 @@
   },
   "filenameRule": "{viewport}-{screenId}.png, stored in a new per-run directory",
   "preparation": {
-    "fresh": "담당이 고유 Compose 프로젝트와 빈 볼륨을 준비한다. 기존 볼륨 초기화/직접 DB 쓰기/MockFetch/브라우저 숫자 변경 금지. 스크립트는 Compose를 실행하지 않는다.",
+    "fresh": "검증 담당자가 고유 Compose 프로젝트와 빈 볼륨을 준비한다. 기존 볼륨 초기화/직접 DB 쓰기/MockFetch/브라우저 숫자 변경 금지. 스크립트는 Compose를 실행하지 않는다.",
     "auth": "환경변수 ADMIN으로 POST /auth/login, GET /auth/me 및 /ai/config 확인. 이후 UI 로그인도 정상 /auth/login 응답을 확인한다. 계정값/토큰은 메모리에만 둔다.",
     "employee": "정상 POST /employees로 환경변수 촬영사원 계정을 생성한다. 이름/이메일/전화는 합성값이며, 기존 계정 중복이면 덮어쓰지 않고 중단한다.",
     "catalog": "GET /positions, POST /departments로 합성 부모·자식 부서, POST /job-titles로 합성 직책을 준비한다.",
