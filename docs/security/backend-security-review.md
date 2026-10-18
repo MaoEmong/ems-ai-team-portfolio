@@ -15,7 +15,7 @@ Spring Security 6.5.5는 [CVE-2026-22732 공식 공지](https://spring.io/securi
 
 ## 항목별 근거와 한계
 
-경로는 별도 표시가 없으면 `backend/src/main/java/com/portfolio/ems/` 기준이다. 정적 검토는 2026-10-18 22시대 KST에 수행했다. 자동 테스트의 정확한 suite 시각과 수치는 [테스트 증거](../../backend/verification/20261018-backend-security-tests.json)에 보존한다. 실제 소켓 HTTP 및 현재 DB 실행은 아래의 미실행 제한을 따른다.
+경로는 별도 표시가 없으면 `backend/src/main/java/com/portfolio/ems/` 기준이다. 정적 검토는 2026-10-18 22시대 KST에 수행했다. 당시 자동 테스트의 정확한 suite 시각과 수치는 [초기 테스트 증거](../../backend/verification/20261018-backend-security-tests.json)에 보존한다. 아래 표의 DB 미실행 설명은 10월 18일 점검 당시 상태이며, 10월 19일 후속 MySQL 실행 결과는 아래 별도 절에 추가했다. 실제 소켓 HTTP 검수·운영 보안·실추론 한계는 유지한다.
 
 | 항목 / 심각도 | 경로와 점검 방법 | 확인·조치 / 잔여 |
 |---|---|---|
@@ -56,10 +56,36 @@ Spring Security 6.5.5는 [CVE-2026-22732 공식 공지](https://spring.io/securi
 
 ## 실행 결과와 미실행
 
-- 최종 `./gradlew.bat test bootJar`: BUILD SUCCESSFUL. 새 `SecurityReviewWebTest` 6개는 DB 대신 repository 경계를 mock한 실제 Spring Security MVC 필터 검증이다. MySQL 트랜잭션 검증으로 취급하지 않는다.
-- `./gradlew.bat test integrationTest bootJar` 두 번은 Docker Desktop Linux engine named pipe 부재로 실패했다. 8개 통합 테스트 클래스가 초기화 실패했고 MySQL 업무 검증은 실행되지 않았다. 승인된 숨김 Docker Desktop 시작을 한 번 시도했지만 엔진이 준비되지 않았다. 서비스 강제 변경이나 반복 우회는 하지 않았다.
-- 새 `SecurityReviewMySqlTest` 6개는 컴파일되었으나 현재 실행되지 않았다. 기존 MySQL 73개도 이번 실행에서 통과했다고 쓰지 않는다.
+### 2026-10-18 당시 이력 (보존)
+
+- 당시 최종 `./gradlew.bat test bootJar`: BUILD SUCCESSFUL, 단위/MVC 147개 PASS. 새 `SecurityReviewWebTest` 6개는 DB 대신 repository 경계를 mock한 실제 Spring Security MVC 필터 검증이다. MySQL 트랜잭션 검증으로 취급하지 않는다.
+- 당시 `./gradlew.bat test integrationTest bootJar` 두 번은 Docker Desktop Linux engine named pipe 부재로 실패했다. 8개 통합 테스트 클래스가 초기화 실패했고 MySQL 업무 검증은 실행되지 않았다. 승인된 숨김 Docker Desktop 시작을 한 번 시도했지만 엔진이 준비되지 않았다. 서비스 강제 변경이나 반복 우회는 하지 않았다.
+- 당시 새 `SecurityReviewMySqlTest` 6개는 컴파일되었으나 실행되지 않았다. 기존 MySQL 73개도 당시 실행에서 통과했다고 쓰지 않는다.
 - 실제 Compose/공유 포트/브라우저/침투 테스트/Claude·Ollama 실추론은 이번 백엔드 배정에서 미실행이다. 프론트 촬영과 QA의 새 사용자 실행 검증은 별도 인계 대상이다.
+
+### 2026-10-19 Docker 복구 후 실행과 문서화
+
+- 수행: Codex 담당. 설계 검토 `[Docker 복구]` 통지 후 `backend`에서 `.\gradlew.bat test integrationTest bootJar`를 **1회** 실행했다. 이후 테스트 재실행·제품 수정·staging·커밋은 하지 않았다.
+- 시작 `2026-10-19T03:08:55.2556911+09:00`, 종료 메타데이터 `03:14:29.0058592+09:00`. 종료 애플리케이션 로그의 마지막 시각은 `03:14:28 KST`다. 결과는 exit 0, `BUILD SUCCESSFUL in 5m 33s`.
+- 이번 새 실행은 `integrationTest` **8 suite / 79개 PASS**, failures/errors/skipped 모두 0이다. suite timestamp는 UTC `2026-10-18T18:10:38.487Z~18:14:20.516Z` (KST 10월 19일 03:10~03:14). 새 보안 MySQL 6개도 포함한다.
+- `test`와 `bootJar`는 **UP-TO-DATE**였다. 단위/MVC XML 147개 PASS는 같은 백엔드 소스의 10월 18일 결과를 재사용한 것이며 이번에 새로 실행한 수치가 아니다. 147+79를 이번 신규 실행 수로 합산하지 않는다.
+
+| 이번 integrationTest suite | tests | failures | errors | skipped |
+|---|---:|---:|---:|---:|
+| AiMySqlTest | 7 | 0 | 0 | 0 |
+| EvaluationMySqlTest | 31 | 0 | 0 | 0 |
+| MigrationUpgradeTest | 1 | 0 | 0 | 0 |
+| MySqlIntegrationTest | 1 | 0 | 0 | 0 |
+| OrganizationPayrollMySqlTest | 7 | 0 | 0 | 0 |
+| Phase2MySqlTest | 12 | 0 | 0 | 0 |
+| Phase3MySqlTest | 14 | 0 | 0 | 0 |
+| SecurityReviewMySqlTest | 6 | 0 | 0 | 0 |
+| 합계 | 79 | 0 | 0 | 0 |
+
+- [새 검증 JSON](../../backend/verification/20261019-backend-mysql-rerun.json)에 실제 XML 집계·suite 시각·명령·소스 SHA-256 manifest·task 실행 여부·정리 확인을 남겼다. 기존 초기화 실패 JSON은 덮어쓰지 않았다.
+- 제품 백엔드 소스는 `89db9017fe3bbd025a26d4bb852c609fc7824607` 그대로다. 실행 시작 시 manifest와 후속 파일 해시도 일치한다. 전체 작업 트리에는 프론트 nginx 및 QA 문서 변경이 별도로 있으므로 전체 프로젝트가 clean 89db901이라고 표현하지 않는다. 촬영 **백엔드** 기준은 `89db901`이다.
+- `2026-10-19T03:20:20.975112+09:00` 읽기 전용 확인에서 Testcontainers 라벨 컨테이너 0개, 모든 태그의 `testcontainers/ryuk` 잔여 0개였다. 자동 정리를 확인했으며 수동 stop/remove나 다른 팀 컨테이너 조작은 없었다. 공유 포트 3306/8080/5173, Compose, 기존 볼륨을 사용하지 않았다.
+- 의존성 OSV **1/58/9 분류와 잔여 위험은 그대로**다. MySQL 통과가 실제 AI 품질·침투 테스트·운영 보안이나 판단 불가 advisory의 해소를 증명하지 않는다. shutdown 시 Hikari 연결 종료 경고가 있었으나 XML 실패·오류는 0이며 경고를 제품 결함 해소나 추가 검증의 근거로 확대하지 않는다.
 
 ## 실행·촬영 인계
 

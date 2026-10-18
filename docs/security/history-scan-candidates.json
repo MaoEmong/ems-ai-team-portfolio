@@ -1,0 +1,1263 @@
+{
+  "at": "2026-10-18T14:39:54.424Z",
+  "head": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+  "commits": 18,
+  "historicalBlobs": 822,
+  "bytesInspected": 38499830,
+  "historyPathCandidates": [],
+  "trackedPathCandidates": [],
+  "findings": [
+    {
+      "kind": "credential-literal",
+      "path": ".env.example",
+      "blob": "91deb79c585284be82e8eee6c2bb20066ab1adcb",
+      "line": 7,
+      "fingerprint": "2cb5f374c59ea9e5",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": ".env.example",
+      "blob": "91deb79c585284be82e8eee6c2bb20066ab1adcb",
+      "line": 8,
+      "fingerprint": "35b6fb38ecf05962",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": ".env.example",
+      "blob": "91deb79c585284be82e8eee6c2bb20066ab1adcb",
+      "line": 10,
+      "fingerprint": "e82c498d1164d3c7",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "9d5697c0dc659b9563855944b8cb9310cc2f72bd",
+      "line": 27,
+      "fingerprint": "570fdd1578c42d69",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "9d5697c0dc659b9563855944b8cb9310cc2f72bd",
+      "line": 28,
+      "fingerprint": "ff37209b7ceb67a5",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "9d5697c0dc659b9563855944b8cb9310cc2f72bd",
+      "line": 31,
+      "fingerprint": "25b4b5ae158d2282",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/compose-smoke.ps1",
+      "blob": "e17771398d9c092b9bb24ca667ef238f4e6fb5a1",
+      "line": 15,
+      "fingerprint": "62483f3486a82ed9",
+      "category": "변수 참조"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/compose-smoke.ps1",
+      "blob": "e17771398d9c092b9bb24ca667ef238f4e6fb5a1",
+      "line": 16,
+      "fingerprint": "b67037e3a0f0f010",
+      "category": "변수 참조"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/compose-smoke.ps1",
+      "blob": "e17771398d9c092b9bb24ca667ef238f4e6fb5a1",
+      "line": 17,
+      "fingerprint": "8da18ca0e62e6996",
+      "category": "변수 참조"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/main/java/com/portfolio/ems/DemoSeeder.java",
+      "blob": "15479a19222b043533709ed96473d084b94ac046",
+      "line": 29,
+      "fingerprint": "12b0be49e5462e3e",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/main/java/com/portfolio/ems/DemoSeeder.java",
+      "blob": "15479a19222b043533709ed96473d084b94ac046",
+      "line": 31,
+      "fingerprint": "310b3b974df0cd85",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/test/java/com/portfolio/ems/EmployeeServiceTest.java",
+      "blob": "b369ce01fe70be41777f74042778b8983fbe4ace",
+      "line": 55,
+      "fingerprint": "2b6fa674ef466930",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/test/java/com/portfolio/ems/MigrationUpgradeTest.java",
+      "blob": "71704d65bf38f9a60879a9e81e065db5976b7da9",
+      "line": 17,
+      "fingerprint": "fa2842fe2dbf9a26",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/test/java/com/portfolio/ems/MySqlIntegrationTest.java",
+      "blob": "ac44775d7e4065b11c9f89741c71780bb4031c1e",
+      "line": 55,
+      "fingerprint": "b647a49ee951ae99",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/test/java/com/portfolio/ems/MySqlIntegrationTest.java",
+      "blob": "ac44775d7e4065b11c9f89741c71780bb4031c1e",
+      "line": 70,
+      "fingerprint": "b647a49ee951ae99",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/test/java/com/portfolio/ems/SheetCodecTest.java",
+      "blob": "fc8fa481c27934f48f1acb58b20c60662e355161",
+      "line": 143,
+      "fingerprint": "852e7b941ea20521",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/test/java/com/portfolio/ems/SheetCodecTest.java",
+      "blob": "fc8fa481c27934f48f1acb58b20c60662e355161",
+      "line": 172,
+      "fingerprint": "852e7b941ea20521",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "phone",
+      "path": "backend/src/test/java/com/portfolio/ems/SheetCodecTest.java",
+      "blob": "fc8fa481c27934f48f1acb58b20c60662e355161",
+      "line": 143,
+      "fingerprint": "8784c90d4a0106d3",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "docker-compose.yml",
+      "blob": "bcfd8ed706b0337c1838218582e77fe90809a372",
+      "line": 26,
+      "fingerprint": "5a43f205933fda08",
+      "category": "변수 참조"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "docker-compose.yml",
+      "blob": "bcfd8ed706b0337c1838218582e77fe90809a372",
+      "line": 27,
+      "fingerprint": "ba10c41c18fddc71",
+      "category": "변수 참조"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "docker-compose.yml",
+      "blob": "bcfd8ed706b0337c1838218582e77fe90809a372",
+      "line": 37,
+      "fingerprint": "0931d1f28925269c",
+      "category": "변수 참조"
+    },
+    {
+      "kind": "email",
+      "path": "docs/api/mvp-api.md",
+      "blob": "aa3c577018d050411bbd07fc82e04f3c8c2b5b12",
+      "line": 24,
+      "fingerprint": "d64ccca140068b29",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/api/mvp-api.md",
+      "blob": "aa3c577018d050411bbd07fc82e04f3c8c2b5b12",
+      "line": 57,
+      "fingerprint": "d64ccca140068b29",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/api/mvp-api.md",
+      "blob": "aa3c577018d050411bbd07fc82e04f3c8c2b5b12",
+      "line": 69,
+      "fingerprint": "d64ccca140068b29",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/api/mvp-api.md",
+      "blob": "aa3c577018d050411bbd07fc82e04f3c8c2b5b12",
+      "line": 78,
+      "fingerprint": "d64ccca140068b29",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/api/phase2-api.md",
+      "blob": "acedfdd1f4ce904f30e02ca1a471484348b11229",
+      "line": 21,
+      "fingerprint": "d64ccca140068b29",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/api/phase2-api.md",
+      "blob": "acedfdd1f4ce904f30e02ca1a471484348b11229",
+      "line": 117,
+      "fingerprint": "d64ccca140068b29",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/api/phase2-api.md",
+      "blob": "acedfdd1f4ce904f30e02ca1a471484348b11229",
+      "line": 144,
+      "fingerprint": "db1695a461a9b7de",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "docs/api/phase4-ai-api.md",
+      "blob": "51fc855283e5187a0e87c9cfaa33e0e9a8291560",
+      "line": 205,
+      "fingerprint": "eb0c2c3e3b64b5cf",
+      "category": "변수 참조"
+    },
+    {
+      "kind": "email",
+      "path": "docs/design/mockups.html",
+      "blob": "1fb8f35f50afcd012b535ac41597ea7890816f33",
+      "line": 264,
+      "fingerprint": "4712e731a5638c5b",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/design/mockups.html",
+      "blob": "1fb8f35f50afcd012b535ac41597ea7890816f33",
+      "line": 317,
+      "fingerprint": "4712e731a5638c5b",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "phone",
+      "path": "docs/design/mockups.html",
+      "blob": "1fb8f35f50afcd012b535ac41597ea7890816f33",
+      "line": 265,
+      "fingerprint": "8784c90d4a0106d3",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "phone",
+      "path": "docs/design/mockups.html",
+      "blob": "1fb8f35f50afcd012b535ac41597ea7890816f33",
+      "line": 318,
+      "fingerprint": "8784c90d4a0106d3",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/qa/phase3a-regression14.cjs",
+      "blob": "f4fbd8c2b42a631750e62e48561177abd959b010",
+      "line": 72,
+      "fingerprint": "8382c085cd79f8f4",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/qa/phase3a-regression14.cjs",
+      "blob": "f4fbd8c2b42a631750e62e48561177abd959b010",
+      "line": 79,
+      "fingerprint": "2f761a0ba6fc6541",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/qa/phase3a-regression14.cjs",
+      "blob": "f4fbd8c2b42a631750e62e48561177abd959b010",
+      "line": 79,
+      "fingerprint": "8616234f414b4837",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "phone",
+      "path": "docs/qa/phase3a-regression20.cjs",
+      "blob": "43b16e9836ef0d59e2cd513b622d79c66436b9c8",
+      "line": 60,
+      "fingerprint": "8784c90d4a0106d3",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/qa/phase3b-regression14.cjs",
+      "blob": "fc5e36821a6e3c27cc93ffeef34238c1ec90fe5b",
+      "line": 72,
+      "fingerprint": "8382c085cd79f8f4",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/qa/phase3b-regression14.cjs",
+      "blob": "fc5e36821a6e3c27cc93ffeef34238c1ec90fe5b",
+      "line": 79,
+      "fingerprint": "2f761a0ba6fc6541",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/qa/phase3b-regression14.cjs",
+      "blob": "fc5e36821a6e3c27cc93ffeef34238c1ec90fe5b",
+      "line": 79,
+      "fingerprint": "8616234f414b4837",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "phone",
+      "path": "docs/qa/phase3b-regression20.cjs",
+      "blob": "b89f29e1119df6a6d581eb74c358afe383212408",
+      "line": 60,
+      "fingerprint": "8784c90d4a0106d3",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/qa/phase4-regression14.cjs",
+      "blob": "abd374a941bf75c145e2d53331fa2728e3a9563f",
+      "line": 72,
+      "fingerprint": "8382c085cd79f8f4",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/qa/phase4-regression14.cjs",
+      "blob": "abd374a941bf75c145e2d53331fa2728e3a9563f",
+      "line": 79,
+      "fingerprint": "2f761a0ba6fc6541",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/qa/phase4-regression14.cjs",
+      "blob": "abd374a941bf75c145e2d53331fa2728e3a9563f",
+      "line": 79,
+      "fingerprint": "8616234f414b4837",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "phone",
+      "path": "docs/qa/phase4-regression20.cjs",
+      "blob": "86392016e7f39cf351766bc068cecec69557a17f",
+      "line": 60,
+      "fingerprint": "8784c90d4a0106d3",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "phone",
+      "path": "docs/qa/run-mvp.cjs",
+      "blob": "dea1fdd65d908281bdd5d2525f1d9fcd82d4faf9",
+      "line": 60,
+      "fingerprint": "8784c90d4a0106d3",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "phone",
+      "path": "docs/qa/run-phase2-regression.cjs",
+      "blob": "79435af462e8e344cd65bd457a4382999222a60a",
+      "line": 60,
+      "fingerprint": "8784c90d4a0106d3",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/qa/run-phase2.cjs",
+      "blob": "fa72af27f11279bc737b8801cb0946b6ff21633e",
+      "line": 72,
+      "fingerprint": "8382c085cd79f8f4",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/qa/run-phase2.cjs",
+      "blob": "fa72af27f11279bc737b8801cb0946b6ff21633e",
+      "line": 79,
+      "fingerprint": "2f761a0ba6fc6541",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/qa/run-phase2.cjs",
+      "blob": "fa72af27f11279bc737b8801cb0946b6ff21633e",
+      "line": 79,
+      "fingerprint": "8616234f414b4837",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "frontend/e2e/phase2.spec.ts",
+      "blob": "c02367c7f15a76058995602820c78ceb1cc0f723",
+      "line": 125,
+      "fingerprint": "51456804db1938a0",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "frontend/package-lock.json",
+      "blob": "d1d714a1c497bca8ecd0dee700e9addae0dc4fb7",
+      "line": 1859,
+      "fingerprint": "b0373516d594ddd1",
+      "category": "상류 메타데이터"
+    },
+    {
+      "kind": "email",
+      "path": "frontend/src/app.test.tsx",
+      "blob": "b7c39d40c5172c35c76673cdda804e472f4fdc38",
+      "line": 131,
+      "fingerprint": "dc582314dadc583d",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "frontend/src/app.test.tsx",
+      "blob": "b7c39d40c5172c35c76673cdda804e472f4fdc38",
+      "line": 161,
+      "fingerprint": "1c2e26a3d1959aea",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "frontend/src/mock-contract.test.ts",
+      "blob": "021c2d1b92bbf12fcb64040247ae897bcd2d25b6",
+      "line": 60,
+      "fingerprint": "097989b895e1a999",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "frontend/src/mock-phase2.test.ts",
+      "blob": "e594ce6a89939fe5565a235db42bb8e02ec7bd16",
+      "line": 15,
+      "fingerprint": "f1cede60669313dc",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "frontend/src/mock-phase2.test.ts",
+      "blob": "e594ce6a89939fe5565a235db42bb8e02ec7bd16",
+      "line": 25,
+      "fingerprint": "7061528c2ce949e9",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "frontend/src/mock-phase2.test.ts",
+      "blob": "e594ce6a89939fe5565a235db42bb8e02ec7bd16",
+      "line": 96,
+      "fingerprint": "3cdb365f4ef1d747",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "frontend/src/mock-phase2.test.ts",
+      "blob": "e594ce6a89939fe5565a235db42bb8e02ec7bd16",
+      "line": 152,
+      "fingerprint": "7061528c2ce949e9",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "frontend/src/mock-phase2.test.ts",
+      "blob": "e594ce6a89939fe5565a235db42bb8e02ec7bd16",
+      "line": 209,
+      "fingerprint": "4f5f132586bf16e7",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "frontend/src/mock-phase3b.test.ts",
+      "blob": "b18daf37af0102fdb00f69566cf7e557e7ee0f59",
+      "line": 375,
+      "fingerprint": "403fd87d04c00e63",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "phone",
+      "path": "frontend/src/mock.ts",
+      "blob": "8587f31bb6ccaf98521c7be2133e1d54fe9a2f85",
+      "line": 16,
+      "fingerprint": "8784c90d4a0106d3",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "frontend/src/organization.test.tsx",
+      "blob": "341cd613c08a793dc1de1cdeb1920d23a686f38b",
+      "line": 10,
+      "fingerprint": "37733ca908ecc9bf",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "phone",
+      "path": "frontend/src/organization.test.tsx",
+      "blob": "341cd613c08a793dc1de1cdeb1920d23a686f38b",
+      "line": 10,
+      "fingerprint": "8784c90d4a0106d3",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "521950b82d9a23ae2c1970192f8d6f02560f376b",
+      "line": 25,
+      "fingerprint": "570fdd1578c42d69",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "521950b82d9a23ae2c1970192f8d6f02560f376b",
+      "line": 26,
+      "fingerprint": "ff37209b7ceb67a5",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "521950b82d9a23ae2c1970192f8d6f02560f376b",
+      "line": 29,
+      "fingerprint": "25b4b5ae158d2282",
+      "category": "예시 env"
+    },
+    {
+      "kind": "phone",
+      "path": "frontend/src/mock.ts",
+      "blob": "4d15d0b79369866a24421baa3bdd8f8db1fa1cc1",
+      "line": 14,
+      "fingerprint": "8784c90d4a0106d3",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "credential-literal",
+      "path": ".env.example",
+      "blob": "9c58040be512208ec2d7da3f0d7c212e902fc365",
+      "line": 7,
+      "fingerprint": "2cb5f374c59ea9e5",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": ".env.example",
+      "blob": "9c58040be512208ec2d7da3f0d7c212e902fc365",
+      "line": 8,
+      "fingerprint": "35b6fb38ecf05962",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": ".env.example",
+      "blob": "9c58040be512208ec2d7da3f0d7c212e902fc365",
+      "line": 10,
+      "fingerprint": "e82c498d1164d3c7",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "c645ed55d4ac34c650824c7d0079565faa603265",
+      "line": 25,
+      "fingerprint": "570fdd1578c42d69",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "c645ed55d4ac34c650824c7d0079565faa603265",
+      "line": 26,
+      "fingerprint": "ff37209b7ceb67a5",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "c645ed55d4ac34c650824c7d0079565faa603265",
+      "line": 29,
+      "fingerprint": "25b4b5ae158d2282",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "docker-compose.yml",
+      "blob": "8746516c5b17678620d249057cdb822a50ff9494",
+      "line": 26,
+      "fingerprint": "5a43f205933fda08",
+      "category": "변수 참조"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "docker-compose.yml",
+      "blob": "8746516c5b17678620d249057cdb822a50ff9494",
+      "line": 27,
+      "fingerprint": "ba10c41c18fddc71",
+      "category": "변수 참조"
+    },
+    {
+      "kind": "email",
+      "path": "frontend/src/app.test.tsx",
+      "blob": "7f15533c3b799396be8d78f44ebb4d3b363ccf01",
+      "line": 131,
+      "fingerprint": "dc582314dadc583d",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "frontend/src/app.test.tsx",
+      "blob": "7f15533c3b799396be8d78f44ebb4d3b363ccf01",
+      "line": 161,
+      "fingerprint": "1c2e26a3d1959aea",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "phone",
+      "path": "frontend/src/mock.ts",
+      "blob": "32a86e6f3b3053b20577da7a59ef45845b00a457",
+      "line": 13,
+      "fingerprint": "8784c90d4a0106d3",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "ff4091ff056910f0100a8c02fa80fe3b9aec3df1",
+      "line": 25,
+      "fingerprint": "570fdd1578c42d69",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "ff4091ff056910f0100a8c02fa80fe3b9aec3df1",
+      "line": 26,
+      "fingerprint": "ff37209b7ceb67a5",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "ff4091ff056910f0100a8c02fa80fe3b9aec3df1",
+      "line": 29,
+      "fingerprint": "25b4b5ae158d2282",
+      "category": "예시 env"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/main/java/com/portfolio/ems/DemoSeeder.java",
+      "blob": "792ca1fb78b1dd5b775789dedcf4563a38f07398",
+      "line": 28,
+      "fingerprint": "12b0be49e5462e3e",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/main/java/com/portfolio/ems/DemoSeeder.java",
+      "blob": "792ca1fb78b1dd5b775789dedcf4563a38f07398",
+      "line": 30,
+      "fingerprint": "310b3b974df0cd85",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/test/java/com/portfolio/ems/MigrationUpgradeTest.java",
+      "blob": "893838248d35464de4831f0b9318a26647c6ff4d",
+      "line": 16,
+      "fingerprint": "fa2842fe2dbf9a26",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "phone",
+      "path": "frontend/src/mock.ts",
+      "blob": "2a4c592f5233f84dda5f106e24f4009977052c9d",
+      "line": 12,
+      "fingerprint": "8784c90d4a0106d3",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "credential-literal",
+      "path": ".env.example",
+      "blob": "1546da77b16bce172941bf75d2c91300958ac66d",
+      "line": 7,
+      "fingerprint": "2cb5f374c59ea9e5",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": ".env.example",
+      "blob": "1546da77b16bce172941bf75d2c91300958ac66d",
+      "line": 8,
+      "fingerprint": "35b6fb38ecf05962",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": ".env.example",
+      "blob": "1546da77b16bce172941bf75d2c91300958ac66d",
+      "line": 10,
+      "fingerprint": "e82c498d1164d3c7",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "b8baf490775204b2b6bfe409da47674d8c89fbf3",
+      "line": 25,
+      "fingerprint": "570fdd1578c42d69",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "b8baf490775204b2b6bfe409da47674d8c89fbf3",
+      "line": 26,
+      "fingerprint": "ff37209b7ceb67a5",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "b8baf490775204b2b6bfe409da47674d8c89fbf3",
+      "line": 29,
+      "fingerprint": "25b4b5ae158d2282",
+      "category": "예시 env"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/main/java/com/portfolio/ems/DemoSeeder.java",
+      "blob": "2d7818725e0428831a655510a228ee9cc686c740",
+      "line": 29,
+      "fingerprint": "12b0be49e5462e3e",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/main/java/com/portfolio/ems/DemoSeeder.java",
+      "blob": "2d7818725e0428831a655510a228ee9cc686c740",
+      "line": 32,
+      "fingerprint": "310b3b974df0cd85",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/test/java/com/portfolio/ems/EmployeeServiceTest.java",
+      "blob": "c969441d137b16c08197c74645192cea8aa52f72",
+      "line": 55,
+      "fingerprint": "2b6fa674ef466930",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/test/java/com/portfolio/ems/MigrationUpgradeTest.java",
+      "blob": "0bf485607c6161af238004e47dbdd96d5d98dcf8",
+      "line": 16,
+      "fingerprint": "fa2842fe2dbf9a26",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/test/java/com/portfolio/ems/MySqlIntegrationTest.java",
+      "blob": "5389f6f65159c3805d0b5721c12900a990734c41",
+      "line": 55,
+      "fingerprint": "b647a49ee951ae99",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/test/java/com/portfolio/ems/MySqlIntegrationTest.java",
+      "blob": "5389f6f65159c3805d0b5721c12900a990734c41",
+      "line": 70,
+      "fingerprint": "b647a49ee951ae99",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "docker-compose.yml",
+      "blob": "cf3e9c29ec40a8d434add794fed513e632cff8cb",
+      "line": 26,
+      "fingerprint": "5a43f205933fda08",
+      "category": "변수 참조"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "docker-compose.yml",
+      "blob": "cf3e9c29ec40a8d434add794fed513e632cff8cb",
+      "line": 27,
+      "fingerprint": "ba10c41c18fddc71",
+      "category": "변수 참조"
+    },
+    {
+      "kind": "email",
+      "path": "frontend/src/app.test.tsx",
+      "blob": "b9ca1490f4689820c5825f900de005ff074e4dee",
+      "line": 130,
+      "fingerprint": "dc582314dadc583d",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "frontend/src/app.test.tsx",
+      "blob": "b9ca1490f4689820c5825f900de005ff074e4dee",
+      "line": 160,
+      "fingerprint": "1c2e26a3d1959aea",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "phone",
+      "path": "frontend/src/mock.ts",
+      "blob": "bf6fb400e192094f2e91b343e93d70165ace7636",
+      "line": 16,
+      "fingerprint": "8784c90d4a0106d3",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "b0cdf765b4d4f61915c78b7ceee2ab48e6d8db5b",
+      "line": 25,
+      "fingerprint": "570fdd1578c42d69",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "b0cdf765b4d4f61915c78b7ceee2ab48e6d8db5b",
+      "line": 26,
+      "fingerprint": "ff37209b7ceb67a5",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/README.md",
+      "blob": "b0cdf765b4d4f61915c78b7ceee2ab48e6d8db5b",
+      "line": 29,
+      "fingerprint": "25b4b5ae158d2282",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/compose-smoke.ps1",
+      "blob": "85526b877476863a8097d8ff2772f65764a4d3b3",
+      "line": 15,
+      "fingerprint": "62483f3486a82ed9",
+      "category": "변수 참조"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/compose-smoke.ps1",
+      "blob": "85526b877476863a8097d8ff2772f65764a4d3b3",
+      "line": 16,
+      "fingerprint": "b67037e3a0f0f010",
+      "category": "변수 참조"
+    },
+    {
+      "kind": "credential-literal",
+      "path": "backend/compose-smoke.ps1",
+      "blob": "85526b877476863a8097d8ff2772f65764a4d3b3",
+      "line": 17,
+      "fingerprint": "8da18ca0e62e6996",
+      "category": "변수 참조"
+    },
+    {
+      "kind": "email",
+      "path": "backend/src/test/java/com/portfolio/ems/EmployeeServiceTest.java",
+      "blob": "05cbb231417a0d77688641912fa9ed0efa8aff34",
+      "line": 54,
+      "fingerprint": "2b6fa674ef466930",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/api/mvp-api.md",
+      "blob": "d52cb9e9ffd06e3d179cd85da76ec3c2df5ca0d0",
+      "line": 24,
+      "fingerprint": "d64ccca140068b29",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/api/mvp-api.md",
+      "blob": "d52cb9e9ffd06e3d179cd85da76ec3c2df5ca0d0",
+      "line": 57,
+      "fingerprint": "d64ccca140068b29",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/api/mvp-api.md",
+      "blob": "d52cb9e9ffd06e3d179cd85da76ec3c2df5ca0d0",
+      "line": 69,
+      "fingerprint": "d64ccca140068b29",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "email",
+      "path": "docs/api/mvp-api.md",
+      "blob": "d52cb9e9ffd06e3d179cd85da76ec3c2df5ca0d0",
+      "line": 78,
+      "fingerprint": "d64ccca140068b29",
+      "category": "합성 시드·테스트"
+    },
+    {
+      "kind": "credential-literal",
+      "path": ".env.example",
+      "blob": "baadca0294555650d7e48a4da70d4b8dd29e2bf4",
+      "line": 6,
+      "fingerprint": "2cb5f374c59ea9e5",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": ".env.example",
+      "blob": "baadca0294555650d7e48a4da70d4b8dd29e2bf4",
+      "line": 7,
+      "fingerprint": "35b6fb38ecf05962",
+      "category": "예시 env"
+    },
+    {
+      "kind": "credential-literal",
+      "path": ".env.example",
+      "blob": "baadca0294555650d7e48a4da70d4b8dd29e2bf4",
+      "line": 8,
+      "fingerprint": "b2c39dbeb96c4e6f",
+      "category": "예시 env"
+    }
+  ],
+  "classifiedAt": "2026-10-18T14:46:15.608Z",
+  "classifier": "Codex 문서QA; 경로·생성 코드와 변수 참조 기준",
+  "classificationCounts": {
+    "예시 env": 30,
+    "변수 참조": 14,
+    "합성 시드·테스트": 72,
+    "상류 메타데이터": 1
+  },
+  "limitations": [
+    "규칙 기반 텍스트 검사, 미도달 Git 객체 제외",
+    "PNG hash53건 일치; QA대표3 직접열람, Claude53 검수 원본 참조; OCR 자동 전수판독 아님",
+    "외부 링크 가용성·실모델 추론·접근성/침투/운영보안은 미검증"
+  ],
+  "incremental": {
+    "at": "2026-10-18T20:04:49.929Z",
+    "head": "6822129ff2ae996fb70910f6ea17b495d5d41a02",
+    "newCommits": 1,
+    "changedPaths": 125,
+    "tracked": 678,
+    "newFiles": 7,
+    "textFiles": 372,
+    "binaryFiles": 313,
+    "specificSecretPatternFindings": [],
+    "captureHashErrors": [],
+    "imagesChecked": 53,
+    "missingLinks": [],
+    "limitations": [
+      "PNG payload not OCR scanned; representative3 direct QA view, Claude53 image review linked",
+      "Generic credential/PII candidates classified in prior history scan; final incremental classifier follows",
+      "External links and fragment anchors not checked by filesystem pass"
+    ],
+    "falsePositiveReason": "8 UI pseudo-links inside code examples, not Markdown navigation",
+    "generic": {
+      "blobCount": 108,
+      "historySpecificFindings": [],
+      "generic": [
+        {
+          "path": "docs/screenshots/capture-portfolio.mjs",
+          "line": 189,
+          "type": "email",
+          "category": "합성 자료·테스트 또는 상류 metadata"
+        },
+        {
+          "path": "docs/screenshots/capture-portfolio.mjs",
+          "line": 282,
+          "type": "email",
+          "category": "합성 자료·테스트 또는 상류 metadata"
+        },
+        {
+          "path": "docs/screenshots/claude-image-review.md",
+          "line": 61,
+          "type": "email",
+          "category": "합성 자료·테스트 또는 상류 metadata"
+        },
+        {
+          "path": "docs/screenshots/run-capture.mjs",
+          "line": 47,
+          "type": "credential-reference",
+          "category": "예시·변수 참조"
+        }
+      ],
+      "unknown": []
+    }
+  },
+  "reproduction": {
+    "actor": "Codex 문서QA",
+    "startedAt": "2026-10-18T20:04:17.043Z",
+    "head": "6822129ff2ae996fb70910f6ea17b495d5d41a02",
+    "project": "ems-qa-final-1792353857091",
+    "attempts": [
+      {
+        "attempt": 1,
+        "command": "docker compose --project-name ems-qa-final-1792353857091 up --build -d",
+        "up": {
+          "exitCode": 0,
+          "startedAt": "2026-10-18T20:04:17.097Z",
+          "endedAt": "2026-10-18T20:04:36.602Z",
+          "outputBytes": 6556
+        },
+        "loginStatus": 200,
+        "api": [
+          {
+            "endpoint": "/auth/me",
+            "status": 200
+          },
+          {
+            "endpoint": "/dashboard",
+            "status": 200
+          },
+          {
+            "endpoint": "/employees",
+            "status": 200
+          },
+          {
+            "endpoint": "/organization",
+            "status": 200
+          },
+          {
+            "endpoint": "/ai/config",
+            "status": 200
+          }
+        ],
+        "browser": [
+          {
+            "route": "/dashboard",
+            "title": "대시보드 · EMS",
+            "bodyVisible": true
+          },
+          {
+            "route": "/employees",
+            "title": "사원 관리 · EMS",
+            "bodyVisible": true
+          },
+          {
+            "route": "/organization",
+            "title": "조직도 · EMS",
+            "bodyVisible": true
+          },
+          {
+            "route": "/ai/policies",
+            "title": "규정 Q&A · EMS",
+            "bodyVisible": true
+          }
+        ],
+        "browserLogin": true
+      }
+    ],
+    "screenshotsCreated": 0,
+    "envSource": ".env.example with random local values in ignored .env",
+    "portsBefore": [
+      {
+        "port": 3306,
+        "free": true
+      },
+      {
+        "port": 8080,
+        "free": true
+      },
+      {
+        "port": 5173,
+        "free": true
+      }
+    ],
+    "reproductionPass": true,
+    "volumesBeforeDown": [
+      "ems-qa-final-1792353857091_mysql_data"
+    ],
+    "down": {
+      "command": "docker compose --project-name ems-qa-final-1792353857091 down",
+      "exitCode": 0,
+      "startedAt": "2026-10-18T20:04:53.230Z",
+      "endedAt": "2026-10-18T20:04:55.762Z",
+      "outputBytes": 793,
+      "volumeDeletion": false
+    },
+    "volumesAfterDown": [
+      "ems-qa-final-1792353857091_mysql_data"
+    ],
+    "volumePreserved": true,
+    "remainingProjectContainers": 0,
+    "portsAfter": [
+      {
+        "port": 3306,
+        "free": true
+      },
+      {
+        "port": 8080,
+        "free": true
+      },
+      {
+        "port": 5173,
+        "free": true
+      }
+    ],
+    "endedAt": "2026-10-18T20:04:56.324Z"
+  },
+  "preflightFailure": {
+    "actor": "Codex 문서QA",
+    "startedAt": "2026-10-18T20:02:19.153Z",
+    "head": "6822129ff2ae996fb70910f6ea17b495d5d41a02",
+    "project": "ems-qa-final-1792353739264",
+    "attempts": [
+      {
+        "attempt": 1,
+        "command": "docker compose --project-name ems-qa-final-1792353739264 up --build -d",
+        "up": {
+          "exitCode": 1,
+          "startedAt": "2026-10-18T20:02:19.272Z",
+          "endedAt": "2026-10-18T20:02:19.681Z",
+          "outputBytes": 163
+        },
+        "failure": "COMPOSE_UP_FAILED"
+      },
+      {
+        "attempt": 2,
+        "command": "docker compose --project-name ems-qa-final-1792353739264 up --build -d",
+        "up": {
+          "exitCode": 1,
+          "startedAt": "2026-10-18T20:02:19.681Z",
+          "endedAt": "2026-10-18T20:02:20.056Z",
+          "outputBytes": 163
+        },
+        "failure": "COMPOSE_UP_FAILED"
+      }
+    ],
+    "screenshotsCreated": 0,
+    "envSource": ".env.example copied to ignored .env; random local secrets; no credential persistence in evidence",
+    "portsBefore": [
+      {
+        "port": 3306,
+        "free": true
+      },
+      {
+        "port": 8080,
+        "free": true
+      },
+      {
+        "port": 5173,
+        "free": true
+      }
+    ],
+    "reproductionPass": false,
+    "volumesBeforeDown": [],
+    "down": {
+      "command": "docker compose --project-name ems-qa-final-1792353739264 down",
+      "exitCode": 1,
+      "startedAt": "2026-10-18T20:02:20.233Z",
+      "endedAt": "2026-10-18T20:02:20.585Z",
+      "outputBytes": 105,
+      "volumeDeletion": false
+    },
+    "volumesAfterDown": [],
+    "volumePreserved": false,
+    "remainingProjectContainers": 0,
+    "portsAfter": [
+      {
+        "port": 3306,
+        "free": true
+      },
+      {
+        "port": 8080,
+        "free": true
+      },
+      {
+        "port": 5173,
+        "free": true
+      }
+    ],
+    "endedAt": "2026-10-18T20:02:21.134Z",
+    "explanation": "Docker API pipe access denied inside sandbox; engine not reached. Escalated execution succeeded. Local script syntax/selector preparation corrected before successful engine invocation; product defect not observed."
+  },
+  "finalPublicationCheck": {
+    "at": "2026-10-18T20:06:52.958Z",
+    "files": 685,
+    "pngAsciiScanCount": 312,
+    "actualLocalSecretMatches": [],
+    "specificPatternFindings": [],
+    "artifactPaths": [],
+    "missingFileLinks": [],
+    "uiNotationExceptions": [
+      {
+        "path": "docs/design/phase3a-screens.md",
+        "target": "danger-solid"
+      },
+      {
+        "path": "docs/design/phase3a-screens.md",
+        "target": "primary"
+      },
+      {
+        "path": "docs/design/phase3a-screens.md",
+        "target": "danger-solid"
+      },
+      {
+        "path": "docs/design/phase3b-screens.md",
+        "target": "primary"
+      },
+      {
+        "path": "docs/design/phase3b-screens.md",
+        "target": "`REASSIGN_REVIEWER`"
+      },
+      {
+        "path": "docs/design/phase3b-screens.md",
+        "target": "danger-solid"
+      },
+      {
+        "path": "docs/design/phase3b-screens.md",
+        "target": "primary"
+      },
+      {
+        "path": "docs/design/phase3b-screens.md",
+        "target": "danger-solid"
+      }
+    ],
+    "fragmentReferences": 0,
+    "envIgnored": true,
+    "stagedPending": false,
+    "stagedCheck": {
+      "at": "2026-10-18T20:07:38.547Z",
+      "paths": [
+        ".gitignore",
+        "README.md",
+        "SECURITY.md",
+        "backend/verification/20261019-backend-mysql-rerun.json",
+        "docs/README.md",
+        "docs/devlog/20261018-docqa-finalization.md",
+        "docs/project-details.md",
+        "docs/security/README.md",
+        "docs/security/backend-security-review.md",
+        "docs/security/history-scan-candidates.json"
+      ],
+      "count": 10,
+      "secretFindings": 0,
+      "diffCheckExitCode": 0
+    }
+  },
+  "excludedFiles": []
+}

@@ -1,0 +1,631 @@
+{
+  "collectedAt": "2026-10-19T03:20:20.975635+09:00",
+  "command": ".\\gradlew.bat test integrationTest bootJar",
+  "workingDirectory": "backend",
+  "startedAt": "2026-10-19T03:08:55.2556911+09:00",
+  "finishedAt": "2026-10-19T03:14:29.0058592+09:00",
+  "exitCode": 0,
+  "result": "BUILD SUCCESSFUL",
+  "reportedDuration": "5m 33s",
+  "source": {
+    "headAtExecution": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+    "headAtCollection": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+    "backendBaseline": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+    "backendUnchangedDuringRun": true,
+    "manifest": [
+      {
+        "path": "build.gradle",
+        "sha256": "56C86D1AA9E88AFB2FC9F9329D5D51362BF4A113B70252EE78DAC8B78357BA57"
+      },
+      {
+        "path": "gradle/wrapper/gradle-wrapper.jar",
+        "sha256": "7D3A4AC4DE1C32B59BC6A4EB8ECB8E612CCD0CF1AE1E99F66902DA64DF296172"
+      },
+      {
+        "path": "gradle/wrapper/gradle-wrapper.properties",
+        "sha256": "7E0821D895908883350587C74476B717016AB416320C44DC82A10DEF916C6FB5"
+      },
+      {
+        "path": "gradlew",
+        "sha256": "B187B4C52E749F5760AFDD6FADC31B2A98AD35FB249BF0DFF03B72650F320409"
+      },
+      {
+        "path": "gradlew.bat",
+        "sha256": "1D297E00BD21DE3ACE22B4D7F2DE1F9DFA858883D66BBF7C1CCBECCCEC8F4F3B"
+      },
+      {
+        "path": "settings.gradle",
+        "sha256": "9897AA7D2F17BF0826A7F943D5D8B21FA75B5B16C411EA3850EEEDA1681A55BF"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/AiBodyLimitFilter.java",
+        "sha256": "DBA9C8D3C6C1BE9690BEA3BB53E88CDB609C98118FD637ACE2B51FA50F6A22D8"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/AiController.java",
+        "sha256": "48C75C3667898915350BD3696D50BCA6D65AB35F0211D2EB7871271F922E6009"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/AiJson.java",
+        "sha256": "D4688876772113448852C3B1CD71C4B558A059AD53FFB53C4451ED9395F18FEA"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/AiProblem.java",
+        "sha256": "367BBEEB3EFED0CE14F8CE88029BDD3176E89BB9061723F9A8AAE828C71319AD"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/AiService.java",
+        "sha256": "BCD47D2B5477AE957E0C6A3ED0B49E51BEE783AAA5E0E8D5BACD05EB444AB204"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/AiSettings.java",
+        "sha256": "F81D9C3B7FCC1BD5807FA8D5092FF011C7EF822C76A465E6664C3CD84CDD03B0"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/ApiController.java",
+        "sha256": "F3046B10A0269BA215456C0136919C59AAD5459263817F278952FB49976AF675"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/AppointmentService.java",
+        "sha256": "3E92C5568D743C66040585FB3C66A94244D6A4E2B41239F1B917B22EFEBC4505"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/AppointmentStore.java",
+        "sha256": "7F8DF8A2150EF5155DF8C461A730FAF7499CE1E6BD40CC5380D90CB4B7258E9D"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/AttendanceService.java",
+        "sha256": "8B1DE2865A4B7E77C2715E1DB9E7274E4719973F785C987E77B18A8C656E8982"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/AuditService.java",
+        "sha256": "6932C8229D0CE0E473A02E7A712F90C5EB6C56155674D7663D18DA650AF7E6BA"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/AuthService.java",
+        "sha256": "B03B8145B3654380A37B7221FF9F868291A5111B752D31B63FF62D67724D21C4"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/CatalogService.java",
+        "sha256": "6653949827ACEDFDEA7BCD3E079FC69D42405DD903D70EA1FE114B672C290416"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/DashboardService.java",
+        "sha256": "1C349E289B405C4DDADD8C83E5C63C7C87B6021F1F17E3304F86C04BC40E1EFF"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/DemoSeeder.java",
+        "sha256": "1C5B21A979F7D29AB248A2A5A028ECEFA096B143C0F29EDE5412EBC9AEE2E9BA"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/Domain.java",
+        "sha256": "B4912B168DD33BF79D68D33F4DFFC7EA5A79D0A054B678A23AB8647B8814E623"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/Dto.java",
+        "sha256": "CEB4C5507EBB83BF306DF870E1A3A45DB7DCD45F32E04DC6BF35B9CF3E68026D"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/EmployeeService.java",
+        "sha256": "7C85233B33CF6E5AFE0E37CA3AD815A561F111C0D296D58C50D7D630051E821B"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/EmsApplication.java",
+        "sha256": "5FF2D40ECA53E70736C2376C2814AEDAB71EFC955976AEE396B87404CBCCC62C"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/Errors.java",
+        "sha256": "B8FCF881F41FBD0D8C19F760DB3BE227924C3FBD4809F944217EBFF344DC49DE"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/EvaluationController.java",
+        "sha256": "D483875C3C9744C27AA1D8F959258D93D0EC2AC615D80F526D1FCD65014A2115"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/EvaluationDemoSeeder.java",
+        "sha256": "6217C0B44AEDBF615A404E7D66F4EB26A5EBF0683AC5F49D886E8D4869E0D97A"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/EvaluationDto.java",
+        "sha256": "DD0DA5DEA88C875F770D395F403B65F87656DA7C1CD6163E172A8C3DBE8C6B9C"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/EvaluationService.java",
+        "sha256": "E1FB4AA9317719EAECEAFD09FD58558DF8697E677CBA382AA0BE7BC9246DAAB8"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/FileService.java",
+        "sha256": "0E0A132237DCFBE8EA3910667FAE3A921275DE3513C65159BDBD0B725536944E"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/HttpLlmClient.java",
+        "sha256": "B68BB250988F3A0184887B8F6BEB0AF6FD5DF51DD502A16D0CBAD5FD6CB4F7EA"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/ImportErrors.java",
+        "sha256": "3F46BEAB2801F3CF34689AF0CB61EBC65BBD115BDD6119ABE1E887D408AB503A"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/LeavePolicy.java",
+        "sha256": "903A7D72D655575FB0B5B44A11229136E468F3473989C29F800B305A921F4C69"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/LeaveService.java",
+        "sha256": "FDA7F8FDC45D71DD8114992ABD9E73B57A6EF72337D7DB00A931EE2D1059F06A"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/LlmClient.java",
+        "sha256": "3C7F57FB2AAC7A03422F7CFAA4B8DC6EC2D5580F435E8F334F04E9E9FE388219"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/NotificationService.java",
+        "sha256": "A35F49F039125B8804D73D58DC8F9BF80B86F50B7981FB3C34E178C63711ADC9"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/OrganizationController.java",
+        "sha256": "E2E7A75CE0838CD15191F72518E1B084964F731AFCFE283082D5998D84FA4727"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/OrganizationService.java",
+        "sha256": "F9F1A27186DE0AB3BE504B31269312BA29B646CBDD06E1991A3B274819D64530"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/PayrollController.java",
+        "sha256": "56414CCB3DAF74A03FC7D8F9758E8E5431A4C0499AFB59D7DFDF6490FC04F404"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/PayrollService.java",
+        "sha256": "C2328956268D992CBCD26742B8418C91701A70BF40503F0F117CA7F725D049D3"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/Phase2Controller.java",
+        "sha256": "38B1AF18CB42DD811CB18A5B235B750BFA791EA9BEAA447D69E6B37229BC964C"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/Phase2Dto.java",
+        "sha256": "81A4B904B826B669B2A775F0380070D25DD83E3C7A29AAF7DE62A89D9A8A7638"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/Phase3Controller.java",
+        "sha256": "354045FC8E97DF0D254F17D08882EA727E0E5C054BF69FB2D04D93D69E501F88"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/Phase3Dto.java",
+        "sha256": "588EAEF83B6FAEC2764A596295AEAAA55D9CA307FCAE40CE6A96051E730D9FE4"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/Phase3bDemoSeeder.java",
+        "sha256": "DA2F3D5A11D9019ECEE146EFB989EBA7030757457B24D52F70DE00483EE567A0"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/Repositories.java",
+        "sha256": "59E481FC0E6376927ED4FDBD5F0EC9D482969B5055481E2A18B9164B9201DC1E"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/SecurityConfig.java",
+        "sha256": "88205AFD25931BF366812AB30B537B51CBEDD61010F95C67989B08FE29B8407D"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/SheetCodec.java",
+        "sha256": "A00C93721AA3FA66F7DC0EC807AA14F727B8E33C707D001A8E87870D79077AD8"
+      },
+      {
+        "path": "src/main/java/com/portfolio/ems/StrictMoney.java",
+        "sha256": "E28064A58CCF0074ED96325B1C3C55611F843653CEA72C4DC8FDC2902E5521C6"
+      },
+      {
+        "path": "src/main/resources/ai/policies/demo-policy-v1.json",
+        "sha256": "1754ED0E54BB24F79EF5150984304A28BF71E006B9366F7ED109C686678568D0"
+      },
+      {
+        "path": "src/main/resources/ai/prompts/ems-ai-v1.txt",
+        "sha256": "5D31D9AB791253A0CA1D63CD0B598940248846118ABCF311256A03F0D791CB06"
+      },
+      {
+        "path": "src/main/resources/application.yml",
+        "sha256": "8B904344CD673CADB6ABC46E3E3FA2977299BBF093B47DF78486F29086DBC963"
+      },
+      {
+        "path": "src/main/resources/db/migration/V1__schema_and_demo.sql",
+        "sha256": "F080CA7A7C94450155BD5A14F62515D9E189A8C9A52CA38C0C73CD41F9925EF3"
+      },
+      {
+        "path": "src/main/resources/db/migration/V2__appointments_and_audit.sql",
+        "sha256": "1E51BB96D6777FB5E4F0A0494AD2359F17801B70A2CEB224FC029467F1A14B2C"
+      },
+      {
+        "path": "src/main/resources/db/migration/V3__attendance_leave_notifications.sql",
+        "sha256": "B8B64E4087935AE42125F1C42BF2D7AE24D446A228BC264FCCEF8C9730CD63DA"
+      },
+      {
+        "path": "src/main/resources/db/migration/V4__organization_payroll_evaluation.sql",
+        "sha256": "715667560560F4A93DAC6C55E3FDF9D60FF0C8C19430812D2F575D63AC2807AE"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/AiMySqlTest.java",
+        "sha256": "92C93F0B5583E9A244BA3138352B58BF930CEEA52E3DDAE2C9177F2AA86EA17C"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/AiServiceTest.java",
+        "sha256": "738E8E767B68F6D12DB5A6169E01181F3516420F5AB3585357D518885E868E07"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/ApiControllerTest.java",
+        "sha256": "D02E298CC1DF4DC71771D2BB8DE238E2673CFB1762FA15F99B322F2E0715D274"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/CatalogServiceTest.java",
+        "sha256": "A58C8D45A337E56913B2BAF22672A0031102396CFFEA7FD374C2FD6BAEDC1693"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/EmployeeServiceTest.java",
+        "sha256": "020909F0699127BAE982F39043F9FC784CE14FA53A0C45D19F490AA48F97CF20"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/EvaluationControllerTest.java",
+        "sha256": "B90217394000A3F056E7F9AFA82B3C4F5033F467E54693C6B9C4059E39AE79DE"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/EvaluationMySqlTest.java",
+        "sha256": "81B617A2C026AB52826F5A6626CE802D427DDCCA02B4B69799503A30048EE3B7"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/FileServiceTest.java",
+        "sha256": "FAAF93FBFF3BD9A19E06E916A783EA34FE84AE425DAF9703D8E3457E196B36C3"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/LeavePolicyTest.java",
+        "sha256": "7D69913A0AFBEE061D703F720AE695976D96F37C1F8C5B99F42AC4268362552B"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/LlmAdapterTest.java",
+        "sha256": "582B47DF550D047E1442BCD3BD07144227F38097A6CCF122C85E3670D9DE7D13"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/MigrationUpgradeTest.java",
+        "sha256": "0D8A514305587CAF55D7F7DD58BD75BF8C9061A6D2AB04BA532AB09D49F2770A"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/MySqlIntegrationTest.java",
+        "sha256": "965F3968DDE7ED8AF78306E77E6BC94B670CD27CDB341BDC39B36DBC6801E140"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/OrganizationPayrollControllerTest.java",
+        "sha256": "AA8DF768EE25CC0AE14E463C27EA93F41699E2317D9591D3B2F1C6A44E19C9A0"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/OrganizationPayrollMySqlTest.java",
+        "sha256": "83F034AA293D37FBA2F7420B46220889ADD008EED619AB769BEED5C2A6DD58AE"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/PayrollFormulaTest.java",
+        "sha256": "E99DE18EEEF7B02E117CB244223A2B0B9B2701BAC961AE8D01C81CB1B5533BC3"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/Phase2ControllerTest.java",
+        "sha256": "017068E926217ADE15CE1CF9A5FB36353116E4FBBE14619FBC13BAA355D95B42"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/Phase2MySqlTest.java",
+        "sha256": "6111F61FB3BE309513700C563B74506E70C8FB61CBF01B873F75A1B92E109B86"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/Phase3ControllerTest.java",
+        "sha256": "6E090B59842FAEFF65CB230E32B9FC724F3A42EEE02936AB225B048DC7084303"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/Phase3MySqlTest.java",
+        "sha256": "698567905EE83D7B7DD1AB4D8586246689E65C0CA79CF29E120A52D670BED38F"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/SecurityReviewMySqlTest.java",
+        "sha256": "14D47E7295B952813538BAD34337EE5499356126B8B5888C7B0A32E5A2ED8712"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/SecurityReviewWebTest.java",
+        "sha256": "33F0BD64A118D5BF9EDAEDE82F25D290EE8502B72537D10CFA8B4BF137171378"
+      },
+      {
+        "path": "src/test/java/com/portfolio/ems/SheetCodecTest.java",
+        "sha256": "4255542991BD55EEBEFF5483DA8380A47BF3ED152D203687DDB22F8F451C449B"
+      }
+    ],
+    "workingTreeAtCollection": [
+      "M .gitignore",
+      " M README.md",
+      " M frontend/nginx.conf",
+      "?? SECURITY.md",
+      "?? docs/README.md",
+      "?? docs/devlog/20261018-docqa-finalization.md",
+      "?? docs/devlog/20261018-frontend-finalization.md",
+      "?? docs/project-details.md",
+      "?? docs/screenshots/",
+      "?? docs/security/README.md",
+      "?? docs/security/frontend-security-evidence.json",
+      "?? docs/security/frontend-security-review.md",
+      "?? docs/security/history-scan-candidates.json"
+    ],
+    "workingTreeNote": "Frontend nginx/QA documentation changes are separate; whole working tree is not clean baseline"
+  },
+  "tasks": {
+    "compileJava": "UP-TO-DATE",
+    "processResources": "UP-TO-DATE",
+    "classes": "UP-TO-DATE",
+    "resolveMainClassName": "UP-TO-DATE",
+    "bootJar": "UP-TO-DATE",
+    "compileTestJava": "UP-TO-DATE",
+    "processTestResources": "NO-SOURCE",
+    "testClasses": "UP-TO-DATE",
+    "test": "UP-TO-DATE",
+    "integrationTest": "EXECUTED"
+  },
+  "unit": {
+    "taskStatus": "UP-TO-DATE",
+    "totals": {
+      "tests": 147,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "suites": [
+      {
+        "name": "com.portfolio.ems.AiServiceTest",
+        "timestampUtc": "2026-10-18T13:50:50.664Z",
+        "fromThisExecution": false,
+        "tests": 20,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.ApiControllerTest",
+        "timestampUtc": "2026-10-18T13:50:54.788Z",
+        "fromThisExecution": false,
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.CatalogServiceTest",
+        "timestampUtc": "2026-10-18T13:50:55.289Z",
+        "fromThisExecution": false,
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.EmployeeServiceTest",
+        "timestampUtc": "2026-10-18T13:50:55.537Z",
+        "fromThisExecution": false,
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.EvaluationControllerTest",
+        "timestampUtc": "2026-10-18T13:50:56.072Z",
+        "fromThisExecution": false,
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.FileServiceTest",
+        "timestampUtc": "2026-10-18T13:50:56.303Z",
+        "fromThisExecution": false,
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.LeavePolicyTest",
+        "timestampUtc": "2026-10-18T13:50:56.341Z",
+        "fromThisExecution": false,
+        "tests": 40,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.LlmAdapterTest",
+        "timestampUtc": "2026-10-18T13:50:56.381Z",
+        "fromThisExecution": false,
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.OrganizationPayrollControllerTest",
+        "timestampUtc": "2026-10-18T13:50:57.241Z",
+        "fromThisExecution": false,
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.PayrollFormulaTest",
+        "timestampUtc": "2026-10-18T13:50:57.303Z",
+        "fromThisExecution": false,
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.Phase2ControllerTest",
+        "timestampUtc": "2026-10-18T13:50:57.792Z",
+        "fromThisExecution": false,
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.Phase3ControllerTest",
+        "timestampUtc": "2026-10-18T13:50:58.182Z",
+        "fromThisExecution": false,
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.SecurityReviewWebTest",
+        "timestampUtc": "2026-10-18T13:50:58.527Z",
+        "fromThisExecution": false,
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.SheetCodecTest",
+        "timestampUtc": "2026-10-18T13:50:58.834Z",
+        "fromThisExecution": false,
+        "tests": 27,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      }
+    ]
+  },
+  "integration": {
+    "taskStatus": "EXECUTED",
+    "totals": {
+      "tests": 79,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "suites": [
+      {
+        "name": "com.portfolio.ems.AiMySqlTest",
+        "timestampUtc": "2026-10-18T18:10:38.487Z",
+        "fromThisExecution": true,
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.EvaluationMySqlTest",
+        "timestampUtc": "2026-10-18T18:11:07.840Z",
+        "fromThisExecution": true,
+        "tests": 31,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.MigrationUpgradeTest",
+        "timestampUtc": "2026-10-18T18:11:48.820Z",
+        "fromThisExecution": true,
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.MySqlIntegrationTest",
+        "timestampUtc": "2026-10-18T18:12:20.591Z",
+        "fromThisExecution": true,
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.OrganizationPayrollMySqlTest",
+        "timestampUtc": "2026-10-18T18:12:41.196Z",
+        "fromThisExecution": true,
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.Phase2MySqlTest",
+        "timestampUtc": "2026-10-18T18:13:13.420Z",
+        "fromThisExecution": true,
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.Phase3MySqlTest",
+        "timestampUtc": "2026-10-18T18:13:44.419Z",
+        "fromThisExecution": true,
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      },
+      {
+        "name": "com.portfolio.ems.SecurityReviewMySqlTest",
+        "timestampUtc": "2026-10-18T18:14:20.516Z",
+        "fromThisExecution": true,
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failureTypes": []
+      }
+    ]
+  },
+  "cleanup": {
+    "checkedAt": "2026-10-19T03:20:20.975112+09:00",
+    "commands": [
+      "docker ps -a --filter label=org.testcontainers=true --format (ID image status)",
+      "docker ps -a --format (ID image status), filter image testcontainers/ryuk locally"
+    ],
+    "testcontainersRemaining": 0,
+    "ryukRemaining": 0,
+    "manualStopOrRemoval": false,
+    "otherContainersModified": false
+  },
+  "boundaries": {
+    "sharedHostPortsUsed": [],
+    "composeUsed": false,
+    "existingVolumesModified": false,
+    "productionCodeChanged": false,
+    "staged": false,
+    "committed": false
+  },
+  "interpretation": {
+    "unit": "UP-TO-DATE: reused same-source 147 PASS XML; not newly executed",
+    "unitPriorEvidence": "20261018-backend-security-tests.json",
+    "bootJar": "UP-TO-DATE: reused same-source artifact",
+    "integration": "New execution, eight suites, 79 tests; no sum with reused unit tests",
+    "osv": "Existing runtime version-matching triage 1/58/9 and residual risks unchanged",
+    "actualLlmInference": "NOT_EXECUTED - outside this Testcontainers rerun"
+  }
+}

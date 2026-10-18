@@ -27,3 +27,31 @@ Thumbs.db
 *.log
 logs/
 mysql-data/
+# Local sessions, test output and browser credentials
+playwright-report/
+test-results/
+.cache/
+.pytest_cache/
+blob-report/
+storageState*.json
+storage-state*.json
+auth-state*.json
+*.har
+*.trace.zip
+*.dump
+*.dump.sql
+*-dump.sql
+db-dumps/
+dumps/
+backups/
+*.sql.gz
+*.sql.zip
+*.bak
+*.tmp
+*.handoff
+~$*
+handoff-local/
+tmp/
+temp/
+# Explicitly retained: .env.example, lockfiles, selected synthetic PNGs,
+# sanitized verification JSON and reproduction scripts (not blanket ignored).
