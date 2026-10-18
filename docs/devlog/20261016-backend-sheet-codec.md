@@ -1,8 +1,8 @@
 # 2026-10-16 순수 파일 코덱 구현
 
-- 담당: 백엔드팀 엑셀처리담당, 검증 작업.
-- 변경 소유권: `SheetCodec.java`, `SheetCodecTest.java`, 이 개발일지 세 파일.
-- 담당 지시의 확정 세부 계약을 적용했다. 기존 DTO, Gradle, DB/서비스/컨트롤러, API 문서 및 프론트는 수정하지 않았다.
+- 담당: Codex(파일 코덱 구현).
+- 변경 범위: `SheetCodec.java`, `SheetCodecTest.java`, 이 개발일지 세 파일.
+- 확정 세부 계약을 적용했다. 기존 DTO, Gradle, DB/서비스/컨트롤러, API 문서 및 프론트는 수정하지 않았다.
 
 ## 구현
 
@@ -19,12 +19,12 @@
 
 - 정상 파싱과 앞자리 0/공백/행 번호 보존, 숫자 사번·날짜·비밀번호, 수식, 잘못된 날짜·ID·DTO 필드, 비밀번호 바이트 경계, 헤더/시트, 빈 파일/1,000행 경계, 업로드 크기/손상 ZIP, 실제 ZIP 크기/압축률, 양식 참조/텍스트 서식, CSV BOM/이스케이프, xlsx 문자열 출력 테스트를 작성했다.
 - ZIP 제한 테스트는 정상 통합문서에 추가 엔트리를 넣어 구성한다. 작은 추가 엔트리는 정상 파싱하는 대조 사례도 포함한다.
-- 담당 지시에 따라 빌드와 테스트를 실행하지 않았다. 테스트 통과를 주장하지 않는다.
-- 통합 전제: 담당이 Apache POI 5.5.1 의존성과 `ImportProblem.invalidFile/tooLarge/rows`, `ImportRowError` 타입을 추가한다. 통합 실행 및 결과 피드백은 담당이 담당한다.
+- 이 구현 작업에서는 빌드와 테스트를 실행하지 않았다. 테스트 통과를 주장하지 않는다.
+- 통합 전제: 백엔드 통합 작업에서 Apache POI 5.5.1 의존성과 `ImportProblem.invalidFile/tooLarge/rows`, `ImportRowError` 타입을 추가한다. 통합 실행 및 결과 피드백도 별도 수행한다.
 
 ## 첫 통합 테스트 피드백 수정
 
-- 담당 실행 결과: 전체 46개 중 45개 통과, `rejectsActualEntrySizeAndExcessiveCompression`의 작은 추가 엔트리 정상 대조 사례 실패. compileJava/compileTestJava/bootJar 성공은 담당 보고 기준이다.
+- 백엔드 통합 실행 결과: 전체 46개 중 45개 통과, `rejectsActualEntrySizeAndExcessiveCompression`의 작은 추가 엔트리 정상 대조 사례 실패. compileJava/compileTestJava/bootJar 성공은 통합 검증 기록 기준이다.
 - 기존 테스트 XML의 실패 위치는 ZIP 사전검사가 아니라 POI 통합문서 열기 이후의 예외 변환 지점이었다. 테스트 ZIP 생성기가 콘텐츠 타입 선언 없이 `entry0` 항목을 추가하여 정상 OPC 패키지 조건을 만족하지 않았다.
 - 테스트 생성기만 수정: 추가 항목을 `entryN.bin`으로 만들고 `[Content_Types].xml`에 `bin`의 `application/octet-stream` 기본 콘텐츠 타입을 등록한다. 작은 파일 정상 대조 및 큰 ZIP 제한 검증을 유지한다. 운영 코덱의 보안 제한은 변경하지 않았다.
-- 수정 후 테스트와 빌드는 실행하지 않았다. 담당 재실행으로 결과 확인이 필요하다.
+- 수정 후 테스트와 빌드는 실행하지 않았다. 백엔드 통합 재실행으로 결과 확인이 필요하다.

@@ -80,7 +80,7 @@
         "backend",
         "frontend"
       ],
-      "trigger": "검증 작업 explicit frontend completion notification",
+      "trigger": "Frontend implementation and verification completed",
       "databasePaths": {
         "legacy": {
           "project": "ems-backend-smoke",

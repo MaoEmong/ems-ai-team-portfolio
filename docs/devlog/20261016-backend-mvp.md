@@ -1,16 +1,16 @@
 # 2026-10-16 백엔드 MVP 개발일지
 
 ## 받은 지시
-설계 검토 검증 작업: 확정 MVP API 계약을 먼저 상세화하고 backend, Compose MySQL/backend, Flyway·시드, JWT·권한, 사원/부서/직급 CRUD, 테스트, ADR 3건과 실행 안내를 작성한다. 공통 문서·frontend 코드는 수정하지 않으며 Git 커밋은 문서QA가 수행한다.
+개발 범위: 확정 MVP API 계약을 먼저 상세화하고 backend, Compose MySQL/backend, Flyway·시드, JWT·권한, 사원/부서/직급 CRUD, 테스트, ADR 3건과 실행 안내를 작성한다. 공통 문서·frontend 코드는 수정하지 않으며 Git 커밋은 문서QA가 수행한다.
 
 ## 계약 확인과 판단 주체
-- Codex가 모호한 권한·HTTP 상태·퇴사 재요청 의미를 검토 기록에 질문().
-- 설계 검토 답변: EMPLOYEE도 부서·직급 목록 가능, 사원 데이터만 본인 조회 제한. 생성 201+객체, 수정/퇴사 200+객체, 삭제 204.
-- Codex의 퇴사자 수정/중복 퇴사 400 제안은 기각되고 설계 검토에서 409 EMPLOYEE_RETIRED로 결정. 날짜 입력 오류는 400 유지.
+- Codex가 모호한 권한·HTTP 상태·퇴사 재요청 의미를 설계 검토에서 확인했다.
+- 확정 정책: EMPLOYEE도 부서·직급 목록 가능, 사원 데이터만 본인 조회 제한. 생성 201+객체, 수정/퇴사 200+객체, 삭제 204.
+- Codex의 퇴사자 수정/중복 퇴사 400 제안은 채택하지 않고 설계 검토에서 409 EMPLOYEE_RETIRED로 결정했다. 날짜 입력 오류는 400 유지.
 - 사용자 실제 결정은 기존 요구사항과 킥오프에 근거하며 구현상의 AI 판단을 사람 검수로 표현하지 않는다.
 
 ## 수행 내용
-- docs/api/mvp-api.md: 모든 엔드포인트의 권한·요청/응답 예시·오류 코드, 설계 검토 답변 반영.
+- docs/api/mvp-api.md: 모든 엔드포인트의 권한·요청/응답 예시·오류 코드와 설계 검토 결과 반영.
 - Spring Boot 3.5.6, Java 21, Gradle 8.14.3 Wrapper. Java 17+ 요구와 설치된 Java 21을 근거로 21 선택.
 - 사원/부서/직급/계정 JPA, Flyway V1 제약·인덱스와 부서/직급 시드. 환경변수 관리자 및 합성 사원 30명은 시작 시 트랜잭션으로 생성.
 - BCrypt 해시, JWT 3600초, issuer·서명·만료 검증, 매 요청 DB enabled/role 확인, CORS.
@@ -49,8 +49,8 @@ MySQL 통합 시나리오: Flyway/JPA 검증 및 31명 시드, BCrypt, 관리자
 로그·문서에 실제 비밀값/JWT를 복사하지 않는다. 테스트 리포트 위치는 backend/build/reports/tests/{test,integrationTest}/index.html. 백엔드 검증에 미실행 항목은 없다. 단계 전체 완료 판정이나 프론트 통합 검수는 별도 문서QA 작업이다.
 
 ## 인계
-- 공통 .env.example에 ADMIN_LOGIN_ID를 추가하고 JWT_SECRET 최소 길이(UTF-8 32바이트)를 반영하도록 검토 기록에 전달했다. 해당 공통 파일은 수정하지 않았다.
-- Compose frontend는 요구대로 주석 자리로 유지했다. 설계 검토 답변 에서 이번 검증 작업 완료 조건은 mysql/backend 두 서비스이며 프론트 통합은 별도 지시 대상으로 확정했다. 현재 프론트 파일 유무와 무관하게 설계 검토의 확정 계약 전달 후 통합한다.
+- 공통 .env.example에 ADMIN_LOGIN_ID를 추가하고 JWT_SECRET 최소 길이(UTF-8 32바이트)를 반영하도록 문서QA에 전달했다. 해당 공통 파일은 수정하지 않았다.
+- Compose frontend는 요구대로 주석 자리로 유지했다. 당시 구현의 완료 조건은 mysql/backend 두 서비스이며 프론트 통합은 별도 작업으로 확정했다. 현재 프론트 파일 유무와 무관하게 프론트 계약이 확정된 뒤 통합한다.
 - 같은 답변에 따라 backend/README.md에 환경변수 키·제약·교체용 예시를 추가했다. 공통 .env.example은 수정하지 않았다. MySQL 통합 테스트는 실제 실행·통과이며 미실행으로 분류하지 않는다.
 - Git 커밋/스테이징은 수행하지 않았다. 문서QA가 Unix 환경에서 backend/gradlew 실행 비트(100755)를 함께 확인해 통합 커밋해야 한다.
 - 검증용 Compose 프로젝트 이름은 ems-backend-smoke이며 생성한 환경파일은 Git 제외 backend/build/compose-smoke.env에 있다. 종료 시 down만 사용해 검증용 볼륨을 삭제하지 않는다.

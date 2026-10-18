@@ -1,6 +1,6 @@
 # 백엔드 보안 점검과 실행 재현성
 
-- 점검일: 2026-10-18 (Asia/Seoul). 수행: Codex 담당. 결정·조정: Claude Code.
+- 점검일: 2026-10-18 (Asia/Seoul). 수행: Codex(백엔드). 설계 검토: Claude Code.
 - 대상 기준 커밋: `9bc7afb`. 착수 시 worktree는 clean이고 해당 커밋 이후 백엔드/Compose 변경은 없었다. 이번 수정과 테스트는 후속 백엔드 커밋으로 구분한다.
 - 범위: 소스 검토, 해결된 런타임 의존성 감사, 자동 보안 필터 테스트. 침투 테스트, 운영 배포 인증, 실제 AI 품질 검증은 아니다.
 - 공유 포트 3306/8080/5173과 Compose를 사용하지 않았다. 기존 볼륨과 Flyway V1~V4를 변경하지 않았다.
@@ -11,7 +11,7 @@ Spring Security 6.5.5는 [CVE-2026-22732 공식 공지](https://spring.io/securi
 
 런타임 91개 구성요소를 OSV와 대조해 서로 다른 advisory 68건을 찾았다(상류 severity: CRITICAL 9, HIGH 21, MODERATE 28, LOW 10). 버전 일치 수이며 실제 공격 성공 건수가 아니다. 선택 기능, 설정, 전송 계층 조건을 나누어 검토했으며 도달성을 입증하지 못한 항목도 남아 있다. 따라서 공개 전 검사가 끝났다는 이유로 운영 보안이 완성되었다고 판단하지 않는다.
 
-설계 검토 후속 지시에 따라 [68건의 항목별 분류표](backend-dependency-triage.md)에 각각 심각도·근거와 ‘실제 도달 가능 / 조건 미충족 / 판단 불가’를 표시한다. 승인된 헤더 우회 외 라이브러리 패치는 수행하지 않았다. 실제 도달 가능한 High/Critical에 대한 동일 마이너 패치와 전체 재검증이라는 허용 조건을 유지하며, 마이너·메이저 교체는 하지 않는다.
+후속 검토에 따라 [68건의 항목별 분류표](backend-dependency-triage.md)에 각각 심각도·근거와 ‘실제 도달 가능 / 조건 미충족 / 판단 불가’를 표시한다. 승인된 헤더 우회 외 라이브러리 패치는 수행하지 않았다. 실제 도달 가능한 High/Critical에 대한 동일 마이너 패치와 전체 재검증이라는 허용 조건을 유지하며, 마이너·메이저 교체는 하지 않는다.
 
 ## 항목별 근거와 한계
 
@@ -65,7 +65,7 @@ Spring Security 6.5.5는 [CVE-2026-22732 공식 공지](https://spring.io/securi
 
 ### 2026-10-19 Docker 복구 후 실행과 문서화
 
-- 수행: Codex 담당. 설계 검토 `[Docker 복구]` 통지 후 `backend`에서 `.\gradlew.bat test integrationTest bootJar`를 **1회** 실행했다. 이후 테스트 재실행·제품 수정·staging·커밋은 하지 않았다.
+- 수행: Codex(백엔드). Docker 연결 복구 확인 후 `backend`에서 `.\gradlew.bat test integrationTest bootJar`를 **1회** 실행했다. 이후 테스트 재실행·제품 수정·staging·커밋은 하지 않았다.
 - 시작 `2026-10-19T03:08:55.2556911+09:00`, 종료 메타데이터 `03:14:29.0058592+09:00`. 종료 애플리케이션 로그의 마지막 시각은 `03:14:28 KST`다. 결과는 exit 0, `BUILD SUCCESSFUL in 5m 33s`.
 - 이번 새 실행은 `integrationTest` **8 suite / 79개 PASS**, failures/errors/skipped 모두 0이다. suite timestamp는 UTC `2026-10-18T18:10:38.487Z~18:14:20.516Z` (KST 10월 19일 03:10~03:14). 새 보안 MySQL 6개도 포함한다.
 - `test`와 `bootJar`는 **UP-TO-DATE**였다. 단위/MVC XML 147개 PASS는 같은 백엔드 소스의 10월 18일 결과를 재사용한 것이며 이번에 새로 실행한 수치가 아니다. 147+79를 이번 신규 실행 수로 합산하지 않는다.
@@ -91,4 +91,4 @@ Spring Security 6.5.5는 [CVE-2026-22732 공식 공지](https://spring.io/securi
 
 [새 사용자 실행 및 합성 촬영 상태 준비](../../backend/docs/portfolio-local-runbook.md)에 `.env.example`만으로 설정하는 법, 관리자와 DEMO001의 새 DB 비밀번호 규칙, `up --build`, 정상 API를 통한 합성 평가·급여·발령·휴가·알림 준비, `down`과 볼륨 보존을 정리했다. ignored `compose-smoke.env`는 과거 QA 절차이며 새 사용자 필수 파일이 아니다.
 
-초기 루트 검사에서 LICENSE 파일이 없었다. 라이선스 선택은 법적 판단 없이 설계 검토/QA에 인계한다. 원격 생성·push·이력 재작성은 하지 않았다. 보고서의 제한을 README 공개 준비 상태와 함께 표시해야 한다.
+초기 루트 검사에서 LICENSE 파일이 없었다. 라이선스 선택은 법적 판단 없이 QA 검토에 인계했다. 원격 생성·push·이력 재작성은 하지 않았다. 보고서의 제한을 README 공개 준비 상태와 함께 표시해야 한다.

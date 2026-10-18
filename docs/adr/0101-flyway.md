@@ -2,7 +2,7 @@
 
 - 상태: 채택
 - 날짜: 2026-10-16
-- 결정 주체: 킥오프 설계 검토 결정; 구현 설계는 백엔드 Codex.
+- 결정 근거: 초기 설계 검토. 구현 설계는 Codex(백엔드).
 
 ## 결정
 MySQL 8과 Flyway를 사용한다. V1 SQL은 department/job_position/employee/user_account 테이블, 유일 제약, 외래키, 상태·퇴사일 CHECK 및 합성 부서·직급을 생성한다. JPA ddl-auto=validate로 스키마를 검증하고 자동 변경하지 않는다. 직급 SQL 테이블은 예약어 혼동을 피하기 위해 job_position으로 명명한다.

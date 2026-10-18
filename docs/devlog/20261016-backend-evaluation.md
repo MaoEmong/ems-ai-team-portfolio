@@ -1,7 +1,7 @@
 # 2026-10-16 평가 모듈 구현
 
-- 작업: 검증 작업, 검증 작업 보조. 담당: 백엔드팀 엑셀처리담당(Codex).
-- 기준: `docs/api/phase3b-api.md` 5/6/7과 검증 작업의 테이블 계약. 기존 서비스, 보안, 감사 및 MySQL 테스트 패턴을 읽고 적용했다.
+- 작업: 평가 구현. 담당: Codex(백엔드).
+- 기준: `docs/api/phase3b-api.md` 5/6/7과 확정 테이블 계약. 기존 서비스, 보안, 감사 및 MySQL 테스트 패턴을 읽고 적용했다.
 - 소유 파일: EvaluationService.java, EvaluationController.java, EvaluationDto.java, EvaluationDemoSeeder.java, EvaluationControllerTest.java, EvaluationMySqlTest.java, 이 일지. 다른 파일과 Git 커밋은 변경하지 않았다.
 
 ## 구현
@@ -18,7 +18,7 @@
 
 ## 빈 DB 합성 시드
 
-- EvaluationDemoSeeder.seed는 MANDATORY이므로 외부 트랜잭션 없이 호출하면 거절한다. ApplicationRunner나 독립 실행 경로는 없다. 담당의 DemoSeeder가 빈 DB 최초 생성 트랜잭션 끝에서만 호출한다.
+- EvaluationDemoSeeder.seed는 MANDATORY이므로 외부 트랜잭션 없이 호출하면 거절한다. ApplicationRunner나 독립 실행 경로는 없다. DemoSeeder가 빈 DB 최초 생성 트랜잭션 끝에서만 호출한다.
 - 활성·입사일 도래 ADMIN 1명과 그와 다른 활성·입사일 도래 사원 4명을 선택한다. OPEN 주기 1개와 SELF_DRAFT/SELF_SUBMITTED/MANAGER_DRAFT/FINALIZED 각 1개를 만든다. 항목과 모든 코멘트는 합성 문자열이다. 기존 평가 주기가 있으면 추가 생성하지 않는다.
 - HTTP로 사용하거나 실제 사람·사용 실적을 표현하지 않는다. 시드에서 업무 감사·알림·과거 이력을 만들지 않는다.
 
@@ -27,5 +27,5 @@
 - EvaluationControllerTest: 인증/ADMIN 권한, 중첩 입력 검증, 정수가 아닌 점수·범위·긴 코멘트 거절, 생성201, 초안/제출 라우팅, 상세 공개 키 제외 직렬화, 목록 파라미터.
 - EvaluationMySqlTest: Testcontainers mysql:8.0, mysql 태그, 테스트 전용 빈 DB 설정. 실제 서비스의 권한, 공개 전 관리자 초안 키 제외와 확정 공개, 목록의 민감 필드 부재, 주기 수정/항목 스냅샷, 초안 전체 대체/제출 검증, 재배정 초기화·이전 평가자 접근 취소, 마감 미완료 표시, 평가자 자격 재검사·대상 퇴사 후 완료, READ_COMMITTED 동시 자기/관리자 제출, 마감/재배정과 대기 제출의 경쟁을 검증하는 코드를 작성했다.
 - 감사 강제 실패 시 주기 생성·OPEN 스냅샷·자기 제출·관리자 확정·재배정의 롤백과 감사 내용 제한을 검증한다. 점수/등급 경계와 HALF_UP 중간값(1.125→1.13), 시드 트랜잭션·혼합 상태·재호출도 포함한다.
-- 담당 지시에 따라 빌드·테스트·Compose를 실행하지 않았다. 컴파일 또는 테스트 통과를 주장하지 않는다. 담당의 전체 빌드와 MySQL/HTTP 통합 검증 및 피드백이 필요하다.
-- 통합 전제: 담당이 V4 테이블, 감사 action/metadata 허용 목록 및 DemoSeeder 호출을 담당한다. 이 구현 완료는 검증 작업 전체 완료를 뜻하지 않는다. 완료 보고 후 이 작업의 파일 소유권을 담당에게 반환한다.
+- 이 구현 작업에서는 빌드·테스트·Compose를 실행하지 않았다. 컴파일 또는 테스트 통과를 주장하지 않는다. 백엔드 전체 빌드와 MySQL/HTTP 통합 검증 및 피드백이 필요하다.
+- 통합 전제: 백엔드 통합 작업에서 V4 테이블, 감사 action/metadata 허용 목록 및 DemoSeeder 호출을 연결한다. 평가 구현만으로 전체 3B 검증 완료를 뜻하지 않는다. 작성한 파일은 백엔드 통합 검토에 전달했다.

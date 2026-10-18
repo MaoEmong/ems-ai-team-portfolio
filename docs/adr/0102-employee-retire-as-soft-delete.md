@@ -2,12 +2,12 @@
 
 - 상태: 채택
 - 날짜: 2026-10-16
-- 결정 주체: 설계 검토 킥오프 및  답변.
+- 결정 근거: 초기 설계 검토와 API 정책 확인.
 
 ## 결정
 사원 물리 삭제 API는 제공하지 않는다. POST /employees/{id}/retire 요청은 status=RETIRED, retireDate 기록, 계정 enabled=false를 같은 트랜잭션에서 수행한다. 기존 JWT도 다음 요청부터 401이다. 사번·이메일 유일 제약은 퇴사자에게도 유지한다.
 
-목록에서 status 생략 시 RETIRED를 제외하고 status=RETIRED로 별도 조회한다. 일반 수정은 ACTIVE/ON_LEAVE만 허용한다. 퇴사자를 PUT으로 수정하거나 이미 퇴사한 사원에게 퇴사를 재요청하면 409 EMPLOYEE_RETIRED다. 이는 설계 검토 답변에서 400 제안을 수정한 결정으로, 입력 형식이 아닌 현재 리소스 상태 충돌이기 때문이다.
+목록에서 status 생략 시 RETIRED를 제외하고 status=RETIRED로 별도 조회한다. 일반 수정은 ACTIVE/ON_LEAVE만 허용한다. 퇴사자를 PUT으로 수정하거나 이미 퇴사한 사원에게 퇴사를 재요청하면 409 EMPLOYEE_RETIRED다. 설계 검토에서 400 제안을 409로 조정했으며, 입력 형식이 아닌 현재 리소스 상태 충돌이기 때문이다.
 
 retireDate 누락/잘못된 형식/입사일 이전은 400 VALIDATION_ERROR이며 fieldErrors에 retireDate를 제공한다. 퇴사 사원을 참조하는 부서·직급도 삭제 불가(409 DEPARTMENT_IN_USE/POSITION_IN_USE).
 

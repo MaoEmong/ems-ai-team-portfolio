@@ -37,7 +37,7 @@ def source_snapshot():
 sources=source_snapshot()
 source_file=root/"20261016-phase4-full-source-manifest.json"
 source_file.write_text(json.dumps(sources,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-report={"command":"py -3 backend/verification/phase4_full_compose_verify.py"+(" --backend-only" if backend_only else ""),"startedAt":datetime.datetime.now().astimezone().isoformat(),"sourceManifest":"20261016-phase4-full-source-manifest.json","serviceScope":["mysql","backend","frontend"],"trigger":"검증 작업 explicit frontend completion notification","databasePaths":{"legacy":{"project":legacy,"volume":legacy+"_mysql_data"},"fresh":{"project":fresh,"volume":fresh+"_mysql_data"}}}
+report={"command":"py -3 backend/verification/phase4_full_compose_verify.py"+(" --backend-only" if backend_only else ""),"startedAt":datetime.datetime.now().astimezone().isoformat(),"sourceManifest":"20261016-phase4-full-source-manifest.json","serviceScope":["mysql","backend","frontend"],"trigger":"Frontend implementation and verification completed","databasePaths":{"legacy":{"project":legacy,"volume":legacy+"_mysql_data"},"fresh":{"project":fresh,"volume":fresh+"_mysql_data"}}}
 try:
  compose(legacy,"up","-d","mysql")
  for _ in range(60):

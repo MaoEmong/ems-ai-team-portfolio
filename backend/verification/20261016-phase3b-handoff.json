@@ -16,7 +16,7 @@
   ],
   "checkedAt": "2026-10-16T19:08:22.9625089+09:00",
   "runningContainers": [],
-  "검증 작업OwnershipReturned": true,
-  "metadataAmendment": "검증 작업: compose-result.json and final-compose-result.json add command, sourceManifest, images (recorded tags; image IDs unverified), databasePaths (legacy/fresh project and volume); records only, no build/test/Compose/port or QA environment operations.",
+  "evaluationImplementationIntegrated": true,
+  "metadataAmendment": "compose-result.json and final-compose-result.json add command, sourceManifest, images (recorded tags; image IDs unverified), databasePaths (legacy/fresh project and volume); records only, no build/test/Compose/port or QA environment operations.",
   "metadataAmendedAt": "2026-10-16T19:11:55.550648+09:00"
 }

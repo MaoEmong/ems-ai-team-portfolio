@@ -1,6 +1,6 @@
 # EMS 3B API 계약
-상태: 확정 v1.1. 근거: 2026-10-16 3B 착수 회의록, 설계 검토 승인 상세안 .
-세부 정책은 설계 검토 결정이며 사용자 직접 선택으로 기록하지 않는다. 범위는 조직도·직책·포트폴리오용 데모 급여·평가다. AI 기능과 급여 파일 다운로드는 제외한다.
+상태: 확정 v1.1. 근거: 2026-10-16 3B 설계 검토와 상세안.
+세부 정책은 설계 검토에서 채택했으며 사용자 직접 선택으로 기록하지 않는다. 범위는 조직도·직책·포트폴리오용 데모 급여·평가다. AI 기능과 급여 파일 다운로드는 제외한다.
 
 ## 1. 공통
 - Base /api/v1, JSON, Authorization: Bearer <token>.
@@ -238,5 +238,5 @@ V4만추가하고V1~V3은수정하지않는다. 빈DB의최초생성트랜잭션
 ```
 
 ## 변경 이력
-v1.0 (2026-10-16): 설계 검토 승인 상세안 최초 작성.
-v1.1 (2026-10-16): GET /evaluation-cycles/{id} 배정 요약 확장(evaluationId/employee/reviewer/state/incomplete/allowedActions), employeeNo/배정ID 정렬, 민감 평가 필드 제외. Markdown 코드블록 구분자의 역슬래시 제거. 설계 검토 후속 지시 반영.
+v1.0 (2026-10-16): 설계 검토 상세안 최초 작성.
+v1.1 (2026-10-16): GET /evaluation-cycles/{id} 배정 요약 확장(evaluationId/employee/reviewer/state/incomplete/allowedActions), employeeNo/배정ID 정렬, 민감 평가 필드 제외. Markdown 코드블록 구분자의 역슬래시 제거. 후속 설계 검토 반영.

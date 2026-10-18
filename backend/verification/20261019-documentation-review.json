@@ -1,0 +1,352 @@
+{
+  "reviewedAt": "2026-10-19T05:36:51.150172+09:00",
+  "scope": "Backend documentation and verification presentation",
+  "developmentTools": [
+    "Claude Code",
+    "Codex"
+  ],
+  "historicalEvidence": "Recorded execution digests and commit references are retained; current edited file digests are separate and are not new historical execution claims",
+  "currentFileDigests": [
+    {
+      "path": "backend/docs/portfolio-local-runbook.md",
+      "sha256": "cab277ad8f2134b70b4072654f72365ff510e3455785eb2bb1652d3ad33bc258",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "backend/verification/20261016-phase3b-handoff.json",
+      "sha256": "69f561a98d7004070ef6c9a5ec8c3cee13a78aac854d1cdcafbe0993a81ae7d8",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "backend/verification/20261016-phase4-compose-result.json",
+      "sha256": "17f2747d1587ec8d3b6e5d0002d823f3f2b3030e6c96166e913ad399167698db",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "backend/verification/20261016-phase4-full-compose-result.json",
+      "sha256": "d7240b4f5219f51f2252f46a55504dfdd7ec0548042a07232c26d768c233e0c8",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "backend/verification/20261016-phase4-qa-handoff.md",
+      "sha256": "40f84ee2da4aafaa620aeabfb1985dfae04b7e4231028841dcabd80d05c4df3d",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "backend/verification/phase4_full_compose_verify.py",
+      "sha256": "efcc90a45afbe157783d03b4416da097c349355b42859c581a5453bec1202bbc",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "backend/verification/security/classify-dependency-review.py",
+      "sha256": "e073da01bf1a3fbfcf3e06706b5e957f5f7378700138f0335b98a50a52c59e87",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/adr/0100-jwt-access-token-only.md",
+      "sha256": "60b99a0beb664e60125061a45ea6e9f260b7208281f26f4db497420a9f5c8013",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/adr/0101-flyway.md",
+      "sha256": "a1e891f883ff07fbd46ea5733cc9c552a6c1ff5ec7e4966f50549c0863992b76",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/adr/0102-employee-retire-as-soft-delete.md",
+      "sha256": "1224996a54b79903b09eef32389328276011e99236b687d0cb088cb13dd8c465",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/adr/0103-appointment-only-organization-changes.md",
+      "sha256": "e4c2eccf1f346fd930796f064a9f2b880ad2cc3f79d8cffcae5f9699e8aad7a0",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/adr/0104-audit-transaction-boundaries.md",
+      "sha256": "1b77360a4d04ef976786cd41875464987f07f4e42c2ce3fce5b64d49bd374385",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/adr/0105-all-or-nothing-file-import.md",
+      "sha256": "9dc6cb206684368de5064b46a08863ddc76154e0e18647aa463f2e4919c212b3",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/adr/0106-attendance-query-time-evaluation.md",
+      "sha256": "7e0536459ffa8133747681fbce0f1bf7786b7a68417b0e192e8407b929f42095",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/adr/0107-leave-reservation-and-locking.md",
+      "sha256": "9502693c8449cb6189a7a67b8ed141bc0bd1824fd34d7e5939e837611ddd2492",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/adr/0109-organization-lock-and-title-appointments.md",
+      "sha256": "0b7b79aa7c59d4597610e8bbcaefad40563786f9d1a4d204e3b212764b766944",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/adr/0111-evaluation-state-and-private-drafts.md",
+      "sha256": "5ac277849a70446a4bb8aef7ebed48c3db17bf180854deaf60af5a2a54510266",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/adr/0112-ai-provider-abstraction-and-model-setting.md",
+      "sha256": "c35c537c4306daefacee6351498aaf085be84b86908e0605bcac663f260779b3",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/adr/0113-ai-prompt-output-and-data-boundaries.md",
+      "sha256": "bfd1b24979bfdfc04f0159d4face0c3c668c38fea7558f2ad578064b691a5465",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/adr/0114-security-header-vendor-workaround.md",
+      "sha256": "231be286df2375f22879970bc58036d7ec051f6b10b093cfda36e4e86843a647",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/api/mvp-api.md",
+      "sha256": "fbba02dafdbf04da64bcb9833c49499453d771b4316dda5ecda2a8d29d078f78",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/api/phase2-api.md",
+      "sha256": "bff76e5984cb7dae68c30804d15251da86873b5fbe1f9f34e66b06132873f974",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/api/phase3a-api.md",
+      "sha256": "d32d3f81858105f8a609e1713bb2a72e97af025430d0c199b6488e586c98f49d",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/api/phase3b-api.md",
+      "sha256": "61ae3e4ce728f7e930a00f442bd77baa8f98f7328e71c4f371bc9233661db842",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/api/phase4-ai-api.md",
+      "sha256": "ce6c0043444dacdb06a2829e7ccdadfe0e4564d451c1b9c6a699674dea9850a5",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/devlog/20261016-backend-evaluation.md",
+      "sha256": "e9cfc5b0bbd1f69329965b13ba9bc3a528e549545f50ca6393c35bada5367a69",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/devlog/20261016-backend-leave-policy.md",
+      "sha256": "8446ad8be01853bd4ddc05c0040fced9c53ff611d79ac0130dea93529e7ac351",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/devlog/20261016-backend-mvp.md",
+      "sha256": "c7e9cddf69f58eeba500551e688cdded5183a5140c802f4a84743afd957c7f12",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/devlog/20261016-backend-phase2.md",
+      "sha256": "d239e8dfdbd6ab68c1d3d6e94e90c83bc7bd586208a71dfd28ae1ca17e3ee76c",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/devlog/20261016-backend-phase3a.md",
+      "sha256": "efd89c64edb97a7e561a41493376da80d38288016633a8b29f69198f46f240b9",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/devlog/20261016-backend-phase3b.md",
+      "sha256": "cd984687e64ba039181a5ea9abaf8841f989ca2f0dd45b611037e0f276df3c05",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/devlog/20261016-backend-phase4-ai.md",
+      "sha256": "fb165a76b85f43121f3643fb4a223280706a5354d73a5c471df8fb243841dafe",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/devlog/20261016-backend-sheet-codec.md",
+      "sha256": "a5e32ae20733cf194576ebaea0e23ebb95e1b632482f004b6199d1fc9dcdba62",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/devlog/20261018-backend-security-review.md",
+      "sha256": "f2859880a424c90783cc12b0f3da8c505da6d2dadfb5136a16a36a24c065929e",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/devlog/20261019-backend-documentation-review.md",
+      "sha256": "40f35c8435d09c608338d5b24db601f9a8052656d118b8f1042c2de992b4a6f6",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/security/backend-dependency-triage.md",
+      "sha256": "d33f067c00e3086683ebdea5764743fc62973ae621affb353d1ec16115e52ed3",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    },
+    {
+      "path": "docs/security/backend-security-review.md",
+      "sha256": "539bdbefc4fbb92b174c559b0cdfe4b223ce1bec32d346777a3889d1125ef8d0",
+      "reason": "Editorial wording and presentation metadata; recorded execution results retained"
+    }
+  ],
+  "checks": {
+    "remainingEditorialIdentifiers": 0,
+    "hrDomainExceptions": 9,
+    "hrDomainExceptionFiles": 6,
+    "excludedTechnicalNameMatches": 4,
+    "excludedSubstringMatches": 1,
+    "parsedExistingJsonFiles": 20,
+    "pythonChecks": [
+      {
+        "path": "backend/verification/phase4_full_compose_verify.py",
+        "syntax": "PASS",
+        "astWithoutStringLiterals": "UNCHANGED"
+      },
+      {
+        "path": "backend\\verification\\security\\classify-dependency-review.py",
+        "syntax": "PASS",
+        "astWithoutStringLiterals": "UNCHANGED"
+      }
+    ],
+    "jsonNumericValues": "UNCHANGED",
+    "apiFencedExamples": "UNCHANGED",
+    "productionSourceAndMigrations": "UNCHANGED",
+    "pastCommitReferenceLocations": 12,
+    "pastCommitReferenceFiles": 7
+  },
+  "validation": {
+    "command": ".\\gradlew.bat compileJava test --rerun-tasks",
+    "startedAt": "2026-10-19T05:32:55.1054738+09:00",
+    "finishedAt": "2026-10-19T05:33:19.3310558+09:00",
+    "exitCode": 0,
+    "result": "BUILD SUCCESSFUL",
+    "duration": "23s",
+    "totals": {
+      "tests": 147,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "suites": [
+      {
+        "name": "com.portfolio.ems.AiServiceTest",
+        "timestampUtc": "2026-10-18T20:33:05.429Z",
+        "tests": 20,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.portfolio.ems.ApiControllerTest",
+        "timestampUtc": "2026-10-18T20:33:09.742Z",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.portfolio.ems.CatalogServiceTest",
+        "timestampUtc": "2026-10-18T20:33:10.211Z",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.portfolio.ems.EmployeeServiceTest",
+        "timestampUtc": "2026-10-18T20:33:10.462Z",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.portfolio.ems.EvaluationControllerTest",
+        "timestampUtc": "2026-10-18T20:33:11.035Z",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.portfolio.ems.FileServiceTest",
+        "timestampUtc": "2026-10-18T20:33:11.271Z",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.portfolio.ems.LeavePolicyTest",
+        "timestampUtc": "2026-10-18T20:33:11.299Z",
+        "tests": 40,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.portfolio.ems.LlmAdapterTest",
+        "timestampUtc": "2026-10-18T20:33:11.335Z",
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.portfolio.ems.OrganizationPayrollControllerTest",
+        "timestampUtc": "2026-10-18T20:33:12.156Z",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.portfolio.ems.PayrollFormulaTest",
+        "timestampUtc": "2026-10-18T20:33:12.213Z",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.portfolio.ems.Phase2ControllerTest",
+        "timestampUtc": "2026-10-18T20:33:12.660Z",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.portfolio.ems.Phase3ControllerTest",
+        "timestampUtc": "2026-10-18T20:33:13.020Z",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.portfolio.ems.SecurityReviewWebTest",
+        "timestampUtc": "2026-10-18T20:33:13.318Z",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.portfolio.ems.SheetCodecTest",
+        "timestampUtc": "2026-10-18T20:33:13.617Z",
+        "tests": 27,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "mysql": "NOT_EXECUTED - documentation and verification-string review only",
+    "compose": "NOT_EXECUTED"
+  },
+  "historyAndRemote": "No history rewrite or remote operation in this review"
+}
