@@ -1,0 +1,582 @@
+{
+  "schemaVersion": 1,
+  "status": "fixed-plan-not-executed",
+  "mode": {
+    "frontend": "real-api",
+    "llm": "mock",
+    "actualInference": false
+  },
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 900
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "filenameRule": "{viewport}-{screenId}.png, stored in a new per-run directory",
+  "preparation": {
+    "fresh": "담당이 고유 Compose 프로젝트와 빈 볼륨을 준비한다. 기존 볼륨 초기화/직접 DB 쓰기/MockFetch/브라우저 숫자 변경 금지. 스크립트는 Compose를 실행하지 않는다.",
+    "auth": "환경변수 ADMIN으로 POST /auth/login, GET /auth/me 및 /ai/config 확인. 이후 UI 로그인도 정상 /auth/login 응답을 확인한다. 계정값/토큰은 메모리에만 둔다.",
+    "employee": "정상 POST /employees로 환경변수 촬영사원 계정을 생성한다. 이름/이메일/전화는 합성값이며, 기존 계정 중복이면 덮어쓰지 않고 중단한다.",
+    "catalog": "GET /positions, POST /departments로 합성 부모·자식 부서, POST /job-titles로 합성 직책을 준비한다.",
+    "appointment": "POST /employees/{id}/appointments로 합성사원의 부서·직책을 실제 변경한다. UI 모달은 추가 저장 없이 촬영한다.",
+    "import": "환경변수 전용 가져오기 계정을 포함한 유효 xlsx를 ExcelJS 메모리 버퍼로만 만든다. UI의 기존 POST /employees/import로 성공 결과를 만든다. 원본 xlsx/비밀번호 파일 저장 금지.",
+    "attendance": "GET /dashboard 기준일과 GET /attendance/me/today를 대조한다. 지난 평일을 골라 정상 PUT /attendance/{id}/{date}로 합성 정정 기록을 준비한다. 휴일 출근을 강제로 만들지 않는다.",
+    "leave": "GET /leaves/me/balance 기간 안의 다음 평일에 POST /leaves로 합성 SICK 신청 두 건(서로 다른 날)을 만든다. 하나는 POST /leaves/{id}/approve, 하나는 PENDING으로 보존한다.",
+    "notification": "정상 근태 정정/휴가 승인에서 발생한 실제 알림을 사용한다. 알림 행을 삽입하거나 본문을 바꾸지 않는다.",
+    "payroll": "촬영사원/가져오기 사원만 PUT salary-setting. GET /payrolls 확인 후 현재월 DRAFT 생성 및 두 달 전 CONFIRMED 생성. 이미 존재하는 월이면 재계산/덮어쓰기 없이 중단. 금액/공제/건수는 서버 응답만 사용.",
+    "evaluation": "POST /evaluation-cycles로 DRAFT/자기작성 OPEN/관리자작성 OPEN/최종결과 주기를 각각 생성. 필요한 OPEN/자기 제출/관리자 제출은 정상 API로만 수행한다. 확정 결과·점수·등급은 서버가 산정한다.",
+    "ai": "GET /ai/config의 provider=mock,mock=true,externalTransfer=false 및 기능 활성 확인. UI 명시 버튼으로만 각 AI POST를 실행하고 실제 네트워크 응답 meta도 Mock임을 확인. 실제 추론 검증으로 표기하지 않는다.",
+    "privacy": "로그인 ID/비밀번호 입력은 빈 상태. 모든 캡처에서 환경변수 계정값과 로그인 사용자 이름·사번, 비밀번호 입력, 헤더 사용자 블록을 Playwright screenshot mask로 가린다. 업무 숫자·DOM 원문·응답은 수정하지 않는다. PNG 공개 전 Claude/QA 검수 필요."
+  },
+  "screens": [
+    {
+      "id": "login",
+      "role": "ADMIN",
+      "authenticated": false,
+      "path": "/login",
+      "scenario": "로그인 ID와 비밀번호가 모두 빈 상태",
+      "prepare": [
+        "fresh",
+        "privacy"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-login.png"
+    },
+    {
+      "id": "dashboard",
+      "role": "ADMIN",
+      "path": "/dashboard",
+      "scenario": "실제 API 기준일과 합성 인원 대시보드",
+      "prepare": [
+        "auth",
+        "employee"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-dashboard.png"
+    },
+    {
+      "id": "employee-list",
+      "role": "ADMIN",
+      "path": "/employees",
+      "scenario": "기존 사원 검색·표·내보내기 동작 위치",
+      "prepare": [
+        "auth",
+        "employee"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-employee-list.png"
+    },
+    {
+      "id": "employee-detail",
+      "role": "ADMIN",
+      "path": "/employees/{employeeId}",
+      "scenario": "합성 촬영사원 상세와 발령 이력",
+      "prepare": [
+        "employee",
+        "appointment"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-employee-detail.png"
+    },
+    {
+      "id": "employee-create",
+      "role": "ADMIN",
+      "path": "/employees/new",
+      "scenario": "사원 등록 양식, 비밀번호는 빈칸; 추가 등록하지 않음",
+      "prepare": [
+        "catalog",
+        "privacy"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-employee-create.png"
+    },
+    {
+      "id": "employee-appointment",
+      "role": "ADMIN",
+      "path": "/employees/{employeeId}",
+      "scenario": "현재 소속이 표시된 발령 모달, 저장하지 않음",
+      "prepare": [
+        "appointment"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": false,
+      "filename": "{viewport}-employee-appointment.png"
+    },
+    {
+      "id": "departments",
+      "role": "ADMIN",
+      "path": "/departments",
+      "scenario": "합성 부모·자식 부서 계층",
+      "prepare": [
+        "catalog"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-departments.png"
+    },
+    {
+      "id": "positions",
+      "role": "ADMIN",
+      "path": "/positions",
+      "scenario": "직급 카탈로그",
+      "prepare": [
+        "catalog"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-positions.png"
+    },
+    {
+      "id": "job-titles",
+      "role": "ADMIN",
+      "path": "/job-titles",
+      "scenario": "합성 직책 카탈로그",
+      "prepare": [
+        "catalog"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-job-titles.png"
+    },
+    {
+      "id": "organization",
+      "role": "ADMIN",
+      "path": "/organization",
+      "scenario": "실제 조직 계층과 합성 사원 목록",
+      "prepare": [
+        "catalog",
+        "appointment"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-organization.png"
+    },
+    {
+      "id": "xlsx-import",
+      "role": "ADMIN",
+      "path": "/employees/import",
+      "scenario": "xlsx 가져오기 양식, 아직 파일 원문 없음",
+      "prepare": [
+        "auth"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-xlsx-import.png"
+    },
+    {
+      "id": "xlsx-import-result",
+      "role": "ADMIN",
+      "path": "/employees/import",
+      "scenario": "메모리 합성 xlsx를 정상 업로드한 성공 결과",
+      "prepare": [
+        "import"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-xlsx-import-result.png"
+    },
+    {
+      "id": "audit",
+      "role": "ADMIN",
+      "path": "/audit-logs",
+      "scenario": "정상 API 준비 작업에서 생성된 감사 목록; 민감 상세는 펼치지 않음",
+      "prepare": [
+        "appointment",
+        "evaluation",
+        "leave"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-audit.png"
+    },
+    {
+      "id": "attendance-admin",
+      "role": "ADMIN",
+      "path": "/admin/attendance",
+      "scenario": "사원 ID 조회로 합성 정정 근태 표시",
+      "prepare": [
+        "attendance"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-attendance-admin.png"
+    },
+    {
+      "id": "leave-approvals",
+      "role": "ADMIN",
+      "path": "/admin/leaves",
+      "scenario": "승인·대기 상태가 있는 실제 휴가 결재 목록",
+      "prepare": [
+        "leave"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-leave-approvals.png"
+    },
+    {
+      "id": "leave-approval-detail",
+      "role": "ADMIN",
+      "path": "/leaves/{pendingLeaveId}",
+      "scenario": "대기 신청 승인 확인 모달, 확정하지 않음",
+      "prepare": [
+        "leave"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": false,
+      "filename": "{viewport}-leave-approval-detail.png"
+    },
+    {
+      "id": "payroll-list",
+      "role": "ADMIN",
+      "path": "/admin/payroll",
+      "scenario": "정상 생성된 초안·확정 월 목록",
+      "prepare": [
+        "payroll"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-payroll-list.png"
+    },
+    {
+      "id": "payroll-generate",
+      "role": "ADMIN",
+      "path": "/admin/payroll",
+      "scenario": "생성할 월 입력과 생성 버튼 위치, 이미 생성한 월 재호출 안 함",
+      "prepare": [
+        "payroll"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-payroll-generate.png"
+    },
+    {
+      "id": "salary-setting",
+      "role": "ADMIN",
+      "path": "/admin/payroll/settings",
+      "scenario": "사원 조회 후 합성 급여 설정 표시, 저장 안 함",
+      "prepare": [
+        "payroll"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-salary-setting.png"
+    },
+    {
+      "id": "payroll-draft",
+      "role": "ADMIN",
+      "path": "/admin/payroll/{draftMonth}",
+      "scenario": "월별 초안 요약표·서버 금액·허용 동작",
+      "prepare": [
+        "payroll"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-payroll-draft.png"
+    },
+    {
+      "id": "payroll-confirm",
+      "role": "ADMIN",
+      "path": "/admin/payroll/{draftMonth}",
+      "scenario": "확인 체크 후 활성 확정 모달, 확정 실행은 안 함",
+      "prepare": [
+        "payroll"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": false,
+      "filename": "{viewport}-payroll-confirm.png"
+    },
+    {
+      "id": "evaluation-cycles",
+      "role": "ADMIN",
+      "path": "/admin/reviews",
+      "scenario": "실제 API 합성 주기 목록",
+      "prepare": [
+        "evaluation"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-evaluation-cycles.png"
+    },
+    {
+      "id": "evaluation-draft",
+      "role": "ADMIN",
+      "path": "/admin/reviews/{draftCycleId}",
+      "scenario": "DRAFT 항목·대상·평가자 ID 확인 결과 표시",
+      "prepare": [
+        "evaluation"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-evaluation-draft.png"
+    },
+    {
+      "id": "evaluation-open",
+      "role": "ADMIN",
+      "path": "/admin/reviews/{selfCycleId}",
+      "scenario": "OPEN 배정 요약·재배정 액션",
+      "prepare": [
+        "evaluation"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-evaluation-open.png"
+    },
+    {
+      "id": "evaluation-manager",
+      "role": "ADMIN",
+      "path": "/evaluations/{managerEvaluationId}",
+      "scenario": "본인 제출 후 관리자 작성 입력; 추가 제출하지 않음",
+      "prepare": [
+        "evaluation"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-evaluation-manager.png"
+    },
+    {
+      "id": "ai-search-proposal",
+      "role": "ADMIN",
+      "path": "/employees",
+      "scenario": "실제 AI POST의 Mock 필터 제안 5행 비교표; 적용하지 않음",
+      "prepare": [
+        "ai",
+        "catalog"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-ai-search-proposal.png"
+    },
+    {
+      "id": "attendance-self",
+      "role": "EMPLOYEE",
+      "path": "/my/attendance",
+      "scenario": "실제 서버 기준일·합성 정정 기록",
+      "prepare": [
+        "attendance"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-attendance-self.png"
+    },
+    {
+      "id": "leave-request",
+      "role": "EMPLOYEE",
+      "path": "/my/leaves",
+      "scenario": "서버 연차·휴가 신청 양식, 추가 제출 안 함",
+      "prepare": [
+        "leave"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-leave-request.png"
+    },
+    {
+      "id": "leave-pending",
+      "role": "EMPLOYEE",
+      "path": "/leaves/{pendingLeaveId}",
+      "scenario": "본인 대기 신청 상세",
+      "prepare": [
+        "leave"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-leave-pending.png"
+    },
+    {
+      "id": "notifications",
+      "role": "EMPLOYEE",
+      "path": "/my/attendance",
+      "scenario": "정상 승인·근태 정정으로 발생한 실제 알림 모달",
+      "prepare": [
+        "notification"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "fullPage": false,
+      "filename": "{viewport}-notifications.png"
+    },
+    {
+      "id": "payslip-list",
+      "role": "EMPLOYEE",
+      "path": "/my/payslips",
+      "scenario": "서버 확정 본인 명세만 표시",
+      "prepare": [
+        "payroll"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-payslip-list.png"
+    },
+    {
+      "id": "payslip-detail",
+      "role": "EMPLOYEE",
+      "path": "/my/payslips/{payslipId}",
+      "scenario": "데모 고지·확정 서버 금액·생성 당시 스냅샷",
+      "prepare": [
+        "payroll"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-payslip-detail.png"
+    },
+    {
+      "id": "evaluation-self",
+      "role": "EMPLOYEE",
+      "path": "/evaluations/{selfEvaluationId}",
+      "scenario": "자기평가 초안 입력, 관리자 민감 키 공개 전 영역 없음",
+      "prepare": [
+        "evaluation"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-evaluation-self.png"
+    },
+    {
+      "id": "evaluation-result",
+      "role": "EMPLOYEE",
+      "path": "/evaluations/{resultEvaluationId}",
+      "scenario": "서버 FINALIZED 점수·등급과 관리자/자기 코멘트",
+      "prepare": [
+        "evaluation"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-evaluation-result.png"
+    },
+    {
+      "id": "ai-summary",
+      "role": "EMPLOYEE",
+      "path": "/evaluations/{resultEvaluationId}",
+      "scenario": "본인 FINALIZED 평가의 Mock AI 읽기 전용 요약",
+      "prepare": [
+        "evaluation",
+        "ai"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-ai-summary.png"
+    },
+    {
+      "id": "policy-qa",
+      "role": "EMPLOYEE",
+      "path": "/ai/policies",
+      "scenario": "실제 AI POST의 Mock 규정 답변·인용·합성 고지",
+      "prepare": [
+        "ai"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-policy-qa.png"
+    },
+    {
+      "id": "policy-no-evidence",
+      "role": "EMPLOYEE",
+      "path": "/ai/policies",
+      "scenario": "Mock 근거 부족 정상 상태; 답변·인용 영역 없음",
+      "prepare": [
+        "ai"
+      ],
+      "viewports": [
+        "desktop"
+      ],
+      "fullPage": true,
+      "filename": "{viewport}-policy-no-evidence.png"
+    }
+  ]
+}

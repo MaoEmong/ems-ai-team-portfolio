@@ -1,0 +1,878 @@
+{
+  "schemaVersion": "1.0",
+  "parentTaskId": 88,
+  "reviewer": {
+    "engine": "Codex",
+    "role": "frontend static/dependency security review"
+  },
+  "startedAt": "2026-10-18T23:09:45.5853574+09:00",
+  "completedAt": "2026-10-18T23:30:17.4243786+09:00",
+  "target": {
+    "head": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+    "scope": "Current frontend worktree plus lockfile; HEAD alone does not prove worktree equality.",
+    "lockfileVersion": 3,
+    "lockSha256": "0E0A9101CE3C1F2EEFEE8B1D8B35643E0C693536804C7A3C492AF14DE2A66BC5",
+    "criticalSourceHashes": [
+      {
+        "path": "frontend/src/api.ts",
+        "lineCount": 52,
+        "sha256": "AB3B2167B7920D10F26D7E34F54587E377D64E2B732E8B2111DCDE99F79A3C46"
+      },
+      {
+        "path": "frontend/src/auth.tsx",
+        "lineCount": 111,
+        "sha256": "FA781D268F4FEA05DF7331A76C3BD32488D423283C78FDA9D1049D8F9AE38256"
+      },
+      {
+        "path": "frontend/src/files.tsx",
+        "lineCount": 337,
+        "sha256": "4445FD7B7807E852B88CBB0A0F8862DAA3D39D258233B3C1C6070BCF3BF23D9B"
+      },
+      {
+        "path": "frontend/src/ai.tsx",
+        "lineCount": 378,
+        "sha256": "1E32A46E09F118EFEB8293D914F707EC52EE86B21C2FE46DA2B946C303AEEC36"
+      },
+      {
+        "path": "frontend/src/mock-phase2.ts",
+        "lineCount": 199,
+        "sha256": "360D074490CEAD8B32B68E9F00393CE39EFCB98807541E958CA19C7DD20461D4"
+      },
+      {
+        "path": "frontend/src/App.tsx",
+        "lineCount": 289,
+        "sha256": "725E9098135ED1D9A32D5E5AD23A7497A528AD29F61872728563347A3CC4E73A"
+      },
+      {
+        "path": "frontend/src/ui.tsx",
+        "lineCount": 214,
+        "sha256": "5A6546EE960C670DF5086869458B164742C2132E97496C7FC9BC78562527F0C6"
+      },
+      {
+        "path": "frontend/src/notifications.tsx",
+        "lineCount": 101,
+        "sha256": "A9338ABDAB1429798BEE4678018F1D36BCFF2D59B27E55A516A8F9A825AB34CA"
+      },
+      {
+        "path": "frontend/src/use-notifications.ts",
+        "lineCount": 122,
+        "sha256": "576E4B6CCCCBDF0C8CA516B2C2BA89F181AC4809AF46A23885FE96B429C91838"
+      },
+      {
+        "path": "frontend/src/audit.tsx",
+        "lineCount": 386,
+        "sha256": "66B89A9C580D067F674A83D536F35A9F1EE42DCB2DA9E18A8CF78DEE97216FD7"
+      },
+      {
+        "path": "frontend/nginx.conf",
+        "lineCount": 7,
+        "sha256": "B959C252358FFAE1A82591BA6617906BF332D4F6740D8710142A4E664F93DDAB"
+      },
+      {
+        "path": "frontend/vite.config.ts",
+        "lineCount": 12,
+        "sha256": "FB423A36E4481CE6E1FC8004608E165A5A2452010D3FB4E2F3E7000C210A2865"
+      },
+      {
+        "path": "frontend/Dockerfile",
+        "lineCount": 15,
+        "sha256": "366AFCA231C5371136B6327955E153F32C6328A85D44223118185B01E0ECFF30"
+      },
+      {
+        "path": "frontend/package.json",
+        "lineCount": 39,
+        "sha256": "65E6500F4A07498E95F9CF5DFBEAE79325A18F17AFD57B329F7A9FFC4987A8E8"
+      }
+    ]
+  },
+  "methods": {
+    "staticReview": "performed",
+    "automatedTextScan": "performed; not exhaustive and not exploit reproduction",
+    "dependencyAudit": "performed with approved registry access",
+    "applicationHttp": "not-run; team-lead scope",
+    "unitTests": "not-run; team-lead scope",
+    "build": "not-run; team-lead scope",
+    "browser": "not-run; team-lead scope",
+    "docker": "not-run; team-lead scope",
+    "historyAndPublicArtifacts": "not-run; QA scope",
+    "penetrationTest": "not-performed"
+  },
+  "commands": [
+    {
+      "command": "git -c safe.directory=<workspace> rev-parse HEAD",
+      "cwd": ".",
+      "observedAt": "2026-10-18T23:09:45.5853574+09:00",
+      "result": "success",
+      "head": "89db9017fe3bbd025a26d4bb852c609fc7824607"
+    },
+    {
+      "command": "npm audit --json --package-lock-only --ignore-scripts",
+      "cwd": "frontend",
+      "startedAt": "2026-10-18T23:10:13.3891024+09:00",
+      "endedAt": "2026-10-18T23:10:15.9905641+09:00",
+      "npmExitCode": 1,
+      "result": "failed-no-usable-report",
+      "sandbox": "default",
+      "reason": "Raw diagnostic intentionally suppressed; exact failure cause was not established."
+    },
+    {
+      "command": "npm audit --json --package-lock-only --ignore-scripts",
+      "cwd": "frontend",
+      "startedAt": "2026-10-18T23:10:43.0071374+09:00",
+      "endedAt": "2026-10-18T23:10:44.6698603+09:00",
+      "npmExitCode": 0,
+      "result": "success",
+      "sandbox": "require_escalated-approved",
+      "fixOrInstall": false
+    },
+    {
+      "command": "node --version; npm --version",
+      "cwd": ".",
+      "result": "success",
+      "node": "v24.14.1",
+      "npm": "11.11.0"
+    },
+    {
+      "command": "npm ls --all --json --package-lock-only --ignore-scripts",
+      "cwd": ".",
+      "result": "no-usable-tree-excluded-from-evidence",
+      "npmExitCode": null,
+      "reason": "Initial repository-root invocation did not provide a dependency tree; repeated in frontend."
+    },
+    {
+      "startedAt": "2026-10-18T23:12:48.5879044+09:00",
+      "endedAt": "2026-10-18T23:12:51.3968576+09:00",
+      "command": "npm ls --all --json --package-lock-only --ignore-scripts",
+      "exitCode": 0,
+      "problemCount": 0,
+      "selectedPaths": [
+        "ems-frontend > @playwright/test@1.64.1 > playwright@1.64.1",
+        "ems-frontend > @testing-library/react@16.3.3 > react-dom@19.3.1",
+        "ems-frontend > @vitejs/plugin-react@6.1.2 > vite@8.3.4",
+        "ems-frontend > exceljs@4.4.0",
+        "ems-frontend > exceljs@4.4.0 > archiver@5.3.2",
+        "ems-frontend > exceljs@4.4.0 > jszip@3.10.2",
+        "ems-frontend > exceljs@4.4.0 > tmp@0.2.7",
+        "ems-frontend > exceljs@4.4.0 > unzipper@0.10.14",
+        "ems-frontend > exceljs@4.4.0 > uuid@11.1.1",
+        "ems-frontend > react-dom@19.3.1",
+        "ems-frontend > react-router-dom@7.18.4 > react-dom@19.3.1",
+        "ems-frontend > react-router-dom@7.18.4 > react-router@7.18.4",
+        "ems-frontend > react-router-dom@7.18.4 > react-router@7.18.4 > react-dom@19.3.1",
+        "ems-frontend > vite@8.3.4",
+        "ems-frontend > vitest@5.0.5",
+        "ems-frontend > vitest@5.0.5 > @vitest/mocker@5.0.5 > vite@8.3.4",
+        "ems-frontend > vitest@5.0.5 > vite@8.3.4"
+      ],
+      "cwd": "frontend",
+      "result": "success"
+    },
+    {
+      "command": "PowerShell masked secret/sink/env scan + rg manual review",
+      "cwd": ".",
+      "result": "success",
+      "observedAt": "2026-10-18T23:12:48+09:00",
+      "outputPolicy": "Paths/lines/types/variable names only; no secret values"
+    },
+    {
+      "command": "PowerShell supplemental JWT/userinfo scan + selected installed-version comparison",
+      "cwd": ".",
+      "result": "success",
+      "observedAt": "2026-10-18T23:15:21.7823788+09:00"
+    },
+    {
+      "command": "Primary-source documentation lookup",
+      "result": "success",
+      "observedDate": "2026-10-18",
+      "note": "No advisory returned by audit; no CVE/CVSS or exploit invented."
+    },
+    {
+      "command": "Create owned Markdown and JSON evidence in one PowerShell process",
+      "result": "not-executed",
+      "error": "Windows process creation rejected oversized command line (os error 206); no outputs created by this attempt.",
+      "followUp": "Split the two owned-file writes."
+    },
+    {
+      "command": "Owned evidence JSON parse and 14 source-hash recheck",
+      "observedAt": "2026-10-18T23:21:04.5003104+09:00",
+      "result": "success",
+      "applicationTestsRun": false
+    }
+  ],
+  "dependencyAudit": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "dependencies": {
+      "prod": 202,
+      "dev": 123,
+      "optional": 27,
+      "peer": 13,
+      "peerOptional": 0,
+      "total": 324
+    },
+    "advisories": [],
+    "perAdvisoryReachability": "Not applicable: registry audit returned no advisories. Package use/exposure is mapped below; absence is not a proof of no vulnerabilities.",
+    "resolvedSelectedVersions": [
+      {
+        "path": "node_modules/@playwright/test",
+        "name": "@playwright/test",
+        "version": "1.64.1",
+        "dev": true,
+        "optional": false
+      },
+      {
+        "path": "node_modules/uuid",
+        "name": "uuid",
+        "version": "11.1.1",
+        "dev": false,
+        "optional": false
+      },
+      {
+        "path": "node_modules/unzipper",
+        "name": "unzipper",
+        "version": "0.10.14",
+        "dev": false,
+        "optional": false
+      },
+      {
+        "path": "node_modules/typescript",
+        "name": "typescript",
+        "version": "5.7.3",
+        "dev": true,
+        "optional": false
+      },
+      {
+        "path": "node_modules/tmp",
+        "name": "tmp",
+        "version": "0.2.7",
+        "dev": false,
+        "optional": false
+      },
+      {
+        "path": "node_modules/react-router-dom",
+        "name": "react-router-dom",
+        "version": "7.18.4",
+        "dev": false,
+        "optional": false
+      },
+      {
+        "path": "node_modules/react-router",
+        "name": "react-router",
+        "version": "7.18.4",
+        "dev": false,
+        "optional": false
+      },
+      {
+        "path": "node_modules/react-dom",
+        "name": "react-dom",
+        "version": "19.3.1",
+        "dev": false,
+        "optional": false
+      },
+      {
+        "path": "node_modules/react",
+        "name": "react",
+        "version": "19.3.1",
+        "dev": false,
+        "optional": false
+      },
+      {
+        "path": "node_modules/prettier",
+        "name": "prettier",
+        "version": "3.9.10",
+        "dev": true,
+        "optional": false
+      },
+      {
+        "path": "node_modules/playwright",
+        "name": "playwright",
+        "version": "1.64.1",
+        "dev": true,
+        "optional": false
+      },
+      {
+        "path": "node_modules/jszip",
+        "name": "jszip",
+        "version": "3.10.2",
+        "dev": false,
+        "optional": false
+      },
+      {
+        "path": "node_modules/jsdom",
+        "name": "jsdom",
+        "version": "26.1.0",
+        "dev": true,
+        "optional": false
+      },
+      {
+        "path": "node_modules/exceljs",
+        "name": "exceljs",
+        "version": "4.4.0",
+        "dev": false,
+        "optional": false
+      },
+      {
+        "path": "node_modules/archiver",
+        "name": "archiver",
+        "version": "5.3.2",
+        "dev": false,
+        "optional": false
+      },
+      {
+        "path": "node_modules/@vitejs/plugin-react",
+        "name": "@vitejs/plugin-react",
+        "version": "6.1.2",
+        "dev": true,
+        "optional": false
+      },
+      {
+        "path": "node_modules/vite",
+        "name": "vite",
+        "version": "8.3.4",
+        "dev": true,
+        "optional": false
+      },
+      {
+        "path": "node_modules/vitest",
+        "name": "vitest",
+        "version": "5.0.5",
+        "dev": true,
+        "optional": false
+      }
+    ],
+    "selectedInstalledVersions": [
+      {
+        "name": "react",
+        "installed": "19.3.1",
+        "locked": "19.3.1",
+        "match": true,
+        "browserEntry": null
+      },
+      {
+        "name": "react-dom",
+        "installed": "19.3.1",
+        "locked": "19.3.1",
+        "match": true,
+        "browserEntry": null
+      },
+      {
+        "name": "react-router",
+        "installed": "7.18.4",
+        "locked": "7.18.4",
+        "match": true,
+        "browserEntry": null
+      },
+      {
+        "name": "react-router-dom",
+        "installed": "7.18.4",
+        "locked": "7.18.4",
+        "match": true,
+        "browserEntry": null
+      },
+      {
+        "name": "exceljs",
+        "installed": "4.4.0",
+        "locked": "4.4.0",
+        "match": true,
+        "browserEntry": "./dist/exceljs.min.js"
+      },
+      {
+        "name": "jszip",
+        "installed": "3.10.2",
+        "locked": "3.10.2",
+        "match": true,
+        "browserEntry": null
+      },
+      {
+        "name": "tmp",
+        "installed": "0.2.7",
+        "locked": "0.2.7",
+        "match": true,
+        "browserEntry": null
+      },
+      {
+        "name": "unzipper",
+        "installed": "0.10.14",
+        "locked": "0.10.14",
+        "match": true,
+        "browserEntry": null
+      },
+      {
+        "name": "uuid",
+        "installed": "11.1.1",
+        "locked": "11.1.1",
+        "match": true,
+        "browserEntry": null
+      },
+      {
+        "name": "vite",
+        "installed": "8.3.4",
+        "locked": "8.3.4",
+        "match": true,
+        "browserEntry": null
+      },
+      {
+        "name": "vitest",
+        "installed": "5.0.5",
+        "locked": "5.0.5",
+        "match": true,
+        "browserEntry": null
+      }
+    ],
+    "lockDependencyPaths": [
+      "ems-frontend > @playwright/test@1.64.1 > playwright@1.64.1",
+      "ems-frontend > @testing-library/react@16.3.3 > react-dom@19.3.1",
+      "ems-frontend > @vitejs/plugin-react@6.1.2 > vite@8.3.4",
+      "ems-frontend > exceljs@4.4.0",
+      "ems-frontend > exceljs@4.4.0 > archiver@5.3.2",
+      "ems-frontend > exceljs@4.4.0 > jszip@3.10.2",
+      "ems-frontend > exceljs@4.4.0 > tmp@0.2.7",
+      "ems-frontend > exceljs@4.4.0 > unzipper@0.10.14",
+      "ems-frontend > exceljs@4.4.0 > uuid@11.1.1",
+      "ems-frontend > react-dom@19.3.1",
+      "ems-frontend > react-router-dom@7.18.4 > react-dom@19.3.1",
+      "ems-frontend > react-router-dom@7.18.4 > react-router@7.18.4",
+      "ems-frontend > react-router-dom@7.18.4 > react-router@7.18.4 > react-dom@19.3.1",
+      "ems-frontend > vite@8.3.4",
+      "ems-frontend > vitest@5.0.5",
+      "ems-frontend > vitest@5.0.5 > @vitest/mocker@5.0.5 > vite@8.3.4",
+      "ems-frontend > vitest@5.0.5 > vite@8.3.4"
+    ]
+  },
+  "staticScan": {
+    "scannedFileCount": 53,
+    "method": "Static regex; locations/types only, no matched values; not exhaustive secret detection",
+    "secretFindings": [],
+    "nonTestDangerousSinks": [],
+    "referencedPublicVariables": [
+      "VITE_API_URL",
+      "VITE_MOCK_API"
+    ],
+    "dotenvFiles": [
+      {
+        "path": "frontend/.env.example",
+        "keys": [
+          "VITE_API_URL",
+          "VITE_MOCK_API"
+        ],
+        "sensitiveTypeFindings": []
+      },
+      {
+        "path": "frontend/.env.local",
+        "keys": [
+          "VITE_API_URL",
+          "VITE_MOCK_API"
+        ],
+        "sensitiveTypeFindings": []
+      }
+    ],
+    "existingDist": {
+      "fileCount": 4,
+      "mapCount": 0,
+      "oldestWrite": "2026-10-16T20:51:09.9281013+09:00",
+      "newestWrite": "2026-10-16T20:51:09.9296065+09:00",
+      "markerLocations": [
+        {
+          "path": "frontend/dist/assets/exceljs.min-D316kpsA.js",
+          "marker": "ExcelJS"
+        },
+        {
+          "path": "frontend/dist/assets/index-i9EpyLA8.js",
+          "marker": "mock-"
+        },
+        {
+          "path": "frontend/dist/assets/index-i9EpyLA8.js",
+          "marker": "deterministic-v1"
+        },
+        {
+          "path": "frontend/dist/assets/index-i9EpyLA8.js",
+          "marker": "ems.accessToken"
+        }
+      ],
+      "builtInThisTask": false
+    },
+    "supplementalSecretPatternFindings": [],
+    "scopeCaveat": "53 source/config/lock files and frontend dotenv keys were pattern-reviewed; dotenv values were never output. Existing artifact supplemental scan covers JWT-shaped literals and URL userinfo. E2E outputs, full Git history, staging, root .env and public images/JSON are QA scope."
+  },
+  "findings": [
+    {
+      "id": "FE-R01",
+      "title": "JavaScript-readable session token",
+      "severity": "medium",
+      "classification": "conditional-residual-risk",
+      "method": "static",
+      "evidence": [
+        {
+          "path": "frontend/src/auth.tsx",
+          "line": 67
+        },
+        {
+          "path": "frontend/src/api.ts",
+          "line": 17
+        }
+      ],
+      "reachability": "An attacker first needs same-origin script execution (for example XSS) to read sessionStorage and act as the signed-in user. No XSS payload or token theft was attempted or established.",
+      "recommendation": "Keep untrusted data as React text, constrain script sources and API origins, and document this residual. A future HttpOnly-cookie migration requires a separate server/CSRF design decision.",
+      "status": "unmodified-reported-to-team-lead",
+      "actualExploitTested": false
+    },
+    {
+      "id": "FE-R02",
+      "title": "Three security headers added statically; HTTP unverified and full CSP remains residual",
+      "severity": "low",
+      "classification": "defense-in-depth-gap",
+      "method": "static",
+      "evidence": [
+        {
+          "line": 6,
+          "path": "frontend/nginx.conf"
+        },
+        {
+          "line": 7,
+          "path": "frontend/nginx.conf"
+        },
+        {
+          "line": 8,
+          "path": "frontend/nginx.conf"
+        }
+      ],
+      "reachability": "검증 작업 added three headers statically. Approved 검증 작업 follow-up confirmed exact values on local GET200, SPA fallback200 and static POST405. Initial 검증 작업 sandbox EACCES remains historical; no product failure inferred.",
+      "recommendation": "Retain full CSP compatibility review as residual. Local sampled HTTP confirmation does not validate every response, proxy or deployment.",
+      "status": "three-headers-confirmed-on-local-200-and-405-full-csp-residual",
+      "actualExploitTested": false
+    },
+    {
+      "id": "FE-R03",
+      "title": "Public build-time API origin and local HTTP default",
+      "severity": "low",
+      "classification": "deployment-condition",
+      "method": "static",
+      "evidence": [
+        {
+          "path": "frontend/src/api.ts",
+          "line": 23
+        },
+        {
+          "path": "frontend/Dockerfile",
+          "line": 6
+        },
+        {
+          "path": "frontend/package.json",
+          "line": 7
+        }
+      ],
+      "reachability": "Bearer tokens go to the API origin configured at build time. Local loopback HTTP is a development default, not evidence of a remote TLS deployment. A compromised/mistaken build origin or remote plain HTTP could expose credentials. Dev script binds all interfaces; current network reachability was not tested.",
+      "recommendation": "Keep credentials out of VITE_*; use a trusted HTTPS API endpoint for any non-local deployment, verify browser/network origin, and restrict dev-server/host port exposure. Serving policy is not changed here.",
+      "status": "residual-unverified-deployment",
+      "actualExploitTested": false
+    },
+    {
+      "id": "FE-R04",
+      "title": "Browser Mock XLSX decompression is not a security boundary",
+      "severity": "low",
+      "classification": "mock-only-availability-risk",
+      "method": "static",
+      "evidence": [
+        {
+          "path": "frontend/src/mock-phase2.ts",
+          "line": 138
+        },
+        {
+          "path": "frontend/src/mock-phase2.ts",
+          "line": 144
+        },
+        {
+          "path": "frontend/src/files.tsx",
+          "line": 148
+        }
+      ],
+      "reachability": "With VITE_MOCK_API=true, an administrator can select a small but highly compressed XLSX and trigger ExcelJS parsing before row-count checks. Expanded ZIP totals are not enforced by the browser mock. Resource exhaustion was not reproduced. With real API mode, the UI forwards FormData and does not locally parse the XLSX.",
+      "recommendation": "Keep Mock restricted to synthetic demo data. If arbitrary local files must be accepted in Mock mode, separately consider expanded-size limits or an isolated worker. Real server validation/transactions need backend/HTTP evidence.",
+      "status": "known-mock-limit-unmodified",
+      "actualExploitTested": false
+    },
+    {
+      "id": "FE-I05",
+      "title": "Historical bundle contains Mock implementation markers",
+      "severity": "info",
+      "classification": "artifact-observation-not-vulnerability",
+      "method": "static-existing-artifact",
+      "evidence": [
+        {
+          "path": "frontend/src/api.ts",
+          "line": 2
+        },
+        {
+          "path": "frontend/dist/assets/index-i9EpyLA8.js",
+          "line": null
+        },
+        {
+          "path": "frontend/dist/assets/exceljs.min-D316kpsA.js",
+          "line": null
+        }
+      ],
+      "reachability": "The existing 2026-10-16 artifact contains Mock/model and ExcelJS markers; build mode and exact source commit of that artifact are unverified. This does not establish a real credential leak or backend authorization bypass.",
+      "recommendation": "Treat browser code as public, keep Mock credentials/data synthetic, and optionally separate Mock imports when packaging production. Bundle size warnings are not classified as vulnerabilities.",
+      "status": "historical-artifact-only",
+      "actualExploitTested": false
+    },
+    {
+      "id": "FE-R06",
+      "title": "CSV sanitization has spreadsheet-dependent coverage",
+      "severity": "low",
+      "classification": "conditional-mock-export-hardening",
+      "method": "static",
+      "evidence": [
+        {
+          "path": "frontend/src/mock-phase2.ts",
+          "line": 114
+        }
+      ],
+      "reachability": "The mock covers the six prefixes in the API contract but not LF or full-width formula characters. Exploitation depends on attacker-controlled cell content and spreadsheet/locale/re-save behavior. Formula execution was not reproduced; actual API CSV bytes were not checked.",
+      "recommendation": "Prefer text-cell XLSX for risky content, and have the owner compare actual server CSV and target spreadsheet behavior before coordinating any contract/security change. Current source is not modified.",
+      "status": "reported-to-team-lead-unmodified",
+      "actualExploitTested": false
+    }
+  ],
+  "controls": [
+    {
+      "id": "FE-C01",
+      "status": "observed-static",
+      "evidence": [
+        "frontend/src/ai.tsx:61",
+        "frontend/src/ai.tsx:98",
+        "frontend/src/ai.tsx:373",
+        "frontend/src/audit.tsx:78",
+        "frontend/src/files.tsx:295"
+      ],
+      "description": "AI text/citations and imported row errors use React text; no non-test explicit HTML/eval/console sink matched the reviewed patterns. This is not a proof that every possible XSS path is absent."
+    },
+    {
+      "id": "FE-C02",
+      "status": "observed-static",
+      "evidence": [
+        "frontend/src/files.tsx:6",
+        "frontend/src/files.tsx:20"
+      ],
+      "description": "Downloads use authenticated response blobs and generated object URLs, sanitize filename slash/control characters, and revoke object URLs. No model-provided external citation link is rendered."
+    },
+    {
+      "id": "FE-C03",
+      "status": "observed-static",
+      "evidence": [
+        "frontend/src/mock-phase2.ts:104",
+        "frontend/src/mock-phase2.ts:114",
+        "frontend/src/files.tsx:132",
+        "frontend/src/files.tsx:148"
+      ],
+      "description": "Mock CSV has BOM/escaping/formula-prefix defense and XLSX writes string values; real API file bytes are server-owned. Client .xlsx/5MiB checks are UX, not server security validation."
+    },
+    {
+      "id": "FE-C04",
+      "status": "observed-static",
+      "evidence": [
+        "frontend/src/auth.tsx:88",
+        "frontend/src/App.tsx:254",
+        "frontend/src/api.ts:21"
+      ],
+      "description": "Guard/admin menus restrict UI navigation. Actual authorization requires server enforcement for every sensitive endpoint; no HTTP bypass test was run here."
+    },
+    {
+      "id": "FE-C05",
+      "status": "observed-static",
+      "evidence": [
+        "frontend/src/ai.tsx:149",
+        "frontend/src/ai.tsx:178",
+        "frontend/src/ai.tsx:230"
+      ],
+      "description": "AI question/results stay in component state, stale/aborted responses are gated, external-transfer fields are disclosed and execution is explicit. Browser abort does not prove provider cancellation or cost cancellation."
+    },
+    {
+      "id": "FE-C06",
+      "status": "observed-static",
+      "evidence": [
+        "frontend/vite.config.ts:1",
+        "frontend/Dockerfile:6"
+      ],
+      "description": "No custom envPrefix/define dump or source-map enablement is set. Vite default production sourcemap=false is supported by official documentation; old dist has zero .map files. No fresh build was produced."
+    }
+  ],
+  "notPerformed": [
+    "No unit/integration/E2E/typecheck/build/browser/Docker execution",
+    "No application HTTP/authz/header/XSS/ZIP-bomb reproduction",
+    "No real LLM or network-provider quality assessment",
+    "No npm install/update/audit fix/force/signature or malware audit",
+    "No entire Git history/.gitignore/staged/public screenshot/JSON or LICENSE audit; QA ownership",
+    "No backend-security document edits; backend ownership",
+    "No source/lockfile changes; recommendations only"
+  ],
+  "sources": [
+    {
+      "title": "npm audit CLI documentation",
+      "url": "https://docs.npmjs.com/cli/v11/commands/npm-audit/",
+      "consultedAt": "2026-10-18",
+      "sourceType": "primary-official"
+    },
+    {
+      "title": "Vite environment variables",
+      "url": "https://vite.dev/guide/env-and-mode",
+      "consultedAt": "2026-10-18",
+      "sourceType": "primary-official"
+    },
+    {
+      "title": "Vite build.sourcemap",
+      "url": "https://vite.dev/config/build-options#build-sourcemap",
+      "consultedAt": "2026-10-18",
+      "sourceType": "primary-official"
+    },
+    {
+      "title": "React DOM inner HTML security guidance",
+      "url": "https://react.dev/reference/react-dom/components/common#dangerously-setting-the-inner-html",
+      "consultedAt": "2026-10-18",
+      "sourceType": "primary-official"
+    },
+    {
+      "title": "OWASP HTML5 storage security",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html",
+      "consultedAt": "2026-10-18",
+      "sourceType": "primary-official"
+    },
+    {
+      "title": "OWASP CSV injection",
+      "url": "https://community.owasp.org/attacks/CSV_Injection",
+      "consultedAt": "2026-10-18T23:27:48.7359544+09:00",
+      "sourceType": "primary-official",
+      "verificationStartedAt": "2026-10-18T23:27:39.0236022+09:00"
+    },
+    {
+      "title": "OWASP Content Security Policy",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html",
+      "consultedAt": "2026-10-18",
+      "sourceType": "primary-official"
+    },
+    {
+      "title": "nginx headers module",
+      "url": "https://nginx.org/en/docs/http/ngx_http_headers_module.html",
+      "consultedAt": "2026-10-18",
+      "sourceType": "primary-official"
+    }
+  ],
+  "handoff": {
+    "sourceOwnership": "unchanged; no source ownership taken",
+    "documentOwnership": "Returned to frontend team lead after final acknowledgement update and JSON integrity check.",
+    "remainingQuestions": [],
+    "teamLeadQuestion": "",
+    "teamLeadQuestions": [
+      "",
+      ""
+    ],
+    "parentDecision": "Original observations resolved. Subsequent department-head decision implemented three nginx headers in 검증 작업 by screen owner; 검증 작업 statically checked them. HTTP remains unverified, full CSP and other residuals remain. 검증 작업 evidence predates 검증 작업.",
+    "dockerHold": "Do not start or retry Docker until department head restoration notice; no Docker executed."
+  },
+  "validation": {
+    "engine": "Codex",
+    "command": "npm test",
+    "workingDirectory": "frontend",
+    "runCount": 1,
+    "executionMode": "default sandbox; no escalation or retry for test execution",
+    "preflightAt": "2026-10-18T23:31:04.0353331+09:00",
+    "headBefore": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+    "baselineNote": "HEAD remains 89db901; no newer commit at execution time. Worktree was not clean due to listed untracked documentation/artifacts.",
+    "dirtyBefore": [
+      "?? docs/screenshots/",
+      "?? docs/security/frontend-security-evidence.json",
+      "?? docs/security/frontend-security-review.md"
+    ],
+    "startedAt": "2026-10-18T23:31:15.8563348+09:00",
+    "endedAt": "2026-10-18T23:31:37.7977459+09:00",
+    "exitCode": 0,
+    "testFiles": {
+      "total": 14,
+      "passed": 14,
+      "failed": 0
+    },
+    "tests": {
+      "total": 276,
+      "passed": 276,
+      "failed": 0
+    },
+    "runnerDurationSeconds": 16.78,
+    "failureCauses": [],
+    "postflightAt": "2026-10-18T23:31:49.8451384+09:00",
+    "headAfter": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+    "dirtyAfter": [
+      "?? docs/screenshots/",
+      "?? docs/security/frontend-security-evidence.json",
+      "?? docs/security/frontend-security-review.md"
+    ],
+    "limitations": [
+      "Unit/contract suite only; no browser, build, Docker, real HTTP, installation, npm fix or commit executed.",
+      "Passing tests do not establish absence of vulnerabilities or validate 검증 작업 nginx changes."
+    ],
+    "sourceModified": false,
+    "fieldOwnership": "validation field returned to frontend team lead after JSON integrity check"
+  },
+  "headerFollowUp": {
+    "implementationTaskId": 92,
+    "observedAt": "2026-10-18T23:34:47.5456276+09:00",
+    "method": "read-only static config comparison",
+    "path": "frontend/nginx.conf",
+    "sha256": "EF27F2BAC4A1E717B470BFCB965F427DDE2B393D0CA323A6FD4430702BCE5C60",
+    "headers": [
+      "X-Content-Type-Options: nosniff",
+      "X-Frame-Options: DENY",
+      "Referrer-Policy: strict-origin-when-cross-origin"
+    ],
+    "scope": "server",
+    "always": true,
+    "soleLocationSeparateAddHeader": false,
+    "actualHttp": "not-run; pending Docker restoration and owner validation",
+    "fullCsp": "residual",
+    "historicalHashes": "target.criticalSourceHashes retains original 검증 작업 observation",
+    "validationRelationship": "검증 작업 predates 검증 작업; not header verification",
+    "sourceEditedByReviewer": false,
+    "ownership": "documents returned to frontend team lead"
+  },
+  "httpHeaderValidation": {
+    "engine": "Codex",
+    "startedAt": "2026-10-18T19:00:02.735Z",
+    "method": "Node HTTP; sequential requests; no redirects, retries, credentials or body logging",
+    "head": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+    "nginxSha256": "EF27F2BAC4A1E717B470BFCB965F427DDE2B393D0CA323A6FD4430702BCE5C60",
+    "requests": [],
+    "status": "stopped-no-retry",
+    "errorResponseConfirmed": false,
+    "limits": "Only localhost:5173 frontend headers. No API writes, Docker control, nginx syntax check or browser checks. Full CSP remains residual.",
+    "failure": {
+      "stage": "GET /",
+      "category": "EACCES",
+      "observedAt": "2026-10-18T19:00:02.807Z"
+    },
+    "endedAt": "2026-10-18T19:00:02.807Z",
+    "stackProject": "ems-photo-20261019-943cdb77d3",
+    "interpretation": "Default-sandbox attempt stopped at first GET with EACCES before any HTTP response. No response status or headers verified. No retry, SPA GET or POST performed. Historical taskId111 identifies prepared script, execution task is123."
+  },
+  "httpHeaderFollowUp": {
+    "runId": "검증 작업-20261019-01",
+    "evidencePath": "docs/security/frontend-header-check-approved-run.json",
+    "stackProject": "ems-photo-20261019-943cdb77d3",
+    "authorization": "require_escalated with justification; execution returned exit0",
+    "initialAttemptClassification": "검증 작업 EACCES with zero responses was a sandbox access block, not product HTTP failure. Original httpHeaderValidation preserved unchanged.",
+    "startedAt": "2026-10-18T19:48:41.315Z",
+    "endedAt": "2026-10-18T19:48:41.383Z",
+    "status": "normal-and-error-headers-confirmed",
+    "normalStatus": 200,
+    "spaFallbackStatus": 200,
+    "staticPostErrorStatus": 405,
+    "allThreeHeadersMatch": true,
+    "requestCount": 3,
+    "automaticRetries": 0,
+    "limits": "Only sampled local frontend responses; no general security certification, API authorization test or full CSP verification."
+  }
+}

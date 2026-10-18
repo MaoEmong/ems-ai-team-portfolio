@@ -1,0 +1,561 @@
+{
+  "engine": "Codex",
+  "checkedAt": "2026-10-18T19:55:39.904Z",
+  "head": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+  "indexInitiallyEmpty": true,
+  "scope": "Exact frontend allowlist only; other-team changes excluded",
+  "files": [
+    {
+      "path": "frontend/nginx.conf",
+      "sha256": "ef27f2bac4a1e717b470bfcb965f427dde2b393d0ca323a6fd4430702bce5c60"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-32-41-463Z-a23d30ba/manifest.json",
+      "sha256": "3ff03cb75fe9a8b2a81269593c3423b92e7960864678e2bdcc893c82cf5a827e"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/desktop-dashboard.png",
+      "sha256": "248d5e0648643d855b254eba066a528239fa5282d19fb89389685e22fd4ab422"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/desktop-departments.png",
+      "sha256": "dcd129da77459c8c549a69a0020b22ccef32fbe605bae29ddef9fd4c8346378d"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/desktop-employee-appointment.png",
+      "sha256": "498303e8aeeae4dfb6d3267a89092fae8cdf0f2310c2ec188fbeb902b5b990e5"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/desktop-employee-create.png",
+      "sha256": "0ad2552911f49f8567a3de0a2c75511b22353712a41751f1f0cdc3a117dc90da"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/desktop-employee-detail.png",
+      "sha256": "85b27a6565ad84f7537167419e270269eefa73384ce23fb5ede11042195abdcb"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/desktop-employee-list.png",
+      "sha256": "2416fac511ea8dac5f2ce3a53fe290d2131c938a19db890ff400f792e1617fe2"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/desktop-job-titles.png",
+      "sha256": "2be36a8b892c1b1ccc44bd27672e94afb50128bc7c785ab291500732caec5c5a"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/desktop-login.png",
+      "sha256": "1c91f2282b31fe9aa5a1cf6d26ace7123504006348fe6646dd25b07e53810940"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/desktop-organization.png",
+      "sha256": "56018937fd5d14f2da2b25a1b609f1365b5e1d66de26d2000cd4caed9ded9da7"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/desktop-positions.png",
+      "sha256": "4f9252af39bb354237d14d260967a558753bbaf052445d0c37207941a3097fef"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/desktop-xlsx-import-result.png",
+      "sha256": "9dbef0ebc2f7b7e010ab87e6a53a0e9886c613da4058f57b714c807ddea278be"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/desktop-xlsx-import.png",
+      "sha256": "0e05fa2dbbf9f85b7c26b06847a1d1554314a2c7daa7947b8e473cecc84dd1df"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-40-58-569Z-1e52c39b/manifest.json",
+      "sha256": "07779744591d472212fd2b086cf1226476ef18c01aa5f75e125d979f6a5f4630"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-attendance-admin.png",
+      "sha256": "285bac19de52bfe1257bf9a19f017d3f506745d6e7120d9c7d2ea1728079aad9"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-audit.png",
+      "sha256": "133a13727ef90e1c34f630a1e91498376516498fde78c96e6a0a78eb519727f2"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-dashboard.png",
+      "sha256": "dcbbdbd7dc9a1738049fe0217b557647f1c631b7be53a6bb4e02f21a6bc444f9"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-departments.png",
+      "sha256": "3477d90b6a06baa69d8fb106cd80ef709ecacea3b27d308ab511a00bd53c0d64"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-employee-appointment.png",
+      "sha256": "69ed806a98930a5687fbcde4ab526881205f608e650d5efcd416fccb97487bbc"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-employee-create.png",
+      "sha256": "0ad2552911f49f8567a3de0a2c75511b22353712a41751f1f0cdc3a117dc90da"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-employee-detail.png",
+      "sha256": "0421aaab812768f7f43593445b0e00f1f4e5eb24e3967f02a92bce5fc1346690"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-employee-list.png",
+      "sha256": "4b3e1ebf7b55e587516312d7060ad014fd14ca4398cd8bcff91bb7374d4d0d76"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-evaluation-cycles.png",
+      "sha256": "299904e58a2b989bab75839541c78891567ace9ad83c7b239d637201480504af"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-evaluation-draft.png",
+      "sha256": "a2cf8a973024f47d947346239b55216657118997d2fec7b71b4852c6ba1f0d49"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-evaluation-manager.png",
+      "sha256": "17f3e57c6b53230c530deb88baf647ff13ffc946174e74ca909ba7595ff4841a"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-evaluation-open.png",
+      "sha256": "6a11ceaf53729f15a723ebea7174ee888bb5cdab88984d680673d7114149f97a"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-job-titles.png",
+      "sha256": "6353591a48fb1ded11c2f398d70c01d2e08a575e75b1bf5408d7d995016b1ed7"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-leave-approval-detail.png",
+      "sha256": "1f2c13dde71926f5bc19aa4133d48cf3aa363637f7186330d536a41e38312324"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-leave-approvals.png",
+      "sha256": "32affb5f8b58c4b03f5d6347142305f6f8155e834ec9d3fd6a5dd30e34bab18b"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-login.png",
+      "sha256": "1c91f2282b31fe9aa5a1cf6d26ace7123504006348fe6646dd25b07e53810940"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-organization.png",
+      "sha256": "47eb1dbc690018daeeb8e617cfcae60da0c946bf391872ca360e868a77e98cb8"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-payroll-confirm.png",
+      "sha256": "62993e6e5c365438c883ca7c2e92419e0ec6e9cd3dc96b2b753e93ef7dd6dc62"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-payroll-draft.png",
+      "sha256": "a8c59a5e66b00ef19e125f14d277155972cbb880fbe0e3d299ab578343954ce4"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-payroll-generate.png",
+      "sha256": "c144f9f3300ac071d772e7aa6e8e2158f8d4c155698e1f43ccccf0a5638da7a9"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-payroll-list.png",
+      "sha256": "7df380a48f67b5f66540ba1668d5d29d7993218ab6ad1d542c79817dcaa38021"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-positions.png",
+      "sha256": "4f9252af39bb354237d14d260967a558753bbaf052445d0c37207941a3097fef"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-salary-setting.png",
+      "sha256": "c086ec9029137f1bee846bb74ebb4d3ba217a4fce18ea0e261eeb12ea9940137"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-xlsx-import-result.png",
+      "sha256": "9dbef0ebc2f7b7e010ab87e6a53a0e9886c613da4058f57b714c807ddea278be"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/desktop-xlsx-import.png",
+      "sha256": "0e05fa2dbbf9f85b7c26b06847a1d1554314a2c7daa7947b8e473cecc84dd1df"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-42-39-365Z-bddadd2a/manifest.json",
+      "sha256": "bf5eddf13e014868580405b295a94d2086c1d7da826805aed1e5a45f939329ff"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-attendance-admin.png",
+      "sha256": "2848fcec326ece5defe57bd7ff609e1bc28d6ace7c3a7d23d8ab26ec93a26c1f"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-attendance-self.png",
+      "sha256": "800fde7dee4646aa9b1d0e129b8cc4921213b9dadb05c9bb79a14b9c566d8196"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-audit.png",
+      "sha256": "d15ab447b2c2bbd4d165645c5ef71c22b4b3b0c448fc090b7a64d0ec8da416b6"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-dashboard.png",
+      "sha256": "87a8ceb89732e82b1499ac56f876bad3a8fe30c3ec443d9ec222558edd53f6a6"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-departments.png",
+      "sha256": "ca1eed02bb07af55809da04b0b9bea4d8d94a3494c35eaea1e8a7e748947bded"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-employee-appointment.png",
+      "sha256": "50319839b8b69a246745a913f44550fc98c8314f133a5f68e680aede529585b4"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-employee-create.png",
+      "sha256": "0ad2552911f49f8567a3de0a2c75511b22353712a41751f1f0cdc3a117dc90da"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-employee-detail.png",
+      "sha256": "9cdfe7d4f278c4b43b8ee4bb0213249c852b86d08b31a1399fb83beccb842b65"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-employee-list.png",
+      "sha256": "248fa906e9c6bf99033e6dc310dfa1dbc1f0ef879304fb8a1eb2ff51053cb12d"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-evaluation-cycles.png",
+      "sha256": "299904e58a2b989bab75839541c78891567ace9ad83c7b239d637201480504af"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-evaluation-draft.png",
+      "sha256": "a2cf8a973024f47d947346239b55216657118997d2fec7b71b4852c6ba1f0d49"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-evaluation-manager.png",
+      "sha256": "17f3e57c6b53230c530deb88baf647ff13ffc946174e74ca909ba7595ff4841a"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-evaluation-open.png",
+      "sha256": "455884eeed1a22a5ed362bff585b7b757b4b9a4611e4c8a74073b212b32b63ae"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-evaluation-result.png",
+      "sha256": "6d3ee23bcee9f64628ded28730067d1351926302746730accbdcb819453066f4"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-evaluation-self.png",
+      "sha256": "0143cf89c7e7f63006be84f1b19666ec57691e045164fde3097f5ed52fad652b"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-job-titles.png",
+      "sha256": "e5da067c46c787fb1a327473ffd7d4ec33882e0b19854d5b6e513c7b5d7637f4"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-leave-approval-detail.png",
+      "sha256": "1f2c13dde71926f5bc19aa4133d48cf3aa363637f7186330d536a41e38312324"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-leave-approvals.png",
+      "sha256": "bbcecb42a084dc520b568dc254086ad0b8cdddd365ec015236a2aef2959a4145"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-leave-pending.png",
+      "sha256": "4333b448cc36a9f3a7bc0f118bcc4e2db10badd384b12968e480dd7fe011684a"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-leave-request.png",
+      "sha256": "b4c48c24597c4fc614a6cf2df752d016c16ec8689187f6649897558404c5d385"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-login.png",
+      "sha256": "1c91f2282b31fe9aa5a1cf6d26ace7123504006348fe6646dd25b07e53810940"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-notifications.png",
+      "sha256": "43e2a2528e0d6275990f9143a56355a291b001746874a3979bed37af0e71d0ac"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-organization.png",
+      "sha256": "00a0965a25c05d81502fd887a9af86557dd10f5daa04eb6361479de3fdbd0c21"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-payroll-confirm.png",
+      "sha256": "12666b30d4137d1a73c2dce4e49f78c484080df6ec7d3a4c9bf426375ecd1b21"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-payroll-draft.png",
+      "sha256": "547a581210a1bd1e87a403c7e3adf2ec23f1d3cbf07adc4912f2d0ac4a575e69"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-payroll-generate.png",
+      "sha256": "c144f9f3300ac071d772e7aa6e8e2158f8d4c155698e1f43ccccf0a5638da7a9"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-payroll-list.png",
+      "sha256": "7df380a48f67b5f66540ba1668d5d29d7993218ab6ad1d542c79817dcaa38021"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-payslip-detail.png",
+      "sha256": "fea0458c06ba44e5b7afd76dff96d56f21dbe5118d4ca957b6d6d112bfaf7989"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-payslip-list.png",
+      "sha256": "3b2dcc91e4be1959638f1be4a88d28eee69e314983c592932030050f3060e2f4"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-policy-no-evidence.png",
+      "sha256": "f67c49553663d9b8fdd40167431e84d7ec60270098a9712e9782e14830341182"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-policy-qa.png",
+      "sha256": "fed109172287203f9331c43fabe93c3536aa53f8350b8c2a1a818e681070ce8d"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-positions.png",
+      "sha256": "4f9252af39bb354237d14d260967a558753bbaf052445d0c37207941a3097fef"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-salary-setting.png",
+      "sha256": "c086ec9029137f1bee846bb74ebb4d3ba217a4fce18ea0e261eeb12ea9940137"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-xlsx-import-result.png",
+      "sha256": "9dbef0ebc2f7b7e010ab87e6a53a0e9886c613da4058f57b714c807ddea278be"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/desktop-xlsx-import.png",
+      "sha256": "0e05fa2dbbf9f85b7c26b06847a1d1554314a2c7daa7947b8e473cecc84dd1df"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/manifest.json",
+      "sha256": "166c9d7f5ddc200b26d8578fa58ad7b43d3faf377d05ffb5b6823ce8e6f43798"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/mobile-attendance-self.png",
+      "sha256": "e961b9f64866de9b703d276134f722e5d49c12651f66f1fadc0a9b640501a5fa"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/mobile-dashboard.png",
+      "sha256": "de0a640d347e73ce9093ac3aefb36574d184c3a55bcf61d1a4862b01b2ff1853"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/mobile-employee-detail.png",
+      "sha256": "f6d342d0343c944c5a9467f0deb3335135b315e21e7257bb76221ebd3d479fd1"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/mobile-employee-list.png",
+      "sha256": "6180e41895ab128438d985029d6b61c7bc2b7ee98ffdb364dc408536c1dd85e0"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/mobile-evaluation-result.png",
+      "sha256": "9e6b209e9bb2b460a6b8470205e5a9013341a04b73d99e588c5ae33005fdd2e1"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/mobile-evaluation-self.png",
+      "sha256": "b85f7df6c9f98d081083a1dfd5a937a80db71c10a3eb926b5edbb3a3e6219d03"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/mobile-leave-approvals.png",
+      "sha256": "c768652733ec19c2d59958f6d4029c2e91225767df4bf1ccad45c0fe0374eaea"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/mobile-leave-request.png",
+      "sha256": "c846587f4e39ce1f01443780aac730ce7aa893af4e9f29c73af1962cade18fe4"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/mobile-login.png",
+      "sha256": "e52ec95519af750dab694358bbd7e1f666b9185785fb8f640d3ef2592ef686dc"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/mobile-notifications.png",
+      "sha256": "394c5be1b5c86385637e09e58b490f05fe65b3d1211b813803bf119cbe1a2c9e"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/mobile-organization.png",
+      "sha256": "9b19cb73d456a6ce9edcf428b2f7cb6086b10b2d526b87e9f66ffccdb4dd886f"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/mobile-payroll-draft.png",
+      "sha256": "d713014dcd2e1f98beb537cac8db30445edbe514c319b7307d9ddc7747efd7b6"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/mobile-payslip-detail.png",
+      "sha256": "517157ad194d12511688437dbced6af1f609b72e63cc30664c3a636a3d0f4a5a"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T18-54-38-906Z-f170b270/mobile-policy-qa.png",
+      "sha256": "e296bc8f976fa3f56f723a6b31792ca7a00b952e559ada95686a29f0a8153875"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T19-39-27-026Z-430432da/desktop-ai-search-proposal.png",
+      "sha256": "64cb160fe14a7b96cdc526edd144db337f5381fbeeb6ae8bc4863954b26c5cbc"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T19-39-27-026Z-430432da/desktop-ai-summary.png",
+      "sha256": "27449c3d517373d8b198394829079a4ed28318a39dc7cb727ea5fd72c665e141"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T19-39-27-026Z-430432da/manifest.json",
+      "sha256": "75b5171f16f6bc98d0d90ac63050788d678f2be84932b625ac8483a1ebe8de8f"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T19-39-27-026Z-430432da/mobile-ai-search-proposal.png",
+      "sha256": "2c7bc94fb0b1fb5525384357cbf53193876a1232340061cb50bbc9c8712f4cb3"
+    },
+    {
+      "path": "docs/screenshots/2026-10-18T19-39-27-026Z-430432da/mobile-ai-summary.png",
+      "sha256": "84d6c8c08563557f4995712d862cf6066c1a883e53a5b94d21883cc2d697ed67"
+    },
+    {
+      "path": "docs/screenshots/assemble-capture-set.mjs",
+      "sha256": "b2c69faa977ef43d2fe6b41096a67c47989b57e65f229dc5667e89be35a222fa"
+    },
+    {
+      "path": "docs/screenshots/capture-portfolio.mjs",
+      "sha256": "54cfeb946995e426ad14d2b57f55db2ab3dac6e2d9512c7e9aa564cbd42068f2"
+    },
+    {
+      "path": "docs/screenshots/capture-set.json",
+      "sha256": "5332636267c9814d42a6f6ec35564275c20c382136f5b73cd2f36f2ace60cc6e"
+    },
+    {
+      "path": "docs/screenshots/claude-image-review.md",
+      "sha256": "33b509665e32f6cc20ec56a49e289d14c688314953af6f23f769a2c8d97f98d1"
+    },
+    {
+      "path": "docs/screenshots/cleanup-ems-photo-20261019-6fdc37c2d8-1792348909966.json",
+      "sha256": "99881ea094e8a4ea7f78a0d1577ce2fe8fbe53595e84325394ef6f0985f17696"
+    },
+    {
+      "path": "docs/screenshots/cleanup-ems-photo-20261019-8e5d11dcc7-1792348817856.json",
+      "sha256": "0cb2d9d3fe0102c0751ad257629b1db7a658f9a0fa42538fcb4bf2b49bab87f3"
+    },
+    {
+      "path": "docs/screenshots/cleanup-ems-photo-20261019-943cdb77d3-1792353087809.json",
+      "sha256": "45271e60323d98cdbfd74226a196d4a48422ccf8e97f557f5d2a803a4cbbd11d"
+    },
+    {
+      "path": "docs/screenshots/cleanup-ems-photo-20261019-d89f4f0b25-1792349633061.json",
+      "sha256": "8c3945212f57cbf5e52bf8e25f179133691a524e53dfc1558c87efffedbbc2d4"
+    },
+    {
+      "path": "docs/screenshots/execution-ems-photo-20261019-6fdc37c2d8.json",
+      "sha256": "c5a348a7bb17352730f4dc534a70ea63b01cbe4d5110649ae9bd80d5bc8ca7d9"
+    },
+    {
+      "path": "docs/screenshots/execution-ems-photo-20261019-943cdb77d3.json",
+      "sha256": "56f276aaa11ef35bbf07c9fa2d3db55db76358a0f0a5b81cef5314d96fd2f2b2"
+    },
+    {
+      "path": "docs/screenshots/execution-ems-photo-20261019-d89f4f0b25.json",
+      "sha256": "c6d7ae3e8c19fb75462c97ed70a7b7079764eb93536949758fc5b5a2f4d91835"
+    },
+    {
+      "path": "docs/screenshots/execution-initial.json",
+      "sha256": "c26cd71feec8032fd5f9976c9ef75110f53ea27137cccb437ff2d2fcfdec3fb2"
+    },
+    {
+      "path": "docs/screenshots/README.md",
+      "sha256": "a30015e2ceb84dc26ae6d85a49d5dc927a6be2f424b2f63ccac68e89d20e240d"
+    },
+    {
+      "path": "docs/screenshots/response-status-review.md",
+      "sha256": "3532ebcdc205b0d863fd8665f48518751d0491791bf0901d8615b99b6cd94247"
+    },
+    {
+      "path": "docs/screenshots/run-capture.mjs",
+      "sha256": "29f216b58e68fe516bfd774c75ea28d3ec42e6db78b797ed0d72356e3312bd38"
+    },
+    {
+      "path": "docs/screenshots/screen-list.json",
+      "sha256": "ebd48d0d35d65b73c3d5ff473e4e6e13f96a0f5929551da784296ca8b6b3587b"
+    },
+    {
+      "path": "docs/screenshots/stop-failed-project.mjs",
+      "sha256": "6836962b95ee9bbece8a53fef8029e696415e263c8b5f5ec135da1376630490a"
+    },
+    {
+      "path": "docs/screenshots/capture-attempt-notes.md",
+      "sha256": "2c9f6d98bd217144cf87496a77ab57637ef72b577174e920f19979d5a5ca2617"
+    },
+    {
+      "path": "docs/screenshots/capture-attempts.json",
+      "sha256": "f6dea9c60ec17d9b22249ca374703691b8c9774a7a75e60218f13007817312dc"
+    },
+    {
+      "path": "docs/screenshots/diagnostic-preflight.json",
+      "sha256": "3c1f0e7e3416c46e96c86286744ad662b7d6b927dd6d6b97ba389fdf6a948750"
+    },
+    {
+      "path": "docs/screenshots/cleanup-final.json",
+      "sha256": "1e7afb6c1674379c071e68aff09889a5fe6d080fe6eb890ab4b3e7dba32e4818"
+    },
+    {
+      "path": "docs/screenshots/port-release-evidence.json",
+      "sha256": "588217511e32b8124e4b4fda406fc78a0e51d8a1c020620283bd0d03f9025d5e"
+    },
+    {
+      "path": "docs/security/frontend-header-check-approved-run.json",
+      "sha256": "b28c86e6a7991f2513288bbb8517d9742c6159493b2890b3a83a058b0dc914a6"
+    },
+    {
+      "path": "docs/security/frontend-header-check.mjs",
+      "sha256": "1c9a1de8a7c6a70c664a93a3cfb65a4ecba5b54939bd92d20697abf7a4145dda"
+    },
+    {
+      "path": "docs/security/frontend-security-evidence.json",
+      "sha256": "e0b8631034db29591d7c88c56d0ca692c855a6f713c87caaca98f5509a2379a4"
+    },
+    {
+      "path": "docs/security/frontend-security-review.md",
+      "sha256": "52d10511342a51cd5234c992ea6acbf28e5c750aacd8ae695b6f527fbee26ee2"
+    },
+    {
+      "path": "docs/devlog/20261018-frontend-finalization.md",
+      "sha256": "16edc2933021997ea43bf7c4429b18e392ebe0ac3a814de68721c9275c890f92"
+    },
+    {
+      "path": "docs/devlog/20261019-frontend-capture.md",
+      "sha256": "83262fb256aa1e82b013033816184533294fd69a5a55fa297e414393b09dd12b"
+    }
+  ],
+  "counts": {
+    "checkedBeforeReport": 124,
+    "png": 90,
+    "text": 34,
+    "json": 21,
+    "scripts": 5,
+    "finalFiles": 125,
+    "finalJson": 22
+  },
+  "checks": {
+    "secretPatternScan": "No real secret candidate found in scope; one authorization description classified as non-credential. Variable names, local synthetic fixtures and example.invalid values distinguished. Pattern review is not exhaustive.",
+    "sanitizedScreenshotJson": "Sensitive-name primitive and non-example email scan: no candidates.",
+    "pngMetadata": "90 PNG signatures/chunk bounds checked; no tEXt/zTXt/iTXt/eXIf chunks. Pixel privacy relies on separate Claude review, not metadata scan.",
+    "json": "21 parsed successfully",
+    "javascript": "node --check on all 5 mjs scripts passed; scripts not executed",
+    "galleryLinks": "All local Markdown links in allowed files resolve",
+    "manifest": {
+      "captures": 53,
+      "screens": 37,
+      "hashesMatched": 53,
+      "missing": 0,
+      "duplicates": 0,
+      "expectedPairsMatched": 53
+    },
+    "whitespace": "One blank EOF fixed only in frontend-header-check.mjs; PNG and manifest bytes unchanged. Staged diff check follows."
+  },
+  "imageReview": {
+    "source": "docs/screenshots/claude-image-review.md",
+    "actor": "Claude UI/UX designer",
+    "opened": 53,
+    "medium": 2,
+    "low": 10,
+    "limitationsPreserved": "Small text outside enlarged regions on four long desktop captures and values below masks remain unconfirmed.",
+    "representativeExclusions": [
+      "desktop-employee-appointment.png",
+      "desktop-audit.png",
+      "mobile-notifications.png"
+    ],
+    "independentlyReopenedByCommitter": false
+  },
+  "notPerformed": [
+    "Product tests/build/audit rerun",
+    "HTTP or Docker rerun/control",
+    "Real inference",
+    "Git history or other-team review",
+    "Push/amend/rebase/global config/LICENSE changes"
+  ],
+  "ownership": "Frontend publication evidence handed to team lead after local commit",
+  "commitProcedure": "Stage exact file paths, cached diff --check, allowlist verification; commit hash supplied separately to avoid self reference.",
+  "stagingValidation": {
+    "checkedAt": "2026-10-18T19:56:17.596Z",
+    "stagedFiles": 125,
+    "allowlistOnly": true,
+    "cachedDiffCheck": "passed",
+    "lineEndingNote": "Git emitted LF-to-CRLF working-copy warnings; no global setting changed and no manifest/PNG manually rewritten."
+  }
+}

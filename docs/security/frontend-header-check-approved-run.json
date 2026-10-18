@@ -1,0 +1,56 @@
+{
+  "runId": "검증 작업-20261019-01",
+  "engine": "Codex",
+  "startedAt": "2026-10-18T19:48:41.315Z",
+  "method": "Node HTTP; sequential requests; no redirects, retries, credentials or body logging",
+  "head": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+  "nginxSha256": "EF27F2BAC4A1E717B470BFCB965F427DDE2B393D0CA323A6FD4430702BCE5C60",
+  "requests": [
+    {
+      "method": "GET",
+      "url": "http://localhost:5173/",
+      "startedAt": "2026-10-18T19:48:41.357Z",
+      "headersReceivedAt": "2026-10-18T19:48:41.376Z",
+      "status": 200,
+      "headers": {
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "referrer-policy": "strict-origin-when-cross-origin"
+      },
+      "headersMatch": true,
+      "purpose": "normal"
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:5173/__frontend_header_check_missing__",
+      "startedAt": "2026-10-18T19:48:41.377Z",
+      "headersReceivedAt": "2026-10-18T19:48:41.380Z",
+      "status": 200,
+      "headers": {
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "referrer-policy": "strict-origin-when-cross-origin"
+      },
+      "headersMatch": true,
+      "purpose": "SPA fallback; actual status recorded"
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:5173/",
+      "startedAt": "2026-10-18T19:48:41.380Z",
+      "headersReceivedAt": "2026-10-18T19:48:41.382Z",
+      "status": 405,
+      "headers": {
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "referrer-policy": "strict-origin-when-cross-origin"
+      },
+      "headersMatch": true,
+      "purpose": "static-server error probe; empty body; no API request"
+    }
+  ],
+  "status": "normal-and-error-headers-confirmed",
+  "errorResponseConfirmed": true,
+  "limits": "Only localhost:5173 frontend headers. No API writes, Docker control, nginx syntax check or browser checks. Full CSP remains residual.",
+  "endedAt": "2026-10-18T19:48:41.383Z"
+}

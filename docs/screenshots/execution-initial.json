@@ -1,0 +1,47 @@
+{
+  "actor": "Codex",
+  "project": "ems-photo-20261019-8e5d11dcc7",
+  "startedAt": "2026-10-18T18:30:20.563Z",
+  "status": "stopped",
+  "frontendMode": "real-api",
+  "provider": "mock",
+  "actualInference": false,
+  "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+  "dirtyPaths": [
+    "M .gitignore",
+    "README.md",
+    "docs/security/backend-security-review.md",
+    "frontend/nginx.conf",
+    "SECURITY.md",
+    "backend/verification/20261019-backend-mysql-rerun.json",
+    "docs/README.md",
+    "docs/devlog/20261018-docqa-finalization.md",
+    "docs/devlog/20261018-frontend-finalization.md",
+    "docs/project-details.md",
+    "docs/screenshots/README.md",
+    "docs/screenshots/capture-portfolio.mjs",
+    "docs/screenshots/run-capture.mjs",
+    "docs/screenshots/screen-list.json",
+    "docs/security/README.md",
+    "docs/security/frontend-header-check.mjs",
+    "docs/security/frontend-security-evidence.json",
+    "docs/security/frontend-security-review.md",
+    "docs/security/history-scan-candidates.json"
+  ],
+  "nginxHeadersDirty": true,
+  "dockerServer": "29.4.0",
+  "newProjectVolumeAbsent": true,
+  "manifest": "docs/screenshots/2026-10-18T18-32-41-463Z-a23d30ba/manifest.json",
+  "actualPngCount": 0,
+  "capturedScreenCount": 0,
+  "captureFailure": {
+    "step": "PREPARE_EMPLOYEE",
+    "code": "API_HTTP_201",
+    "at": "2026-10-18T18:32:46.931Z"
+  },
+  "failure": {
+    "stage": "CAPTURE",
+    "code": "PROCESS_EXIT_1",
+    "at": "2026-10-18T18:32:46.962Z"
+  }
+}

@@ -1,0 +1,567 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-10-18T18-40-58-569Z-1e52c39b",
+  "status": "failed-incomplete",
+  "startedAt": "2026-10-18T18:40:58.570Z",
+  "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+  "sourceDirtyAtStart": true,
+  "screenPlanSha256": "ebd48d0d35d65b73c3d5ff473e4e6e13f96a0f5929551da784296ca8b6b3587b",
+  "composeProject": "ems-photo-20261019-6fdc37c2d8",
+  "uiOrigin": "http://localhost:5173",
+  "apiOrigin": "http://localhost:8080",
+  "frontendMode": "real-api",
+  "provider": "mock",
+  "llmMock": true,
+  "actualInference": false,
+  "executionOwner": "frontend-team-lead",
+  "scriptAuthor": "Codex",
+  "publicationReview": "pending-Claude-and-QA",
+  "privacy": {
+    "credentialValuesPersisted": false,
+    "identityScreenshotMasks": true,
+    "trace": false,
+    "video": false,
+    "storageState": false,
+    "rawErrorsPersisted": false
+  },
+  "preparation": [
+    {
+      "operation": "create-capture-employee",
+      "method": "POST",
+      "pathTemplate": "/employees",
+      "status": 201,
+      "at": "2026-10-18T18:40:59.987Z"
+    },
+    {
+      "operation": "create-appointment",
+      "method": "POST",
+      "pathTemplate": "/employees/{employeeId}/appointments",
+      "status": 201,
+      "at": "2026-10-18T18:41:00.142Z"
+    },
+    {
+      "operation": "prepare-leaves-and-notifications",
+      "method": "POST",
+      "pathTemplate": "/leaves/{id}/approve",
+      "status": 200,
+      "at": "2026-10-18T18:41:00.344Z"
+    },
+    {
+      "operation": "create-evaluation-cycle",
+      "method": "POST",
+      "pathTemplate": "/evaluation-cycles",
+      "status": 201,
+      "at": "2026-10-18T18:41:00.393Z"
+    },
+    {
+      "operation": "create-evaluation-cycle",
+      "method": "POST",
+      "pathTemplate": "/evaluation-cycles",
+      "status": 201,
+      "at": "2026-10-18T18:41:00.434Z"
+    },
+    {
+      "operation": "create-evaluation-cycle",
+      "method": "POST",
+      "pathTemplate": "/evaluation-cycles",
+      "status": 201,
+      "at": "2026-10-18T18:41:00.492Z"
+    },
+    {
+      "operation": "create-evaluation-cycle",
+      "method": "POST",
+      "pathTemplate": "/evaluation-cycles",
+      "status": 201,
+      "at": "2026-10-18T18:41:00.640Z"
+    },
+    {
+      "operation": "xlsx-ui-import",
+      "method": "POST",
+      "pathTemplate": "/employees/import",
+      "status": 201,
+      "at": "2026-10-18T18:41:09.577Z"
+    }
+  ],
+  "captures": [
+    {
+      "screenId": "login",
+      "role": "ADMIN",
+      "authenticated": false,
+      "routeTemplate": "/login",
+      "scenario": "로그인 ID와 비밀번호가 모두 빈 상태",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "viewportName": "desktop",
+      "fullPage": true,
+      "file": "2026-10-18T18-40-58-569Z-1e52c39b/desktop-login.png",
+      "sha256": "1c91f2282b31fe9aa5a1cf6d26ace7123504006348fe6646dd25b07e53810940",
+      "capturedAt": "2026-10-18T18:41:02.786Z",
+      "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+      "frontendMode": "real-api",
+      "provider": "mock",
+      "llmMock": true,
+      "actualInference": false,
+      "credentialAndIdentityMasking": true,
+      "humanReview": "pending"
+    },
+    {
+      "screenId": "dashboard",
+      "role": "ADMIN",
+      "authenticated": true,
+      "routeTemplate": "/dashboard",
+      "scenario": "실제 API 기준일과 합성 인원 대시보드",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "viewportName": "desktop",
+      "fullPage": true,
+      "file": "2026-10-18T18-40-58-569Z-1e52c39b/desktop-dashboard.png",
+      "sha256": "248d5e0648643d855b254eba066a528239fa5282d19fb89389685e22fd4ab422",
+      "capturedAt": "2026-10-18T18:41:04.251Z",
+      "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+      "frontendMode": "real-api",
+      "provider": "mock",
+      "llmMock": true,
+      "actualInference": false,
+      "credentialAndIdentityMasking": true,
+      "humanReview": "pending"
+    },
+    {
+      "screenId": "employee-list",
+      "role": "ADMIN",
+      "authenticated": true,
+      "routeTemplate": "/employees",
+      "scenario": "기존 사원 검색·표·내보내기 동작 위치",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "viewportName": "desktop",
+      "fullPage": true,
+      "file": "2026-10-18T18-40-58-569Z-1e52c39b/desktop-employee-list.png",
+      "sha256": "2416fac511ea8dac5f2ce3a53fe290d2131c938a19db890ff400f792e1617fe2",
+      "capturedAt": "2026-10-18T18:41:04.801Z",
+      "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+      "frontendMode": "real-api",
+      "provider": "mock",
+      "llmMock": true,
+      "actualInference": false,
+      "credentialAndIdentityMasking": true,
+      "humanReview": "pending"
+    },
+    {
+      "screenId": "employee-detail",
+      "role": "ADMIN",
+      "authenticated": true,
+      "routeTemplate": "/employees/{employeeId}",
+      "scenario": "합성 촬영사원 상세와 발령 이력",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "viewportName": "desktop",
+      "fullPage": true,
+      "file": "2026-10-18T18-40-58-569Z-1e52c39b/desktop-employee-detail.png",
+      "sha256": "85b27a6565ad84f7537167419e270269eefa73384ce23fb5ede11042195abdcb",
+      "capturedAt": "2026-10-18T18:41:05.276Z",
+      "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+      "frontendMode": "real-api",
+      "provider": "mock",
+      "llmMock": true,
+      "actualInference": false,
+      "credentialAndIdentityMasking": true,
+      "humanReview": "pending"
+    },
+    {
+      "screenId": "employee-create",
+      "role": "ADMIN",
+      "authenticated": true,
+      "routeTemplate": "/employees/new",
+      "scenario": "사원 등록 양식, 비밀번호는 빈칸; 추가 등록하지 않음",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "viewportName": "desktop",
+      "fullPage": true,
+      "file": "2026-10-18T18-40-58-569Z-1e52c39b/desktop-employee-create.png",
+      "sha256": "0ad2552911f49f8567a3de0a2c75511b22353712a41751f1f0cdc3a117dc90da",
+      "capturedAt": "2026-10-18T18:41:05.786Z",
+      "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+      "frontendMode": "real-api",
+      "provider": "mock",
+      "llmMock": true,
+      "actualInference": false,
+      "credentialAndIdentityMasking": true,
+      "humanReview": "pending"
+    },
+    {
+      "screenId": "employee-appointment",
+      "role": "ADMIN",
+      "authenticated": true,
+      "routeTemplate": "/employees/{employeeId}",
+      "scenario": "현재 소속이 표시된 발령 모달, 저장하지 않음",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "viewportName": "desktop",
+      "fullPage": false,
+      "file": "2026-10-18T18-40-58-569Z-1e52c39b/desktop-employee-appointment.png",
+      "sha256": "498303e8aeeae4dfb6d3267a89092fae8cdf0f2310c2ec188fbeb902b5b990e5",
+      "capturedAt": "2026-10-18T18:41:06.244Z",
+      "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+      "frontendMode": "real-api",
+      "provider": "mock",
+      "llmMock": true,
+      "actualInference": false,
+      "credentialAndIdentityMasking": true,
+      "humanReview": "pending"
+    },
+    {
+      "screenId": "departments",
+      "role": "ADMIN",
+      "authenticated": true,
+      "routeTemplate": "/departments",
+      "scenario": "합성 부모·자식 부서 계층",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "viewportName": "desktop",
+      "fullPage": true,
+      "file": "2026-10-18T18-40-58-569Z-1e52c39b/desktop-departments.png",
+      "sha256": "dcd129da77459c8c549a69a0020b22ccef32fbe605bae29ddef9fd4c8346378d",
+      "capturedAt": "2026-10-18T18:41:06.386Z",
+      "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+      "frontendMode": "real-api",
+      "provider": "mock",
+      "llmMock": true,
+      "actualInference": false,
+      "credentialAndIdentityMasking": true,
+      "humanReview": "pending"
+    },
+    {
+      "screenId": "positions",
+      "role": "ADMIN",
+      "authenticated": true,
+      "routeTemplate": "/positions",
+      "scenario": "직급 카탈로그",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "viewportName": "desktop",
+      "fullPage": true,
+      "file": "2026-10-18T18-40-58-569Z-1e52c39b/desktop-positions.png",
+      "sha256": "4f9252af39bb354237d14d260967a558753bbaf052445d0c37207941a3097fef",
+      "capturedAt": "2026-10-18T18:41:06.667Z",
+      "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+      "frontendMode": "real-api",
+      "provider": "mock",
+      "llmMock": true,
+      "actualInference": false,
+      "credentialAndIdentityMasking": true,
+      "humanReview": "pending"
+    },
+    {
+      "screenId": "job-titles",
+      "role": "ADMIN",
+      "authenticated": true,
+      "routeTemplate": "/job-titles",
+      "scenario": "합성 직책 카탈로그",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "viewportName": "desktop",
+      "fullPage": true,
+      "file": "2026-10-18T18-40-58-569Z-1e52c39b/desktop-job-titles.png",
+      "sha256": "2be36a8b892c1b1ccc44bd27672e94afb50128bc7c785ab291500732caec5c5a",
+      "capturedAt": "2026-10-18T18:41:06.870Z",
+      "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+      "frontendMode": "real-api",
+      "provider": "mock",
+      "llmMock": true,
+      "actualInference": false,
+      "credentialAndIdentityMasking": true,
+      "humanReview": "pending"
+    },
+    {
+      "screenId": "organization",
+      "role": "ADMIN",
+      "authenticated": true,
+      "routeTemplate": "/organization",
+      "scenario": "실제 조직 계층과 합성 사원 목록",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "viewportName": "desktop",
+      "fullPage": true,
+      "file": "2026-10-18T18-40-58-569Z-1e52c39b/desktop-organization.png",
+      "sha256": "56018937fd5d14f2da2b25a1b609f1365b5e1d66de26d2000cd4caed9ded9da7",
+      "capturedAt": "2026-10-18T18:41:07.335Z",
+      "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+      "frontendMode": "real-api",
+      "provider": "mock",
+      "llmMock": true,
+      "actualInference": false,
+      "credentialAndIdentityMasking": true,
+      "humanReview": "pending"
+    },
+    {
+      "screenId": "xlsx-import",
+      "role": "ADMIN",
+      "authenticated": true,
+      "routeTemplate": "/employees/import",
+      "scenario": "xlsx 가져오기 양식, 아직 파일 원문 없음",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "viewportName": "desktop",
+      "fullPage": true,
+      "file": "2026-10-18T18-40-58-569Z-1e52c39b/desktop-xlsx-import.png",
+      "sha256": "0e05fa2dbbf9f85b7c26b06847a1d1554314a2c7daa7947b8e473cecc84dd1df",
+      "capturedAt": "2026-10-18T18:41:08.107Z",
+      "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+      "frontendMode": "real-api",
+      "provider": "mock",
+      "llmMock": true,
+      "actualInference": false,
+      "credentialAndIdentityMasking": true,
+      "humanReview": "pending"
+    },
+    {
+      "screenId": "xlsx-import-result",
+      "role": "ADMIN",
+      "authenticated": true,
+      "routeTemplate": "/employees/import",
+      "scenario": "메모리 합성 xlsx를 정상 업로드한 성공 결과",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "viewportName": "desktop",
+      "fullPage": true,
+      "file": "2026-10-18T18-40-58-569Z-1e52c39b/desktop-xlsx-import-result.png",
+      "sha256": "9dbef0ebc2f7b7e010ab87e6a53a0e9886c613da4058f57b714c807ddea278be",
+      "capturedAt": "2026-10-18T18:41:09.669Z",
+      "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+      "frontendMode": "real-api",
+      "provider": "mock",
+      "llmMock": true,
+      "actualInference": false,
+      "credentialAndIdentityMasking": true,
+      "humanReview": "pending"
+    }
+  ],
+  "failure": {
+    "step": "SCREEN_audit_desktop",
+    "code": "CAPTURE_ACTION_FAILED",
+    "at": "2026-10-18T18:41:14.738Z"
+  },
+  "executionActor": "Codex",
+  "executionTask": 118,
+  "controlledAttempt": 1,
+  "captureScriptSha256": "a98c19d0041b6235a1557ca474834223ff60fbc1a3e8033b432fcb36a390c1be",
+  "launcherSha256": "1d4c07d50c4cb243977d000cd5285c35880c5b2366e3a53156d49510be96c360",
+  "sourceDirtyPathsAtEnvironmentStart": [
+    ".gitignore",
+    "README.md",
+    "docs/security/backend-security-review.md",
+    "frontend/nginx.conf",
+    "SECURITY.md",
+    "backend/verification/20261019-backend-mysql-rerun.json",
+    "docs/README.md",
+    "docs/devlog/20261018-docqa-finalization.md",
+    "docs/devlog/20261018-frontend-finalization.md",
+    "docs/project-details.md",
+    "docs/screenshots/2026-10-18T18-32-41-463Z-a23d30ba/manifest.json",
+    "docs/screenshots/README.md",
+    "docs/screenshots/capture-portfolio.mjs",
+    "docs/screenshots/cleanup-ems-photo-20261019-8e5d11dcc7-1792348817856.json",
+    "docs/screenshots/execution-initial.json",
+    "docs/screenshots/response-status-review.md",
+    "docs/screenshots/run-capture.mjs",
+    "docs/screenshots/screen-list.json",
+    "docs/screenshots/stop-failed-project.mjs",
+    "docs/security/README.md",
+    "docs/security/frontend-header-check.mjs",
+    "docs/security/frontend-security-evidence.json",
+    "docs/security/frontend-security-review.md",
+    "docs/security/history-scan-candidates.json"
+  ],
+  "plannedScreenCount": 37,
+  "actualPngCount": 12,
+  "missingCaptures": [
+    {
+      "screenId": "login",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "dashboard",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "employee-list",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "employee-detail",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "organization",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "audit",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "attendance-admin",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "leave-approvals",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "leave-approvals",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "leave-approval-detail",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "payroll-list",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "payroll-generate",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "salary-setting",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "payroll-draft",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "payroll-draft",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "payroll-confirm",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "evaluation-cycles",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "evaluation-draft",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "evaluation-open",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "evaluation-manager",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "ai-search-proposal",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "ai-search-proposal",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "attendance-self",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "attendance-self",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "leave-request",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "leave-request",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "leave-pending",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "notifications",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "notifications",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "payslip-list",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "payslip-detail",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "payslip-detail",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "evaluation-self",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "evaluation-self",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "evaluation-result",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "evaluation-result",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "ai-summary",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "ai-summary",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "policy-qa",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "policy-qa",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "policy-no-evidence",
+      "viewport": "desktop"
+    }
+  ]
+}

@@ -1,0 +1,535 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-10-18T19-39-27-026Z-430432da",
+  "status": "affected-ai-screens-captured-awaiting-review",
+  "startedAt": "2026-10-18T19:39:27.028Z",
+  "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+  "sourceDirtyAtStart": true,
+  "screenPlanSha256": "ebd48d0d35d65b73c3d5ff473e4e6e13f96a0f5929551da784296ca8b6b3587b",
+  "composeProject": "ems-photo-20261019-943cdb77d3",
+  "uiOrigin": "http://localhost:5173",
+  "apiOrigin": "http://localhost:8080",
+  "frontendMode": "real-api",
+  "provider": "mock",
+  "llmMock": true,
+  "actualInference": false,
+  "executionOwner": "frontend-team-lead",
+  "scriptAuthor": "Codex",
+  "publicationReview": "pending-Claude-and-QA",
+  "privacy": {
+    "credentialValuesPersisted": false,
+    "identityScreenshotMasks": true,
+    "trace": false,
+    "video": false,
+    "storageState": false,
+    "rawErrorsPersisted": false
+  },
+  "preparation": [],
+  "captures": [
+    {
+      "screenId": "ai-search-proposal",
+      "role": "ADMIN",
+      "authenticated": true,
+      "routeTemplate": "/employees",
+      "scenario": "실제 AI POST의 Mock 필터 제안 5행 비교표; 적용하지 않음",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "viewportName": "desktop",
+      "fullPage": true,
+      "file": "2026-10-18T19-39-27-026Z-430432da/desktop-ai-search-proposal.png",
+      "sha256": "64cb160fe14a7b96cdc526edd144db337f5381fbeeb6ae8bc4863954b26c5cbc",
+      "capturedAt": "2026-10-18T19:39:29.352Z",
+      "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+      "frontendMode": "real-api",
+      "provider": "mock",
+      "llmMock": true,
+      "actualInference": false,
+      "credentialAndIdentityMasking": true,
+      "humanReview": "pending"
+    },
+    {
+      "screenId": "ai-summary",
+      "role": "EMPLOYEE",
+      "authenticated": true,
+      "routeTemplate": "/evaluations/{resultEvaluationId}",
+      "scenario": "본인 FINALIZED 평가의 Mock AI 읽기 전용 요약",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "viewportName": "desktop",
+      "fullPage": true,
+      "file": "2026-10-18T19-39-27-026Z-430432da/desktop-ai-summary.png",
+      "sha256": "27449c3d517373d8b198394829079a4ed28318a39dc7cb727ea5fd72c665e141",
+      "capturedAt": "2026-10-18T19:39:30.094Z",
+      "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+      "frontendMode": "real-api",
+      "provider": "mock",
+      "llmMock": true,
+      "actualInference": false,
+      "credentialAndIdentityMasking": true,
+      "humanReview": "pending"
+    },
+    {
+      "screenId": "ai-search-proposal",
+      "role": "ADMIN",
+      "authenticated": true,
+      "routeTemplate": "/employees",
+      "scenario": "실제 AI POST의 Mock 필터 제안 5행 비교표; 적용하지 않음",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "viewportName": "mobile",
+      "fullPage": true,
+      "file": "2026-10-18T19-39-27-026Z-430432da/mobile-ai-search-proposal.png",
+      "sha256": "2c7bc94fb0b1fb5525384357cbf53193876a1232340061cb50bbc9c8712f4cb3",
+      "capturedAt": "2026-10-18T19:39:30.946Z",
+      "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+      "frontendMode": "real-api",
+      "provider": "mock",
+      "llmMock": true,
+      "actualInference": false,
+      "credentialAndIdentityMasking": true,
+      "humanReview": "pending"
+    },
+    {
+      "screenId": "ai-summary",
+      "role": "EMPLOYEE",
+      "authenticated": true,
+      "routeTemplate": "/evaluations/{resultEvaluationId}",
+      "scenario": "본인 FINALIZED 평가의 Mock AI 읽기 전용 요약",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "viewportName": "mobile",
+      "fullPage": true,
+      "file": "2026-10-18T19-39-27-026Z-430432da/mobile-ai-summary.png",
+      "sha256": "84d6c8c08563557f4995712d862cf6066c1a883e53a5b94d21883cc2d697ed67",
+      "capturedAt": "2026-10-18T19:39:31.619Z",
+      "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+      "frontendMode": "real-api",
+      "provider": "mock",
+      "llmMock": true,
+      "actualInference": false,
+      "credentialAndIdentityMasking": true,
+      "humanReview": "pending"
+    }
+  ],
+  "aiDiagnostics": [
+    {
+      "screenStep": "SCREEN_ai-search-proposal_desktop",
+      "stage": "OPEN_DISCLOSURE",
+      "locatorCount": 1,
+      "visible": true,
+      "enabled": true
+    },
+    {
+      "screenStep": "SCREEN_ai-search-proposal_desktop",
+      "stage": "FILL_QUESTION",
+      "locatorCount": 1,
+      "visible": true,
+      "enabled": true
+    },
+    {
+      "screenStep": "SCREEN_ai-search-proposal_desktop",
+      "stage": "BUTTON_ENABLED",
+      "locatorCount": 1,
+      "visible": true,
+      "enabled": true
+    },
+    {
+      "screenStep": "SCREEN_ai-search-proposal_desktop",
+      "stage": "AI_RESPONSE_STATUS",
+      "httpStatus": 200
+    },
+    {
+      "screenStep": "SCREEN_ai-search-proposal_desktop",
+      "stage": "RESULT_STATUS",
+      "envelopeObject": true,
+      "hasMeta": true,
+      "hasResult": true,
+      "resultOk": true,
+      "resultAnswered": false,
+      "resultInsufficientEvidence": false,
+      "aiErrorVisible": false,
+      "resultHeadingCount": 1
+    },
+    {
+      "screenStep": "SCREEN_ai-search-proposal_desktop",
+      "stage": "APPLY_VISIBLE",
+      "locatorCount": 1,
+      "visible": true,
+      "enabled": true
+    },
+    {
+      "screenStep": "SCREEN_ai-summary_desktop",
+      "stage": "OPEN_DISCLOSURE",
+      "locatorCount": 1,
+      "visible": true,
+      "enabled": true
+    },
+    {
+      "screenStep": "SCREEN_ai-summary_desktop",
+      "stage": "BUTTON_ENABLED",
+      "locatorCount": 1,
+      "visible": true,
+      "enabled": false
+    },
+    {
+      "screenStep": "SCREEN_ai-summary_desktop",
+      "stage": "AI_RESPONSE_STATUS",
+      "httpStatus": 200
+    },
+    {
+      "screenStep": "SCREEN_ai-summary_desktop",
+      "stage": "RESULT_STATUS",
+      "envelopeObject": true,
+      "hasMeta": true,
+      "hasResult": true,
+      "resultOk": false,
+      "resultAnswered": false,
+      "resultInsufficientEvidence": false,
+      "aiErrorVisible": false,
+      "resultHeadingCount": 1
+    },
+    {
+      "screenStep": "SCREEN_ai-search-proposal_mobile",
+      "stage": "OPEN_DISCLOSURE",
+      "locatorCount": 1,
+      "visible": true,
+      "enabled": true
+    },
+    {
+      "screenStep": "SCREEN_ai-search-proposal_mobile",
+      "stage": "FILL_QUESTION",
+      "locatorCount": 1,
+      "visible": true,
+      "enabled": true
+    },
+    {
+      "screenStep": "SCREEN_ai-search-proposal_mobile",
+      "stage": "BUTTON_ENABLED",
+      "locatorCount": 1,
+      "visible": true,
+      "enabled": true
+    },
+    {
+      "screenStep": "SCREEN_ai-search-proposal_mobile",
+      "stage": "AI_RESPONSE_STATUS",
+      "httpStatus": 200
+    },
+    {
+      "screenStep": "SCREEN_ai-search-proposal_mobile",
+      "stage": "RESULT_STATUS",
+      "envelopeObject": true,
+      "hasMeta": true,
+      "hasResult": true,
+      "resultOk": true,
+      "resultAnswered": false,
+      "resultInsufficientEvidence": false,
+      "aiErrorVisible": false,
+      "resultHeadingCount": 1
+    },
+    {
+      "screenStep": "SCREEN_ai-search-proposal_mobile",
+      "stage": "APPLY_VISIBLE",
+      "locatorCount": 1,
+      "visible": true,
+      "enabled": true
+    },
+    {
+      "screenStep": "SCREEN_ai-summary_mobile",
+      "stage": "OPEN_DISCLOSURE",
+      "locatorCount": 0,
+      "visible": false,
+      "enabled": false
+    },
+    {
+      "screenStep": "SCREEN_ai-summary_mobile",
+      "stage": "BUTTON_ENABLED",
+      "locatorCount": 1,
+      "visible": true,
+      "enabled": false
+    },
+    {
+      "screenStep": "SCREEN_ai-summary_mobile",
+      "stage": "AI_RESPONSE_STATUS",
+      "httpStatus": 200
+    },
+    {
+      "screenStep": "SCREEN_ai-summary_mobile",
+      "stage": "RESULT_STATUS",
+      "envelopeObject": true,
+      "hasMeta": true,
+      "hasResult": true,
+      "resultOk": false,
+      "resultAnswered": false,
+      "resultInsufficientEvidence": false,
+      "aiErrorVisible": false,
+      "resultHeadingCount": 1
+    }
+  ],
+  "screenFailures": [],
+  "retryScope": [
+    "ai-search-proposal",
+    "ai-summary"
+  ],
+  "controlledAttempt": 3,
+  "captureScriptSha256": "54cfeb946995e426ad14d2b57f55db2ab3dac6e2d9512c7e9aa564cbd42068f2",
+  "aiDiagnosticStage": "RESULT_STATUS",
+  "plannedScreenCount": 37,
+  "actualPngCount": 4,
+  "missingCaptures": [
+    {
+      "screenId": "login",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "login",
+      "viewport": "mobile",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "dashboard",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "dashboard",
+      "viewport": "mobile",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "employee-list",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "employee-list",
+      "viewport": "mobile",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "employee-detail",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "employee-detail",
+      "viewport": "mobile",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "employee-create",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "employee-appointment",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "departments",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "positions",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "job-titles",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "organization",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "organization",
+      "viewport": "mobile",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "xlsx-import",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "xlsx-import-result",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "audit",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "attendance-admin",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "leave-approvals",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "leave-approvals",
+      "viewport": "mobile",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "leave-approval-detail",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "payroll-list",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "payroll-generate",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "salary-setting",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "payroll-draft",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "payroll-draft",
+      "viewport": "mobile",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "payroll-confirm",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "evaluation-cycles",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "evaluation-draft",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "evaluation-open",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "evaluation-manager",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "attendance-self",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "attendance-self",
+      "viewport": "mobile",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "leave-request",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "leave-request",
+      "viewport": "mobile",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "leave-pending",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "notifications",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "notifications",
+      "viewport": "mobile",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "payslip-list",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "payslip-detail",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "payslip-detail",
+      "viewport": "mobile",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "evaluation-self",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "evaluation-self",
+      "viewport": "mobile",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "evaluation-result",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "evaluation-result",
+      "viewport": "mobile",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "policy-qa",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "policy-qa",
+      "viewport": "mobile",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    },
+    {
+      "screenId": "policy-no-evidence",
+      "viewport": "desktop",
+      "code": "OUTSIDE_SINGLE_SCREEN_RETRY"
+    }
+  ],
+  "singleScreenRetry": true,
+  "completedAt": "2026-10-18T19:39:31.623Z"
+}

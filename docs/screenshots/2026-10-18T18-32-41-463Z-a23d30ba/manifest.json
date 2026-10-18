@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-10-18T18-32-41-463Z-a23d30ba",
+  "status": "failed-incomplete",
+  "startedAt": "2026-10-18T18:32:41.465Z",
+  "sourceCommit": "89db9017fe3bbd025a26d4bb852c609fc7824607",
+  "sourceDirtyAtStart": true,
+  "screenPlanSha256": "ebd48d0d35d65b73c3d5ff473e4e6e13f96a0f5929551da784296ca8b6b3587b",
+  "composeProject": "ems-photo-20261019-8e5d11dcc7",
+  "uiOrigin": "http://localhost:5173",
+  "apiOrigin": "http://localhost:8080",
+  "frontendMode": "real-api",
+  "provider": "mock",
+  "llmMock": true,
+  "actualInference": false,
+  "executionOwner": "frontend-team-lead",
+  "scriptAuthor": "Codex",
+  "publicationReview": "pending-Claude-and-QA",
+  "privacy": {
+    "credentialValuesPersisted": false,
+    "identityScreenshotMasks": true,
+    "trace": false,
+    "video": false,
+    "storageState": false,
+    "rawErrorsPersisted": false
+  },
+  "preparation": [
+    {
+      "operation": "create-capture-employee",
+      "method": "POST",
+      "pathTemplate": "/employees",
+      "status": 201,
+      "at": "2026-10-18T18:32:46.795Z"
+    }
+  ],
+  "captures": [],
+  "failure": {
+    "step": "PREPARE_EMPLOYEE",
+    "code": "API_HTTP_201",
+    "at": "2026-10-18T18:32:46.931Z"
+  },
+  "executionActor": "Codex",
+  "executionTask": 115,
+  "sourceDirtyPathsAtEnvironmentStart": [
+    "M .gitignore",
+    "README.md",
+    "docs/security/backend-security-review.md",
+    "frontend/nginx.conf",
+    "SECURITY.md",
+    "backend/verification/20261019-backend-mysql-rerun.json",
+    "docs/README.md",
+    "docs/devlog/20261018-docqa-finalization.md",
+    "docs/devlog/20261018-frontend-finalization.md",
+    "docs/project-details.md",
+    "docs/screenshots/README.md",
+    "docs/screenshots/capture-portfolio.mjs",
+    "docs/screenshots/run-capture.mjs",
+    "docs/screenshots/screen-list.json",
+    "docs/security/README.md",
+    "docs/security/frontend-header-check.mjs",
+    "docs/security/frontend-security-evidence.json",
+    "docs/security/frontend-security-review.md",
+    "docs/security/history-scan-candidates.json"
+  ],
+  "plannedScreenCount": 37,
+  "actualPngCount": 0,
+  "missingCaptures": [
+    {
+      "screenId": "login",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "login",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "dashboard",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "dashboard",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "employee-list",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "employee-list",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "employee-detail",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "employee-detail",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "employee-create",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "employee-appointment",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "departments",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "positions",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "job-titles",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "organization",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "organization",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "xlsx-import",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "xlsx-import-result",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "audit",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "attendance-admin",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "leave-approvals",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "leave-approvals",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "leave-approval-detail",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "payroll-list",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "payroll-generate",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "salary-setting",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "payroll-draft",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "payroll-draft",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "payroll-confirm",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "evaluation-cycles",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "evaluation-draft",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "evaluation-open",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "evaluation-manager",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "ai-search-proposal",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "ai-search-proposal",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "attendance-self",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "attendance-self",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "leave-request",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "leave-request",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "leave-pending",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "notifications",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "notifications",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "payslip-list",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "payslip-detail",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "payslip-detail",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "evaluation-self",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "evaluation-self",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "evaluation-result",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "evaluation-result",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "ai-summary",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "ai-summary",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "policy-qa",
+      "viewport": "desktop"
+    },
+    {
+      "screenId": "policy-qa",
+      "viewport": "mobile"
+    },
+    {
+      "screenId": "policy-no-evidence",
+      "viewport": "desktop"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "actor": "Codex",
+  "project": "ems-photo-20261019-d89f4f0b25",
+  "status": "blocked-safe-runtime-authentication-unavailable",
+  "authenticationEnvironmentPresence": {
+    "adminId": false,
+    "adminPassword": false,
+    "diagnosticToken": false
+  },
+  "diagnosticBrowserRuns": 0,
+  "diagnosticAiPosts": 0,
+  "fullAttemptsUsed": 2,
+  "fullAttemptsRemaining": 1,
+  "existingActualPngCount": 25,
+  "credentialsRecovered": false,
+  "originalFailureEvidenceModified": false,
+  "stackControlled": false,
+  "instrumentationApplied": true,
+  "instrumentationExecuted": false,
+  "runningCommands": false
+}

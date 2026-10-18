@@ -1,0 +1,30 @@
+{
+  "project": "ems-photo-20261019-d89f4f0b25",
+  "actor": "Codex",
+  "startedAt": "2026-10-18T18:53:48.702Z",
+  "removeVolumes": false,
+  "volumesBefore": [
+    "ems-photo-20261019-d89f4f0b25_mysql_data"
+  ],
+  "remainingProjectContainers": "",
+  "volumesAfter": [
+    "ems-photo-20261019-d89f4f0b25_mysql_data"
+  ],
+  "ports": [
+    {
+      "port": 3306,
+      "listening": false
+    },
+    {
+      "port": 8080,
+      "listening": false
+    },
+    {
+      "port": 5173,
+      "listening": false
+    }
+  ],
+  "volumePreserved": true,
+  "status": "stopped-volume-preserved-ports-free",
+  "completedAt": "2026-10-18T18:53:53.061Z"
+}
